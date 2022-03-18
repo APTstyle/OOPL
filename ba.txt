@@ -1,2 +1,5 @@
+<<<<<<< HEAD
 i am banana
 i am monkey
+=======
+>>>>>>> chun
