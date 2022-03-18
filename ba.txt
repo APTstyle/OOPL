@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream
-<<<<<<< HEAD
 i am banana
 i am monkey
-=======
->>>>>>> chun
-=======
 *-*-*-*-*-*-
->>>>>>> Stashed changes
+第三次==
