@@ -130,6 +130,16 @@ right_wall              BITMAP                  "..\\res\\bmp00003.bmp"
 
 IDB_BITMAP6             BITMAP                  "..\\res\\bmp00004.bmp"
 
+IDB_direction_up        BITMAP                  "..\\res\\bmp00005.bmp"
+
+IDB_direction_down      BITMAP                  "..\\res\\bitmap11.bmp"
+
+IDB_direction_left      BITMAP                  "..\\res\\bmp00006.bmp"
+
+IDB_direction_right     BITMAP                  "..\\res\\bmp00007.bmp"
+
+IDB_hero                BITMAP                  "D:\\APT\\110-2\\OOPL\\work\\asset\\bmp\\person1\\person57.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

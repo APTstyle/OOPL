@@ -421,7 +421,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	// 開始載入資料
 	border.LoadBitmap("Bitmaps/practice2.bmp", RGB(255, 255, 255));
 	practice.LoadBitmap(IDB_BALL);
-	practice3.LoadBitmap("Bitmaps/hi.bmp");
+	practice3.LoadBitmap("Bitmaps/person57.bmp");
 	c_practice4.LoadBitmap();
 	gamemap.LoadBitmap();
 	//

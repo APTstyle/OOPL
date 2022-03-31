@@ -331,6 +331,7 @@
     <Image Include="..\..\..\feature.png" />
     <Image Include="..\..\..\OOP_GAME\OOPL\asset\bmp\room\room2.bmp" />
     <Image Include="..\..\..\try.PNG" />
+    <Image Include="..\..\..\work\asset\bmp\person1\person57.bmp" />
     <Image Include="..\assest\bg.bmp" />
     <Image Include="..\assest\bg.png" />
     <Image Include="..\assest\Screenshot_2022.03.25_00.20.08.588.png" />
@@ -339,6 +340,7 @@
     <Image Include="Bitmaps\bg.bmp" />
     <Image Include="RES\11047.png" />
     <Image Include="res\bitmap10.bmp" />
+    <Image Include="res\bitmap11.bmp" />
     <Image Include="res\bitmap3.bmp" />
     <Image Include="res\bitmap4.bmp" />
     <Image Include="res\bitmap5.bmp" />
@@ -349,6 +351,9 @@
     <Image Include="res\bmp00002.bmp" />
     <Image Include="res\bmp00003.bmp" />
     <Image Include="res\bmp00004.bmp" />
+    <Image Include="res\bmp00005.bmp" />
+    <Image Include="res\bmp00006.bmp" />
+    <Image Include="res\bmp00007.bmp" />
     <Image Include="RES\golblin (2).bmp" />
     <Image Include="RES\golblin.bmp" />
     <Image Include="res\room2.bmp" />
