@@ -112,42 +112,109 @@ void Cpractice4::OnShow() {
 }
 /////////////////////////////////////////////////
 	CGameMap::CGameMap()
-        :X(20), Y(40), MW(50), MH(50)
+        :X(200), Y(50), MW(45), MH(45)
     {
 	
-        int map_init[4][8] = { {0,0,1,0,0,1,2,0},
-        {0,1,2,1,0,1,1,2},
-        {1, 2, 1, 2, 1,2,1,0},
-        {2, 1, 2, 1, 2,0,0,1} };
-    for (int i = 0; i < 4; i++)
-        for (int j = 0; j < 8; j++)
-            map[i][j] = map_init[i][j];
+        int map1_init[25][27] = { 
+		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
+        {3,1,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
+        {3,1,1,10,1,1,3,1,1,3,1,1,1,1,1,3,1,7,7,1,1,7,8,8,1,3},
+        {3,1,2,7,7,1,3,1,1,3,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,3},
+		{3,1,2,2,2,7,3,3,4,3,3,3,4,3,3,3,3,3,3,3,3,3,1,3,3,3},
+		{3,1,7,2,2,2,4,1,1,3,3,3,1,1,1,1,3,3,3,3,3,3,1,3,3,3}, 
+		{3,1,1,1,7,7,3,1,1,1,1,1,1,1,3,1,1,1,1,3,3,3,1,3,3,3}, 
+		{3,1,1,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
+		{3,3,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
+		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,1,1,3,3,3,1,1,3,3},
+		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3}, 
+		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3}, 
+		{3,1,1,1,1,8,8,3,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,3,3},
+		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3}, 
+		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
+		{3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,3,3,3,1,3,3},
+		{3,3,3,1,1,3,1,1,1,1,1,1,1,1,3,1,1,1,3,3,3,3,3,1,3,3},
+		{3,3,3,1,1,4,1,1,8,8,8,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
+		{3,3,3,3,3,3,1,1,8,8,1,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
+		{3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,4,3,3,3,3,3,3,3,1,3,3},
+		{3,3,3,3,3,1,1,1,1,3,1,1,1,7,1,1,1,1,1,1,3,3,3,1,3,3},
+		{3,3,3,3,3,1,1,1,1,3,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
+		{3,3,3,3,3,1,1,1,1,4,1,1,1,7,1,1,1,1,1,1,4,1,1,1,3,3},
+		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
+    for (int i = 0; i < 25; i++)
+        for (int j = 0; j < 27; j++)
+            map[i][j] = map1_init[i][j];
 	random_num = 0;
 	bballs = NULL;
     }
 
     void CGameMap::LoadBitmap()
     {
-		floor.LoadBitmap(map_floor);
-        lw.LoadBitmap(left__wall);
-    }
+		mf.LoadBitmap(map_floor);
+		opd.LoadBitmap(open_door);
+		wh.LoadBitmap(water_hole);
+		fw.LoadBitmap(front_wall);
+		md.LoadBitmap(map_door);
+		wf.LoadBitmap(wood_floor);
+		sg.LoadBitmap(small_grass);
+		lg.LoadBitmap(big_grass);
+		stair_d.LoadBitmap(stair_up);
+		stair_u.LoadBitmap(stair_down);
+		water_floor.LoadBitmap(level1_water);
+    }						///樓層1  0空 1地板 2水地板 3正牆 4門 5水牆 6木地板 7小草 8大草 9上樓 10下樓 11開門
     void CGameMap::OnShow()
     {
-        for(int i=0;i<8;i++)
-            for (int j = 0; j < 4; j++)
+        for(int i=0;i<27;i++)
+            for (int j = 0; j < 25; j++)
             {
                 switch (map[j][i]) 
                 {
                 case 0:
-                    break;
+					break;
                 case 1:
-                    floor.SetTopLeft(X + (MW*i), Y + (MH*j));
-                    floor.ShowBitmap();
+                    mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+                    mf.ShowBitmap();
                     break;
                 case 2:
-                    lw.SetTopLeft(X + (MW*i), Y + (MH*j));
-                    lw.ShowBitmap();
+					water_floor.SetTopLeft(X + (MW*i), Y + (MH*j));
+					water_floor.ShowBitmap();
+                    
                     break;
+				case 3:
+					fw.SetTopLeft(X + (MW*i), Y + (MH*j));
+					fw.ShowBitmap();
+					break;
+				case 4:
+					md.SetTopLeft(X + (MW*i), Y + (MH*j));
+					md.ShowBitmap();
+					break;
+				case 5:
+					wh.SetTopLeft(X + (MW*i), Y + (MH*j));
+					wh.ShowBitmap();
+					break;
+				case 6:
+					wf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					wf.ShowBitmap();
+					break;
+				case 7:
+					sg.SetTopLeft(X + (MW*i), Y + (MH*j));
+					sg.ShowBitmap();
+					break;
+				case 8:
+					lg.SetTopLeft(X + (MW*i), Y + (MH*j));
+					lg.ShowBitmap();
+					break;
+				case 9:
+					stair_d.SetTopLeft(X + (MW*i), Y + (MH*j));
+					stair_d.ShowBitmap();
+					break;
+				case 10:
+					stair_u.SetTopLeft(X + (MW*i), Y + (MH*j));
+					stair_u.ShowBitmap();
+					break;
+				case 11:
+					opd.SetTopLeft(X + (MW*i), Y + (MH*j));
+					opd.ShowBitmap();
+					break;
                 default:
                     ASSERT(0);
                 }
@@ -421,7 +488,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	// 開始載入資料
 	border.LoadBitmap("Bitmaps/practice2.bmp", RGB(255, 255, 255));
 	practice.LoadBitmap(IDB_BALL);
-	practice3.LoadBitmap("Bitmaps/person57.bmp");
+	practice3.LoadBitmap("Bitmaps/hi.bmp");
 	c_practice4.LoadBitmap();
 	gamemap.LoadBitmap();
 	//
@@ -512,7 +579,6 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 
 void CGameStateRun::OnShow()
 {
-	
 	//
 	//  注意：Show裡面千萬不要移動任何物件的座標，移動座標的工作應由Move做才對，
 	//        否則當視窗重新繪圖時(OnDraw)，物件就會移動，看起來會很怪。換個術語
@@ -532,6 +598,7 @@ void CGameStateRun::OnShow()
 	//
 	//  貼上左上及右下角落的圖
 	//
+	
 	corner.SetTopLeft(0,0);
 	corner.ShowBitmap();
 	corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());

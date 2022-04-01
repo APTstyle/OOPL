@@ -69,7 +69,6 @@ namespace game_framework {
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		CMovingBitmap logo;								// csie的logo
-		CMovingBitmap image;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -119,8 +118,8 @@ namespace game_framework {
 		~CGameMap();
 
 	protected:
-		CMovingBitmap floor, lw;
-		int map[10][10];
+		CMovingBitmap mf, wh,fw,opd,md,wf,sg,lg,stair_d, stair_u,water_floor;
+		int map[25][27];
 		const int X, Y;
 		const int MW, MH;
 		CBouncingBall*bballs;

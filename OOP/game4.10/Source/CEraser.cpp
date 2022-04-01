@@ -47,7 +47,7 @@ namespace game_framework {
 
 	void CEraser::LoadBitmap()
 	{
-		animation.AddBitmap(IDB_hero, RGB(0, 0, 0));
+		animation.AddBitmap(IDB_hero, RGB(255, 255, 255));
 	}
 
 	void CEraser::OnMove()
