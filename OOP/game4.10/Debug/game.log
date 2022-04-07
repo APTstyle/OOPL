@@ -1,8 +1,53 @@
 ﻿cl : 命令列 warning D9035: 選項 'Gm' 已被取代，在未來的發行版本中將會移除
+  StdAfx.cpp
+cl : 命令列 warning D9035: 選項 'Gm' 已被取代，在未來的發行版本中將會移除
   mygame.cpp
-  LINK : 最後的累加連結找不到或未建置 .\Debug/game.exe，正在執行完整連結
-audio.obj : warning LNK4075: 忽略 '/EDITANDCONTINUE'，由於 '/SAFESEH' 規格
-  game.vcxproj -> D:\APT\110-2\OOPL\OOP\game4.10\.\Debug\game.exe
-  Microsoft (R) COFF/PE Editor Version 14.16.27045.0
-  Copyright (C) Microsoft Corporation.  All rights reserved.
-  
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): error C2220: 將警告視為錯誤處理 - 沒有產生 'object' 檔案
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+  gamelib.cpp
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): error C2220: 將警告視為錯誤處理 - 沒有產生 'object' 檔案
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+  MainFrm.cpp
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): error C2220: 將警告視為錯誤處理 - 沒有產生 'object' 檔案
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+  gameView.cpp
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): error C2220: 將警告視為錯誤處理 - 沒有產生 'object' 檔案
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+  gameDoc.cpp
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): error C2220: 將警告視為錯誤處理 - 沒有產生 'object' 檔案
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+  game.cpp
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): error C2220: 將警告視為錯誤處理 - 沒有產生 'object' 檔案
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+  CEraser.cpp
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): error C2220: 將警告視為錯誤處理 - 沒有產生 'object' 檔案
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\ceraser.cpp(75): error C2065: 'IDB_archer_right': 未宣告的識別項
+  CBouncingBall.cpp
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): error C2220: 將警告視為錯誤處理 - 沒有產生 'object' 檔案
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+  CBall.cpp
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): error C2220: 將警告視為錯誤處理 - 沒有產生 'object' 檔案
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+  audio.cpp
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): error C2220: 將警告視為錯誤處理 - 沒有產生 'object' 檔案
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(90): warning C4005: '_APS_NEXT_RESOURCE_VALUE': 巨集重複定義
+  d:\apt\110-2\oopl\work\oopl\oop\game4.10\source\resource.h(81): note: 請參閱 '_APS_NEXT_RESOURCE_VALUE' 之前的定義
+  正在產生程式碼...
