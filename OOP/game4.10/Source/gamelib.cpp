@@ -329,12 +329,6 @@ int CMovingBitmap::Left()
 	return location.left;
 }
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> chun
 void CMovingBitmap::LoadBitmap(int IDB_BITMAP, COLORREF color)
 {
 	const int nx = 0;
@@ -499,19 +493,11 @@ void CGameState::OnCycle() // Template Method
 CGame CGame::instance;
 
 CGame::CGame()
-<<<<<<< HEAD
 : NUM_GAME_STATES(3)
-=======
-: NUM_GAME_STATES(4)
->>>>>>> chun
 {
 	running = true;
 	suspended = false;
 	gameStateTable[GAME_STATE_INIT] = new CGameStateInit(this);
-<<<<<<< HEAD
-=======
-	gameStateTable[GAME_MAIN_UI] = new CGameMainMenu(this);
->>>>>>> chun
 	gameStateTable[GAME_STATE_RUN]  = new CGameStateRun(this);
 	gameStateTable[GAME_STATE_OVER] = new CGameStateOver(this);
 	gameState = NULL;

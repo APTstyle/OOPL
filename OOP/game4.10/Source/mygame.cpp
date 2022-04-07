@@ -59,32 +59,15 @@
 #include "gamelib.h"
 #include "mygame.h"
 
-<<<<<<< HEAD
 namespace game_framework {
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的遊戲開頭畫面物件
 /////////////////////////////////////////////////////////////////////////////
-=======
-
-
-namespace game_framework {
-	
-/////////////////////////////////////////////////////////////////////////////
-// 這個class為遊戲的遊戲開頭畫面物件
-/////////////////////////////////////////////////////////////////////////////
-
-	int main_actor = 0;
->>>>>>> chun
 CGameStateInit::CGameStateInit(CGame *g)
 : CGameState(g)
 {
 }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> chun
 void CGameStateInit::OnInit()
 {
 	//
@@ -96,71 +79,17 @@ void CGameStateInit::OnInit()
 	// 開始載入資料
 	//
 	logo.LoadBitmap(mainpage);
-<<<<<<< HEAD
-=======
-	startb.LoadBitmap(startbutton);
-	startb.SetTopLeft(600, 850);
->>>>>>> chun
 	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	//
 	// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
 	//
 }
-<<<<<<< HEAD
-=======
-CGameMainMenu::CGameMainMenu(CGame *g)
-	: CGameState(g)
-{
-}
-void CGameMainMenu::OnBeginState()
-{
-}
-void CGameMainMenu::OnInit()
-{
-	c1.LoadBitmap(warrior_icon,RGB(255,255,255));
-	c2.LoadBitmap(mage_icon, RGB(255, 255, 255));
-	c3.LoadBitmap(assassian_icon, RGB(255, 255, 255));
-	c4.LoadBitmap(hunter_icon, RGB(255, 255, 255));
-}
->>>>>>> chun
 
 void CGameStateInit::OnBeginState()
 {
 }
 
 
-<<<<<<< HEAD
-=======
-
-void CGameMainMenu::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
-{
-	const char KEY_ESC = 27;
-	const char KEY_SPACE = ' ';
-	if (nChar == KEY_SPACE)
-		GotoGameState(GAME_STATE_RUN);
-}
-
-void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
-{
-	if (point.x > c1.Left() && point.y > c1.Top() && (point.y < c1.Top() + c1.Height()) && (point.x < c1.Left() + c1.Width())){
-		main_actor = 1;
-		GotoGameState(GAME_STATE_RUN);
-	}
-	if (point.x > c2.Left() && point.y > c2.Top() && (point.y < c2.Top() + c2.Height()) && (point.x < c2.Left() + c2.Width())) {
-		main_actor = 2;
-		GotoGameState(GAME_STATE_RUN);
-	}
-	if (point.x > c3.Left() && point.y > c3.Top() && (point.y < c3.Top() + c3.Height()) && (point.x < c3.Left() + c3.Width())){
-		main_actor = 3;
-		GotoGameState(GAME_STATE_RUN);
-	}
-	if (point.x > c4.Left() && point.y > c4.Top() && (point.y < c4.Top() + c4.Height()) && (point.x < c4.Left() + c4.Width())){
-		main_actor = 4;
-		GotoGameState(GAME_STATE_RUN);
-	}
-}
-
->>>>>>> chun
 Cpractice4::Cpractice4() {
 	x = y = 0;
 }
@@ -186,7 +115,6 @@ void Cpractice4::OnShow() {
         :X(200), Y(50), MW(45), MH(45)
     {
 	
-<<<<<<< HEAD
 		int map1_init[25][27] = {
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
 		{3,9,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
@@ -202,23 +130,6 @@ void Cpractice4::OnShow() {
 		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
 		{3,1,1,1,1,8,8,3,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,3,3},
 		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-=======
-        int map1_init[25][27] = { 
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
-        {3,1,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
-        {3,1,1,10,1,1,3,1,1,3,1,1,1,1,1,3,1,7,7,1,1,7,8,8,1,3},
-        {3,1,2,7,7,1,3,1,1,3,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,3},
-		{3,1,2,2,2,7,3,3,4,3,3,3,4,3,3,3,3,3,3,3,3,3,1,3,3,3},
-		{3,1,7,2,2,2,4,1,1,3,3,3,1,1,1,1,3,3,3,3,3,3,1,3,3,3}, 
-		{3,1,1,1,7,7,3,1,1,1,1,1,1,1,3,1,1,1,1,3,3,3,1,3,3,3}, 
-		{3,1,1,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
-		{3,3,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,1,1,3,3,3,1,1,3,3},
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3}, 
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3}, 
-		{3,1,1,1,1,8,8,3,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3}, 
->>>>>>> chun
 		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
 		{3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,3,3,3,1,3,3},
 		{3,3,3,1,1,3,1,1,1,1,1,1,1,1,3,1,1,1,3,3,3,3,3,1,3,3},
@@ -226,16 +137,10 @@ void Cpractice4::OnShow() {
 		{3,3,3,3,3,3,1,1,8,8,1,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
 		{3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,4,3,3,3,3,3,3,3,1,3,3},
 		{3,3,3,3,3,1,1,1,1,3,1,1,1,7,1,1,1,1,1,1,3,3,3,1,3,3},
-<<<<<<< HEAD
 		{3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
 		///樓層1  0空 1地板 2水地板 3正牆 4門 5水牆 6木地板 7小草 8大草 9上樓 10下樓 11開門
-=======
-		{3,3,3,3,3,1,1,1,1,3,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
-		{3,3,3,3,3,1,1,1,1,4,1,1,1,7,1,1,1,1,1,1,4,1,1,1,3,3},
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
->>>>>>> chun
     for (int i = 0; i < 25; i++)
         for (int j = 0; j < 27; j++)
             map[i][j] = map1_init[i][j];
@@ -384,47 +289,17 @@ void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	const char KEY_ESC = 27;
 	const char KEY_SPACE = ' ';
-<<<<<<< HEAD
 	if (nChar == KEY_SPACE)
 		GotoGameState(GAME_STATE_RUN);						// 切換至GAME_STATE_RUN
 	else if (nChar == KEY_ESC)								// Demo 關閉遊戲的方法
-=======
-	//if (nChar == KEY_SPACE)
-		//GotoGameState(GAME_STATE_RUN);						// 切換至GAME_STATE_RUN
-	if (nChar == KEY_ESC)								// Demo 關閉遊戲的方法
->>>>>>> chun
 		PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE,0,0);	// 關閉遊戲
 }
 
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
-<<<<<<< HEAD
 	GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
 }
 
-=======
-	if(point.x>startb.Left() && point.y>startb.Top() && (point.y < startb.Top()+startb.Height()) && (point.x < startb.Left()+startb.Width()))
-		GotoGameState(GAME_MAIN_UI);		// 切換至GAME_STATE_RUN
-}
-//void CGameMainMenu::OnInit() {
-
-//}
-
-void CGameMainMenu::OnShow() {
-	int menu_x = 700, menu_y = 250;
-	c1.SetTopLeft(menu_x, menu_y);
-	c1.ShowBitmap();
-	c2.SetTopLeft(menu_x+350, menu_y);
-	c2.ShowBitmap();
-	c3.SetTopLeft(menu_x, menu_y+400);
-	c3.ShowBitmap();
-	c4.SetTopLeft(menu_x+350, menu_y+400);
-	c4.ShowBitmap();
-	
-}
-
-
->>>>>>> chun
 void CGameStateInit::OnShow()
 {
 	//
@@ -432,10 +307,6 @@ void CGameStateInit::OnShow()
 	//
 	logo.SetTopLeft((SIZE_X - logo.Width())/2, SIZE_Y/8);
 	logo.ShowBitmap();
-<<<<<<< HEAD
-=======
-	startb.ShowBitmap();
->>>>>>> chun
 	//
 	// Demo螢幕字型的使用，不過開發時請盡量避免直接使用字型，改用CMovingBitmap比較好
 	//
@@ -512,11 +383,7 @@ void CGameStateOver::OnShow()
 /////////////////////////////////////////////////////////////////////////////
 
 CGameStateRun::CGameStateRun(CGame *g)
-<<<<<<< HEAD
 : CGameState(g), NUMBALLS(28)
-=======
-: CGameState(g), NUMBALLS(28) 
->>>>>>> chun
 {
 	ball = new CBall [NUMBALLS];
 	picX = picY = 0;
@@ -529,11 +396,7 @@ CGameStateRun::~CGameStateRun()
 
 void CGameStateRun::OnBeginState()
 {
-<<<<<<< HEAD
 	/*const int BALL_GAP = 90;
-=======
-	const int BALL_GAP = 90;
->>>>>>> chun
 	const int BALL_XY_OFFSET = 45;
 	const int BALL_PER_ROW = 7;
 	const int HITS_LEFT = 10;
@@ -552,11 +415,7 @@ void CGameStateRun::OnBeginState()
 	background.SetTopLeft(BACKGROUND_X,0);				// 設定背景的起始座標
 	help.SetTopLeft(0, SIZE_Y - help.Height());			// 設定說明圖的起始座標
 	hits_left.SetInteger(HITS_LEFT);					// 指定剩下的撞擊數
-<<<<<<< HEAD
 	hits_left.SetTopLeft(HITS_LEFT_X,HITS_LEFT_Y);		// 指定剩下撞擊數的座標*/
-=======
-	hits_left.SetTopLeft(HITS_LEFT_X,HITS_LEFT_Y);		// 指定剩下撞擊數的座標
->>>>>>> chun
 	//CAudio::Instance()->Play(AUDIO_LAKE, true);			// 撥放 WAVE
 	//CAudio::Instance()->Play(AUDIO_DING, false);		// 撥放 WAVE
 	//CAudio::Instance()->Play(AUDIO_NTUT, true);			// 撥放 MIDI
@@ -603,11 +462,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		if (ball[i].IsAlive() && ball[i].HitEraser(&eraser)) {
 			ball[i].SetIsAlive(false);
 			CAudio::Instance()->Play(AUDIO_DING);
-<<<<<<< HEAD
 			hits_left.Add(-1);
-=======
-			hits_left.Add(-10);
->>>>>>> chun
 			//
 			// 若剩餘碰撞次數為0，則跳到Game Over狀態
 			//
@@ -623,11 +478,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	bballs.OnMove();
 }
 
-<<<<<<< HEAD
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
-=======
-void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
->>>>>>> chun
 {
 	//
 	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
@@ -645,11 +496,6 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	int i;
 	for (i = 0; i < NUMBALLS; i++)	
 		ball[i].LoadBitmap();								// 載入第i個球的圖形
-<<<<<<< HEAD
-=======
-
-	eraser.character = main_actor;
->>>>>>> chun
 	eraser.LoadBitmap();
 	background.LoadBitmap(mainpage);					// 載入背景的圖形
 	//
@@ -748,11 +594,7 @@ void CGameStateRun::OnShow()
 	hits_left.ShowBitmap();
 	for (int i=0; i < NUMBALLS; i++)
 		ball[i].OnShow();				// 貼上第i號球
-<<<<<<< HEAD
 	bballs.OnShow();					// 貼上彈跳的球
-=======
-	bballs.OnShow();						// 貼上彈跳的球
->>>>>>> chun
 	eraser.OnShow();					// 貼上擦子
 	//
 	//  貼上左上及右下角落的圖

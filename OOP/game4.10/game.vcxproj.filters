@@ -316,35 +316,7 @@
     <Image Include="RES\hero.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-<<<<<<< HEAD
     <Image Include="RES\person56.bmp">
-=======
-    <Image Include="RES\startbutton1.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\character_1.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\character_2.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\character_3.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\character_4.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\person1.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\person2.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\person3.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\person4.bmp">
->>>>>>> chun
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

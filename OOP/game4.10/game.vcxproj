@@ -133,12 +133,9 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>.\Debug/game.bsc</OutputFile>
     </Bscmake>
-<<<<<<< HEAD
     <PostBuildEvent>
       <Command>editbin /SUBSYSTEM:CONSOLE $(OUTDIR)\$(ProjectName).exe</Command>
     </PostBuildEvent>
-=======
->>>>>>> chun
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -367,13 +364,6 @@
     <Image Include="res\bmp00005.bmp" />
     <Image Include="res\bmp00006.bmp" />
     <Image Include="res\bmp00007.bmp" />
-<<<<<<< HEAD
-=======
-    <Image Include="RES\character_1.bmp" />
-    <Image Include="RES\character_2.bmp" />
-    <Image Include="RES\character_3.bmp" />
-    <Image Include="RES\character_4.bmp" />
->>>>>>> chun
     <Image Include="res\door1.bmp" />
     <Image Include="res\floor1.bmp" />
     <Image Include="RES\golblin (2).bmp" />
@@ -386,21 +376,10 @@
     <Image Include="RES\level5.bmp" />
     <Image Include="RES\level6.bmp" />
     <Image Include="RES\level7.bmp" />
-<<<<<<< HEAD
     <Image Include="RES\person56.bmp" />
     <Image Include="res\room2.bmp" />
     <Image Include="RES\stair_down1.bmp" />
     <Image Include="RES\stair_up1.bmp" />
-=======
-    <Image Include="RES\person1.bmp" />
-    <Image Include="RES\person2.bmp" />
-    <Image Include="RES\person3.bmp" />
-    <Image Include="RES\person4.bmp" />
-    <Image Include="res\room2.bmp" />
-    <Image Include="RES\stair_down1.bmp" />
-    <Image Include="RES\stair_up1.bmp" />
-    <Image Include="RES\startbutton1.bmp" />
->>>>>>> chun
     <Image Include="res\test.bmp" />
     <Image Include="res\wall1.bmp" />
     <Image Include="RES\wood_floor1.bmp" />

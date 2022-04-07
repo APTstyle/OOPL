@@ -2,9 +2,7 @@
 // Microsoft Visual C++ 產生的 Include 檔案。
 // 由 game.rc 使用
 //
-#define _APS_3D_CONTROLS                     1
 #define IDD_ABOUTBOX                    100
-#define _APS_NEXT_SYMED_VALUE           101
 #define IDP_SOCKETS_INIT_FAILED         104
 #define IDR_MAINFRAME                   128
 #define IDR_GAMETYPE                    129
@@ -77,28 +75,25 @@
 #define IDB_PNG10                       235
 #define stair_down                      236
 #define stair_up                        237
+#define IDB_BITMAP8                     238
 #define IDB_hero                        238
-#define startbutton                     239
-#define warrior_icon                    240
-#define _APS_NEXT_RESOURCE_VALUE        240
-#define mage_icon                       241
-#define assassian_icon                  242
-#define hunter_icon                     243
-#define warrior                         244
-#define mage                            245
-#define hunter                          246
-#define assass                          247
-#define assassin                        247
-#define _APS_NEXT_RESOURCE_VALUE        248
+#define IDB_archer_right                238
+#define IDB_archer_left                 239
 #define IDC_README                      1001
-#define _APS_NEXT_CONTROL_VALUE         1003
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
 #define ID_BUTTON_FULLSCREEN            32773
 #define ID_BUTTON_PAUSE                 32774
 #define ID_BUTTON_UNITTEST              32775
+
+// Next default values for new objects
+// 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
+#define _APS_3D_CONTROLS                     1
+#define _APS_NEXT_RESOURCE_VALUE        240
 #define _APS_NEXT_COMMAND_VALUE         32776
+#define _APS_NEXT_CONTROL_VALUE         1003
+#define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

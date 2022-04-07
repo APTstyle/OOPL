@@ -10,7 +10,6 @@ namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// CEraser: Eraser class
 	/////////////////////////////////////////////////////////////////////////////
-<<<<<<< HEAD
 	int map1_init[25][27] = {
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
 		{3,9,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
@@ -37,21 +36,11 @@ namespace game_framework {
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
 	///樓層1  0空 1地板 2水地板 3正牆 4門 5水牆 6木地板 7小草 8大草 9上樓 10下樓 11開門
-=======
-
->>>>>>> chun
 	CEraser::CEraser()
 	{
 		Initialize();
 	}
 
-<<<<<<< HEAD
-=======
-	int CEraser::Character() {
-		return character;
-	}
-
->>>>>>> chun
 	int CEraser::GetX1()
 	{
 		return x;
@@ -74,14 +63,8 @@ namespace game_framework {
 
 	void CEraser::Initialize()
 	{
-<<<<<<< HEAD
 		const int X_POS = 245;
 		const int Y_POS = 95;
-=======
-		const int X_POS = 280;
-		const int Y_POS = 400;
-		character = 0;
->>>>>>> chun
 		x = X_POS;
 		y = Y_POS;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
@@ -89,7 +72,6 @@ namespace game_framework {
 
 	void CEraser::LoadBitmap()
 	{
-<<<<<<< HEAD
 		animation.AddBitmap(IDB_archer_right, RGB(255, 255, 255));
 	}
 	int actor_x = 1;
@@ -137,36 +119,6 @@ namespace game_framework {
 		printf("y=%d\n\n", y);
 		printf("location=%d\n\n", map1_init[actor_y][actor_x]);
 
-=======
-		animation.AddBitmap(warrior, RGB(255, 255, 255));
-		/*if (character == 1) {
-			animation.AddBitmap(warrior, RGB(255, 255, 255));
-		}
-		else if (character == 2) {
-			animation.AddBitmap(mage, RGB(255, 255, 255));
-		}
-		else if (character == 3) {
-			animation.AddBitmap(assassin, RGB(255, 255, 255));
-		}
-		else if (character == 4) {
-			animation.AddBitmap(hunter, RGB(255, 255, 255));
-		}*/
-		
-	}
-
-	void CEraser::OnMove()
-	{
-		const int STEP_SIZE = 10;
-		animation.OnMove();
-		if (isMovingLeft)
-			x -= STEP_SIZE;
-		if (isMovingRight)
-			x += STEP_SIZE;
-		if (isMovingUp)
-			y -= STEP_SIZE;
-		if (isMovingDown)
-			y += STEP_SIZE;
->>>>>>> chun
 	}
 
 	void CEraser::SetMovingDown(bool flag)
