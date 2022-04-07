@@ -8,10 +8,18 @@ namespace game_framework {
 	{
 	public:
 		CEraser();
+<<<<<<< HEAD
+=======
+		int character;				//職業的變數
+>>>>>>> chun
 		int  GetX1();					// 擦子左上角 x 座標
 		int  GetY1();					// 擦子左上角 y 座標
 		int  GetX2();					// 擦子右下角 x 座標
 		int  GetY2();					// 擦子右下角 y 座標
+<<<<<<< HEAD
+=======
+		int  Character();				//取得職業的變數
+>>>>>>> chun
 		void Initialize();				// 設定擦子為初始值
 		void LoadBitmap();				// 載入圖形
 		void OnMove();					// 移動擦子
@@ -24,6 +32,10 @@ namespace game_framework {
 	protected:
 		CAnimation animation;		// 擦子的動畫
 		int x, y;					// 擦子左上角座標
+<<<<<<< HEAD
+=======
+		
+>>>>>>> chun
 		bool isMovingDown;			// 是否正在往下移動
 		bool isMovingLeft;			// 是否正在往左移動
 		bool isMovingRight;			// 是否正在往右移動

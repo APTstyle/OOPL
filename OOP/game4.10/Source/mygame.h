@@ -69,6 +69,25 @@ namespace game_framework {
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		CMovingBitmap logo;								// csie的logo
+<<<<<<< HEAD
+=======
+		CMovingBitmap startb;
+	};
+
+	class CGameMainMenu : public CGameState {
+	public:
+		CGameMainMenu(CGame *g);
+		void OnBeginState();							// 設定每次重玩所需的變數
+		void OnInit();  								// 遊戲的初值及圖形設定				
+		void OnKeyUp(UINT, UINT, UINT); 				// 處理鍵盤Up的動作
+		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
+	protected:
+		void OnShow();									// 顯示這個狀態的遊戲畫面
+	private:
+		//CEraser		eraser;		
+		CMovingBitmap c1,c2,c3,c4;								//四個職業
+		
+>>>>>>> chun
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -131,6 +150,10 @@ namespace game_framework {
 
 	class CGameStateRun : public CGameState {
 	public:
+<<<<<<< HEAD
+=======
+		CEraser			eraser;		
+>>>>>>> chun
 		CGameStateRun(CGame *g);
 		~CGameStateRun();
 		void OnBeginState();							// 設定每次重玩所需的變數
@@ -153,7 +176,11 @@ namespace game_framework {
 		CMovingBitmap	help;		// 說明圖
 		CBall			*ball;		// 球的陣列
 		CMovingBitmap	corner;		// 角落圖
+<<<<<<< HEAD
 		CEraser			eraser;		// 拍子
+=======
+		
+>>>>>>> chun
 		CInteger		hits_left;	// 剩下的撞擊數
 		CBouncingBall   bballs;		// 反覆彈跳的球
 		CMovingBitmap   practice;
