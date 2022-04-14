@@ -343,5 +343,14 @@
     <Image Include="RES\person4.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\warrior1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bitmap8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\wolf1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

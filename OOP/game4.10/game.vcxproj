@@ -353,6 +353,7 @@
     <Image Include="res\bitmap5.bmp" />
     <Image Include="res\bitmap6.bmp" />
     <Image Include="res\bitmap7.bmp" />
+    <Image Include="res\bitmap8.bmp" />
     <Image Include="res\bitmap9.bmp" />
     <Image Include="res\bmp00001.bmp" />
     <Image Include="res\bmp00002.bmp" />
@@ -387,6 +388,8 @@
     <Image Include="RES\startbutton1.bmp" />
     <Image Include="res\test.bmp" />
     <Image Include="res\wall1.bmp" />
+    <Image Include="RES\warrior1.bmp" />
+    <Image Include="RES\wolf1.bmp" />
     <Image Include="RES\wood_floor1.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

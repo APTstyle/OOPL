@@ -79,11 +79,13 @@ namespace game_framework {
 		void OnInit();  								// 遊戲的初值及圖形設定				
 		void OnKeyUp(UINT, UINT, UINT); 				// 處理鍵盤Up的動作
 		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
+		//void GetActor();
 	protected:
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		//CEraser		eraser;		
 		CMovingBitmap c1,c2,c3,c4;								//四個職業
+		//int actor_number;
 		
 	};
 
@@ -130,14 +132,16 @@ namespace game_framework {
 		void OnMove();
 		void OnKeyDown(UINT);
 		void RandomBouncingBall();
+		void SetXY(int, int);
 		void InititalizeBouncingBall(int, int, int);
 		~CGameMap();
 
 	protected:
 		CMovingBitmap mf, wh,fw,opd,md,wf,sg,lg,stair_d, stair_u,water_floor;
 		int map[25][27];
-		const int X, Y;
-		const int MW, MH;
+		int actor_x=1, actor_y=1;
+		int X, Y;
+		int MW, MH;
 		CBouncingBall*bballs;
 		int random_num;
 	};

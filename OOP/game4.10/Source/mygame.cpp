@@ -62,15 +62,16 @@
 
 
 namespace game_framework {
-	
+	int main_actor = 0;
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的遊戲開頭畫面物件
 /////////////////////////////////////////////////////////////////////////////
 
-	int main_actor = 0;
+
 CGameStateInit::CGameStateInit(CGame *g)
 : CGameState(g)
 {
+	
 }
 
 
@@ -88,6 +89,7 @@ void CGameStateInit::OnInit()
 	logo.LoadBitmap(mainpage);
 	startb.LoadBitmap(startbutton);
 	startb.SetTopLeft(600, 850);
+	
 	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	//
 	// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
@@ -99,6 +101,7 @@ CGameMainMenu::CGameMainMenu(CGame *g)
 }
 void CGameMainMenu::OnBeginState()
 {
+	
 }
 void CGameMainMenu::OnInit()
 {
@@ -155,33 +158,33 @@ void Cpractice4::OnMove() {
 	}
 }
 void Cpractice4::LoadBitmap() {
-	pic.LoadBitmap(IDB_hi);
+	//pic.LoadBitmap(IDB_hi);
 }
 
 void Cpractice4::OnShow() {
 	pic.SetTopLeft(x, y);
-	pic.ShowBitmap();
+	//pic.ShowBitmap();
 }
 /////////////////////////////////////////////////
 	CGameMap::CGameMap()
         :X(200), Y(50), MW(45), MH(45)
     {
-	
-        int map1_init[25][27] = { 
+
+		int map1_init[25][27] = {
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
-        {3,1,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
-        {3,1,1,10,1,1,3,1,1,3,1,1,1,1,1,3,1,7,7,1,1,7,8,8,1,3},
-        {3,1,2,7,7,1,3,1,1,3,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,3},
+		{3,9,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
+		{3,1,1,10,1,1,3,1,1,3,1,1,1,1,1,3,1,7,7,1,1,7,8,8,1,3},
+		{3,1,2,7,7,1,3,1,1,3,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,3},
 		{3,1,2,2,2,7,3,3,4,3,3,3,4,3,3,3,3,3,3,3,3,3,1,3,3,3},
-		{3,1,7,2,2,2,4,1,1,3,3,3,1,1,1,1,3,3,3,3,3,3,1,3,3,3}, 
-		{3,1,1,1,7,7,3,1,1,1,1,1,1,1,3,1,1,1,1,3,3,3,1,3,3,3}, 
+		{3,1,7,2,2,2,4,1,1,3,3,3,1,1,1,1,3,3,3,3,3,3,1,3,3,3},
+		{3,1,1,1,7,7,3,1,1,1,1,1,1,1,3,1,1,1,1,3,3,3,1,3,3,3},
 		{3,1,1,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
 		{3,3,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
 		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,1,1,3,3,3,1,1,3,3},
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3}, 
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3}, 
+		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
+		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
 		{3,1,1,1,1,8,8,3,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3}, 
+		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
 		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
 		{3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,3,3,3,1,3,3},
 		{3,3,3,1,1,3,1,1,1,1,1,1,1,1,3,1,1,1,3,3,3,3,3,1,3,3},
@@ -189,8 +192,8 @@ void Cpractice4::OnShow() {
 		{3,3,3,3,3,3,1,1,8,8,1,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
 		{3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,4,3,3,3,3,3,3,3,1,3,3},
 		{3,3,3,3,3,1,1,1,1,3,1,1,1,7,1,1,1,1,1,1,3,3,3,1,3,3},
-		{3,3,3,3,3,1,1,1,1,3,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
-		{3,3,3,3,3,1,1,1,1,4,1,1,1,7,1,1,1,1,1,1,4,1,1,1,3,3},
+		{3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
+		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
     for (int i = 0; i < 25; i++)
         for (int j = 0; j < 27; j++)
@@ -213,6 +216,10 @@ void Cpractice4::OnShow() {
 		stair_u.LoadBitmap(stair_down);
 		water_floor.LoadBitmap(level1_water);
     }						///樓層1  0空 1地板 2水地板 3正牆 4門 5水牆 6木地板 7小草 8大草 9上樓 10下樓 11開門
+	void CGameMap::SetXY(int x, int y) {
+		X = x;
+		Y = y;
+	}
     void CGameMap::OnShow()
     {
         for(int i=0;i<27;i++)
@@ -276,9 +283,37 @@ void Cpractice4::OnShow() {
 		}
     }
 	void CGameMap::OnKeyDown(UINT nChar) {
+		
 		const int KEY_SPACE = 0x20;
+		const char KEY_LEFT = 0x25; // keyboard左箭頭
+		const char KEY_UP = 0x26; // keyboard上箭頭
+		const char KEY_RIGHT = 0x27; // keyboard右箭頭
+		const char KEY_DOWN = 0x28; // keyboard下箭頭
+		
+		const int step = 45;
 		if (nChar == KEY_SPACE)
 			RandomBouncingBall();
+		if (nChar == KEY_LEFT)
+			if (map[actor_y][actor_x-1] != 3) {
+				SetXY(X + step, Y);
+				actor_x -= 1;
+			}
+			
+		if (nChar == KEY_RIGHT)
+			if (map[actor_y][actor_x + 1] != 3) {
+				SetXY(X - step, Y);
+				actor_x += 1;
+			}
+		if (nChar == KEY_UP)
+			if (map[actor_y-1][actor_x] != 3) {
+				SetXY(X, Y+step);
+				actor_y -= 1;
+			}
+		if (nChar == KEY_DOWN)
+			if (map[actor_y + 1][actor_x] != 3) {
+				SetXY(X, Y - step);
+				actor_y += 1;
+			}
 	}
 	void CGameMap::OnMove() {
 		for (int i = 0; i < random_num; i++) {
@@ -466,7 +501,9 @@ CGameStateRun::~CGameStateRun()
 
 void CGameStateRun::OnBeginState()
 {
-	const int BALL_GAP = 90;
+	eraser.SetCharacter(main_actor);
+	eraser.LoadBitmap();
+	/*const int BALL_GAP = 90;
 	const int BALL_XY_OFFSET = 45;
 	const int BALL_PER_ROW = 7;
 	const int HITS_LEFT = 10;
@@ -488,7 +525,7 @@ void CGameStateRun::OnBeginState()
 	hits_left.SetTopLeft(HITS_LEFT_X,HITS_LEFT_Y);		// 指定剩下撞擊數的座標
 	//CAudio::Instance()->Play(AUDIO_LAKE, true);			// 撥放 WAVE
 	//CAudio::Instance()->Play(AUDIO_DING, false);		// 撥放 WAVE
-	//CAudio::Instance()->Play(AUDIO_NTUT, true);			// 撥放 MIDI
+	//CAudio::Instance()->Play(AUDIO_NTUT, true);			// 撥放 MIDI*/
 }
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
@@ -550,6 +587,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 
 void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 {
+	
 	//
 	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
 	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
@@ -567,8 +605,8 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	for (i = 0; i < NUMBALLS; i++)	
 		ball[i].LoadBitmap();								// 載入第i個球的圖形
 
-	eraser.character = main_actor;
-	eraser.LoadBitmap();
+	
+	
 	background.LoadBitmap(mainpage);					// 載入背景的圖形
 	//
 	// 完成部分Loading動作，提高進度
@@ -578,6 +616,7 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	//
 	// 繼續載入其他資料
 	//
+	
 	help.LoadBitmap(IDB_HELP,RGB(255,255,255));				// 載入說明的圖形
 	corner.LoadBitmap(IDB_CORNER);							// 載入角落圖形
 	corner.ShowBitmap(background);							// 將corner貼到background
@@ -598,10 +637,13 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_UP    = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
-	if (nChar == KEY_LEFT)
+	if (nChar == KEY_LEFT) {
 		eraser.SetMovingLeft(true);
+		
+	}
 	if (nChar == KEY_RIGHT)
 		eraser.SetMovingRight(true);
+
 	if (nChar == KEY_UP)
 		eraser.SetMovingUp(true);
 	if (nChar == KEY_DOWN)
@@ -615,6 +657,7 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_UP    = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
+
 	if (nChar == KEY_LEFT)
 		eraser.SetMovingLeft(false);
 	if (nChar == KEY_RIGHT)
@@ -664,9 +707,9 @@ void CGameStateRun::OnShow()
 	gamemap.OnShow();
 	help.ShowBitmap();					// 貼上說明圖
 	hits_left.ShowBitmap();
-	for (int i=0; i < NUMBALLS; i++)
-		ball[i].OnShow();				// 貼上第i號球
-	bballs.OnShow();						// 貼上彈跳的球
+	//for (int i=0; i < NUMBALLS; i++)
+	//	ball[i].OnShow();				// 貼上第i號球
+	//bballs.OnShow();						// 貼上彈跳的球
 	eraser.OnShow();					// 貼上擦子
 	//
 	//  貼上左上及右下角落的圖
@@ -676,10 +719,10 @@ void CGameStateRun::OnShow()
 	corner.ShowBitmap();
 	corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
 	corner.ShowBitmap();
-	practice3.ShowBitmap();
+	//practice3.ShowBitmap();
 	//practice.ShowBitmap();
 	border.ShowBitmap();
-	c_practice4.OnShow();
+	//c_practice4.OnShow();
 	
 }
 }

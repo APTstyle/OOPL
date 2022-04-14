@@ -7,6 +7,31 @@
 #include "CEraser.h"
 
 namespace game_framework {
+	int map1_init[25][27] = {
+		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
+		{3,9,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
+		{3,1,1,10,1,1,3,1,1,3,1,1,1,1,1,3,1,7,7,1,1,7,8,8,1,3},
+		{3,1,2,7,7,1,3,1,1,3,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,3},
+		{3,1,2,2,2,7,3,3,4,3,3,3,4,3,3,3,3,3,3,3,3,3,1,3,3,3},
+		{3,1,7,2,2,2,4,1,1,3,3,3,1,1,1,1,3,3,3,3,3,3,1,3,3,3},
+		{3,1,1,1,7,7,3,1,1,1,1,1,1,1,3,1,1,1,1,3,3,3,1,3,3,3},
+		{3,1,1,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
+		{3,3,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
+		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,1,1,3,3,3,1,1,3,3},
+		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
+		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
+		{3,1,1,1,1,8,8,3,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,3,3},
+		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
+		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
+		{3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,3,3,3,1,3,3},
+		{3,3,3,1,1,3,1,1,1,1,1,1,1,1,3,1,1,1,3,3,3,3,3,1,3,3},
+		{3,3,3,1,1,4,1,1,8,8,8,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
+		{3,3,3,3,3,3,1,1,8,8,1,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
+		{3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,4,3,3,3,3,3,3,3,1,3,3},
+		{3,3,3,3,3,1,1,1,1,3,1,1,1,7,1,1,1,1,1,1,3,3,3,1,3,3},
+		{3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
+		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
+		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
 	/////////////////////////////////////////////////////////////////////////////
 	// CEraser: Eraser class
 	/////////////////////////////////////////////////////////////////////////////
@@ -42,8 +67,8 @@ namespace game_framework {
 
 	void CEraser::Initialize()
 	{
-		const int X_POS = 280;
-		const int Y_POS = 400;
+		const int X_POS = 245;
+		const int Y_POS = 95;
 		character = 0;
 		x = X_POS;
 		y = Y_POS;
@@ -52,8 +77,8 @@ namespace game_framework {
 
 	void CEraser::LoadBitmap()
 	{
-		animation.AddBitmap(warrior, RGB(255, 255, 255));
-		/*if (character == 1) {
+		//animation.AddBitmap(warrior, RGB(255, 255, 255));
+		if (character == 1) {
 			animation.AddBitmap(warrior, RGB(255, 255, 255));
 		}
 		else if (character == 2) {
@@ -64,23 +89,62 @@ namespace game_framework {
 		}
 		else if (character == 4) {
 			animation.AddBitmap(hunter, RGB(255, 255, 255));
-		}*/
-		
+		}
+		else {
+			animation.AddBitmap(mage, RGB(255, 255, 255));
+		}
 	}
-
+	int actor_x = 1;
+	int actor_y = 1;
 	void CEraser::OnMove()
 	{
-		const int STEP_SIZE = 10;
+
+		const int STEP_SIZE = 0;
 		animation.OnMove();
 		if (isMovingLeft)
-			x -= STEP_SIZE;
+			if (map1_init[actor_y][actor_x - 1] != 3 && actor_x != 1) {
+				x -= STEP_SIZE;
+				actor_x -= 1;
+			}
+			else {
+				printf("wall");
+			}
 		if (isMovingRight)
-			x += STEP_SIZE;
+			if (map1_init[actor_y][actor_x + 1] != 3 && actor_x != 24) {
+				x += STEP_SIZE;
+				actor_x += 1;
+			}
+			else {
+				printf("wall");
+			}
 		if (isMovingUp)
-			y -= STEP_SIZE;
+			if (map1_init[actor_y - 1][actor_x] != 3 && actor_y != 1) {
+				y -= STEP_SIZE;
+				actor_y -= 1;
+			}
+			else {
+				printf("wall");
+			}
 		if (isMovingDown)
-			y += STEP_SIZE;
+			if (map1_init[actor_y + 1][actor_x] != 3 && actor_y != 25) {
+				y += STEP_SIZE;
+				actor_y += 1;
+			}
+			else {
+				printf("wall");
+			}
+		printf("actor_x=%d\n", actor_x);
+		printf("actor_y=%d\n", actor_y);
+		printf("x=%d\n", x);
+		printf("y=%d\n\n", y);
+		printf("location=%d\n\n", map1_init[actor_y][actor_x]);
+
 	}
+	void CEraser::SetCharacter(int actor)
+	{
+		character = actor;
+	}
+	
 
 	void CEraser::SetMovingDown(bool flag)
 	{
