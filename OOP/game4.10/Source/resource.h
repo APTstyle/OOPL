@@ -2,7 +2,9 @@
 // Microsoft Visual C++ 產生的 Include 檔案。
 // 由 game.rc 使用
 //
+#define _APS_3D_CONTROLS                     1
 #define IDD_ABOUTBOX                    100
+#define _APS_NEXT_SYMED_VALUE           101
 #define IDP_SOCKETS_INIT_FAILED         104
 #define IDR_MAINFRAME                   128
 #define IDR_GAMETYPE                    129
