@@ -1,9 +1,0 @@
-diff a/OOP/game4.10/Source/RESource.h b/OOP/game4.10/Source/RESource.h	(rejected hunks)
-@@ -2,7 +2,6 @@
- // Microsoft Visual C++ ���ͪ� Include �ɮסC
- // �� game.rc �ϥ�
- //
--#define _APS_3D_CONTROLS                     1
- #define IDD_ABOUTBOX                    100
- #define IDP_SOCKETS_INIT_FAILED         104
- #define IDR_MAINFRAME                   128
