@@ -40,6 +40,7 @@
 
 #include "CEraser.h"
 #include "CBall.h"
+
 //#include "CBouncingBall.h"
 
 namespace game_framework {
@@ -134,11 +135,15 @@ namespace game_framework {
 		void RandomBouncingBall();
 		void SetXY(int, int);
 		void InititalizeBouncingBall(int, int, int);
+		void changemap(int);
+		int map[50][50];
+		//int random_map;
 		~CGameMap();
 
 	protected:
 		CMovingBitmap mf, wh,fw,opd,md,wf,sg,lg,stair_d, stair_u,water_floor;
-		int map[25][27];
+		CMovingBitmap lb_p, dr_p, dg_p;
+		
 		int actor_x=1, actor_y=1;
 		int X, Y;
 		int MW, MH;
@@ -152,6 +157,7 @@ namespace game_framework {
 	class CGameStateRun : public CGameState {
 	public:
 		CEraser			eraser;		
+		Monster			wolf;
 		CGameStateRun(CGame *g);
 		~CGameStateRun();
 		void OnBeginState();							// 設定每次重玩所需的變數
@@ -174,6 +180,16 @@ namespace game_framework {
 		CMovingBitmap	help;		// 說明圖
 		CBall			*ball;		// 球的陣列
 		CMovingBitmap	corner;		// 角落圖
+
+		CMovingBitmap	backpack;
+		CMovingBitmap	stop;
+		CMovingBitmap	detect;
+		CMovingBitmap	qitem1;
+		CMovingBitmap	qitem2;
+		CMovingBitmap	qitem3;
+		CMovingBitmap	qitem4;
+		CMovingBitmap	backpackUI;
+		CMovingBitmap	lb_p, dr_p, dg_p;
 		
 		CInteger		hits_left;	// 剩下的撞擊數
 		CBouncingBall   bballs;		// 反覆彈跳的球

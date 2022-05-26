@@ -133,6 +133,9 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>.\Debug/game.bsc</OutputFile>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>editbin /SUBSYSTEM:CONSOLE $(OUTDIR)$(ProjectName).exe</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -304,6 +307,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="monster.h" />
     <ClInclude Include="Source\audio.h" />
     <ClInclude Include="Source\CBall.h" />
     <ClInclude Include="Source\CBouncingBall.h" />
@@ -345,6 +349,7 @@
     <Image Include="..\assest\wall1.PNG" />
     <Image Include="Bitmaps\bg.bmp" />
     <Image Include="RES\11047.png" />
+    <Image Include="RES\backpack1.bmp" />
     <Image Include="res\bitmap10.bmp" />
     <Image Include="res\bitmap11.bmp" />
     <Image Include="res\bitmap12.bmp" />
@@ -366,6 +371,8 @@
     <Image Include="RES\character_2.bmp" />
     <Image Include="RES\character_3.bmp" />
     <Image Include="RES\character_4.bmp" />
+    <Image Include="res\dark_gre.bmp" />
+    <Image Include="res\dark_red.bmp" />
     <Image Include="res\door1.bmp" />
     <Image Include="res\floor1.bmp" />
     <Image Include="RES\golblin (2).bmp" />
@@ -378,15 +385,23 @@
     <Image Include="RES\level5.bmp" />
     <Image Include="RES\level6.bmp" />
     <Image Include="RES\level7.bmp" />
+    <Image Include="res\light_bl.bmp" />
     <Image Include="RES\person1.bmp" />
     <Image Include="RES\person2.bmp" />
     <Image Include="RES\person3.bmp" />
     <Image Include="RES\person4.bmp" />
+    <Image Include="RES\potion1.bmp" />
+    <Image Include="RES\potion2.bmp" />
+    <Image Include="RES\potion3.bmp" />
     <Image Include="res\room2.bmp" />
     <Image Include="RES\stair_down1.bmp" />
     <Image Include="RES\stair_up1.bmp" />
     <Image Include="RES\startbutton1.bmp" />
     <Image Include="res\test.bmp" />
+    <Image Include="RES\ui1.bmp" />
+    <Image Include="RES\ui2.bmp" />
+    <Image Include="RES\ui3.bmp" />
+    <Image Include="RES\ui4.bmp" />
     <Image Include="res\wall1.bmp" />
     <Image Include="RES\warrior1.bmp" />
     <Image Include="RES\wolf1.bmp" />

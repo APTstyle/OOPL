@@ -167,6 +167,9 @@
     <ClInclude Include="Source\CBouncingBall.h">
       <Filter>MyGame</Filter>
     </ClInclude>
+    <ClInclude Include="monster.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Source\game.rc">
@@ -350,6 +353,39 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="RES\wolf1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\ui1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\ui2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\ui3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\ui4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\backpack1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\potion1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\potion2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\potion3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\dark_red.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\dark_gre.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\light_bl.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
