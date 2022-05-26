@@ -71,8 +71,6 @@
 #define sign                            231
 #define water_hole                      232
 #define level1_water                    233
-#define IDB_PNG9                        234
-#define IDB_PNG10                       235
 #define stair_down                      236
 #define stair_up                        237
 #define IDB_hero                        238
