@@ -170,7 +170,11 @@
     <ClInclude Include="Source\CBouncingBall.h">
       <Filter>MyGame</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Source\monster.h">
+=======
+    <ClInclude Include="monster.h">
+>>>>>>> chun
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -358,7 +362,41 @@
     <Image Include="RES\wolf1.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+<<<<<<< HEAD
     <Image Include="RES\Wraithsheet\Wraithsheet1.bmp">
+=======
+    <Image Include="RES\ui1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\ui2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\ui3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\ui4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\backpack1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\potion1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\potion2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\potion3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\dark_red.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\dark_gre.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\light_bl.bmp">
+>>>>>>> chun
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

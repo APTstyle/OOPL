@@ -62,8 +62,23 @@
 
 
 
+
 namespace game_framework {
+<<<<<<< HEAD
 	int main_actor = 0;
+=======
+	
+	int main_actor = 0;
+
+	const int MAX_RAND_NUM = 3;
+	
+	int random_map = 1; //測試用
+	int test = 0;
+
+	int check_backpack = 0;
+	int pack_space[19];
+	int pack_now = 1;
+>>>>>>> chun
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的遊戲開頭畫面物件
 /////////////////////////////////////////////////////////////////////////////
@@ -73,6 +88,10 @@ CGameStateInit::CGameStateInit(CGame *g)
 : CGameState(g)
 {
 	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> chun
 }
 
 
@@ -87,6 +106,8 @@ void CGameStateInit::OnInit()
 	//
 	// 開始載入資料
 	//
+	
+
 	logo.LoadBitmap(mainpage);
 	startb.LoadBitmap(startbutton);
 	startb.SetTopLeft(600, 850);
@@ -114,6 +135,7 @@ void CGameMainMenu::OnInit()
 
 void CGameStateInit::OnBeginState()
 {
+
 }
 
 
@@ -128,6 +150,7 @@ void CGameMainMenu::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 {
+	
 	if (point.x > c1.Left() && point.y > c1.Top() && (point.y < c1.Top() + c1.Height()) && (point.x < c1.Left() + c1.Width())){
 		main_actor = 1;
 		GotoGameState(GAME_STATE_RUN);
@@ -170,8 +193,9 @@ void Cpractice4::OnShow() {
 
 /////////////////////////////////////////////////
 	CGameMap::CGameMap()
-        :X(200), Y(50), MW(45), MH(45)
+        :X(920), Y(540), MW(45), MH(45)
     {
+<<<<<<< HEAD
 
 		int map1_init[24][26] = {
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
@@ -201,6 +225,14 @@ void Cpractice4::OnShow() {
     for (int i = 0; i < 24; i++)
         for (int j = 0; j < 26; j++)
             map[i][j] = map1_init[i][j];
+=======
+		//srand((unsigned)time(NULL));
+		//random_map = (rand()%2)+1; 讓地圖隨機出現
+		
+		changemap(random_map);
+		
+
+>>>>>>> chun
 	random_num = 0;
 	bballs = NULL;
     }
@@ -209,6 +241,7 @@ void Cpractice4::OnShow() {
 
     void CGameMap::LoadBitmap()
     {
+		
 		mf.LoadBitmap(map_floor);
 		opd.LoadBitmap(open_door);
 		wh.LoadBitmap(water_hole);
@@ -220,16 +253,91 @@ void Cpractice4::OnShow() {
 		stair_d.LoadBitmap(stair_up);
 		stair_u.LoadBitmap(stair_down);
 		water_floor.LoadBitmap(level1_water);
+		lb_p.LoadBitmap(light_blue,RGB(255,255,255));
+		dg_p.LoadBitmap(dark_green,RGB(255, 255, 255));
+		dr_p.LoadBitmap(dark_red,RGB(255, 255, 255));
+		
+		
     }						///樓層1  0空 1地板 2水地板 3正牆 4門 5水牆 6木地板 7小草 8大草 9上樓 10下樓 11開門
+<<<<<<< HEAD
+=======
+	//12淺藍水 13深綠水 14深紅水
+>>>>>>> chun
 	void CGameMap::SetXY(int x, int y) {
 		X = x;
 		Y = y;
 	}
+<<<<<<< HEAD
     void CGameMap::OnShow()
     {
         for(int i=0;i<26;i++)
             for (int j = 0; j < 24; j++)
+=======
+	void CGameMap::changemap(int m) {
+		if (m == 1) {
+			
+			actor_x = 1;
+			actor_y = 1;
+
+			for (int i = 0; i < 25; i++)
+				for (int j = 0; j < 27; j++)
+					map[i][j] = map1_init[i][j];
+			
+		}
+		else if (m == 2) {
+			actor_x = 6;
+			actor_y = 5;
+
+			for (int i = 0; i < 27; i++)
+				for (int j = 0; j < 27; j++)
+					map[i][j] = map2_init[i][j];
+			X = 695;
+			Y = 360;
+		}
+		else if (m == 3) {
+			actor_x = 16;
+			actor_y = 5;
+
+			for (int i = 0; i < 27; i++)
+				for (int j = 0; j < 27; j++)
+					map[i][j] = map3_init[i][j];
+			X = 245;
+			Y = 360;
+		}
+	}
+    void CGameMap::OnShow()
+    {
+
+		printf("map:%d", random_map);
+
+		
+
+		//test = (rand()%2)+1;
+		//printf("test:%d", test);
+       for(int i=0;i<27;i++)	//寬度27
+            for (int j = 0; j < 27; j++) //高度25
+		/*for (int i = actor_x - 5; i < actor_x + 5; i++)	//寬度27
+			for (int j = actor_y - 5; j < actor_y + 5; j++) //高度25*/
+>>>>>>> chun
             {
+				if(random_map==1){
+				if (j < 0) j = 0;
+				if (j > 24)break;
+				if (i < 0)i = 0;
+				if (i > 26)break;
+				}
+				if (random_map == 2) {
+					if (j < 0) j = 0;
+					if (j > 24)break;
+					if (i < 0)i = 0;
+					if (i > 26)break;
+				}
+				if (random_map == 3) {
+					if (j < 0) j = 0;
+					if (j > 24)break;
+					if (i < 0)i = 0;
+					if (i > 26)break;
+				}
                 switch (map[j][i]) 
                 {
                 case 0:
@@ -279,15 +387,64 @@ void Cpractice4::OnShow() {
 					opd.SetTopLeft(X + (MW*i), Y + (MH*j));
 					opd.ShowBitmap();
 					break;
+				case 12:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					lb_p.SetTopLeft(X + (MW*i), Y + (MH*j));
+					lb_p.ShowBitmap();
+					break;
+				case 13:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					dg_p.SetTopLeft(X + (MW*i), Y + (MH*j));
+					dg_p.ShowBitmap();
+					break;
+				case 14:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					dr_p.SetTopLeft(X + (MW*i), Y + (MH*j));
+					dr_p.ShowBitmap();
+					break;
                 default:
                     ASSERT(0);
                 }
             }
-		for (int i = 0; i < random_num; i++) {
-			bballs[i].OnShow();
+		if (map[actor_y][actor_x] == 4) {
+			map[actor_y][actor_x] = 11;
 		}
+		else if (map[actor_y][actor_x] == 8) {
+			map[actor_y][actor_x] = 7;
+		}
+		else if (map[actor_y][actor_x] == 14) {
+			map[actor_y][actor_x] = 1;
+			pack_space[pack_now] = 14;
+			pack_now++;
+		}
+		else if (map[actor_y][actor_x] == 13) {
+			map[actor_y][actor_x] = 1;
+			pack_space[pack_now] = 13;
+			pack_now++;
+		}
+		else if (map[actor_y][actor_x] == 12) {
+			map[actor_y][actor_x] = 1;
+			pack_space[pack_now] = 12;
+			pack_now++;
+		}
+		///////////////////////////////////////////
+		/*物品編號:
+			12淺藍水 13深綠水 14深紅水
+
+
+		*/
+		////////////////////////////////////////
+
+
+		/*for (int i = 0; i < random_num; i++) {
+			bballs[i].OnShow();
+		}*/
     }
 	void CGameMap::OnKeyDown(UINT nChar) {
+<<<<<<< HEAD
 		int map1_init[24][26] = {
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
 		{3,9,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
@@ -313,11 +470,15 @@ void Cpractice4::OnShow() {
 		{3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
+=======
+
+>>>>>>> chun
 		const int KEY_SPACE = 0x20;
 		const char KEY_LEFT = 0x25; // keyboard左箭頭
 		const char KEY_UP = 0x26; // keyboard上箭頭
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
 		const char KEY_DOWN = 0x28; // keyboard下箭頭
+<<<<<<< HEAD
 		const int step = 45;
 		int next_step = 0;
 		if (nChar == KEY_SPACE)
@@ -368,6 +529,38 @@ void Cpractice4::OnShow() {
 		//printf("actor_location=%d,%d\n", X,Y);
 		CEraser::actor_x = actor_x;
 		CEraser::actor_y = actor_y;
+=======
+
+		const int step = 45;
+		if (nChar == KEY_SPACE)
+			changemap(2);
+		if (nChar == KEY_LEFT)
+			if (map[actor_y][actor_x - 1] != 3) {
+				SetXY(X + step, Y);
+				actor_x -= 1;
+				
+				//CGameMap();
+			}
+
+		if (nChar == KEY_RIGHT)
+			if (map[actor_y][actor_x + 1] != 3) {
+				SetXY(X - step, Y);
+				actor_x += 1;
+			}
+		if (nChar == KEY_UP)
+			if (map[actor_y - 1][actor_x] != 3) {
+				SetXY(X, Y + step);
+				actor_y -= 1;
+			}
+		if (nChar == KEY_DOWN)
+			if (map[actor_y + 1][actor_x] != 3) {
+				SetXY(X, Y - step);
+				actor_y += 1;
+				
+			}
+
+		
+>>>>>>> chun
 	}
 	void CGameMap::OnMove() {
 		for (int i = 0; i < random_num; i++) {
@@ -387,8 +580,9 @@ void Cpractice4::OnShow() {
 		bballs[ini_index].SetXY(X + col * MW + MW / 2, floor);
 	}
 	void CGameMap::RandomBouncingBall() {
-		const int MAX_RAND_NUM = 10;
-		random_num = (rand() % MAX_RAND_NUM) + 1;
+		//const int MAX_RAND_NUM = 10;
+		//random_num = (rand() % MAX_RAND_NUM) + 1;
+		
 
 		delete[] bballs;
 		bballs = new CBouncingBall[random_num];
@@ -584,6 +778,8 @@ void CGameStateOver::OnShow()
 CGameStateRun::CGameStateRun(CGame *g)
 : CGameState(g), NUMBALLS(28) 
 {
+	
+
 	ball = new CBall [NUMBALLS];
 	picX = picY = 0;
 }
@@ -595,10 +791,17 @@ CGameStateRun::~CGameStateRun()
 
 void CGameStateRun::OnBeginState()
 {
+<<<<<<< HEAD
 	eraser.SetCharacter(main_actor);
 	eraser.LoadBitmap();
 	monster.SetCharacter(main_actor);
 	monster.LoadBitmap();
+=======
+	
+
+	eraser.SetCharacter(main_actor);
+	eraser.LoadBitmap();
+>>>>>>> chun
 	/*const int BALL_GAP = 90;
 	const int BALL_XY_OFFSET = 45;
 	const int BALL_PER_ROW = 7;
@@ -692,11 +895,27 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	ShowInitProgress(33);	// 接個前一個狀態的進度，此處進度視為33%
 	//
 	// 開始載入資料
+	backpack.LoadBitmap(ui_backpack,RGB(0,0,0));
+	stop.LoadBitmap(ui_stop, RGB(0, 0, 0));
+	detect.LoadBitmap(ui_detect, RGB(0, 0, 0));
+	qitem1.LoadBitmap(ui_item1, RGB(0, 0, 0));
+	qitem2.LoadBitmap(ui_item1, RGB(0, 0, 0));
+	qitem3.LoadBitmap(ui_item1, RGB(0, 0, 0));
+	qitem4.LoadBitmap(ui_item1, RGB(0, 0, 0));
+	backpackUI.LoadBitmapA(backpack_ui, RGB(255, 255, 255));
+
+	lb_p.LoadBitmap(light_blue1, RGB(255, 255, 255));
+	dg_p.LoadBitmap(dark_green1, RGB(255, 255, 255));
+	dr_p.LoadBitmap(dark_red1, RGB(255, 255, 255));
+
+	wolf.LoadBitmap();
+
 	border.LoadBitmap("Bitmaps/practice2.bmp", RGB(255, 255, 255));
 	practice.LoadBitmap(IDB_BALL);
 	practice3.LoadBitmap("Bitmaps/hi.bmp");
 	c_practice4.LoadBitmap();
 	gamemap.LoadBitmap();
+	
 	//
 	int i;
 	for (i = 0; i < NUMBALLS; i++)	
@@ -716,7 +935,7 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	
 	help.LoadBitmap(IDB_HELP,RGB(255,255,255));				// 載入說明的圖形
 	corner.LoadBitmap(IDB_CORNER);							// 載入角落圖形
-	corner.ShowBitmap(background);							// 將corner貼到background
+	//corner.ShowBitmap(background);							// 將corner貼到background
 	bballs.LoadBitmap();										// 載入圖形
 	hits_left.LoadBitmap();									
 	CAudio::Instance()->Load(AUDIO_DING,  "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
@@ -736,6 +955,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
 	if (nChar == KEY_LEFT) {
 		eraser.SetMovingLeft(true);
+<<<<<<< HEAD
 		gamemap.OnKeyDown(nChar);
 		monster.SetMovingLeft(true);
 	}
@@ -745,6 +965,14 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster.SetMovingRight(true);
 	}
 	if (nChar == KEY_UP){
+=======
+		
+	}
+	if (nChar == KEY_RIGHT)
+		eraser.SetMovingRight(true);
+
+	if (nChar == KEY_UP)
+>>>>>>> chun
 		eraser.SetMovingUp(true);
 		gamemap.OnKeyDown(nChar);
 		monster.SetMovingUp(true);
@@ -764,7 +992,11 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
 
+<<<<<<< HEAD
 	if (nChar == KEY_LEFT){
+=======
+	if (nChar == KEY_LEFT)
+>>>>>>> chun
 		eraser.SetMovingLeft(false);
 		monster.SetMovingLeft(false);
 	}
@@ -784,12 +1016,24 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-	eraser.SetMovingLeft(true);
+	//eraser.SetMovingLeft(true);
+	
+
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	eraser.SetMovingLeft(false);
+	//eraser.SetMovingLeft(false);
+	//if ((point.x < backpack.Left() + backpack.Width()) && point.x > backpack.Left() && point.y > backpack.Top() && (point.y > backpack.Top() + backpack.Height())) {
+	if(point.x>backpack.Left()&&(point.x<backpack.Left()+backpack.Width())&& point.y > backpack.Top() && (point.y < backpack.Top() + backpack.Height())){
+	check_backpack = 1;
+	}
+	else if(point.x < backpackUI.Left() || (point.x > backpackUI.Left() + backpackUI.Width()) || point.y < backpackUI.Top() || (point.y > backpackUI.Top() + backpackUI.Height())) {
+	check_backpack = 0;
+	}
+
+	
+
 }
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -799,16 +1043,41 @@ void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 
 void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-	eraser.SetMovingRight(true);
+	//eraser.SetMovingRight(true);
+	
 }
 
 void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	eraser.SetMovingRight(false);
+	//eraser.SetMovingRight(false);
 }
 
 void CGameStateRun::OnShow()
 {
+	int uix = 700, uiy = 990;
+	if (random_map == 1) {
+		eraser.SetXY(920 + 45, 540 + 45);//角色初始位置
+	}
+	if (random_map == 2) {
+		eraser.SetXY(920 + 45, 540 + 45);//角色初始位置
+	}
+	if (random_map == 3) {
+		eraser.SetXY(920 + 45, 540 + 45);//角色初始位置
+	}
+
+	
+	
+	stop.SetTopLeft(uix, uiy);
+	backpack.SetTopLeft(stop.Left()+550, uiy);
+	detect.SetTopLeft(stop.Left()+90, uiy);
+	qitem1.SetTopLeft(stop.Left() + 193, uiy);
+	qitem2.SetTopLeft(stop.Left() + 276, uiy);
+	qitem3.SetTopLeft(stop.Left() + 359, uiy);
+	qitem4.SetTopLeft(stop.Left() + 442, uiy);
+	backpackUI.SetTopLeft(700, 0);
+
+	wolf.SetXY(500, 500);
+	
 	//
 	//  注意：Show裡面千萬不要移動任何物件的座標，移動座標的工作應由Move做才對，
 	//        否則當視窗重新繪圖時(OnDraw)，物件就會移動，看起來會很怪。換個術語
@@ -817,19 +1086,66 @@ void CGameStateRun::OnShow()
 	//
 	//  貼上背景圖、撞擊數、球、擦子、彈跳的球
 	//
-	background.ShowBitmap();			// 貼上背景圖
+	//background.ShowBitmap();			// 貼上背景圖
 	gamemap.OnShow();
+	wolf.OnShow();
 	help.ShowBitmap();					// 貼上說明圖
 	hits_left.ShowBitmap();
 	//for (int i=0; i < NUMBALLS; i++)
 	//	ball[i].OnShow();				// 貼上第i號球
 	//bballs.OnShow();						// 貼上彈跳的球
 	eraser.OnShow();					// 貼上擦子
+<<<<<<< HEAD
 	monster.OnShow();
+=======
+
+	backpack.ShowBitmap();
+	stop.ShowBitmap();
+	detect.ShowBitmap();
+	qitem1.ShowBitmap();
+	qitem2.ShowBitmap();
+	qitem3.ShowBitmap();
+	qitem4.ShowBitmap();
+	///////////////////////////////////開啟背包/////////////////////////
+	int packx = 0, packy = 0;
+	if (check_backpack == 1) {
+		backpackUI.ShowBitmap();
+
+
+
+		for (int i = 1; i < 20; i++) {
+			if (i < 5) {
+				packx = 760, packy = 230;
+			}
+			switch (pack_space[i])
+			{
+			case 12:
+				lb_p.SetTopLeft(packx + (i % 5) * 130, packy);
+				lb_p.ShowBitmap();
+				break;
+			case 13:
+				dg_p.SetTopLeft(packx + (i % 5) * 130, packy);
+				dg_p.ShowBitmap();
+				break;
+			case 14:
+				dr_p.SetTopLeft(packx + (i%5) * 130, packy);
+				dr_p.ShowBitmap();
+				break;
+			default:
+				break;
+			}
+		}
+	}
+	///////////////////////////////////開啟背包/////////////////////////
+
+
+
+>>>>>>> chun
 	//
 	//  貼上左上及右下角落的圖
 	//
 	
+<<<<<<< HEAD
 	corner.SetTopLeft(0,0);
 	corner.ShowBitmap();
 	corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
@@ -837,6 +1153,15 @@ void CGameStateRun::OnShow()
 	//practice3.ShowBitmap();
 	//practice.ShowBitmap();
 	border.ShowBitmap();
+=======
+	//corner.SetTopLeft(0,0);
+	//corner.ShowBitmap();
+	//corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
+	//corner.ShowBitmap();
+	//practice3.ShowBitmap();
+	//practice.ShowBitmap();
+	//border.ShowBitmap();
+>>>>>>> chun
 	//c_practice4.OnShow();
 	
 }

@@ -176,7 +176,33 @@ IDB_BITMAP8             BITMAP                  "..\\res\\bitmap8.bmp"
 
 wolf1                   BITMAP                  "..\\res\\wolf1.bmp"
 
+<<<<<<< HEAD
 boss                    BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet1.bmp"
+=======
+ui_stop                 BITMAP                  "..\\res\\ui1.bmp"
+
+ui_detect               BITMAP                  "..\\res\\ui2.bmp"
+
+ui_backpack             BITMAP                  "..\\res\\ui3.bmp"
+
+ui_item1                BITMAP                  "..\\res\\ui4.bmp"
+
+IDB_BITMAP9             BITMAP                  "..\\res\\bmp00004.bmp"
+
+backpack_ui             BITMAP                  "..\\res\\backpack1.bmp"
+
+light_blue              BITMAP                  "..\\res\\potion1.bmp"
+
+dark_red                BITMAP                  "..\\res\\potion2.bmp"
+
+dark_green              BITMAP                  "..\\res\\potion3.bmp"
+
+dark_red1               BITMAP                  "..\\res\\dark_red.bmp"
+
+dark_green1             BITMAP                  "..\\res\\dark_gre.bmp"
+
+light_blue1             BITMAP                  "..\\res\\light_bl.bmp"
+>>>>>>> chun
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -192,9 +218,12 @@ IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
 // PNG
 //
 
+<<<<<<< HEAD
 IDB_PNG9                PNG                     "..\\res\\stair_down1.bmp"
 
 IDB_PNG10               PNG                     "..\\res\\stair_up1.bmp"
+=======
+>>>>>>> chun
 
 #endif    // 中文 (繁體，台灣) resources
 /////////////////////////////////////////////////////////////////////////////
