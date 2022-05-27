@@ -9,7 +9,7 @@
 #include "mygame.h"
 
 namespace game_framework {
-	int map_monster[24][26] = {
+	int map_monster[25][27] = {
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
 		{3,9,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
 		{3,1,1,10,1,1,3,1,1,3,1,1,1,1,1,3,1,7,7,1,1,7,8,8,1,3},
@@ -43,20 +43,16 @@ namespace game_framework {
 	const int STEP_SIZE = -45;
 	const int STEP = -1; //因為地圖座標會移動 所以為-1 因不知名原本 座標很奇怪
 	int next_step, next_x, next_y;
-	int test;
 	monster::monster()
 	{
-		srand((unsigned)time(NULL));
-		test = (rand()%(5-1))+1;
-		printf("random %d ", test);
 		printf("%d,%d",mon_x,mon_y);
 		Initialize();
 		SetXY(200 + 45 * monster::mon_x, 50 + 45 * monster::mon_y);
 	}
-	int monster::automove(int automove_map[][26], int main_x, int main_y, int end_x, int end_y) {
-		int map_calculate[24][26];//計算用的地圖
-		for (int i = 0; i < 24; i++) {
-			for (int j = 0; j < 26; j++) {
+	int monster::automove(int automove_map[][27], int main_x, int main_y, int end_x, int end_y) {
+		int map_calculate[25][27];//計算用的地圖
+		for (int i = 0; i < 25; i++) {
+			for (int j = 0; j < 27; j++) {
 				if (automove_map[i][j] == 3 || automove_map[i][j] == 5) {
 					map_calculate[i][j] = -1;//0520
 				}

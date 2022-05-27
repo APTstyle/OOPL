@@ -84,19 +84,11 @@
 #define hunter                          246
 #define assassin                        247
 #define warrior2                        248
-#define IDB_BITMAP8                     249
-<<<<<<< HEAD
-#define IDB_BITMAP9                     250
-#define wolf1                           250
-#define IDB_boss                        251
-#define boss                            251
-=======
-#define wolf1                           250
 #define ui_stop                         251
 #define ui_detect                       252
 #define ui_backpack                     253
 #define ui_item1                        254
-#define IDB_BITMAP9                     255
+#define boss                            255
 #define backpack_ui                     256
 #define light_blue                      260
 #define dark_red                        261
@@ -104,7 +96,6 @@
 #define dark_red1                       263
 #define dark_green1                     264
 #define light_blue1                     265
->>>>>>> chun
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -117,11 +108,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-<<<<<<< HEAD
-#define _APS_NEXT_RESOURCE_VALUE        252
-=======
 #define _APS_NEXT_RESOURCE_VALUE        263
->>>>>>> chun
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

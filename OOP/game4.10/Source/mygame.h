@@ -40,11 +40,7 @@
 
 #include "CEraser.h"
 #include "CBall.h"
-<<<<<<< HEAD
 #include "monster.h"
-=======
-
->>>>>>> chun
 //#include "CBouncingBall.h"
 
 namespace game_framework {
@@ -139,11 +135,9 @@ namespace game_framework {
 		void RandomBouncingBall();
 		void SetXY(int, int);
 		void InititalizeBouncingBall(int, int, int);
-<<<<<<< HEAD
 		static int ismoving;
-=======
 		void changemap(int);
-		int map[50][50];
+		int map[25][27];
 		int map1_init[25][27] = {
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
 			{3,9,1,13,14,12,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
@@ -169,7 +163,7 @@ namespace game_framework {
 			{3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
-		int map2_init[27][27] = {
+		int map2_init[25][27] = {
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3},
 			{3,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,3},
 			{3,1,3,3,3,1,3,3,3,3,1,3,3,7,4,1,1,1,1,1,1,1,1,3},
@@ -194,7 +188,7 @@ namespace game_framework {
 			{3,1,1,3,1,1,1,1,1,3,3,1,3,3,6,6,6,6,6,3,1,1,1,3},
 			{3,1,1,3,2,2,2,2,2,4,1,1,1,1,6,6,6,6,6,3,1,1,1,3},
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3} };
-		int map3_init[27][27] = {
+		int map3_init[25][27] = {
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3},
 			{3,1,1,1,1,1,3,3,1,1,1,1,1,1,1,1,3,1,1,1,1,1,1,3},
 			{3,1,1,1,1,1,3,3,1,3,3,3,3,1,3,1,4,1,1,1,1,1,1,3},
@@ -221,20 +215,13 @@ namespace game_framework {
 			{3,3,3,3,3,3,3,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
 		//int random_map;
->>>>>>> chun
 		~CGameMap();
 
 	protected:
 		CMovingBitmap mf, wh,fw,opd,md,wf,sg,lg,stair_d, stair_u,water_floor;
-<<<<<<< HEAD
-		int map[25][27];
 		int actor_x=1, actor_y=1;
 		int monster_x = 2, monster_y = 2;
-=======
 		CMovingBitmap lb_p, dr_p, dg_p;
-		
-		int actor_x=1, actor_y=1;
->>>>>>> chun
 		int X, Y;
 		int MW, MH;
 		CBouncingBall*bballs;
@@ -260,13 +247,8 @@ namespace game_framework {
 	///////////////////////////////////////////////////////
 	class CGameStateRun : public CGameState {
 	public:
-<<<<<<< HEAD
 		CEraser			eraser;	
 		monster			monster;
-=======
-		CEraser			eraser;		
-		Monster			wolf;
->>>>>>> chun
 		CGameStateRun(CGame *g);
 		~CGameStateRun();
 		void OnBeginState();							// 設定每次重玩所需的變數

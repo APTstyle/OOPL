@@ -64,10 +64,6 @@
 
 
 namespace game_framework {
-<<<<<<< HEAD
-	int main_actor = 0;
-=======
-	
 	int main_actor = 0;
 
 	const int MAX_RAND_NUM = 3;
@@ -78,7 +74,6 @@ namespace game_framework {
 	int check_backpack = 0;
 	int pack_space[19];
 	int pack_now = 1;
->>>>>>> chun
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的遊戲開頭畫面物件
 /////////////////////////////////////////////////////////////////////////////
@@ -87,11 +82,7 @@ namespace game_framework {
 CGameStateInit::CGameStateInit(CGame *g)
 : CGameState(g)
 {
-	
-<<<<<<< HEAD
-=======
-	
->>>>>>> chun
+
 }
 
 
@@ -195,7 +186,6 @@ void Cpractice4::OnShow() {
 	CGameMap::CGameMap()
         :X(920), Y(540), MW(45), MH(45)
     {
-<<<<<<< HEAD
 
 		int map1_init[24][26] = {
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
@@ -225,14 +215,11 @@ void Cpractice4::OnShow() {
     for (int i = 0; i < 24; i++)
         for (int j = 0; j < 26; j++)
             map[i][j] = map1_init[i][j];
-=======
 		//srand((unsigned)time(NULL));
 		//random_map = (rand()%2)+1; 讓地圖隨機出現
 		
 		changemap(random_map);
 		
-
->>>>>>> chun
 	random_num = 0;
 	bballs = NULL;
     }
@@ -258,31 +245,22 @@ void Cpractice4::OnShow() {
 		dr_p.LoadBitmap(dark_red,RGB(255, 255, 255));
 		
 		
-    }						///樓層1  0空 1地板 2水地板 3正牆 4門 5水牆 6木地板 7小草 8大草 9上樓 10下樓 11開門
-<<<<<<< HEAD
-=======
-	//12淺藍水 13深綠水 14深紅水
->>>>>>> chun
+    }						///樓層1  0空 1地板 2水地板 3正牆 4門 5水牆 6木地板 7小草 8大草 9上樓 10下樓 11開門	//12淺藍水 13深綠水 14深紅水
+
 	void CGameMap::SetXY(int x, int y) {
 		X = x;
 		Y = y;
 	}
-<<<<<<< HEAD
-    void CGameMap::OnShow()
-    {
-        for(int i=0;i<26;i++)
-            for (int j = 0; j < 24; j++)
-=======
 	void CGameMap::changemap(int m) {
 		if (m == 1) {
-			
+
 			actor_x = 1;
 			actor_y = 1;
 
 			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map1_init[i][j];
-			
+
 		}
 		else if (m == 2) {
 			actor_x = 6;
@@ -305,6 +283,7 @@ void Cpractice4::OnShow() {
 			Y = 360;
 		}
 	}
+
     void CGameMap::OnShow()
     {
 
@@ -318,7 +297,6 @@ void Cpractice4::OnShow() {
             for (int j = 0; j < 27; j++) //高度25
 		/*for (int i = actor_x - 5; i < actor_x + 5; i++)	//寬度27
 			for (int j = actor_y - 5; j < actor_y + 5; j++) //高度25*/
->>>>>>> chun
             {
 				if(random_map==1){
 				if (j < 0) j = 0;
@@ -444,45 +422,16 @@ void Cpractice4::OnShow() {
 		}*/
     }
 	void CGameMap::OnKeyDown(UINT nChar) {
-<<<<<<< HEAD
-		int map1_init[24][26] = {
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
-		{3,9,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
-		{3,1,1,10,1,1,3,1,1,3,1,1,1,1,1,3,1,7,7,1,1,7,8,8,1,3},
-		{3,1,2,7,7,1,3,1,1,3,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,3},
-		{3,1,2,2,2,7,3,3,4,3,3,3,4,3,3,3,3,3,3,3,3,3,1,3,3,3},
-		{3,1,7,2,2,2,4,1,1,3,3,3,1,1,1,1,3,3,3,3,3,3,1,3,3,3},
-		{3,1,1,1,7,7,3,1,1,1,1,1,1,1,3,1,1,1,1,3,3,3,1,3,3,3},
-		{3,1,1,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
-		{3,3,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,1,1,3,3,3,1,1,3,3},
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,1,8,8,3,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,3,3,1,1,3,1,1,1,1,1,1,1,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,1,1,4,1,1,8,8,8,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,3,1,1,8,8,1,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,4,3,3,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,1,1,1,1,3,1,1,1,7,1,1,1,1,1,1,3,3,3,1,3,3},
-		{3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
-=======
-
->>>>>>> chun
 		const int KEY_SPACE = 0x20;
 		const char KEY_LEFT = 0x25; // keyboard左箭頭
 		const char KEY_UP = 0x26; // keyboard上箭頭
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
 		const char KEY_DOWN = 0x28; // keyboard下箭頭
-<<<<<<< HEAD
+
 		const int step = 45;
 		int next_step = 0;
 		if (nChar == KEY_SPACE)
-			RandomBouncingBall();
+			changemap(2);
 		if (nChar == KEY_LEFT)
 			if (map[actor_y][actor_x-1] != 3 && map[actor_y][actor_x - 1] != 5) {
 				SetXY(X + step, Y);
@@ -529,38 +478,6 @@ void Cpractice4::OnShow() {
 		//printf("actor_location=%d,%d\n", X,Y);
 		CEraser::actor_x = actor_x;
 		CEraser::actor_y = actor_y;
-=======
-
-		const int step = 45;
-		if (nChar == KEY_SPACE)
-			changemap(2);
-		if (nChar == KEY_LEFT)
-			if (map[actor_y][actor_x - 1] != 3) {
-				SetXY(X + step, Y);
-				actor_x -= 1;
-				
-				//CGameMap();
-			}
-
-		if (nChar == KEY_RIGHT)
-			if (map[actor_y][actor_x + 1] != 3) {
-				SetXY(X - step, Y);
-				actor_x += 1;
-			}
-		if (nChar == KEY_UP)
-			if (map[actor_y - 1][actor_x] != 3) {
-				SetXY(X, Y + step);
-				actor_y -= 1;
-			}
-		if (nChar == KEY_DOWN)
-			if (map[actor_y + 1][actor_x] != 3) {
-				SetXY(X, Y - step);
-				actor_y += 1;
-				
-			}
-
-		
->>>>>>> chun
 	}
 	void CGameMap::OnMove() {
 		for (int i = 0; i < random_num; i++) {
@@ -791,17 +708,10 @@ CGameStateRun::~CGameStateRun()
 
 void CGameStateRun::OnBeginState()
 {
-<<<<<<< HEAD
 	eraser.SetCharacter(main_actor);
 	eraser.LoadBitmap();
 	monster.SetCharacter(main_actor);
 	monster.LoadBitmap();
-=======
-	
-
-	eraser.SetCharacter(main_actor);
-	eraser.LoadBitmap();
->>>>>>> chun
 	/*const int BALL_GAP = 90;
 	const int BALL_XY_OFFSET = 45;
 	const int BALL_PER_ROW = 7;
@@ -908,7 +818,6 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	dg_p.LoadBitmap(dark_green1, RGB(255, 255, 255));
 	dr_p.LoadBitmap(dark_red1, RGB(255, 255, 255));
 
-	wolf.LoadBitmap();
 
 	border.LoadBitmap("Bitmaps/practice2.bmp", RGB(255, 255, 255));
 	practice.LoadBitmap(IDB_BALL);
@@ -955,7 +864,6 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
 	if (nChar == KEY_LEFT) {
 		eraser.SetMovingLeft(true);
-<<<<<<< HEAD
 		gamemap.OnKeyDown(nChar);
 		monster.SetMovingLeft(true);
 	}
@@ -965,14 +873,6 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster.SetMovingRight(true);
 	}
 	if (nChar == KEY_UP){
-=======
-		
-	}
-	if (nChar == KEY_RIGHT)
-		eraser.SetMovingRight(true);
-
-	if (nChar == KEY_UP)
->>>>>>> chun
 		eraser.SetMovingUp(true);
 		gamemap.OnKeyDown(nChar);
 		monster.SetMovingUp(true);
@@ -992,11 +892,7 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
 
-<<<<<<< HEAD
 	if (nChar == KEY_LEFT){
-=======
-	if (nChar == KEY_LEFT)
->>>>>>> chun
 		eraser.SetMovingLeft(false);
 		monster.SetMovingLeft(false);
 	}
@@ -1075,8 +971,6 @@ void CGameStateRun::OnShow()
 	qitem3.SetTopLeft(stop.Left() + 359, uiy);
 	qitem4.SetTopLeft(stop.Left() + 442, uiy);
 	backpackUI.SetTopLeft(700, 0);
-
-	wolf.SetXY(500, 500);
 	
 	//
 	//  注意：Show裡面千萬不要移動任何物件的座標，移動座標的工作應由Move做才對，
@@ -1088,16 +982,13 @@ void CGameStateRun::OnShow()
 	//
 	//background.ShowBitmap();			// 貼上背景圖
 	gamemap.OnShow();
-	wolf.OnShow();
 	help.ShowBitmap();					// 貼上說明圖
 	hits_left.ShowBitmap();
 	//for (int i=0; i < NUMBALLS; i++)
 	//	ball[i].OnShow();				// 貼上第i號球
 	//bballs.OnShow();						// 貼上彈跳的球
 	eraser.OnShow();					// 貼上擦子
-<<<<<<< HEAD
 	monster.OnShow();
-=======
 
 	backpack.ShowBitmap();
 	stop.ShowBitmap();
@@ -1140,12 +1031,10 @@ void CGameStateRun::OnShow()
 
 
 
->>>>>>> chun
 	//
 	//  貼上左上及右下角落的圖
 	//
 	
-<<<<<<< HEAD
 	corner.SetTopLeft(0,0);
 	corner.ShowBitmap();
 	corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
@@ -1153,15 +1042,6 @@ void CGameStateRun::OnShow()
 	//practice3.ShowBitmap();
 	//practice.ShowBitmap();
 	border.ShowBitmap();
-=======
-	//corner.SetTopLeft(0,0);
-	//corner.ShowBitmap();
-	//corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
-	//corner.ShowBitmap();
-	//practice3.ShowBitmap();
-	//practice.ShowBitmap();
-	//border.ShowBitmap();
->>>>>>> chun
 	//c_practice4.OnShow();
 	
 }

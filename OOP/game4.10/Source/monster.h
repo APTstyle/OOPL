@@ -16,7 +16,7 @@ namespace game_framework {
 		int  GetX2();					// 擦子右下角 x 座標
 		int  GetY2();					// 擦子右下角 y 座標
 		int  Character();				//取得職業的變數
-		int automove(int automove_map[][26], int main_x, int main_y, int end_x, int end_y);
+		int automove(int automove_map[][27], int main_x, int main_y, int end_x, int end_y);
 		void Initialize();				// 設定擦子為初始值
 		void LoadBitmap();				// 載入圖形
 		void OnMove();					// 移動擦子

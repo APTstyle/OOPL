@@ -67,13 +67,8 @@ namespace game_framework {
 
 	void CEraser::Initialize()
 	{
-<<<<<<< HEAD
 		const int X_POS = 245;
 		const int Y_POS = 95;
-=======
-		const int X_POS = 750+45;
-		const int Y_POS = 750+45;
->>>>>>> chun
 		character = 0;
 		x = X_POS;
 		y = Y_POS;
@@ -99,19 +94,13 @@ namespace game_framework {
 			animation.AddBitmap(mage, RGB(255, 255, 255));
 		}
 	}
-<<<<<<< HEAD
 	int CEraser::actor_x = 1;
 	int CEraser::actor_y = 1;
-=======
-	int actor_x = 1;
-	int actor_y = 1;
->>>>>>> chun
 	void CEraser::OnMove()
 	{
 
 		const int STEP_SIZE = 0;
 		animation.OnMove();
-<<<<<<< HEAD
 		if (isMovingLeft) {
 		}
 		if (isMovingRight) {
@@ -126,52 +115,7 @@ namespace game_framework {
 	{
 		character = actor;
 	}
-=======
-		if (isMovingLeft)
-			if (map1_init[actor_y][actor_x - 1] != 3 && actor_x != 1) {
-				x -= STEP_SIZE;
-				actor_x -= 1;
-			}
-			else {
-				printf("wall");
-			}
-		if (isMovingRight)
-			if (map1_init[actor_y][actor_x + 1] != 3 && actor_x != 24) {
-				x += STEP_SIZE;
-				actor_x += 1;
-			}
-			else {
-				printf("wall");
-			}
-		if (isMovingUp)
-			if (map1_init[actor_y - 1][actor_x] != 3 && actor_y != 1) {
-				y -= STEP_SIZE;
-				actor_y -= 1;
-			}
-			else {
-				printf("wall");
-			}
-		if (isMovingDown)
-			if (map1_init[actor_y + 1][actor_x] != 3 && actor_y != 25) {
-				y += STEP_SIZE;
-				actor_y += 1;
-			}
-			else {
-				printf("wall");
-			}
-		printf("actor_x=%d\n", actor_x);
-		printf("actor_y=%d\n", actor_y);
-		printf("x=%d\n", x);
-		printf("y=%d\n\n", y);
-		printf("location=%d\n\n", map1_init[actor_y][actor_x]);
 
-	}
-	void CEraser::SetCharacter(int actor)
-	{
-		character = actor;
-	}
->>>>>>> chun
-	
 
 	void CEraser::SetMovingDown(bool flag)
 	{
@@ -203,133 +147,5 @@ namespace game_framework {
 		animation.SetTopLeft(x, y);
 		animation.OnShow();
 	}
-<<<<<<< HEAD
 
-=======
-	//////////////////////////////////////////////////////
-	Monster::Monster()
-	{
-		Initialize();
-	}
-
-	int Monster::Character() {
-		return character;
-	}
-
-	int Monster::GetX1()
-	{
-		return x;
-	}
-
-	int Monster::GetY1()
-	{
-		return y;
-	}
-
-	int Monster::GetX2()
-	{
-		return x + animation.Width();
-	}
-
-	int Monster::GetY2()
-	{
-		return y + animation.Height();
-	}
-
-	void Monster::Initialize()
-	{
-		const int X_POS = 750 + 45;
-		const int Y_POS = 750 + 45;
-		character = 0;
-		x = X_POS;
-		y = Y_POS;
-		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
-	}
-
-	void Monster::LoadBitmap()
-	{
-		animation.AddBitmap(wolf1,RGB(255,255,255));
-	}
-
-	void Monster::OnMove()
-	{
-
-		const int STEP_SIZE = 0;
-		animation.OnMove();
-		if (isMovingLeft)
-			if (map1_init[actor_y][actor_x - 1] != 3 && actor_x != 1) {
-				x -= STEP_SIZE;
-				actor_x -= 1;
-			}
-			else {
-				printf("wall");
-			}
-		if (isMovingRight)
-			if (map1_init[actor_y][actor_x + 1] != 3 && actor_x != 24) {
-				x += STEP_SIZE;
-				actor_x += 1;
-			}
-			else {
-				printf("wall");
-			}
-		if (isMovingUp)
-			if (map1_init[actor_y - 1][actor_x] != 3 && actor_y != 1) {
-				y -= STEP_SIZE;
-				actor_y -= 1;
-			}
-			else {
-				printf("wall");
-			}
-		if (isMovingDown)
-			if (map1_init[actor_y + 1][actor_x] != 3 && actor_y != 25) {
-				y += STEP_SIZE;
-				actor_y += 1;
-			}
-			else {
-				printf("wall");
-			}
-		printf("actor_x=%d\n", actor_x);
-		printf("actor_y=%d\n", actor_y);
-		printf("x=%d\n", x);
-		printf("y=%d\n\n", y);
-		printf("location=%d\n\n", map1_init[actor_y][actor_x]);
-
-	}
-	void Monster::SetCharacter(int actor)
-	{
-		character = actor;
-	}
-
-
-	void Monster::SetMovingDown(bool flag)
-	{
-		isMovingDown = flag;
-	}
-
-	void Monster::SetMovingLeft(bool flag)
-	{
-		isMovingLeft = flag;
-	}
-
-	void Monster::SetMovingRight(bool flag)
-	{
-		isMovingRight = flag;
-	}
-
-	void Monster::SetMovingUp(bool flag)
-	{
-		isMovingUp = flag;
-	}
-
-	void Monster::SetXY(int nx, int ny)
-	{
-		x = nx; y = ny;
-	}
-
-	void Monster::OnShow()
-	{
-		animation.SetTopLeft(x, y);
-		animation.OnShow();
-	}
->>>>>>> chun
 }
