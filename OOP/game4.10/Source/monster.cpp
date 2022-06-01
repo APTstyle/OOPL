@@ -47,7 +47,7 @@ namespace game_framework {
 	{
 		printf("%d,%d",mon_x,mon_y);
 		Initialize();
-		SetXY(200 + 45 * monster::mon_x, 50 + 45 * monster::mon_y);
+		SetXY(920 + 45 * monster::mon_x, 540 + 45 * monster::mon_y);
 	}
 	int monster::automove(int automove_map[][27], int main_x, int main_y, int end_x, int end_y) {
 		int map_calculate[25][27];//計算用的地圖
@@ -249,8 +249,8 @@ namespace game_framework {
 
 	void monster::Initialize()
 	{
-		const int X_POS = 200;//245 = 200 + 1*45
-		const int Y_POS = 50;// 95 = 50  + 1*45
+		const int X_POS = 920;//245 = 200 + 1*45
+		const int Y_POS = 540;// 95 = 50  + 1*45
 		character = 0;
 		mon_x = 23;
 		mon_y = 21;
