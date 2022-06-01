@@ -329,6 +329,9 @@ int CMovingBitmap::Left()
 	return location.left;
 }
 
+
+
+
 void CMovingBitmap::LoadBitmap(int IDB_BITMAP, COLORREF color)
 {
 	const int nx = 0;
@@ -493,11 +496,12 @@ void CGameState::OnCycle() // Template Method
 CGame CGame::instance;
 
 CGame::CGame()
-: NUM_GAME_STATES(3)
+: NUM_GAME_STATES(4)
 {
 	running = true;
 	suspended = false;
 	gameStateTable[GAME_STATE_INIT] = new CGameStateInit(this);
+	gameStateTable[GAME_MAIN_UI] = new CGameMainMenu(this);
 	gameStateTable[GAME_STATE_RUN]  = new CGameStateRun(this);
 	gameStateTable[GAME_STATE_OVER] = new CGameStateOver(this);
 	gameState = NULL;
@@ -583,7 +587,7 @@ void CGame::OnInit()	// OnInit() 只在程式一開始時執行一次
 	//
 	// 啟動亂數
 	//
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 	//
 	// 開啟DirectX繪圖介面
 	//

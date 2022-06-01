@@ -71,12 +71,31 @@
 #define sign                            231
 #define water_hole                      232
 #define level1_water                    233
-#define IDB_PNG9                        234
-#define IDB_PNG10                       235
 #define stair_down                      236
 #define stair_up                        237
-#define IDB_BITMAP8                     238
 #define IDB_hero                        238
+#define startbutton                     239
+#define warrior_icon                    240
+#define mage_icon                       241
+#define assassian_icon                  242
+#define hunter_icon                     243
+#define warrior                         244
+#define mage                            245
+#define hunter                          246
+#define assassin                        247
+#define warrior2                        248
+#define ui_stop                         251
+#define ui_detect                       252
+#define ui_backpack                     253
+#define ui_item1                        254
+#define boss                            255
+#define backpack_ui                     256
+#define light_blue                      260
+#define dark_red                        261
+#define dark_green                      262
+#define dark_red1                       263
+#define dark_green1                     264
+#define light_blue1                     265
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -89,7 +108,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        239
+#define _APS_NEXT_RESOURCE_VALUE        263
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
