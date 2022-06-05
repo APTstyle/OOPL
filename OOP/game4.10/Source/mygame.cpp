@@ -68,7 +68,7 @@ namespace game_framework {
 
 	const int MAX_RAND_NUM = 3;
 	
-	int random_map = 1; //測試用
+	int random_map = 3; //測試用
 	int test = 0;
 
 	int check_backpack = 0;
@@ -252,23 +252,27 @@ void Cpractice4::OnShow() {
 		Y = y;
 	}
 	void CGameMap::changemap(int m) {
+		
 		if (m == 1) {
 
 			actor_x = 1;
 			actor_y = 1;
 
-			for (int i = 0; i < 25; i++)
-				for (int j = 0; j < 27; j++)
+			for (int i = 0; i < 25; i++){
+				for (int j = 0; j < 27; j++){
 					map[i][j] = map1_init[i][j];
-
+			}
+			}
 		}
 		else if (m == 2) {
 			actor_x = 6;
 			actor_y = 5;
 
-			for (int i = 0; i < 27; i++)
-				for (int j = 0; j < 27; j++)
+			for (int i = 0; i < 27; i++) {
+				for (int j = 0; j < 27; j++) {
 					map[i][j] = map2_init[i][j];
+				}
+			}
 			X = 695;
 			Y = 360;
 		}
@@ -276,18 +280,21 @@ void Cpractice4::OnShow() {
 			actor_x = 16;
 			actor_y = 5;
 
-			for (int i = 0; i < 27; i++)
-				for (int j = 0; j < 27; j++)
+			for (int i = 0; i < 27; i++) {
+				for (int j = 0; j < 27; j++) {
 					map[i][j] = map3_init[i][j];
+				}
+			}
 			X = 245;
 			Y = 360;
 		}
+		
 	}
 
     void CGameMap::OnShow()
     {
 
-		printf("map:%d", random_map);
+		//printf("map:%d", random_map);
 
 		
 
@@ -430,9 +437,11 @@ void Cpractice4::OnShow() {
 
 		const int step = 45;
 		int next_step = 0;
-		if (nChar == KEY_SPACE)
+
+		if (nChar == KEY_SPACE) {
 			changemap(2);
-		if (nChar == KEY_LEFT)
+		}
+		if (nChar == KEY_LEFT){
 			if (map[actor_y][actor_x-1] != 3 && map[actor_y][actor_x - 1] != 5) {
 				SetXY(X + step, Y);
 				actor_x -= 1;
@@ -442,8 +451,8 @@ void Cpractice4::OnShow() {
 				printf("wall:%d,%d\n", actor_y, actor_x - 1);
 				CGameMap::ismoving = 0;
 			}
-			
-		if (nChar == KEY_RIGHT)
+		}
+		if (nChar == KEY_RIGHT){
 			if (map[actor_y][actor_x + 1] != 3 && map[actor_y][actor_x + 1] != 5) {
 				SetXY(X - step, Y);
 				actor_x += 1;
@@ -453,7 +462,8 @@ void Cpractice4::OnShow() {
 				printf("wall:%d,%d\n", actor_y, actor_x + 1);
 				CGameMap::ismoving = 0;
 			}
-		if (nChar == KEY_UP)
+		}
+		if (nChar == KEY_UP){
 			if (map[actor_y-1][actor_x] != 3 && map[actor_y - 1][actor_x] != 5) {
 				SetXY(X, Y+step);
 				actor_y -= 1;
@@ -463,6 +473,7 @@ void Cpractice4::OnShow() {
 				printf("wall:%d,%d\n", actor_y - 1, actor_x);
 				CGameMap::ismoving = 0;
 			}
+		}
 		if (nChar == KEY_DOWN) {
 			if (map[actor_y + 1][actor_x] != 3 && map[actor_y + 1][actor_x] != 5) {
 				SetXY(X, Y - step);
@@ -535,7 +546,7 @@ void Cpractice4::OnShow() {
 		m1.ShowBitmap();
 	}
 	void Cmonster::OnKeyDown(UINT nChar) {
-		const int KEY_SPACE = 0x20;
+		//const int KEY_SPACE = 0x20;
 		const char KEY_LEFT = 0x25; // keyboard左箭頭
 		const char KEY_UP = 0x26; // keyboard上箭頭
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
@@ -857,11 +868,14 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {	
-	
+	const int KEY_SPACE = 0x20;
 	const char KEY_LEFT  = 0x25; // keyboard左箭頭
 	const char KEY_UP    = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
+	if (nChar == KEY_SPACE) {
+		gamemap.changemap(2);
+	}
 	if (nChar == KEY_LEFT) {
 		eraser.SetMovingLeft(true);
 		gamemap.OnKeyDown(nChar);
