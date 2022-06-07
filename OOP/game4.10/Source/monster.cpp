@@ -37,8 +37,6 @@ namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// monster: Eraser class
 	/////////////////////////////////////////////////////////////////////////////
-	int monster_HP = 20;
-	int monster_ATK = 1;
 	int monster::mon_x = 23;
 	int monster::mon_y = 21;
 	const int STEP_SIZE = -45;
@@ -46,7 +44,7 @@ namespace game_framework {
 	int next_step, next_x, next_y;
 	monster::monster()
 	{
-		printf("%d,%d",mon_x,mon_y);
+		printf("%d,%d\n",mon_x,mon_y);
 		Initialize();
 		SetXY(920 + 45 * monster::mon_x, 540 + 45 * monster::mon_y);
 	}
@@ -224,12 +222,28 @@ namespace game_framework {
 		return check_step[--check];
 	}
 
-	int monster::attack(int HP, int ATK) {//被攻擊者的血量 攻擊者的攻擊力 回傳被攻擊後的血量
-		return HP - ATK;
+	int monster::attacked(int ATK) {//攻擊者的攻擊力 回傳被攻擊後的血量
+		return mon_HP - ATK;
+	}
+
+	void monster::attack_judge(int x1,int y1,int x2,int y2) {
+		printf("judge:%d,%d,%d,%d\n", x1, y1, x2, y2);
+		if (x1 == x2 && y1 == y2) {
+			eraser.attacked(mon_ATK);
+		}
 	}
 
 	int monster::Character() {
 		return character;
+	}
+
+	void monster::showdetail() {
+		eraser.showdetail();
+		printf("\nmonster1:\n");
+		printf("HP:%d\n", mon_HP);
+		printf("ATK:%d\n", mon_ATK);
+		printf("Location:%d,%d\n", monster::mon_x,monster::mon_y);
+		printf("X,Y:%d,%d\n\n", x, y);
 	}
 
 	int monster::getmap(int random_map, int map[][27])
@@ -252,7 +266,7 @@ namespace game_framework {
 			CEraser::actor_y = 5;
 			SetXY(245 + 45 * monster::mon_x, 360 + 45 * monster::mon_y);
 		}
-		printf("monster_map:%d\n", map_num);
+		//printf("monster_map:%d\n", map_num);
 		return random_map;
 	}
 
@@ -316,24 +330,21 @@ namespace game_framework {
 				y += STEP_SIZE;
 				CGameMap::ismoving = 0;
 			}
-			printf("---------------------------\n");
-			printf("monster_map:%d", map_num);
-			printf("checkdata:%d,%d,%d,%d\n", monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
+			//printf("---------------------------\n");
+			//printf("monster_map:%d", map_num);
+			//printf("checkdata:%d,%d,%d,%d\n", monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
 			next_x = monster::mon_x;
 			next_y = monster::mon_y;
-			printf("next_XY:%d,%d\n", next_x, next_y);
+			//printf("next_XY:%d,%d\n", next_x, next_y);
 			next_step = automove(map_monster, monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
 			next_x = next_step / 100;
 			next_y = next_step % 100;
+			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
 			x += (next_x - monster::mon_x) * 45;
 			y += (next_y - monster::mon_y) * 45;
 			monster::mon_x = next_x;
 			monster::mon_y = next_y;
-			printf("automove:%d\n", next_step);
-			printf("automove_XY:%d,%d\n", next_x, next_y);
-			printf("charactor_XY:%d,%d\n", CEraser::actor_x, CEraser::actor_y);
-			printf("mon_loca_XY:%d,%d\n", x, y);
-			printf("automove_mon_XY:%d,%d\n", monster::mon_x, monster::mon_y);
+			showdetail();
 
 		}
 	}
@@ -346,24 +357,16 @@ namespace game_framework {
 				x -= STEP_SIZE;
 				CGameMap::ismoving = 0;
 			}
-			printf("---------------------------\n");
-			printf("checkdata:%d,%d,%d,%d\n", monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
 			next_x = monster::mon_x;
 			next_y = monster::mon_y;
-			printf("next_XY:%d,%d", next_x, next_y);
-			next_step = automove(map_monster, monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
 			next_x = next_step / 100;
 			next_y = next_step % 100;
+			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
 			x += (next_x - monster::mon_x) * 45;
 			y += (next_y - monster::mon_y) * 45;
 			monster::mon_x = next_x;
 			monster::mon_y = next_y;
-
-			printf("automove:%d\n", next_step);
-			printf("automove_XY:%d,%d\n", next_x, next_y);
-			printf("charactor_XY:%d,%d\n", CEraser::actor_x, CEraser::actor_y);
-			printf("mon_loca_XY:%d,%d\n", x, y);
-			printf("automove_mon_XY:%d,%d\n", mon_x, mon_y);
+			showdetail();
 		}
 	}
 
@@ -375,24 +378,17 @@ namespace game_framework {
 				x += STEP_SIZE;
 				CGameMap::ismoving = 0;
 			}
-			printf("---------------------------\n");
-			printf("checkdata:%d,%d,%d,%d\n", monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
 			next_x = monster::mon_x;
 			next_y = monster::mon_y;
-			printf("next_XY:%d,%d", next_x, next_y);
 			next_step = automove(map_monster, monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
 			next_x = next_step / 100;
 			next_y = next_step % 100;
+			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
 			x += (next_x - monster::mon_x) * 45;
 			y += (next_y - monster::mon_y) * 45;
 			monster::mon_x = next_x;
 			monster::mon_y = next_y;
-
-			printf("automove:%d\n", next_step);
-			printf("automove_XY:%d,%d\n", next_x, next_y);
-			printf("charactor_XY:%d,%d\n", CEraser::actor_x, CEraser::actor_y);
-			printf("mon_loca_XY:%d,%d\n", x, y);
-			printf("automove_mon_XY:%d,%d\n", mon_x, mon_y);
+			showdetail();
 		}
 	}
 
@@ -404,24 +400,17 @@ namespace game_framework {
 				y -= STEP_SIZE;
 				CGameMap::ismoving = 0;
 			}
-			printf("---------------------------\n");
-			printf("checkdata:%d,%d,%d,%d\n", monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
 			next_x = monster::mon_x;
 			next_y = monster::mon_y;
-			printf("next_XY:%d,%d", next_x, next_y);
 			next_step = automove(map_monster, monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
 			next_x = next_step / 100;
 			next_y = next_step % 100;
+			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
 			x += (next_x - monster::mon_x) * 45;
 			y += (next_y - monster::mon_y) * 45;
 			monster::mon_x = next_x;
 			monster::mon_y = next_y;
-
-			printf("automove:%d\n", next_step);
-			printf("automove_XY:%d,%d\n", next_x, next_y);
-			printf("charactor_XY:%d,%d\n", CEraser::actor_x, CEraser::actor_y);
-			printf("mon_loca_XY:%d,%d\n", x, y);
-			printf("automove_mon_XY:%d,%d\n", mon_x, mon_y);
+			showdetail();
 		}
 	}
 

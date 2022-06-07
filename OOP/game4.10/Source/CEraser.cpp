@@ -32,9 +32,6 @@ namespace game_framework {
 		{3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
-
-	int hero_HP = 20;
-	int hero_ATK = 4;
 	/////////////////////////////////////////////////////////////////////////////
 	// CEraser: Eraser class
 	/////////////////////////////////////////////////////////////////////////////
@@ -99,6 +96,7 @@ namespace game_framework {
 	}
 	int CEraser::actor_x = 1;
 	int CEraser::actor_y = 1;
+	int show = 1;
 	void CEraser::OnMove()
 	{
 
@@ -151,4 +149,17 @@ namespace game_framework {
 		animation.OnShow();
 	}
 
+	int CEraser::attacked(int ATK) {//攻擊者的攻擊力 回傳被攻擊後的血量
+		hero_HP -= ATK;
+		printf("Hero is attacked\n");
+		return hero_HP - ATK;
+	}
+
+	void CEraser::showdetail() {
+		printf("\nHero:\n");
+		printf("HP:%d\n", hero_HP);
+		printf("ATK:%d\n", hero_ATK);
+		printf("Location:%d,%d\n", actor_x, actor_y);
+		printf("X,Y:%d,%d\n", x, y);
+	}
 }

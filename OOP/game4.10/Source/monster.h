@@ -1,5 +1,6 @@
 #ifndef MONSTER_H
 #define MONSTER_H
+#include "CEraser.h"
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// 這個class提供可以用鍵盤或滑鼠控制的擦子
@@ -10,10 +11,12 @@ namespace game_framework {
 	{
 	public:
 		monster();
-		int monster_HP;
-		int monster_ATK;
+		int mon_HP = 20;
+		int mon_ATK = 1;
 		int map_num = 1;
-		int attack(int HP,int ATK);
+		void showdetail();
+		int attacked(int ATK);
+		void monster::attack_judge(int x1, int y1, int x2, int y2);
 		int getmap(int random_map,int map[][27]);
 		int  GetX1();					// 擦子左上角 x 座標
 		int  GetY1();					// 擦子左上角 y 座標
@@ -34,6 +37,7 @@ namespace game_framework {
 		static int mon_x;
 		static int mon_y;
 	protected:
+		CEraser eraser;
 		CAnimation animation;		// 擦子的動畫
 		int x, y;					// 擦子左上角座標
 		int character;				//職業的變數

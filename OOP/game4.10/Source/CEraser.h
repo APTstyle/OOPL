@@ -10,8 +10,10 @@ namespace game_framework {
 	{
 	public:
 		CEraser();
-		int hero_HP;
-		int hero_ATK;
+		int hero_HP=20;
+		int hero_ATK=4;
+		void showdetail();
+		int attacked(int ATK);
 		int  GetX1();					// 擦子左上角 x 座標
 		int  GetY1();					// 擦子左上角 y 座標
 		int  GetX2();					// 擦子右下角 x 座標
