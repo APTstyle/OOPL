@@ -272,6 +272,8 @@ namespace game_framework {
 		if (map_num == 2) {
 			mon_x = 18;
 			mon_y = 17;
+			map_x = 740;
+			map_y = 405;
 			CEraser::actor_x = 6;
 			CEraser::actor_y = 5;
 			SetXY(695 + 45 * mon_x, 360 + 45 * mon_y);
@@ -448,19 +450,23 @@ namespace game_framework {
 	int monster_bat::getmap(int random_map, int map[][27])
 	{
 		map_num = random_map;
-		if (map_num == 2) {
-			mon_x = 18;//24-actor_x
-			mon_y = -3;//2-actor_y
+		if (map_num == 2) {//24*24
+			map_x = 650;
+			map_y = 315;
+			mon_x = 22;//24-actor_x
+			mon_y = 1;//2-actor_y
 			CEraser::actor_x = 6;
 			CEraser::actor_y = 5;
-			SetXY(695 + 45 * mon_x, 360 + 45 *mon_y);
+			SetXY(map_x + 45 * mon_x + 45, map_y + 45 * mon_y + 45);
 		}
-		if (map_num == 3) {
-			mon_x = 8;
-			mon_y = -3;
+		if (map_num == 3) {//24*24
+			map_x = 200;
+			map_y = 315;
+			mon_x = 22;
+			mon_y = 1;
 			CEraser::actor_x = 16;
 			CEraser::actor_y = 5;
-			SetXY(245 + 45 * mon_x, 360 + 45 * mon_y);
+			SetXY(map_x + 45 * mon_x + 45, map_y + 45 * mon_y + 45);
 		}
 		//printf("monster_map:%d\n", map_num);
 		return random_map;
