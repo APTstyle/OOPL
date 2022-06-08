@@ -227,29 +227,13 @@ namespace game_framework {
 		CBouncingBall*bballs;
 		int random_num;
 	};
-	class Cmonster {
-	public:
-		CMovingBitmap m1;
-		void LoadBitmap();
-		void OnShow();
-		void SetXY(int, int);
-		void OnKeyDown(UINT);
-		void getmap(int random_map);
-		Cmonster();
-	protected:
-		int map[25][27];
-		int actor_x = 1, actor_y = 1;
-		int monster_x = 23, monster_y = 21;
-		int X, Y;
-		int MW, MH;
-		int random_num;
-	};
 
 	///////////////////////////////////////////////////////
 	class CGameStateRun : public CGameState {
 	public:
 		CEraser			eraser;	
 		monster			monster_cpp;
+		monster_bat		monster_bat_cpp;
 		CGameStateRun(CGame *g);
 		~CGameStateRun();
 		void OnBeginState();							// 設定每次重玩所需的變數
@@ -266,7 +250,6 @@ namespace game_framework {
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		CGameMap		gamemap;
-		Cmonster		gamemonster;
 		Cpractice4		c_practice4;
 		const int		NUMBALLS;	// 球的總數
 		CMovingBitmap	background;	// 背景圖

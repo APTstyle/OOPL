@@ -111,6 +111,13 @@
     <Image Include="RES\wolf1.bmp" />
     <Image Include="RES\wood_floor1.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet1.bmp" />
+    <Image Include="RES\Wraithsheet\Wraithsheet2.bmp" />
+    <Image Include="RES\Wraithsheet\Wraithsheet3.bmp" />
+    <Image Include="RES\Wraithsheet\Wraithsheet4.bmp" />
+    <Image Include="RES\batsheet\batsheet1.bmp" />
+    <Image Include="RES\batsheet\batsheet2.bmp" />
+    <Image Include="RES\batsheet\batsheet3.bmp" />
+    <Image Include="RES\batsheet\batsheet4.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\ball.bmp" />

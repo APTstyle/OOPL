@@ -96,6 +96,15 @@
 #define dark_red1                       263
 #define dark_green1                     264
 #define light_blue1                     265
+#define boss2                           270
+#define boss3                           271
+#define IDB_BITMAP10                    272
+#define boss4                           272
+#define bat                             273
+#define bat2                            274
+#define bat3                            275
+#define IDB_BITMAP12                    276
+#define bat4                            276
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -108,7 +117,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        263
+#define _APS_NEXT_RESOURCE_VALUE        277
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

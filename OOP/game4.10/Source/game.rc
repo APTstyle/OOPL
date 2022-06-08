@@ -200,6 +200,20 @@ dark_green1             BITMAP                  "..\\res\\dark_gre.bmp"
 
 light_blue1             BITMAP                  "..\\res\\light_bl.bmp"
 
+boss2                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet2.bmp"
+
+boss3                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet3.bmp"
+
+boss4                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet4.bmp"
+
+bat                     BITMAP                  "D:\\APT\\110-2\\OOPL\\ting\\OOP\\game4.10\\RES\\batsheet\\batsheet1.bmp"
+
+bat2                    BITMAP                  "D:\\APT\\110-2\\OOPL\\ting\\OOP\\game4.10\\RES\\batsheet\\batsheet2.bmp"
+
+bat3                    BITMAP                  "D:\\APT\\110-2\\OOPL\\ting\\OOP\\game4.10\\RES\\batsheet\\batsheet3.bmp"
+
+bat4                    BITMAP                  "D:\\APT\\110-2\\OOPL\\ting\\OOP\\game4.10\\RES\\batsheet\\batsheet4.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -207,13 +221,6 @@ light_blue1             BITMAP                  "..\\res\\light_bl.bmp"
 //
 
 IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// PNG
-//
-
 
 #endif    // 中文 (繁體，台灣) resources
 /////////////////////////////////////////////////////////////////////////////
