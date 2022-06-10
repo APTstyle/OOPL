@@ -13,6 +13,7 @@
     <ClCompile Include="Source\StdAfx.cpp" />
     <ClCompile Include="Source\gamelib.cpp" />
     <ClCompile Include="Source\mygame.cpp" />
+    <ClCompile Include="Source\monsterBat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\monster.h" />
@@ -28,6 +29,7 @@
     <ClInclude Include="Source\StdAfx.h" />
     <ClInclude Include="Source\gamelib.h" />
     <ClInclude Include="Source\mygame.h" />
+    <ClInclude Include="Source\monsterBat.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Source\game.rc" />
@@ -111,27 +113,13 @@
     <Image Include="RES\wolf1.bmp" />
     <Image Include="RES\wood_floor1.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet1.bmp" />
-    <Image Include="RES\arrow1.bmp" />
-    <Image Include="RES\arrow2.bmp" />
-    <Image Include="RES\food1.bmp" />
-    <Image Include="RES\food2.bmp" />
-    <Image Include="RES\grave1.bmp" />
-    <Image Include="RES\key1.bmp" />
-    <Image Include="RES\paper1.bmp" />
-    <Image Include="RES\paper2.bmp" />
-    <Image Include="RES\paper3.bmp" />
-    <Image Include="RES\ring1.bmp" />
-    <Image Include="RES\ring2.bmp" />
-    <Image Include="RES\ring3.bmp" />
-    <Image Include="RES\stick1.bmp" />
-    <Image Include="RES\stick2.bmp" />
-    <Image Include="RES\stick3.bmp" />
-    <Image Include="RES\sword1.bmp" />
-    <Image Include="RES\sword2.bmp" />
-    <Image Include="RES\sword3.bmp" />
-    <Image Include="RES\treasure1.bmp" />
-    <Image Include="res\food1b1.bmp" />
-    <Image Include="res\food2b1.bmp" />
+    <Image Include="RES\Wraithsheet\Wraithsheet2.bmp" />
+    <Image Include="RES\Wraithsheet\Wraithsheet3.bmp" />
+    <Image Include="RES\Wraithsheet\Wraithsheet4.bmp" />
+    <Image Include="RES\batsheet\batsheet1.bmp" />
+    <Image Include="RES\batsheet\batsheet2.bmp" />
+    <Image Include="RES\batsheet\batsheet3.bmp" />
+    <Image Include="RES\batsheet\batsheet4.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\ball.bmp" />

@@ -5,7 +5,6 @@ namespace game_framework {
 	// 這個class提供可以用鍵盤或滑鼠控制的擦子
 	// 看懂就可以改寫成自己的程式了
 	/////////////////////////////////////////////////////////////////////////////
-
 	class CEraser
 	{
 	public:
@@ -13,6 +12,7 @@ namespace game_framework {
 		int hero_HP=20;
 		int hero_ATK=4;
 		void showdetail();
+		void showdata();
 		int attacked(int ATK);
 		int  GetX1();					// 擦子左上角 x 座標
 		int  GetY1();					// 擦子左上角 y 座標
@@ -39,7 +39,5 @@ namespace game_framework {
 		bool isMovingRight;			// 是否正在往右移動
 		bool isMovingUp;			// 是否正在往上移動
 	};
-
-
 }
 #endif
