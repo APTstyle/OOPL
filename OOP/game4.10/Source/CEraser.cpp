@@ -67,8 +67,13 @@ namespace game_framework {
 
 	void CEraser::Initialize()
 	{
+<<<<<<< HEAD
 		const int X_POS = 920;
 		const int Y_POS = 540;
+=======
+		const int X_POS = 245;
+		const int Y_POS = 95;
+>>>>>>> chun
 		character = 0;
 		x = X_POS;
 		y = Y_POS;
@@ -158,6 +163,7 @@ namespace game_framework {
 	void CEraser::showdetail() {
 		printf("\nHero:\n");
 		printf("HP:%d\n", hero_HP);
+<<<<<<< HEAD
 		//printf("ATK:%d\n", hero_ATK);
 		//printf("Location:%d,%d\n", actor_x, actor_y);
 		//printf("X,Y:%d,%d\n", x, y);
@@ -169,5 +175,10 @@ namespace game_framework {
 		//printf("ATK:%d\n", hero_ATK);
 		//printf("Location:%d,%d\n", actor_x, actor_y);
 		//printf("X,Y:%d,%d\n", x, y);
+=======
+		printf("ATK:%d\n", hero_ATK);
+		printf("Location:%d,%d\n", actor_x, actor_y);
+		printf("X,Y:%d,%d\n", x, y);
+>>>>>>> chun
 	}
 }

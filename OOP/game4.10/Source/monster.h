@@ -2,10 +2,19 @@
 #define MONSTER_H
 #include "CEraser.h"
 namespace game_framework {
+<<<<<<< HEAD
+=======
+	/////////////////////////////////////////////////////////////////////////////
+	// 這個class提供可以用鍵盤或滑鼠控制的擦子
+	// 看懂就可以改寫成自己的程式了
+	/////////////////////////////////////////////////////////////////////////////
+
+>>>>>>> chun
 	class monster
 	{
 	public:
 		monster();
+<<<<<<< HEAD
 		int map_monster[25][27] = {
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
 		{3,9,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
@@ -54,12 +63,25 @@ namespace game_framework {
 		int attacked_judge(int x1,int y1,int x2,int y2);
 		void findroad();
 		int getmap(int random_map, int map[][27]);
+=======
+		int mon_HP = 20;
+		int mon_ATK = 1;
+		int map_num = 1;
+		void showdetail();
+		int attacked(int ATK);
+		void monster::attack_judge(int x1, int y1, int x2, int y2);
+		int getmap(int random_map,int map[][27]);
+>>>>>>> chun
 		int  GetX1();					// 擦子左上角 x 座標
 		int  GetY1();					// 擦子左上角 y 座標
 		int  GetX2();					// 擦子右下角 x 座標
 		int  GetY2();					// 擦子右下角 y 座標
 		int  Character();				//取得職業的變數
+<<<<<<< HEAD
 		int automove(int automove_map[][27], int main_x, int main_y, int end_x, int end_y, int mon1, int mon2);
+=======
+		int automove(int automove_map[][27], int main_x, int main_y, int end_x, int end_y);
+>>>>>>> chun
 		void Initialize();				// 設定擦子為初始值
 		void LoadBitmap();				// 載入圖形
 		void OnMove();					// 移動擦子
@@ -70,7 +92,12 @@ namespace game_framework {
 		void SetMovingLeft(bool flag);	// 設定是否正在往左移動
 		void SetMovingRight(bool flag); // 設定是否正在往右移動
 		void SetMovingUp(bool flag);	// 設定是否正在往上移動
+<<<<<<< HEAD
 		void SetMoving(bool flag);	// 設定是否正在移動
+=======
+		static int mon_x;
+		static int mon_y;
+>>>>>>> chun
 	protected:
 		CEraser eraser;
 		CAnimation animation;		// 擦子的動畫
@@ -80,7 +107,12 @@ namespace game_framework {
 		bool isMovingLeft;			// 是否正在往左移動
 		bool isMovingRight;			// 是否正在往右移動
 		bool isMovingUp;			// 是否正在往上移動
+<<<<<<< HEAD
 		bool isMoving;
 	};
+=======
+	};
+
+>>>>>>> chun
 }
 #endif

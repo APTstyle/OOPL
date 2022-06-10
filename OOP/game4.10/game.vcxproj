@@ -355,6 +355,8 @@
     <Image Include="..\assest\wall1.PNG" />
     <Image Include="Bitmaps\bg.bmp" />
     <Image Include="RES\11047.png" />
+    <Image Include="RES\arrow1.bmp" />
+    <Image Include="RES\arrow2.bmp" />
     <Image Include="RES\backpack1.bmp" />
     <Image Include="RES\batsheet\batsheet1.bmp" />
     <Image Include="RES\batsheet\batsheet2.bmp" />
@@ -385,9 +387,15 @@
     <Image Include="res\dark_red.bmp" />
     <Image Include="res\door1.bmp" />
     <Image Include="res\floor1.bmp" />
+    <Image Include="RES\food1.bmp" />
+    <Image Include="res\food1b1.bmp" />
+    <Image Include="RES\food2.bmp" />
+    <Image Include="res\food2b1.bmp" />
     <Image Include="RES\golblin (2).bmp" />
     <Image Include="RES\golblin.bmp" />
+    <Image Include="RES\grave1.bmp" />
     <Image Include="RES\hero.bmp" />
+    <Image Include="RES\key1.bmp" />
     <Image Include="RES\level1.bmp" />
     <Image Include="RES\level2.bmp" />
     <Image Include="RES\level3.bmp" />
@@ -396,6 +404,9 @@
     <Image Include="RES\level6.bmp" />
     <Image Include="RES\level7.bmp" />
     <Image Include="res\light_bl.bmp" />
+    <Image Include="RES\paper1.bmp" />
+    <Image Include="RES\paper2.bmp" />
+    <Image Include="RES\paper3.bmp" />
     <Image Include="RES\person1.bmp" />
     <Image Include="RES\person2.bmp" />
     <Image Include="RES\person3.bmp" />
@@ -403,11 +414,21 @@
     <Image Include="RES\potion1.bmp" />
     <Image Include="RES\potion2.bmp" />
     <Image Include="RES\potion3.bmp" />
+    <Image Include="RES\ring1.bmp" />
+    <Image Include="RES\ring2.bmp" />
+    <Image Include="RES\ring3.bmp" />
     <Image Include="res\room2.bmp" />
     <Image Include="RES\stair_down1.bmp" />
     <Image Include="RES\stair_up1.bmp" />
     <Image Include="RES\startbutton1.bmp" />
+    <Image Include="RES\stick1.bmp" />
+    <Image Include="RES\stick2.bmp" />
+    <Image Include="RES\stick3.bmp" />
+    <Image Include="RES\sword1.bmp" />
+    <Image Include="RES\sword2.bmp" />
+    <Image Include="RES\sword3.bmp" />
     <Image Include="res\test.bmp" />
+    <Image Include="RES\treasure1.bmp" />
     <Image Include="RES\ui1.bmp" />
     <Image Include="RES\ui2.bmp" />
     <Image Include="RES\ui3.bmp" />
@@ -417,9 +438,12 @@
     <Image Include="RES\wolf1.bmp" />
     <Image Include="RES\wood_floor1.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet1.bmp" />
+<<<<<<< HEAD
     <Image Include="RES\Wraithsheet\Wraithsheet2.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet3.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet4.bmp" />
+=======
+>>>>>>> chun
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

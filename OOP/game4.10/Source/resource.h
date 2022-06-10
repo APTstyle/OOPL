@@ -96,6 +96,7 @@
 #define dark_red1                       263
 #define dark_green1                     264
 #define light_blue1                     265
+<<<<<<< HEAD
 #define boss2                           270
 #define boss3                           271
 #define IDB_BITMAP10                    272
@@ -105,6 +106,30 @@
 #define bat3                            275
 #define IDB_BITMAP12                    276
 #define bat4                            276
+=======
+#define IDB_BITMAP8                     266
+#define IDB_BITMAP9                     267
+#define food1b                          268
+#define food2b                          269
+#define IDB_BITMAP12                    270
+#define IDB_BITMAP14                    271
+#define IDB_BITMAP15                    272
+#define IDB_BITMAP16                    273
+#define IDB_BITMAP17                    274
+#define IDB_BITMAP18                    275
+#define IDB_BITMAP19                    276
+#define IDB_BITMAP20                    277
+#define IDB_BITMAP21                    278
+#define IDB_BITMAP22                    279
+#define IDB_BITMAP23                    280
+#define IDB_BITMAP24                    281
+#define IDB_BITMAP25                    282
+#define IDB_BITMAP26                    283
+#define IDB_BITMAP27                    284
+#define food1s                          285
+#define food2b1                         286
+#define food2s                          286
+>>>>>>> chun
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -117,7 +142,11 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
+<<<<<<< HEAD
 #define _APS_NEXT_RESOURCE_VALUE        277
+=======
+#define _APS_NEXT_RESOURCE_VALUE        285
+>>>>>>> chun
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
