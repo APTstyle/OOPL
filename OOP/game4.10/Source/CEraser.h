@@ -12,11 +12,9 @@ namespace game_framework {
 		int hero_HP=20;
 		int hero_ATK=4;
 		void showdetail();
-<<<<<<< HEAD
 		void showdata();
-=======
->>>>>>> chun
 		int attacked(int ATK);
+		static int map_x, map_y;
 		int  GetX1();					// 擦子左上角 x 座標
 		int  GetY1();					// 擦子左上角 y 座標
 		int  GetX2();					// 擦子右下角 x 座標
@@ -42,10 +40,5 @@ namespace game_framework {
 		bool isMovingRight;			// 是否正在往右移動
 		bool isMovingUp;			// 是否正在往上移動
 	};
-<<<<<<< HEAD
-=======
-
-
->>>>>>> chun
 }
 #endif

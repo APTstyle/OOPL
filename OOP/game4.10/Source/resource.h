@@ -96,17 +96,6 @@
 #define dark_red1                       263
 #define dark_green1                     264
 #define light_blue1                     265
-<<<<<<< HEAD
-#define boss2                           270
-#define boss3                           271
-#define IDB_BITMAP10                    272
-#define boss4                           272
-#define bat                             273
-#define bat2                            274
-#define bat3                            275
-#define IDB_BITMAP12                    276
-#define bat4                            276
-=======
 #define IDB_BITMAP8                     266
 #define IDB_BITMAP9                     267
 #define food1b                          268
@@ -129,7 +118,24 @@
 #define food1s                          285
 #define food2b1                         286
 #define food2s                          286
->>>>>>> chun
+#define boss2                           287
+#define boss3                           288
+#define IDB_BITMAP10                    289
+#define boss4                           290
+#define bat                             291
+#define bat2                            292
+#define bat3                            293
+#define bat4                            295
+#define bat5                            296
+#define bat6                            297
+#define bat7                            298
+#define IDB_BITMAP11                    299
+#define death_mon                       300
+#define IDB_BITMAP28                    301
+#define boss5                           301
+#define boss6                           302
+#define boss7                           303
+#define boss8                           304
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -142,11 +148,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-<<<<<<< HEAD
-#define _APS_NEXT_RESOURCE_VALUE        277
-=======
-#define _APS_NEXT_RESOURCE_VALUE        285
->>>>>>> chun
+#define _APS_NEXT_RESOURCE_VALUE        305
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

@@ -362,6 +362,9 @@
     <Image Include="RES\batsheet\batsheet2.bmp" />
     <Image Include="RES\batsheet\batsheet3.bmp" />
     <Image Include="RES\batsheet\batsheet4.bmp" />
+    <Image Include="RES\batsheet\batsheet5.bmp" />
+    <Image Include="RES\batsheet\batsheet6.bmp" />
+    <Image Include="RES\batsheet\batsheet7.bmp" />
     <Image Include="res\bitmap10.bmp" />
     <Image Include="res\bitmap11.bmp" />
     <Image Include="res\bitmap12.bmp" />
@@ -438,12 +441,13 @@
     <Image Include="RES\wolf1.bmp" />
     <Image Include="RES\wood_floor1.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet1.bmp" />
-<<<<<<< HEAD
     <Image Include="RES\Wraithsheet\Wraithsheet2.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet3.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet4.bmp" />
-=======
->>>>>>> chun
+    <Image Include="RES\Wraithsheet\Wraithsheet5.bmp" />
+    <Image Include="RES\Wraithsheet\Wraithsheet6.bmp" />
+    <Image Include="RES\Wraithsheet\Wraithsheet7.bmp" />
+    <Image Include="RES\Wraithsheet\Wraithsheet8.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

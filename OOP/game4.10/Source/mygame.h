@@ -41,10 +41,7 @@
 #include "CEraser.h"
 #include "CBall.h"
 #include "monster.h"
-<<<<<<< HEAD
 #include "monsterBat.h"
-=======
->>>>>>> chun
 //#include "CBouncingBall.h"
 
 namespace game_framework {
@@ -132,6 +129,8 @@ namespace game_framework {
 	{
 	public:
 		CGameMap();
+		monster			monster_cpp;
+		monster_bat		monster_bat_cpp;
 		void LoadBitmap();
 		void OnShow();
 		void OnMove();
@@ -142,11 +141,7 @@ namespace game_framework {
 		static int ismoving;
 		void changemap(int);
 		int map[25][27];
-<<<<<<< HEAD
 		int map1_init[25][27] = {//24*26
-=======
-		int map1_init[25][27] = {
->>>>>>> chun
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
 			{3,9,1,13,14,12,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
 			{3,1,1,10,1,1,3,1,1,3,1,1,1,1,1,3,1,7,7,1,1,7,8,8,1,3},
@@ -171,11 +166,7 @@ namespace game_framework {
 			{3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
-<<<<<<< HEAD
 		int map2_init[25][27] = {//24*24
-=======
-		int map2_init[25][27] = {
->>>>>>> chun
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3},
 			{3,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,3},
 			{3,1,3,3,3,1,3,3,3,3,1,3,3,7,4,1,1,1,1,1,1,1,1,3},
@@ -200,11 +191,7 @@ namespace game_framework {
 			{3,1,1,3,1,1,1,1,1,3,3,1,3,3,6,6,6,6,6,3,1,1,1,3},
 			{3,1,1,3,2,2,2,2,2,4,1,1,1,1,6,6,6,6,6,3,1,1,1,3},
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3} };
-<<<<<<< HEAD
 		int map3_init[25][27] = {//24*24
-=======
-		int map3_init[25][27] = {
->>>>>>> chun
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3},
 			{3,1,1,1,1,1,3,3,1,1,1,1,1,1,1,1,3,1,1,1,1,1,1,3},
 			{3,1,1,1,1,1,3,3,1,3,3,3,3,1,3,1,4,1,1,1,1,1,1,3},
@@ -344,36 +331,13 @@ namespace game_framework {
 		CBouncingBall*bballs;
 		int random_num;
 	};
-<<<<<<< HEAD
-=======
-	class Cmonster {
-	public:
-		CMovingBitmap m1;
-		void LoadBitmap();
-		void OnShow();
-		void SetXY(int, int);
-		void OnKeyDown(UINT);
-		void getmap(int random_map);
-		Cmonster();
-	protected:
-		int map[25][27];
-		int actor_x = 1, actor_y = 1;
-		int monster_x = 23, monster_y = 21;
-		int X, Y;
-		int MW, MH;
-		int random_num;
-	};
->>>>>>> chun
 
 	///////////////////////////////////////////////////////
 	class CGameStateRun : public CGameState {
 	public:
 		CEraser			eraser;	
 		monster			monster_cpp;
-<<<<<<< HEAD
 		monster_bat		monster_bat_cpp;
-=======
->>>>>>> chun
 		CGameStateRun(CGame *g);
 		~CGameStateRun();
 		void OnBeginState();							// 設定每次重玩所需的變數
@@ -390,7 +354,6 @@ namespace game_framework {
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		CGameMap		gamemap;
-		Cmonster		gamemonster;
 		Cpractice4		c_practice4;
 		const int		NUMBALLS;	// 球的總數
 		CMovingBitmap	background;	// 背景圖

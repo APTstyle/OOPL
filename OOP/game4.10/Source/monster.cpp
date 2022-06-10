@@ -4,82 +4,33 @@
 #include <ddraw.h>
 #include "audio.h"
 #include "gamelib.h"
-<<<<<<< HEAD
 #include "CEraser.h"
 #include "monster.h"
 #include "mygame.h"
 
 namespace game_framework {
-	
+
 	/////////////////////////////////////////////////////////////////////////////
 	// monster: Eraser class
 	/////////////////////////////////////////////////////////////////////////////
-	const int STEP_SIZE = -45;
+	const int STEP_SIZE = 45;
 	const int STEP = -1; //因為地圖座標會移動 所以為-1 因不知名原本 座標很奇怪
 
 	int monster::mon_bat_x = 0;
 	int monster::mon_bat_y = 0;
-	int monster::mon_x = 23;
-	int monster::mon_y = 21;
+	//int monster::mon_x = 23;
+	//int monster::mon_y = 21;
+	int monster::mon_x = 5;
+	int monster::mon_y = 5;
 	monster::monster()
 	{
-		map_x = 920 - CEraser::actor_x * 45;
-		map_y = 540 - CEraser::actor_y * 45;
 		main_x = 0;
 		main_y = 0;
-		printf("map:%d,%d", map_x, map_y);
-		printf("mon1:%d,%d\n", monster::mon_x, monster::mon_y);
 		Initialize();
-		SetXY(920 + 45 * monster::mon_x, 540 + 45 * monster::mon_y);
-	}
-	int monster::automove(int automove_map[][27], int main_x, int main_y, int end_x, int end_y,int mon1,int mon2) {
-=======
-#include "monster.h"
-#include "CEraser.h"
-#include "mygame.h"
-
-namespace game_framework {
-	int map_monster[25][27] = {
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
-		{3,9,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
-		{3,1,1,10,1,1,3,1,1,3,1,1,1,1,1,3,1,7,7,1,1,7,8,8,1,3},
-		{3,1,2,7,7,1,3,1,1,3,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,3},
-		{3,1,2,2,2,7,3,3,4,3,3,3,4,3,3,3,3,3,3,3,3,3,1,3,3,3},
-		{3,1,7,2,2,2,4,1,1,3,3,3,1,1,1,1,3,3,3,3,3,3,1,3,3,3},
-		{3,1,1,1,7,7,3,1,1,1,1,1,1,1,3,1,1,1,1,3,3,3,1,3,3,3},
-		{3,1,1,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
-		{3,3,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,1,1,3,3,3,1,1,3,3},
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,1,8,8,3,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,3,3,1,1,3,1,1,1,1,1,1,1,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,1,1,4,1,1,8,8,8,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,3,1,1,8,8,1,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,4,3,3,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,1,1,1,1,3,1,1,1,7,1,1,1,1,1,1,3,3,3,1,3,3},
-		{3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
-	/////////////////////////////////////////////////////////////////////////////
-	// monster: Eraser class
-	/////////////////////////////////////////////////////////////////////////////
-	int monster::mon_x = 23;
-	int monster::mon_y = 21;
-	const int STEP_SIZE = -45;
-	const int STEP = -1; //因為地圖座標會移動 所以為-1 因不知名原本 座標很奇怪
-	int next_step, next_x, next_y;
-	monster::monster()
-	{
-		printf("%d,%d\n",mon_x,mon_y);
-		Initialize();
-		SetXY(920 + 45 * monster::mon_x, 540 + 45 * monster::mon_y);
+		SetXY(CEraser::map_x + 45 * monster::mon_x, CEraser::map_y + 45 * monster::mon_y);
+		showdata();
 	}
 	int monster::automove(int automove_map[][27], int main_x, int main_y, int end_x, int end_y) {
->>>>>>> chun
 		int map_calculate[25][27];//計算用的地圖
 		for (int i = 0; i < 25; i++) {
 			for (int j = 0; j < 27; j++) {
@@ -91,11 +42,6 @@ namespace game_framework {
 				}
 			}
 		}
-<<<<<<< HEAD
-		//map_calculate[mon1 % 100][mon1 / 100] = -1;
-		//map_calculate[mon2 % 100][mon2 / 100] = -1;
-=======
->>>>>>> chun
 		map_calculate[main_y][main_x] = main_x * 100 + main_y;//起點為起點座標
 		map_calculate[end_y][end_x] = -2;//終點為-2
 		int check_step[100];
@@ -110,7 +56,6 @@ namespace game_framework {
 			step_record_next[i] = 0;
 			check_step[i] = 0;
 		}
-<<<<<<< HEAD
 		int x = main_x, y = main_y;
 		if (map_calculate[main_y][main_x + 1] == -2 || map_calculate[main_y + 1][main_x + 1] == -2 || map_calculate[main_y - 1][main_x + 1] == -2 || map_calculate[main_y][main_x] == -2 || map_calculate[main_y + 1][main_x] == -2 || map_calculate[main_y - 1][main_x] == -2 || map_calculate[main_y][main_x - 1] == -2 || map_calculate[main_y + 1][main_x - 1] == -2 || map_calculate[main_y - 1][main_x - 1] == -2) {
 			return main_x * 100 + main_y;
@@ -153,50 +98,6 @@ namespace game_framework {
 		if (map_calculate[main_y - 1][main_x + 1] == 0) {
 			map_calculate[main_y - 1][main_x + 1] = main_x * 100 + main_y;
 			step_record_now[count_step_now] = main_x * 100 + main_y + 99;
-=======
-		int x = main_y, y = main_x;
-		if (map_calculate[x][y + 1] == -2 || map_calculate[x + 1][y + 1] == -2 || map_calculate[x - 1][y + 1] == -2 || map_calculate[x][y] == -2 || map_calculate[x + 1][y] == -2 || map_calculate[x - 1][y] == -2 || map_calculate[x][y - 1] == -2 || map_calculate[x + 1][y - 1] == -2 || map_calculate[x - 1][y - 1] == -2) {
-			return main_x * 100 + main_y;
-		}
-		if (map_calculate[x][y + 1] == 0) {
-			map_calculate[x][y + 1] = x * 100 + y;
-			step_record_now[count_step_now] = x * 100 + y + 1;
-			count_step_now += 1;
-		}
-		if (map_calculate[x - 1][y] == 0) {
-			map_calculate[x - 1][y] = x * 100 + y;
-			step_record_now[count_step_now] = x * 100 + y - 100;
-			count_step_now += 1;
-		}
-		if (map_calculate[x][y - 1] == 0) {
-			map_calculate[x][y - 1] = x * 100 + y;
-			step_record_now[count_step_now] = x * 100 + y - 1;
-			count_step_now += 1;
-		}
-		if (map_calculate[x + 1][y] == 0) {
-			map_calculate[x + 1][y] = x * 100 + y;
-			step_record_now[count_step_now] = x * 100 + y + 100;
-			count_step_now += 1;
-		}
-		if (map_calculate[x + 1][y + 1] == 0) {
-			map_calculate[x + 1][y + 1] = x * 100 + y;
-			step_record_now[count_step_now] = x * 100 + y + 101;
-			count_step_now += 1;
-		}
-		if (map_calculate[x + 1][y - 1] == 0) {
-			map_calculate[x + 1][y - 1] = x * 100 + y;
-			step_record_now[count_step_now] = x * 100 + y + 99;
-			count_step_now += 1;
-		}
-		if (map_calculate[x - 1][y - 1] == 0) {
-			map_calculate[x - 1][y - 1] = x * 100 + y;
-			step_record_now[count_step_now] = x * 100 + y - 101;
-			count_step_now += 1;
-		}
-		if (map_calculate[x - 1][y + 1] == 0) {
-			map_calculate[x - 1][y + 1] = x * 100 + y;
-			step_record_now[count_step_now] = x * 100 + y - 99;
->>>>>>> chun
 			count_step_now += 1;
 		}
 		while (search) {//廣度優先搜尋法 BFS
@@ -205,18 +106,13 @@ namespace game_framework {
 				for (int i = 0; i < count_step_now; i++) {
 					x = step_record_now[i] / 100;
 					y = step_record_now[i] % 100;
-<<<<<<< HEAD
 					if (map_calculate[y][x + 1] == -2 || map_calculate[y][x - 1] == -2 || map_calculate[y + 1][x] == -2 || map_calculate[y - 1][x] == -2 || map_calculate[y + 1][x - 1] == -2 || map_calculate[y - 1][x + 1] == -2 || map_calculate[y + 1][x + 1] == -2 || map_calculate[y - 1][x - 1] == -2) {
-=======
-					if (map_calculate[x][y + 1] == -2 || map_calculate[x][y - 1] == -2 || map_calculate[x + 1][y] == -2 || map_calculate[x - 1][y] == -2 || map_calculate[x + 1][y - 1] == -2 || map_calculate[x - 1][y + 1] == -2 || map_calculate[x + 1][y + 1] == -2 || map_calculate[x - 1][y - 1] == -2) {
->>>>>>> chun
 						search = 0;
 						i = 100;
 						j = 3;
 						map_calculate[end_y][end_x] = x * 100 + y;
 						continue;
 					}
-<<<<<<< HEAD
 					if (map_calculate[y][x + 1] == 0) {
 						map_calculate[y][x + 1] = x * 100 + y;
 						step_record_next[count_step_next] = x * 100 + y + 100;
@@ -238,29 +134,6 @@ namespace game_framework {
 					if (map_calculate[y + 1][x] == 0) {
 						map_calculate[y + 1][x] = x * 100 + y;
 						step_record_next[count_step_next] = x * 100 + y + 1;
-=======
-					if (map_calculate[x][y + 1] == 0) {
-						map_calculate[x][y + 1] = x * 100 + y;
-						step_record_next[count_step_next] = x * 100 + y + 1;
-						count_step_next += 1;
-						continue;
-					}
-					if (map_calculate[x - 1][y] == 0) {
-						map_calculate[x - 1][y] = x * 100 + y;
-						step_record_next[count_step_next] = x * 100 + y - 100;
-						count_step_next += 1;
-						continue;
-					}
-					if (map_calculate[x][y - 1] == 0) {
-						map_calculate[x][y - 1] = x * 100 + y;
-						step_record_next[count_step_next] = x * 100 + y - 1;
-						count_step_next += 1;
-						continue;
-					}
-					if (map_calculate[x + 1][y] == 0) {
-						map_calculate[x + 1][y] = x * 100 + y;
-						step_record_next[count_step_next] = x * 100 + y + 100;
->>>>>>> chun
 						count_step_next += 1;
 						continue;
 					}
@@ -271,18 +144,12 @@ namespace game_framework {
 					for (int i = 0; i < count_step_now; i++) {
 						x = step_record_now[i] / 100;
 						y = step_record_now[i] % 100;
-<<<<<<< HEAD
 						if (map_calculate[y + 1][x + 1] == 0) {
 							map_calculate[y + 1][x + 1] = x * 100 + y;
-=======
-						if (map_calculate[x + 1][y + 1] == 0) {
-							map_calculate[x + 1][y + 1] = x * 100 + y;
->>>>>>> chun
 							step_record_next[count_step_next] = x * 100 + y + 101;
 							count_step_next += 1;
 							continue;
 						}
-<<<<<<< HEAD
 						if (map_calculate[y + 1][x - 1] == 0) {
 							map_calculate[y + 1][x - 1] = x * 100 + y;
 							step_record_next[count_step_next] = x * 100 + y - 99;
@@ -291,29 +158,13 @@ namespace game_framework {
 						}
 						if (map_calculate[y - 1][x - 1] == 0) {
 							map_calculate[y - 1][x - 1] = x * 100 + y;
-=======
-						if (map_calculate[x + 1][y - 1] == 0) {
-							map_calculate[x + 1][y - 1] = x * 100 + y;
-							step_record_next[count_step_next] = x * 100 + y + 99;
-							count_step_next += 1;
-							continue;
-						}
-						if (map_calculate[x - 1][y - 1] == 0) {
-							map_calculate[x - 1][y - 1] = x * 100 + y;
->>>>>>> chun
 							step_record_next[count_step_next] = x * 100 + y - 101;
 							count_step_next += 1;
 							continue;
 						}
-<<<<<<< HEAD
 						if (map_calculate[y - 1][x + 1] == 0) {
 							map_calculate[y - 1][x + 1] = x * 100 + y;
 							step_record_next[count_step_next] = x * 100 + y + 99;
-=======
-						if (map_calculate[x - 1][y + 1] == 0) {
-							map_calculate[x - 1][y + 1] = x * 100 + y;
-							step_record_next[count_step_next] = x * 100 + y - 99;
->>>>>>> chun
 							count_step_next += 1;
 							continue;
 						}
@@ -333,7 +184,6 @@ namespace game_framework {
 		int ram = map_calculate[end_y][end_x];
 		int next_step = 0;
 		int check = 0;
-<<<<<<< HEAD
 		while (first_step) {
 			x = ram / 100;
 			y = ram % 100;
@@ -341,62 +191,37 @@ namespace game_framework {
 				//printf("%d ", x * 100 + y);
 				check_step[check++] = x * 100 + y;//!!!!!!!!!!!!因為技術失誤 因此前面的XY顛倒了 在此將其相反過來
 				ram = map_calculate[y][x];
-=======
-		while (first_step)
-		{
-			x = ram / 100;
-			y = ram % 100;
-			if (map_calculate[x][y] != main_x * 100 + main_y) {
-				check_step[check++] = y * 100 + x;//!!!!!!!!!!!!因為技術失誤 因此前面的XY顛倒了 在此將其相反過來
-				ram = map_calculate[x][y];
->>>>>>> chun
 				continue;
 			}
 			else {
 				first_step = 0;
-<<<<<<< HEAD
 				check_step[check++] = x * 100 + y;
-=======
->>>>>>> chun
 				next_step = ram;
 			}
 		}
 		if (check == 0) {
-<<<<<<< HEAD
 			return 100 * x + y;
-=======
-			return 100 * y + x;
->>>>>>> chun
 		}
 		return check_step[--check];
 	}
 
-<<<<<<< HEAD
 	void monster::findroad() {
 		next_x = monster::mon_x;
 		next_y = monster::mon_y;
-		next_step = automove(map_monster, monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y, monster::mon_bat_x * 100 + monster::mon_bat_y, monster::mon2_x * 100 + monster::mon2_x);
+		next_step = automove(map_monster, monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
 		next_x = next_step / 100;
 		next_y = next_step % 100;
 	}
 
 	void monster::attack_judge(int x1, int y1, int x2, int y2) {
-=======
-	int monster::attacked(int ATK) {//攻擊者的攻擊力 回傳被攻擊後的血量
-		return mon_HP - ATK;
-	}
-
-	void monster::attack_judge(int x1,int y1,int x2,int y2) {
->>>>>>> chun
 		printf("judge:%d,%d,%d,%d\n", x1, y1, x2, y2);
 		if (x1 == x2 && y1 == y2) {
 			eraser.attacked(mon_ATK);
 		}
 	}
 
-<<<<<<< HEAD
 	int monster::attacked_judge(int x1, int y1, int x2, int y2) {
-		if (abs(x1 - x2) == 1 && abs(y1 - y2)) {
+		if (abs(x1 - x2) < 2 && abs(y1 - y2)< 2) {
 			return 1;
 		}
 		else {
@@ -411,7 +236,7 @@ namespace game_framework {
 		return 0;
 	};
 
-	int monster::whichway(int mon_way_x, int mon_way_y, int next_way_x, int next_way_y,int main_x,int main_y) {//在與其他物件重疊時 應該走到哪一格代替
+	int monster::whichway(int mon_way_x, int mon_way_y, int next_way_x, int next_way_y, int main_x, int main_y) {//在與其他物件重疊時 應該走到哪一格代替
 		if (next_way_x == mon_way_x + 1 && next_way_y == mon_way_y) {//往右
 			if (map_monster[next_way_y + 1][next_way_x] != 3 && map_monster[next_way_y + 1][next_way_x] != 5 && main_y > mon_way_y) {
 				next_way_y += 1;
@@ -469,7 +294,7 @@ namespace game_framework {
 			}
 		}
 		if (next_way_x == mon_way_x + 1 && next_way_y == mon_way_y - 1) {//往右上
-			if (map_monster[next_way_y + 1][next_way_x] != 3 && map_monster[next_way_y + 1][next_way_x] != 5 && main_x > mon_way_x+1) {
+			if (map_monster[next_way_y + 1][next_way_x] != 3 && map_monster[next_way_y + 1][next_way_x] != 5 && main_x > mon_way_x + 1) {
 				next_way_y += 1;
 				return next_way_x * 100 + next_way_y;
 			}
@@ -533,14 +358,11 @@ namespace game_framework {
 		}
 	}
 
-=======
->>>>>>> chun
 	int monster::Character() {
 		return character;
 	}
 
-<<<<<<< HEAD
-	void monster::get_bat(int n,int x121,int y121) {//n是怪物的種類 xy是座標
+	void monster::get_bat(int n, int x121, int y121) {//n是怪物的種類 xy是座標
 		//printf("show1:%d,%d\n", mon_bat_x, mon_bat_y);
 		if (n == 1) {
 			monster::mon_bat_x = x121;
@@ -556,12 +378,11 @@ namespace game_framework {
 	void monster::showdetail() {
 		eraser.showdetail();
 		if (mon_loc_judge(next_x, next_y) == 1) {
-			next_step = whichway(monster::mon_x, monster::mon_y, next_x, next_y,CEraser::actor_x,CEraser::actor_y);
+			next_step = whichway(monster::mon_x, monster::mon_y, next_x, next_y, CEraser::actor_x, CEraser::actor_y);
 		}
 		next_x = next_step / 100;
-		next_y = next_step % 100;
-		x += (next_x - monster::mon_x) * 45;
-		y += (next_y - monster::mon_y) * 45;
+		next_y = next_step % 100; 
+		SetXY(CEraser::map_x + 45 * next_x, CEraser::map_y + 45 * next_y);
 		monster::mon_x = next_x;
 		monster::mon_y = next_y;
 		showdata();
@@ -571,19 +392,12 @@ namespace game_framework {
 		printf("\nmonster1:\n");
 		printf("HP:%d\n", mon_HP);
 		//printf("ATK:%d\n", mon_ATK);
-		//printf("Location:%d,%d\n", mon_x,mon_y);
-		//printf("X,Y:%d,%d\n\n", x, y);
+		printf("Location:%d,%d\n", mon_x,mon_y);
+		printf("X,Y:%d,%d\n", x, y);
 		//printf("test:%d\n", test);
 		//printf("show:%d,%d\n", monster::mon_bat_x, monster::mon_bat_y);
-=======
-	void monster::showdetail() {
-		eraser.showdetail();
-		printf("\nmonster1:\n");
-		printf("HP:%d\n", mon_HP);
-		printf("ATK:%d\n", mon_ATK);
-		printf("Location:%d,%d\n", monster::mon_x,monster::mon_y);
-		printf("X,Y:%d,%d\n\n", x, y);
->>>>>>> chun
+		printf("map:%d,%d\n", CEraser::map_x, CEraser::map_y);
+		printf("mon1:%d,%d\n", monster::mon_x, monster::mon_y);
 	}
 
 	int monster::getmap(int random_map, int map[][27])
@@ -595,11 +409,8 @@ namespace game_framework {
 		if (map_num == 2) {
 			monster::mon_x = 18;
 			monster::mon_y = 17;
-<<<<<<< HEAD
 			map_x = 740;
 			map_y = 405;
-=======
->>>>>>> chun
 			CEraser::actor_x = 6;
 			CEraser::actor_y = 5;
 			SetXY(695 + 45 * monster::mon_x, 360 + 45 * monster::mon_y);
@@ -611,6 +422,31 @@ namespace game_framework {
 			CEraser::actor_y = 5;
 			SetXY(245 + 45 * monster::mon_x, 360 + 45 * monster::mon_y);
 		}
+		if (map_num == 4) {//24*24
+			mon_x = 21;
+			mon_y = 11;
+			CEraser::actor_x = 3;
+			CEraser::actor_y = 13;
+			SetXY(825 + 45 * monster::mon_x, 0 + 45 * monster::mon_y);
+		}
+		if (map_num == 5) {//24*24
+			mon_x = 8;
+			mon_y = 3;
+			CEraser::actor_x = 16;
+			CEraser::actor_y = 21;
+			SetXY(245 + 45 * monster::mon_x, -350 + 45 * monster::mon_y);
+		}
+		if (map_num == 6) {//24*24
+			mon_x = 13;
+			mon_y = 22;
+			CEraser::actor_x = 11;
+			CEraser::actor_y = 2;
+			SetXY(475 + 45 * monster::mon_x, 490 + 45 * monster::mon_y);
+		}
+		if (map_num == 7) {//24*24
+			superdeath();
+		}
+
 		//printf("monster_map:%d\n", map_num);
 		return random_map;
 	}
@@ -640,34 +476,39 @@ namespace game_framework {
 		const int X_POS = 920;//245 = 200 + 1*45
 		const int Y_POS = 540;// 95 = 50  + 1*45
 		character = 0;
-<<<<<<< HEAD
-=======
-		mon_x = 23;
-		mon_y = 21;
->>>>>>> chun
 	}
 
 	void monster::LoadBitmap()
 	{
-		//animation.AddBitmap(warrior, RGB(255, 255, 255));
-		animation.AddBitmap(boss, RGB(255, 255, 255));
-<<<<<<< HEAD
-		animation.AddBitmap(boss2, RGB(255, 255, 255));
-		if (mon_HP != 20) {
+		if (mon_HP == 20) {
+			animation.cleanBitmap();
+			animation.AddBitmap(boss, RGB(255, 255, 255));
+			animation.AddBitmap(boss2, RGB(255, 255, 255));
+		}
+		if (mon_HP != 20 && mon_HP > 0) {
+			animation.cleanBitmap();
 			animation.AddBitmap(boss3, RGB(255, 255, 255));
 			animation.AddBitmap(boss4, RGB(255, 255, 255));
+			printf("bitmap:%d", animation.GetCurrentBitmapNumber());
+		}
+		if (mon_HP < 1 && deathshow == 1) {
+			printf("boss dead");
+			animation.cleanBitmap();
+			animation.SetDelayCount(30);
+			animation.AddBitmap(boss5, RGB(255, 255, 255));
+			animation.AddBitmap(boss6, RGB(255, 255, 255));
+			animation.AddBitmap(boss7, RGB(255, 255, 255));
+			animation.AddBitmap(boss8, RGB(255, 255, 255));
+			animation.AddBitmap(death_mon, RGB(255, 255, 255));
+			deathshow = 0;
 		}
 	}
 
-=======
-	}
->>>>>>> chun
 	void monster::OnMove()
 	{
 
 		animation.OnMove();
 		if (isMovingLeft) {
-<<<<<<< HEAD
 		}
 		if (isMovingRight) {
 		}
@@ -677,16 +518,6 @@ namespace game_framework {
 		}
 	}
 
-=======
-			}
-		if (isMovingRight) {
-			}
-		if (isMovingUp) {
-			}
-		if (isMovingDown) {
-			}
-	}
->>>>>>> chun
 	void monster::SetCharacter(int actor)
 	{
 		character = actor;
@@ -695,60 +526,25 @@ namespace game_framework {
 	void monster::SetMovingDown(bool flag)
 	{
 		isMovingDown = flag;
-		if (flag) {
+		if (flag&& stopeverything == 0) {
 			if (CGameMap::ismoving == 1) {
 				y += STEP_SIZE;
-<<<<<<< HEAD
 			}
 			findroad();
 			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
 			showdetail();
-=======
-				CGameMap::ismoving = 0;
-			}
-			//printf("---------------------------\n");
-			//printf("monster_map:%d", map_num);
-			//printf("checkdata:%d,%d,%d,%d\n", monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
-			next_x = monster::mon_x;
-			next_y = monster::mon_y;
-			//printf("next_XY:%d,%d\n", next_x, next_y);
-			next_step = automove(map_monster, monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
-			next_x = next_step / 100;
-			next_y = next_step % 100;
-			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
-			x += (next_x - monster::mon_x) * 45;
-			y += (next_y - monster::mon_y) * 45;
-			monster::mon_x = next_x;
-			monster::mon_y = next_y;
-			showdetail();
-
->>>>>>> chun
 		}
 	}
 
 	void monster::SetMovingLeft(bool flag)
 	{
 		isMovingLeft = flag;
-		if (flag) {
+		if (flag&& stopeverything == 0) {
 			if (CGameMap::ismoving == 1) {
 				x -= STEP_SIZE;
-<<<<<<< HEAD
 			}
 			findroad();
 			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
-=======
-				CGameMap::ismoving = 0;
-			}
-			next_x = monster::mon_x;
-			next_y = monster::mon_y;
-			next_x = next_step / 100;
-			next_y = next_step % 100;
-			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
-			x += (next_x - monster::mon_x) * 45;
-			y += (next_y - monster::mon_y) * 45;
-			monster::mon_x = next_x;
-			monster::mon_y = next_y;
->>>>>>> chun
 			showdetail();
 		}
 	}
@@ -756,27 +552,12 @@ namespace game_framework {
 	void monster::SetMovingRight(bool flag)
 	{
 		isMovingRight = flag;
-		if (flag) {
+		if (flag&& stopeverything == 0) {
 			if (CGameMap::ismoving == 1) {
 				x += STEP_SIZE;
-<<<<<<< HEAD
 			}
 			findroad();
 			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
-=======
-				CGameMap::ismoving = 0;
-			}
-			next_x = monster::mon_x;
-			next_y = monster::mon_y;
-			next_step = automove(map_monster, monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
-			next_x = next_step / 100;
-			next_y = next_step % 100;
-			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
-			x += (next_x - monster::mon_x) * 45;
-			y += (next_y - monster::mon_y) * 45;
-			monster::mon_x = next_x;
-			monster::mon_y = next_y;
->>>>>>> chun
 			showdetail();
 		}
 	}
@@ -784,10 +565,9 @@ namespace game_framework {
 	void monster::SetMovingUp(bool flag)
 	{
 		isMovingUp = flag;
-		if (flag) {
+		if (flag&& stopeverything == 0) {
 			if (CGameMap::ismoving == 1) {
 				y -= STEP_SIZE;
-<<<<<<< HEAD
 			}
 			findroad();
 			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
@@ -801,20 +581,6 @@ namespace game_framework {
 		if (flag) {
 			findroad();
 			attack_judge(mon_x, mon_y, next_x, next_y);
-=======
-				CGameMap::ismoving = 0;
-			}
-			next_x = monster::mon_x;
-			next_y = monster::mon_y;
-			next_step = automove(map_monster, monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
-			next_x = next_step / 100;
-			next_y = next_step % 100;
-			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
-			x += (next_x - monster::mon_x) * 45;
-			y += (next_y - monster::mon_y) * 45;
-			monster::mon_x = next_x;
-			monster::mon_y = next_y;
->>>>>>> chun
 			showdetail();
 		}
 	}
@@ -828,15 +594,40 @@ namespace game_framework {
 	{
 		animation.SetTopLeft(x, y);
 		animation.OnShow();
+		if (animation.GetCurrentBitmapNumber() == 4) {
+			animation.cleanBitmap();
+			animation.AddBitmap(death_mon, RGB(255, 255, 255));
+			x = eraser.GetX1() + 45;
+			y = eraser.GetY1() + 45;
+		}
 	}
-<<<<<<< HEAD
 
 	int monster::attacked(int ATK) {//攻擊者的攻擊力 回傳被攻擊後的血量
 		mon_HP -= ATK;
 		printf("boss is attacked\n");
+		LoadBitmap();
+		if (mon_HP < 1) {
+			death();
+		}
 		return mon_HP - ATK;
 	}
-	//----------------------------bat class--------------------
-=======
->>>>>>> chun
+	void monster::death() {
+		deathshow = 1;
+		monster::mon_x = CEraser::actor_x;
+		monster::mon_y = CEraser::actor_y;
+		mon_ATK = 0;
+		LoadBitmap();
+	}
+
+	void monster::superdeath() {
+		animation.cleanBitmap();
+		animation.AddBitmap(death_mon, RGB(255, 255, 255));
+		monster::mon_x = CEraser::actor_x;
+		monster::mon_y = CEraser::actor_y;
+		mon_ATK = 0;
+		mon_HP = 0;
+		x = eraser.GetX1() + 45;
+		y = eraser.GetY1() + 45;
+		stopeverything = 1;
+	}
 }

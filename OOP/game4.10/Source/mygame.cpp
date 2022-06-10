@@ -59,10 +59,7 @@
 #include "gamelib.h"
 #include "mygame.h"
 #include "monster.h"
-<<<<<<< HEAD
 #include "monsterBat.h"
-=======
->>>>>>> chun
 
 
 
@@ -255,6 +252,8 @@ void Cpractice4::OnShow() {
 	void CGameMap::SetXY(int x, int y) {
 		X = x;
 		Y = y;
+		CEraser::map_x = x;
+		CEraser::map_y = y;
 	}
 
 	void CGameMap::changemap(int m) {
@@ -266,13 +265,7 @@ void Cpractice4::OnShow() {
 			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map1_init[i][j];
-<<<<<<< HEAD
-					
-
-=======
-			X = 920;
-			Y = 540;
->>>>>>> chun
+			SetXY(920,540);
 		}
 		else if (m == 2) {
 			actor_x = 6;
@@ -281,8 +274,7 @@ void Cpractice4::OnShow() {
 			for (int i = 0; i < 27; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map2_init[i][j];
-			X = 695;
-			Y = 360;
+			SetXY(695, 360);
 		}
 		else if (m == 3) {
 			actor_x = 16;
@@ -291,8 +283,7 @@ void Cpractice4::OnShow() {
 			for (int i = 0; i < 27; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map3_init[i][j];
-			X = 245;
-			Y = 360;
+			SetXY(245, 360);
 		}
 		else if (m == 4) {
 			actor_x = 3;
@@ -301,8 +292,7 @@ void Cpractice4::OnShow() {
 			for (int i = 0; i < 27; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map4_init[i][j];
-			X =	825;
-			Y = 0;
+			SetXY(825, 0);
 		}
 		else if (m == 5) {
 			actor_x = 16;
@@ -311,8 +301,7 @@ void Cpractice4::OnShow() {
 			for (int i = 0; i < 27; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map5_init[i][j];
-			X = 245;
-			Y = -350;
+			SetXY(245, -350);
 		}
 		else if (m == 6) {
 			actor_x = 11;
@@ -321,8 +310,7 @@ void Cpractice4::OnShow() {
 			for (int i = 0; i < 27; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map6_init[i][j];
-			X = 475;
-			Y = 490;
+			SetXY(475, 490);
 		}
 		else if (m == 7) {
 			actor_x = 3;
@@ -331,8 +319,7 @@ void Cpractice4::OnShow() {
 			for (int i = 0; i < 27; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map7_init[i][j];
-			X = 835;
-			Y = 485;
+			SetXY(835, 485);
 		}
 	}
 
@@ -482,6 +469,7 @@ void Cpractice4::OnShow() {
 				SetXY(X + step, Y);
 				actor_x -= 1;
 				CGameMap::ismoving = 1;
+				printf("\nmapXY::%d,%d!!!!!!!!!!!\n", CEraser::map_x, CEraser::map_y);
 			}
 			else {
 				printf("wall:%d,%d\n", actor_y, actor_x - 1);
@@ -493,6 +481,7 @@ void Cpractice4::OnShow() {
 				SetXY(X - step, Y);
 				actor_x += 1;
 				CGameMap::ismoving = 1;
+				printf("\nmapXY::%d,%d!!!!!!!!!!!\n", CEraser::map_x, CEraser::map_y);
 			}
 			else {
 				printf("wall:%d,%d\n", actor_y, actor_x + 1);
@@ -504,6 +493,7 @@ void Cpractice4::OnShow() {
 				SetXY(X, Y + step);
 				actor_y -= 1;
 				CGameMap::ismoving = 1;
+				printf("\nmapXY::%d,%d!!!!!!!!!!!\n", CEraser::map_x, CEraser::map_y);
 			}
 			else {
 				printf("wall:%d,%d\n", actor_y - 1, actor_x);
@@ -515,6 +505,7 @@ void Cpractice4::OnShow() {
 				SetXY(X, Y - step);
 				actor_y += 1;
 				CGameMap::ismoving = 1;
+				printf("\nmapXY::%d,%d!!!!!!!!!!!\n", CEraser::map_x, CEraser::map_y);
 			}
 			else {
 				printf("wall:%d,%d\n", actor_y + 1, actor_x);
@@ -563,49 +554,6 @@ void Cpractice4::OnShow() {
 
 	CGameMap::~CGameMap() {
 		delete[] bballs;
-	}
-	Cmonster::Cmonster()
-		:X(200+monster::mon_x*45), Y(50 + monster::mon_y * 45), MW(45), MH(45)
-	{
-	}
-	void Cmonster::getmap(int map_num){
-
-	}
-	void Cmonster::LoadBitmap()
-	{
-		m1.LoadBitmap(boss,RGB(255,255,255));
-	}						//boss 黑鬼
-	void Cmonster::SetXY(int x, int y) {
-		X = x;
-		Y = y;
-	}
-	void Cmonster::OnShow()
-	{
-		m1.SetTopLeft(X, Y);
-		m1.ShowBitmap();
-	}
-	void Cmonster::OnKeyDown(UINT nChar) {
-		const int KEY_SPACE = 0x20;
-		const char KEY_LEFT = 0x25; // keyboard左箭頭
-		const char KEY_UP = 0x26; // keyboard上箭頭
-		const char KEY_RIGHT = 0x27; // keyboard右箭頭
-		const char KEY_DOWN = 0x28; // keyboard下箭頭
-		const int step = -0;
-		int next_step = -45;
-		if (nChar == KEY_LEFT) {
-			SetXY(X + step, Y);
-		}
-		if (nChar == KEY_RIGHT){
-			SetXY(X - step, Y);
-		}
-		if (nChar == KEY_UP){
-			SetXY(X, Y + step);
-		}
-		if (nChar == KEY_DOWN) {
-			SetXY(X, Y - step);
-		}
-		//printf("monster::mon_x=%d,%d\n", monster::mon_x, monster::mon_y);
-		//printf("monster_location=%d,%d\n",X, Y);
 	}
 ////////////////////////////////////////////////////////////////
 	void CBouncingBall::SetXY(int x, int y)
@@ -762,11 +710,8 @@ void CGameStateRun::OnBeginState()
 	eraser.LoadBitmap();
 	monster_cpp.SetCharacter(main_actor);
 	monster_cpp.LoadBitmap();
-<<<<<<< HEAD
 	monster_bat_cpp.SetCharacter(main_actor);
 	monster_bat_cpp.LoadBitmap();
-=======
->>>>>>> chun
 	/*const int BALL_GAP = 90;
 	const int BALL_XY_OFFSET = 45;
 	const int BALL_PER_ROW = 7;
@@ -913,65 +858,43 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-<<<<<<< HEAD
-=======
 	int test = 1;
->>>>>>> chun
 	const int KEY_SPACE = 0x20;
 	const char KEY_LEFT  = 0x25; // keyboard左箭頭
 	const char KEY_UP    = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
 	if (nChar == KEY_SPACE) {
-<<<<<<< HEAD
-		gamemap.changemap(2);
-		monster_cpp.getmap(2, gamemap.map);
-		monster_bat_cpp.getmap(2, gamemap.map);
-=======
-		test = 7;
+		test = 2;
 		gamemap.changemap(test);
 		monster_cpp.getmap(test, gamemap.map);
->>>>>>> chun
+		monster_bat_cpp.getmap(test, gamemap.map);
 	}
 	if (nChar == KEY_LEFT) {
 		eraser.SetMovingLeft(true);
 		gamemap.OnKeyDown(nChar);
 		monster_cpp.SetMovingLeft(true);
-<<<<<<< HEAD
 		monster_bat_cpp.SetMovingLeft(true);
-=======
->>>>>>> chun
 	}
 	if (nChar == KEY_RIGHT) {
 		eraser.SetMovingRight(true);
 		gamemap.OnKeyDown(nChar);
 		monster_cpp.SetMovingRight(true);
-<<<<<<< HEAD
 		monster_bat_cpp.SetMovingRight(true);
-=======
->>>>>>> chun
 	}
 	if (nChar == KEY_UP){
 		eraser.SetMovingUp(true);
 		gamemap.OnKeyDown(nChar);
 		monster_cpp.SetMovingUp(true);
-<<<<<<< HEAD
 		monster_bat_cpp.SetMovingUp(true);
-=======
->>>>>>> chun
 	}
 	if (nChar == KEY_DOWN){
 		eraser.SetMovingDown(true);
 		gamemap.OnKeyDown(nChar);
 		monster_cpp.SetMovingDown(true);
-<<<<<<< HEAD
 		monster_bat_cpp.SetMovingDown(true);
 		printf("keydown\n");
 	}
-=======
-	}
-	gamemonster.OnKeyDown(nChar);
->>>>>>> chun
 }
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -984,34 +907,22 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == KEY_LEFT){
 		eraser.SetMovingLeft(false);
 		monster_cpp.SetMovingLeft(false);
-<<<<<<< HEAD
 		monster_bat_cpp.SetMovingLeft(false);
-=======
->>>>>>> chun
 	}
 	if (nChar == KEY_RIGHT) {
 		eraser.SetMovingRight(false);
 		monster_cpp.SetMovingRight(false);
-<<<<<<< HEAD
 		monster_bat_cpp.SetMovingRight(false);
-=======
->>>>>>> chun
 	}
 	if (nChar == KEY_UP) {
 		eraser.SetMovingUp(false);
 		monster_cpp.SetMovingUp(false);
-<<<<<<< HEAD
 		monster_bat_cpp.SetMovingUp(false);
-=======
->>>>>>> chun
 	}
 	if (nChar == KEY_DOWN) {
 		eraser.SetMovingDown(false);
 		monster_cpp.SetMovingDown(false);
-<<<<<<< HEAD
 		monster_bat_cpp.SetMovingDown(false);
-=======
->>>>>>> chun
 	}
 }
 
@@ -1032,8 +943,10 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	else if(point.x < backpackUI.Left() || (point.x > backpackUI.Left() + backpackUI.Width()) || point.y < backpackUI.Top() || (point.y > backpackUI.Top() + backpackUI.Height())) {
 	check_backpack = 0;
 	}
-	printf("GetXY:%d,%d\n", monster_cpp.GetX1(), monster_cpp.GetY1());
+	/*printf("GetXY:%d,%d\n", monster_cpp.GetX1(), monster_cpp.GetY1());
 	printf("GetXY:%d,%d\n", monster_cpp.GetX2(), monster_cpp.GetY2());
+	printf("GetXY:%d,%d\n", monster_bat_cpp.GetX1(), monster_bat_cpp.GetY1());
+	printf("GetXY:%d,%d\n", monster_bat_cpp.GetX2(), monster_bat_cpp.GetY2());*/
 	if (point.x > monster_cpp.GetX1() && point.x < monster_cpp.GetX2() && point.y > monster_cpp.GetY1() && point.y < monster_cpp.GetY2()) {
 		if (monster_cpp.attacked_judge(monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
 			monster_cpp.attacked(eraser.hero_ATK);
@@ -1052,10 +965,6 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 			monster_bat_cpp.showdata();
 		}
 	}
-
-
-	
-
 }
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -1078,7 +987,7 @@ void CGameStateRun::OnShow()
 {
 	int uix = 700, uiy = 990;
 	if (random_map == 1) {
-		eraser.SetXY(920 + 45, 540 + 45);//角色初始位置
+		eraser.SetXY(920 + 45, 540 +45);//角色初始位置
 	}
 	if (random_map == 2) {
 		eraser.SetXY(920 + 45, 540 + 45);//角色初始位置
@@ -1115,10 +1024,7 @@ void CGameStateRun::OnShow()
 	//bballs.OnShow();	// 貼上彈跳的球
 	eraser.OnShow();					// 貼上擦子
 	monster_cpp.OnShow();
-<<<<<<< HEAD
 	monster_bat_cpp.OnShow();
-=======
->>>>>>> chun
 
 	backpack.ShowBitmap();
 	stop.ShowBitmap();
