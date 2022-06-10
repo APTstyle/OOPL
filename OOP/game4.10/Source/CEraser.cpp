@@ -67,8 +67,8 @@ namespace game_framework {
 
 	void CEraser::Initialize()
 	{
-		const int X_POS = 920;
-		const int Y_POS = 540;
+		const int X_POS = 245;
+		const int Y_POS = 95;
 		character = 0;
 		x = X_POS;
 		y = Y_POS;
