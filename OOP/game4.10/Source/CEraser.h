@@ -5,6 +5,7 @@ namespace game_framework {
 	// 這個class提供可以用鍵盤或滑鼠控制的擦子
 	// 看懂就可以改寫成自己的程式了
 	/////////////////////////////////////////////////////////////////////////////
+
 	class CEraser
 	{
 	public:
@@ -38,5 +39,7 @@ namespace game_framework {
 		bool isMovingRight;			// 是否正在往右移動
 		bool isMovingUp;			// 是否正在往上移動
 	};
+
+
 }
 #endif

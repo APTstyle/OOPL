@@ -13,7 +13,6 @@
     <ClCompile Include="Source\StdAfx.cpp" />
     <ClCompile Include="Source\gamelib.cpp" />
     <ClCompile Include="Source\mygame.cpp" />
-    <ClCompile Include="Source\monsterBat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\monster.h" />
@@ -29,7 +28,6 @@
     <ClInclude Include="Source\StdAfx.h" />
     <ClInclude Include="Source\gamelib.h" />
     <ClInclude Include="Source\mygame.h" />
-    <ClInclude Include="Source\monsterBat.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Source\game.rc" />

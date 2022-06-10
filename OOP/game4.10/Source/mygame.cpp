@@ -59,7 +59,6 @@
 #include "gamelib.h"
 #include "mygame.h"
 #include "monster.h"
-#include "monsterBat.h"
 
 
 
@@ -851,7 +850,6 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		gamemap.OnKeyDown(nChar);
 		monster_cpp.SetMovingDown(true);
 		monster_bat_cpp.SetMovingDown(true);
-		printf("keydown\n");
 	}
 }
 

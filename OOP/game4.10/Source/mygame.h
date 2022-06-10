@@ -41,7 +41,6 @@
 #include "CEraser.h"
 #include "CBall.h"
 #include "monster.h"
-#include "monsterBat.h"
 //#include "CBouncingBall.h"
 
 namespace game_framework {
