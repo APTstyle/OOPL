@@ -587,7 +587,7 @@ void CGame::OnInit()	// OnInit() 只在程式一開始時執行一次
 	//
 	// 啟動亂數
 	//
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 	//
 	// 開啟DirectX繪圖介面
 	//

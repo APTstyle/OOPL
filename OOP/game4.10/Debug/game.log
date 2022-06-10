@@ -1,19 +1,14 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: 中繼目錄 (.\Debug\) 包含從其他專案 (pixel dungeon.vcxproj) 共用的檔案。這可能導致錯誤的清除和重建行為。
-cl : 命令列 warning D9035: 選項 'Gm' 已被取代，在未來的發行版本中將會移除
+﻿cl : 命令列 warning D9035: 選項 'Gm' 已被取代，在未來的發行版本中將會移除
+  game.cpp
+  正在產生程式碼...
   正在略過... (未偵測到相關變更)
   mygame.cpp
+  monster.cpp
   gamelib.cpp
   gameView.cpp
-  gameDoc.cpp
-  game.cpp
-  audio.cpp
-  MainFrm.cpp
-  CEraser.cpp
-  CBouncingBall.cpp
-  CBall.cpp
   LINK : 最後的累加連結找不到或未建置 .\Debug/game.exe，正在執行完整連結
-audio.obj : warning LNK4075: 忽略 '/EDITANDCONTINUE'，由於 '/SAFESEH' 規格
-  game.vcxproj -> C:\Users\user\Desktop\北科-大二下\OOP\game4.10\.\Debug\game.exe
+monster.obj : warning LNK4075: 忽略 '/EDITANDCONTINUE'，由於 '/SAFESEH' 規格
+  game.vcxproj -> C:\Users\user\Desktop\OOP\game4.10\.\Debug\game.exe
   Microsoft (R) COFF/PE Editor Version 14.16.27045.0
   Copyright (C) Microsoft Corporation.  All rights reserved.
   

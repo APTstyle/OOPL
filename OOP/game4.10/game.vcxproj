@@ -86,6 +86,9 @@
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Program Files\Microsoft DirectX SDK %28February 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Program Files\Microsoft DirectX SDK %28February 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <EmbedManifest>false</EmbedManifest>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -261,6 +264,7 @@
     <None Include="res\Toolbar.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\monster.cpp" />
     <ClCompile Include="Source\audio.cpp" />
     <ClCompile Include="Source\CBall.cpp" />
     <ClCompile Include="Source\CBouncingBall.cpp" />
@@ -307,7 +311,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="monster.h" />
+    <ClInclude Include="Source\monster.h" />
     <ClInclude Include="Source\audio.h" />
     <ClInclude Include="Source\CBall.h" />
     <ClInclude Include="Source\CBouncingBall.h" />
@@ -349,6 +353,8 @@
     <Image Include="..\assest\wall1.PNG" />
     <Image Include="Bitmaps\bg.bmp" />
     <Image Include="RES\11047.png" />
+    <Image Include="RES\arrow1.bmp" />
+    <Image Include="RES\arrow2.bmp" />
     <Image Include="RES\backpack1.bmp" />
     <Image Include="res\bitmap10.bmp" />
     <Image Include="res\bitmap11.bmp" />
@@ -375,9 +381,15 @@
     <Image Include="res\dark_red.bmp" />
     <Image Include="res\door1.bmp" />
     <Image Include="res\floor1.bmp" />
+    <Image Include="RES\food1.bmp" />
+    <Image Include="res\food1b1.bmp" />
+    <Image Include="RES\food2.bmp" />
+    <Image Include="res\food2b1.bmp" />
     <Image Include="RES\golblin (2).bmp" />
     <Image Include="RES\golblin.bmp" />
+    <Image Include="RES\grave1.bmp" />
     <Image Include="RES\hero.bmp" />
+    <Image Include="RES\key1.bmp" />
     <Image Include="RES\level1.bmp" />
     <Image Include="RES\level2.bmp" />
     <Image Include="RES\level3.bmp" />
@@ -386,6 +398,9 @@
     <Image Include="RES\level6.bmp" />
     <Image Include="RES\level7.bmp" />
     <Image Include="res\light_bl.bmp" />
+    <Image Include="RES\paper1.bmp" />
+    <Image Include="RES\paper2.bmp" />
+    <Image Include="RES\paper3.bmp" />
     <Image Include="RES\person1.bmp" />
     <Image Include="RES\person2.bmp" />
     <Image Include="RES\person3.bmp" />
@@ -393,11 +408,21 @@
     <Image Include="RES\potion1.bmp" />
     <Image Include="RES\potion2.bmp" />
     <Image Include="RES\potion3.bmp" />
+    <Image Include="RES\ring1.bmp" />
+    <Image Include="RES\ring2.bmp" />
+    <Image Include="RES\ring3.bmp" />
     <Image Include="res\room2.bmp" />
     <Image Include="RES\stair_down1.bmp" />
     <Image Include="RES\stair_up1.bmp" />
     <Image Include="RES\startbutton1.bmp" />
+    <Image Include="RES\stick1.bmp" />
+    <Image Include="RES\stick2.bmp" />
+    <Image Include="RES\stick3.bmp" />
+    <Image Include="RES\sword1.bmp" />
+    <Image Include="RES\sword2.bmp" />
+    <Image Include="RES\sword3.bmp" />
     <Image Include="res\test.bmp" />
+    <Image Include="RES\treasure1.bmp" />
     <Image Include="RES\ui1.bmp" />
     <Image Include="RES\ui2.bmp" />
     <Image Include="RES\ui3.bmp" />
@@ -406,6 +431,7 @@
     <Image Include="RES\warrior1.bmp" />
     <Image Include="RES\wolf1.bmp" />
     <Image Include="RES\wood_floor1.bmp" />
+    <Image Include="RES\Wraithsheet\Wraithsheet1.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
