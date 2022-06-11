@@ -484,11 +484,15 @@ namespace game_framework {
 			animation.cleanBitmap();
 			animation.AddBitmap(boss, RGB(255, 255, 255));
 			animation.AddBitmap(boss2, RGB(255, 255, 255));
+			Shp.LoadBitmap(20);
+			Shp.SetXY(GetX1(), GetY2());
 		}
 		if (mon_HP != 20 && mon_HP > 0) {
 			animation.cleanBitmap();
 			animation.AddBitmap(boss3, RGB(255, 255, 255));
 			animation.AddBitmap(boss4, RGB(255, 255, 255));
+			Shp.LoadBitmap((mon_HP*10 ) / mon_MAXHP);
+			Shp.SetXY(GetX1(), GetY2());
 			printf("bitmap:%d", animation.GetCurrentBitmapNumber());
 		}
 		if (mon_HP < 1 && deathshow == 1) {
@@ -500,6 +504,8 @@ namespace game_framework {
 			animation.AddBitmap(boss7, RGB(255, 255, 255));
 			animation.AddBitmap(boss8, RGB(255, 255, 255));
 			animation.AddBitmap(death_mon, RGB(255, 255, 255));
+			Shp.LoadBitmap(0);
+			Shp.SetXY(GetX1(), GetY2());
 			deathshow = 0;
 		}
 	}
@@ -594,6 +600,7 @@ namespace game_framework {
 	{
 		animation.SetTopLeft(x, y);
 		animation.OnShow();
+		Shp.OnShow();
 		if (animation.GetCurrentBitmapNumber() == 4) {
 			animation.cleanBitmap();
 			animation.AddBitmap(death_mon, RGB(255, 255, 255));

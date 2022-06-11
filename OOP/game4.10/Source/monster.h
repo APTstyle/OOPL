@@ -1,12 +1,14 @@
 #ifndef MONSTER_H
 #define MONSTER_H
 #include "CEraser.h"
+#include "showHp.h"
 namespace game_framework {
 	class monster
 	{
 	public:
 		monster();
 		int map_monster[27][27];
+		int mon_MAXHP = 20;
 		int mon_HP = 20;
 		int mon_ATK = 1;
 		int map_num = 1;
@@ -54,6 +56,7 @@ namespace game_framework {
 	protected:
 		CEraser eraser;
 		CAnimation animation;		// 擦子的動畫
+		showHp Shp;
 		int x, y;					// 擦子左上角座標
 		int character;				//職業的變數
 		bool isMovingDown;			// 是否正在往下移動
