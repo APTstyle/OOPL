@@ -82,25 +82,37 @@ namespace game_framework {
 
 	void CEraser::LoadBitmap()
 	{
+		animation_test.LoadBitmap(herohp1, RGB(255, 255, 255));
 		//animation.AddBitmap(warrior, RGB(255, 255, 255));
 		if (character == 1) {
 			animation.AddBitmap(warrior, RGB(255, 255, 255));
+			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_warrior_hp, RGB(255, 255, 255));
 		}
 		else if (character == 2) {
 			animation.AddBitmap(mage, RGB(255, 255, 255));
+			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_mage_hp, RGB(255, 255, 255));
 		}
 		else if (character == 3) {
 			animation.AddBitmap(assassin, RGB(255, 255, 255));
+			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_assassin_hp, RGB(255, 255, 255));
 		}
 		else if (character == 4) {
 			animation.AddBitmap(hunter, RGB(255, 255, 255));
+			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_hunter_hp, RGB(255, 255, 255));
 		}
 		else {
 			animation.AddBitmap(mage, RGB(255, 255, 255));
+			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_mage_hp, RGB(255, 255, 255));
 		}
 	}
 	int CEraser::actor_x = 1;
 	int CEraser::actor_y = 1;
+	int CEraser::hero_HP = 20;
 	int show = 1;
 	void CEraser::OnMove()
 	{
@@ -152,17 +164,25 @@ namespace game_framework {
 	{
 		animation.SetTopLeft(x, y);
 		animation.OnShow();
+		animation_hp_background.SetTopLeft(0, 0);
+		animation_hp_background.OnShow();
+		animation_icon.SetTopLeft(18, 12);
+		animation_icon.OnShow();
+		for (int i = 0; i < CEraser::hero_HP*4; i++) {
+			animation_test.SetTopLeft(87+i*2, 0);
+			animation_test.ShowBitmap();
+		}
 	}
 
 	int CEraser::attacked(int ATK) {//攻擊者的攻擊力 回傳被攻擊後的血量
-		hero_HP -= ATK;
+		CEraser::hero_HP -= ATK;
 		printf("Hero is attacked\n");
-		return hero_HP - ATK;
+		return CEraser::hero_HP - ATK;
 	}
 
 	void CEraser::showdetail() {
 		printf("\nHero:\n");
-		printf("HP:%d\n", hero_HP);
+		printf("HP:%d\n", CEraser::hero_HP);
 		//printf("ATK:%d\n", hero_ATK);
 		printf("Location:%d,%d\n", actor_x, actor_y);
 		printf("X,Y:%d,%d\n", x, y);
@@ -170,7 +190,7 @@ namespace game_framework {
 
 	void CEraser::showdata() {
 		printf("\nHero:\n");
-		printf("HP:%d\n", hero_HP);
+		printf("HP:%d\n", CEraser::hero_HP);
 		//printf("ATK:%d\n", hero_ATK);
 		printf("Location:%d,%d\n", actor_x, actor_y);
 		printf("X,Y:%d,%d\n", x, y);

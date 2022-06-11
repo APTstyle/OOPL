@@ -354,7 +354,6 @@ namespace game_framework {
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		CGameMap		gamemap;
-		Cpractice4		c_practice4;
 		const int		NUMBALLS;	// 球的總數
 		CMovingBitmap	background;	// 背景圖
 		CMovingBitmap	help;		// 說明圖
@@ -371,6 +370,8 @@ namespace game_framework {
 		CMovingBitmap	backpackUI;
 		CMovingBitmap	lb_p, dr_p, dg_p;
 		
+		CMovingBitmap	herohp;
+
 		CInteger		hits_left;	// 剩下的撞擊數
 		CBouncingBall   bballs;		// 反覆彈跳的球
 		CMovingBitmap   practice;

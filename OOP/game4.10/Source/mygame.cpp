@@ -161,30 +161,6 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 		GotoGameState(GAME_STATE_RUN);
 	}
 }
-
-Cpractice4::Cpractice4() {
-	x = y = 0;
-}
-void Cpractice4::OnMove() {
-	if (y <= SIZE_Y) {
-		x += 3;
-		y += 3;
-	}
-	else {
-		x = y = 0;
-	}
-}
-void Cpractice4::LoadBitmap() {
-	//pic.LoadBitmap(IDB_hi);
-}
-
-
-void Cpractice4::OnShow() {
-	pic.SetTopLeft(x, y);
-	//pic.ShowBitmap();
-}
-
-/////////////////////////////////////////////////
 	CGameMap::CGameMap()
         :X(920), Y(540), MW(45), MH(45)
     {
@@ -746,14 +722,13 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	// 移動背景圖的座標
 	gamemap.OnMove();
-	c_practice4.OnMove();
 	//
 	if (background.Top() > SIZE_Y)
 		background.SetTopLeft(80 ,-background.Height());
 	background.SetTopLeft(background.Left(),background.Top()+1);
 	//
 	// 移動球
-	practice.SetTopLeft(10, 10);
+	//practice.SetTopLeft(10, 10);
 	if (picX <= SIZE_Y) {
 		picX += 5;
 		picY += 5;
@@ -761,7 +736,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	else {
 		picX = picY = 0;
 	}
-	practice3.SetTopLeft(picX, picY);
+	//practice3.SetTopLeft(picX, picY);
 
 	//
 	int i;
@@ -819,11 +794,11 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	dg_p.LoadBitmap(dark_green1, RGB(255, 255, 255));
 	dr_p.LoadBitmap(dark_red1, RGB(255, 255, 255));
 
+	herohp.LoadBitmap(hp1, RGB(255, 255, 255));
 
-	border.LoadBitmap("Bitmaps/practice2.bmp", RGB(255, 255, 255));
-	practice.LoadBitmap(IDB_BALL);
-	practice3.LoadBitmap("Bitmaps/hi.bmp");
-	c_practice4.LoadBitmap();
+	//border.LoadBitmap("Bitmaps/practice2.bmp", RGB(255, 255, 255));
+	//practice.LoadBitmap(IDB_BALL);
+	//practice3.LoadBitmap("Bitmaps/hi.bmp");
 	gamemap.LoadBitmap();
 	
 	//
@@ -843,8 +818,8 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	// 繼續載入其他資料
 	//
 	
-	help.LoadBitmap(IDB_HELP,RGB(255,255,255));				// 載入說明的圖形
-	corner.LoadBitmap(IDB_CORNER);							// 載入角落圖形
+	//help.LoadBitmap(IDB_HELP,RGB(255,255,255));				// 載入說明的圖形
+	//corner.LoadBitmap(IDB_CORNER);							// 載入角落圖形
 	//corner.ShowBitmap(background);							// 將corner貼到background
 	bballs.LoadBitmap();										// 載入圖形
 	hits_left.LoadBitmap();									
@@ -1017,7 +992,7 @@ void CGameStateRun::OnShow()
 	//
 	//background.ShowBitmap();			// 貼上背景圖
 	gamemap.OnShow();
-	help.ShowBitmap();					// 貼上說明圖
+	//help.ShowBitmap();					// 貼上說明圖
 	hits_left.ShowBitmap();
 	//for (int i=0; i < NUMBALLS; i++)
 	//	ball[i].OnShow();				// 貼上第i號球
@@ -1071,13 +1046,13 @@ void CGameStateRun::OnShow()
 	//  貼上左上及右下角落的圖
 	//
 	
-	corner.SetTopLeft(0,0);
-	corner.ShowBitmap();
-	corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
-	corner.ShowBitmap();
+	//corner.SetTopLeft(0,0);
+	//corner.ShowBitmap();
+	//corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
+	//corner.ShowBitmap();
 	//practice3.ShowBitmap();
 	//practice.ShowBitmap();
-	border.ShowBitmap();
+	//border.ShowBitmap();
 	//c_practice4.OnShow();
 	
 }

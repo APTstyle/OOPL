@@ -238,6 +238,9 @@ namespace game_framework {
 		if (map_num == 7) {//24*24
 			superdeath();
 		}
+		mon_HP = 20;
+		mon_ATK = 1;
+		LoadBitmap();
 		//printf("monster_map:%d\n", map_num);
 		return random_map;
 	}
@@ -276,21 +279,27 @@ namespace game_framework {
 			animation.cleanBitmap();
 			animation.AddBitmap(bat, RGB(255, 255, 255));
 			animation.AddBitmap(bat2, RGB(255, 255, 255));
+			Shp.LoadBitmap(20);
+			Shp.SetXY(GetX1(), GetY2());
 		}
 		if (mon_HP != 20 && mon_HP >0) {
 			animation.cleanBitmap();
 			animation.AddBitmap(bat3, RGB(255, 255, 255));
 			animation.AddBitmap(bat4, RGB(255, 255, 255));
+			Shp.LoadBitmap((mon_HP * 10) / mon_MAXHP);
+			Shp.SetXY(GetX1(), GetY2());
 			printf("bitmap:%d", animation.GetCurrentBitmapNumber());
 		}
 		if (mon_HP < 1 && deathshow == 1) {
 			printf("bat dead");
 			animation.cleanBitmap();
-			animation.SetDelayCount(30);
+			animation.SetDelayCount(5);
 			animation.AddBitmap(bat5, RGB(255, 255, 255));
 			animation.AddBitmap(bat6, RGB(255, 255, 255));
 			animation.AddBitmap(bat7, RGB(255, 255, 255));
 			animation.AddBitmap(death_mon, RGB(255, 255, 255));
+			Shp.LoadBitmap(0);
+			Shp.SetXY(GetX1(), GetY2());
 			deathshow = 0;
 		}
 	}
@@ -371,6 +380,7 @@ namespace game_framework {
 	{
 		animation.SetTopLeft(x, y);
 		animation.OnShow();
+		Shp.OnShow();
 		if (animation.GetCurrentBitmapNumber() == 3) {
 			animation.cleanBitmap();
 			animation.AddBitmap(death_mon, RGB(255, 255, 255));

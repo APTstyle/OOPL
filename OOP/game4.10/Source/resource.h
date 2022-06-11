@@ -140,12 +140,17 @@
 #define hp2                             309
 #define hp3                             310
 #define hp4                             311
-#define ID                              312
 #define hp5                             312
 #define hp6                             313
 #define hp7                             314
 #define hp8                             315
 #define hp9                             316
+#define charactor_hunter_hp             319
+#define charactor_mage_hp               321
+#define charactor_assassin_hp           322
+#define charactor_warrior_hp            323
+#define herohp50                        338
+#define herohp1                         338
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -158,7 +163,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        317
+#define _APS_NEXT_RESOURCE_VALUE        339
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

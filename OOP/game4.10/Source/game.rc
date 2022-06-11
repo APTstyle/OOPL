@@ -252,41 +252,51 @@ food1s                  BITMAP                  "..\\res\\food1b1.bmp"
 
 food2s                  BITMAP                  "..\\res\\food2b1.bmp"
 
-bat5                    BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\batsheet\\batsheet5.bmp"
+bat5                    BITMAP                  "..\\res\\batsheet\\batsheet5.bmp"
 
-bat6                    BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\batsheet\\batsheet6.bmp"
+bat6                    BITMAP                  "..\\res\\batsheet\\batsheet6.bmp"
 
-bat7                    BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\batsheet\\batsheet7.bmp"
+bat7                    BITMAP                  "..\\res\\batsheet\\batsheet7.bmp"
 
 death_mon               BITMAP                  "..\\res\\bitmap11.bmp"
 
-boss5                   BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\Wraithsheet\\Wraithsheet5.bmp"
+boss5                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet5.bmp"
 
-boss6                   BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\Wraithsheet\\Wraithsheet6.bmp"
+boss6                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet6.bmp"
 
-boss7                   BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\Wraithsheet\\Wraithsheet7.bmp"
+boss7                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet7.bmp"
 
-boss8                   BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\Wraithsheet\\Wraithsheet8.bmp"
+boss8                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet8.bmp"
 
-hp10                    BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\hp\\hp10.bmp"
+hp10                    BITMAP                  "..\\res\\hp\\hp10.bmp"
 
-hp1                     BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\hp\\hp1.bmp"
+hp1                     BITMAP                  "..\\res\\hp\\hp1.bmp"
 
-hp2                     BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\hp\\hp2.bmp"
+hp2                     BITMAP                  "..\\res\\hp\\hp2.bmp"
 
-hp3                     BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\hp\\hp3.bmp"
+hp3                     BITMAP                  "..\\res\\hp\\hp3.bmp"
 
-hp4                     BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\hp\\hp4.bmp"
+hp4                     BITMAP                  "..\\res\\hp\\hp4.bmp"
 
-hp5                     BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\hp\\hp5.bmp"
+hp5                     BITMAP                  "..\\res\\hp\\hp5.bmp"
 
-hp6                     BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\hp\\hp6.bmp"
+hp6                     BITMAP                  "..\\res\\hp\\hp6.bmp"
 
-hp7                     BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\hp\\hp7.bmp"
+hp7                     BITMAP                  "..\\res\\hp\\hp7.bmp"
 
-hp8                     BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\hp\\hp8.bmp"
+hp8                     BITMAP                  "..\\res\\hp\\hp8.bmp"
 
-hp9                     BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\hp\\hp9.bmp"
+hp9                     BITMAP                  "..\\res\\hp\\hp9.bmp"
+
+charactor_hunter_hp     BITMAP                  "..\\res\\person1\\person55.bmp"
+
+charactor_mage_hp       BITMAP                  "..\\res\\person2\\person55.bmp"
+
+charactor_assassin_hp   BITMAP                  "..\\res\\person3\\person55.bmp"
+
+charactor_warrior_hp    BITMAP                  "..\\res\\person4\\person55.bmp"
+
+herohp1                 BITMAP                  "..\\res\\herohp\\bitmap30.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

@@ -2,12 +2,14 @@
 #define MONSTERBAT_H
 #include "CEraser.h"
 #include "monster.h" 
+#include "showHp.h"
 namespace game_framework {
 	class monster_bat
 	{
 	public:
 		monster_bat();
 		int map_monster[27][27];
+		int mon_MAXHP = 20;
 		int mon_HP= 20;
 		int mon_ATK = 1;
 		int map_num = 1;
@@ -46,6 +48,7 @@ namespace game_framework {
 		CEraser eraser;
 		monster monster_cpp;
 		CAnimation animation;		// 擦子的動畫
+		showHp Shp;
 		int x, y;					// 擦子左上角座標
 		int character;				//職業的變數
 		bool isMovingDown;			// 是否正在往下移動

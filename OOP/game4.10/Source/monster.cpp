@@ -446,7 +446,9 @@ namespace game_framework {
 		if (map_num == 7) {//24*24
 			superdeath();
 		}
-
+		mon_HP = 20;
+		mon_ATK = 1;
+		LoadBitmap();
 		//printf("monster_map:%d\n", map_num);
 		return random_map;
 	}
@@ -498,7 +500,7 @@ namespace game_framework {
 		if (mon_HP < 1 && deathshow == 1) {
 			printf("boss dead");
 			animation.cleanBitmap();
-			animation.SetDelayCount(30);
+			animation.SetDelayCount(5);
 			animation.AddBitmap(boss5, RGB(255, 255, 255));
 			animation.AddBitmap(boss6, RGB(255, 255, 255));
 			animation.AddBitmap(boss7, RGB(255, 255, 255));
