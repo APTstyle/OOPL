@@ -172,8 +172,6 @@ assassin                BITMAP                  "..\\res\\person4.bmp"
 
 warrior2                BITMAP                  "..\\res\\warrior1.bmp"
 
-IDB_BITMAP8             BITMAP                  "..\\res\\bitmap8.bmp"
-
 boss                    BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet1.bmp"
 
 ui_stop                 BITMAP                  "..\\res\\ui1.bmp"
@@ -183,8 +181,6 @@ ui_detect               BITMAP                  "..\\res\\ui2.bmp"
 ui_backpack             BITMAP                  "..\\res\\ui3.bmp"
 
 ui_item1                BITMAP                  "..\\res\\ui4.bmp"
-
-IDB_BITMAP9             BITMAP                  "..\\res\\bmp00004.bmp"
 
 backpack_ui             BITMAP                  "..\\res\\backpack1.bmp"
 
@@ -200,47 +196,105 @@ dark_green1             BITMAP                  "..\\res\\dark_gre.bmp"
 
 light_blue1             BITMAP                  "..\\res\\light_bl.bmp"
 
-IDB_BITMAP8             BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\arrow1.bmp"
+boss2                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet2.bmp"
 
-IDB_BITMAP9             BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\arrow2.bmp"
+boss3                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet3.bmp"
 
-food1b                  BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\food1.bmp"
+boss4                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet4.bmp"
 
-food2b                  BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\food2.bmp"
+bat                     BITMAP                  "..\\res\\batsheet\\batsheet1.bmp"
 
-IDB_BITMAP12            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\grave1.bmp"
+bat2                    BITMAP                  "..\\res\\batsheet\\batsheet2.bmp"
 
-IDB_BITMAP14            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\key1.bmp"
+bat3                    BITMAP                  "..\\res\\batsheet\\batsheet3.bmp"
 
-IDB_BITMAP15            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\paper1.bmp"
+bat4                    BITMAP                  "..\\res\\batsheet\\batsheet4.bmp"
 
-IDB_BITMAP16            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\paper2.bmp"
+arrow1b                 BITMAP                  "..\\res\\arrow1.bmp"
 
-IDB_BITMAP17            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\paper3.bmp"
+arrow2b                 BITMAP                  "..\\res\\arrow2.bmp"
 
-IDB_BITMAP18            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\ring1.bmp"
+food1ss                 BITMAP                  "..\\res\\food1.bmp"
 
-IDB_BITMAP19            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\ring2.bmp"
+food2ss                 BITMAP                  "..\\res\\food2.bmp"
 
-IDB_BITMAP20            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\ring3.bmp"
+grave                   BITMAP                  "..\\res\\grave1.bmp"
 
-IDB_BITMAP21            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\stick1.bmp"
+key                     BITMAP                  "..\\res\\key1.bmp"
 
-IDB_BITMAP22            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\stick2.bmp"
+paper1s                 BITMAP                  "..\\res\\paper1.bmp"
 
-IDB_BITMAP23            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\stick3.bmp"
+paper2s                 BITMAP                  "..\\res\\paper2.bmp"
 
-IDB_BITMAP24            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\sword1.bmp"
+paper3s                 BITMAP                  "..\\res\\paper3.bmp"
 
-IDB_BITMAP25            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\sword2.bmp"
+ring1b                  BITMAP                  "..\\res\\ring1.bmp"
 
-IDB_BITMAP26            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\sword3.bmp"
+ring2b                  BITMAP                  "..\\res\\ring2.bmp"
 
-IDB_BITMAP27            BITMAP                  "C:\\Users\\user\\Desktop\\OOP\\game4.10\\RES\\treasure1.bmp"
+ring3b                  BITMAP                  "..\\res\\ring3.bmp"
+
+stick1b                 BITMAP                  "..\\res\\stick1.bmp"
+
+stick2b                 BITMAP                  "..\\res\\stick2.bmp"
+
+stick3b                 BITMAP                  "..\\res\\stick3.bmp"
+
+sword1b                 BITMAP                  "..\\res\\sword1.bmp"
+
+sword2b                 BITMAP                  "..\\res\\sword2.bmp"
+
+sword3b                 BITMAP                  "..\\res\\sword3.bmp"
+
+treasure                BITMAP                  "..\\res\\treasure1.bmp"
 
 food1s                  BITMAP                  "..\\res\\food1b1.bmp"
 
 food2s                  BITMAP                  "..\\res\\food2b1.bmp"
+
+paper1b                 BITMAP                  "..\\res\\papaer1b.bmp"
+
+paper2b                 BITMAP                  "..\\res\\paper2b1.bmp"
+
+paper3b                 BITMAP                  "..\\res\\paper3b1.bmp"
+
+ring1s                  BITMAP                  "..\\res\\ring1b1.bmp"
+
+ring2s                  BITMAP                  "..\\res\\ring2b1.bmp"
+
+ring3s                  BITMAP                  "..\\res\\ring3b1.bmp"
+
+cloth1b                 BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.10後\\game4.10\\RES\\cloth1.bmp"
+
+cloth2b                 BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.10後\\game4.10\\RES\\cloth2.bmp"
+
+cloth3b                 BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.10後\\game4.10\\RES\\cloth3.bmp"
+
+cloth1s                 BITMAP                  "..\\res\\cloth1b1.bmp"
+
+cloth2s                 BITMAP                  "..\\res\\cloth2b1.bmp"
+
+cloth3s                 BITMAP                  "..\\res\\cloth3b1.bmp"
+
+sword1s                 BITMAP                  "..\\res\\sword1b1.bmp"
+
+sword2s                 BITMAP                  "..\\res\\sword2b1.bmp"
+
+sword3s                 BITMAP                  "..\\res\\sword3b1.bmp"
+
+stick1s                 BITMAP                  "..\\res\\stick1b1.bmp"
+
+stick2s                 BITMAP                  "..\\res\\stick2b1.bmp"
+
+stick3s                 BITMAP                  "..\\res\\stick3b1.bmp"
+
+arrow1s                 BITMAP                  "..\\res\\arrow1b1.bmp"
+
+arrow2s                 BITMAP                  "..\\res\\arrow2b1.bmp"
+
+IDB_BITMAP11            BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.10後\\game4.10\\RES\\key1.bmp"
+
+key1                    BITMAP                  "..\\res\\bmp00004.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

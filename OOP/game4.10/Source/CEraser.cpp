@@ -67,8 +67,8 @@ namespace game_framework {
 
 	void CEraser::Initialize()
 	{
-		const int X_POS = 245;
-		const int Y_POS = 95;
+		const int X_POS = 920;
+		const int Y_POS = 540;
 		character = 0;
 		x = X_POS;
 		y = Y_POS;
@@ -117,6 +117,41 @@ namespace game_framework {
 		character = actor;
 	}
 
+	void CEraser::equiparmor(int item) {
+		if (item == 0) {
+			hero_armor = 0;
+		}
+		else {
+			hero_armor = item;
+		}
+		
+	}
+	void CEraser::equipweapon(int item) {
+		if (item == 0) {
+			hero_weapon = 0;
+		}
+		else {
+			hero_weapon = item;
+		}
+	}
+	void CEraser::equipring(int item) {
+		if (item == 0) {
+			hero_ring = 0;
+		}
+		else {
+			hero_ring = item;
+		}
+	}
+	int CEraser::checkarmor() {
+		return hero_armor;
+	}
+	int CEraser::checkweapon() {
+		return hero_weapon;
+	}
+	int CEraser::checkring() {
+		return hero_ring;
+	}
+
 
 	void CEraser::SetMovingDown(bool flag)
 	{
@@ -158,8 +193,17 @@ namespace game_framework {
 	void CEraser::showdetail() {
 		printf("\nHero:\n");
 		printf("HP:%d\n", hero_HP);
-		printf("ATK:%d\n", hero_ATK);
-		printf("Location:%d,%d\n", actor_x, actor_y);
-		printf("X,Y:%d,%d\n", x, y);
+		//printf("ATK:%d\n", hero_ATK);
+		//printf("Location:%d,%d\n", actor_x, actor_y);
+		//printf("X,Y:%d,%d\n", x, y);
 	}
+
+	void CEraser::showdata() {
+		printf("\nHero:\n");
+		printf("HP:%d\n", hero_HP);
+		//printf("ATK:%d\n", hero_ATK);
+		//printf("Location:%d,%d\n", actor_x, actor_y);
+		//printf("X,Y:%d,%d\n", x, y);
+	}
+
 }

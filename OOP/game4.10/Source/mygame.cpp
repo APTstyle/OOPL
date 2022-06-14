@@ -59,6 +59,7 @@
 #include "gamelib.h"
 #include "mygame.h"
 #include "monster.h"
+#include "monsterBat.h"
 
 
 
@@ -72,8 +73,27 @@ namespace game_framework {
 	int test = 0;
 
 	int check_backpack = 0;
-	int pack_space[19];
+	int pack_space[19] = { 0 };
+	
 	int pack_now = 1;
+	int attack = 0;
+	void backpackadd(int item) { //增加背包物品
+		for (int i = 0; i < 19; i++) {
+			if (pack_space[i] == 0) {
+				pack_space[i] = item;
+				break;
+			}
+		}
+	}
+	void backpackdel (int item) { //刪除背包物品
+		for (int i = 0; i < 19; i++) {
+			if (pack_space[i] == item) {
+				pack_space[i] = 0;
+				break;
+			}
+		}
+	}
+
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的遊戲開頭畫面物件
 /////////////////////////////////////////////////////////////////////////////
@@ -187,34 +207,10 @@ void Cpractice4::OnShow() {
         :X(920), Y(540), MW(45), MH(45)
     {
 
-		int map1_init[24][26] = {
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
-		{3,9,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
-		{3,1,1,10,1,1,3,1,1,3,1,1,1,1,1,3,1,7,7,1,1,7,8,8,1,3},
-		{3,1,2,7,7,1,3,1,1,3,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,3},
-		{3,1,2,2,2,7,3,3,4,3,3,3,4,3,3,3,3,3,3,3,3,3,1,3,3,3},
-		{3,1,7,2,2,2,4,1,1,3,3,3,1,1,1,1,3,3,3,3,3,3,1,3,3,3},
-		{3,1,1,1,7,7,3,1,1,1,1,1,1,1,3,1,1,1,1,3,3,3,1,3,3,3},
-		{3,1,1,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
-		{3,3,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,1,1,3,3,3,1,1,3,3},
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,1,8,8,3,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,3,3,1,1,3,1,1,1,1,1,1,1,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,1,1,4,1,1,8,8,8,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,3,1,1,8,8,1,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,4,3,3,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,1,1,1,1,3,1,1,1,7,1,1,1,1,1,1,3,3,3,1,3,3},
-		{3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
-    for (int i = 0; i < 24; i++)
+		
+    /*for (int i = 0; i < 24; i++)
         for (int j = 0; j < 26; j++)
-            map[i][j] = map1_init[i][j];
+            map[i][j] = map1_init[i][j];*/
 		//srand((unsigned)time(NULL));
 		//random_map = (rand()%2)+1; 讓地圖隨機出現
 		
@@ -240,9 +236,36 @@ void Cpractice4::OnShow() {
 		stair_d.LoadBitmap(stair_up);
 		stair_u.LoadBitmap(stair_down);
 		water_floor.LoadBitmap(level1_water);
+		tr1s.LoadBitmap(treasure, RGB(255, 255, 255));
+		gr1s.LoadBitmap(grave, RGB(255, 255, 255));
+
+
 		lb_p.LoadBitmap(light_blue,RGB(255,255,255));
 		dg_p.LoadBitmap(dark_green,RGB(255, 255, 255));
 		dr_p.LoadBitmap(dark_red,RGB(255, 255, 255));
+		pa1s.LoadBitmap(paper1s, RGB(255, 255, 255));
+		pa2s.LoadBitmap(paper2s, RGB(255, 255, 255));
+		pa3s.LoadBitmap(paper3s, RGB(255, 255, 255));
+		sw1s.LoadBitmap(sword1s, RGB(255, 255, 255));
+		sw2s.LoadBitmap(sword2s, RGB(255, 255, 255));
+		sw3s.LoadBitmap(sword3s, RGB(255, 255, 255));
+		st1s.LoadBitmap(stick1s, RGB(255, 255, 255));
+		st2s.LoadBitmap(stick2s, RGB(255, 255, 255));
+		st3s.LoadBitmap(stick3s, RGB(255, 255, 255));
+		cl1s.LoadBitmap(cloth1s, RGB(0, 0,0 ));
+		cl2s.LoadBitmap(cloth2s, RGB(255, 255, 255));
+		cl3s.LoadBitmap(cloth3s, RGB(255, 255, 255));
+		ri1s.LoadBitmap(ring1s, RGB(255, 255, 255));
+		ri2s.LoadBitmap(ring2s, RGB(255, 255, 255));
+		ri3s.LoadBitmap(ring3s, RGB(255, 255, 255));
+		fo1s.LoadBitmap(food1b, RGB(255, 255, 255));
+		fo2s.LoadBitmap(food2b, RGB(255, 255, 255));
+		ar1s.LoadBitmap(arrow1s, RGB(255, 255, 255));
+		ar2s.LoadBitmap(arrow2s, RGB(255, 255, 255));
+		ke1s.LoadBitmap(key, RGB(255, 255, 255));
+
+
+
 		
 		
     }						///樓層1  0空 1地板 2水地板 3正牆 4門 5水牆 6木地板 7小草 8大草 9上樓 10下樓 11開門	//12淺藍水 13深綠水 14深紅水
@@ -331,18 +354,18 @@ void Cpractice4::OnShow() {
 
 		//test = (rand()%2)+1;
 		//printf("test:%d", test);
-       for(int i=0;i<27;i++)	//寬度27
-            for (int j = 0; j < 27; j++) //高度25
-		/*for (int i = actor_x - 5; i < actor_x + 5; i++)	//寬度27
-			for (int j = actor_y - 5; j < actor_y + 5; j++) //高度25*/
+       //for(int i=0;i<27;i++)	//寬度27
+        //    for (int j = 0; j < 27; j++) //高度25
+		for (int i = actor_x - 5; i < actor_x + 5; i++)	//寬度27
+			for (int j = actor_y - 5; j < actor_y + 5; j++) //高度25
             {
 				if(random_map==1){
 					if (j < 0) j = 0;
-					if (j > 24)break;
+					if (j > 23)break;
 					if (i < 0)i = 0;
-					if (i > 26)break;
+					if (i > 25)break;
 				}
-				if (random_map == 2) {
+				/*if (random_map == 2) {
 					if (j < 0) j = 0;
 					if (j > 24)break;
 					if (i < 0)i = 0;
@@ -353,7 +376,7 @@ void Cpractice4::OnShow() {
 					if (j > 24)break;
 					if (i < 0)i = 0;
 					if (i > 26)break;
-				}
+				}*/
                 switch (map[j][i]) 
                 {
                 case 0:
@@ -421,6 +444,138 @@ void Cpractice4::OnShow() {
 					dr_p.SetTopLeft(X + (MW*i), Y + (MH*j));
 					dr_p.ShowBitmap();
 					break;
+				case 15:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					sw1s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					sw1s.ShowBitmap();
+					break;
+				case 16:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					sw2s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					sw2s.ShowBitmap();
+					break;
+				case 17:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					sw3s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					sw3s.ShowBitmap();
+					break;
+				case 18:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					st1s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					st1s.ShowBitmap();
+					break;
+				case 19:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					st2s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					st2s.ShowBitmap();
+					break;
+				case 20:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					st3s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					st3s.ShowBitmap();
+					break;
+				case 21:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					pa1s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					pa1s.ShowBitmap();
+					break;
+				case 22:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					pa2s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					pa2s.ShowBitmap();
+					break;
+				case 23:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					pa3s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					pa3s.ShowBitmap();
+					break;
+				case 24:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					ri1s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					ri1s.ShowBitmap();
+					break;
+				case 25:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					ri2s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					ri2s.ShowBitmap();
+					break;
+				case 26:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					ri3s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					ri3s.ShowBitmap();
+					break;
+				case 27:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					cl1s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					cl1s.ShowBitmap();
+					break;
+				case 28:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					cl2s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					cl2s.ShowBitmap();
+					break;
+				case 29:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					cl3s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					cl3s.ShowBitmap();
+					break;
+				case 30:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					fo1s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					fo1s.ShowBitmap();
+					break;
+				case 31:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					fo2s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					fo2s.ShowBitmap();
+					break;
+				case 32:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					ke1s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					ke1s.ShowBitmap();
+					break;
+				case 33:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					tr1s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					tr1s.ShowBitmap();
+					break;
+				case 34:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					gr1s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					gr1s.ShowBitmap();
+					break;
+				case 35:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					ar1s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					ar1s.ShowBitmap();
+					break;
+				case 36:
+					mf.SetTopLeft(X + (MW*i), Y + (MH*j));
+					mf.ShowBitmap();
+					ar2s.SetTopLeft(X + (MW*i), Y + (MH*j));
+					ar2s.ShowBitmap();
+					break;
                 default:
                     ASSERT(0);
                 }
@@ -431,24 +586,121 @@ void Cpractice4::OnShow() {
 		else if (map[actor_y][actor_x] == 8) {
 			map[actor_y][actor_x] = 7;
 		}
+		else if (map[actor_y][actor_x] == 10) {
+			srand((unsigned)time(NULL));
+			random_map = (rand()%7)+1; //讓地圖隨機出現
+			changemap(random_map);
+		}
 		else if (map[actor_y][actor_x] == 14) {
 			map[actor_y][actor_x] = 1;
-			pack_space[pack_now] = 14;
-			pack_now++;
+			backpackadd(14);
 		}
 		else if (map[actor_y][actor_x] == 13) {
 			map[actor_y][actor_x] = 1;
-			pack_space[pack_now] = 13;
-			pack_now++;
+			backpackadd(13);
 		}
 		else if (map[actor_y][actor_x] == 12) {
 			map[actor_y][actor_x] = 1;
-			pack_space[pack_now] = 12;
-			pack_now++;
+			backpackadd(12);
 		}
+		else if (map[actor_y][actor_x] == 15) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(15);
+		}
+		else if (map[actor_y][actor_x] == 16) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(16);
+		}
+		else if (map[actor_y][actor_x] == 17) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(17);
+		}
+		else if (map[actor_y][actor_x] == 18) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(18);
+		}
+		else if (map[actor_y][actor_x] == 19) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(19);
+		}
+		else if (map[actor_y][actor_x] == 20) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(20);
+		}
+		else if (map[actor_y][actor_x] == 21) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(21);
+		}
+		else if (map[actor_y][actor_x] == 22) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(22);
+		}
+		else if (map[actor_y][actor_x] == 23) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(23);
+		}
+		else if (map[actor_y][actor_x] == 24) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(24);
+		}
+		else if (map[actor_y][actor_x] == 25) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(25);
+		}
+		else if (map[actor_y][actor_x] == 26) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(26);
+		}
+		else if (map[actor_y][actor_x] == 27) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(27);
+		}
+		else if (map[actor_y][actor_x] == 28) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(28);
+		}
+		else if (map[actor_y][actor_x] == 29) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(29);
+		}
+		else if (map[actor_y][actor_x] == 30) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(30);
+		}
+		else if (map[actor_y][actor_x] == 31) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(31);
+		}
+		else if (map[actor_y][actor_x] == 32) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(32);
+		}
+		else if (map[actor_y][actor_x] == 33) {
+			map[actor_y][actor_x] = 1;
+		}
+		else if (map[actor_y][actor_x] == 34) {
+			map[actor_y][actor_x] = 1;
+		}
+		else if (map[actor_y][actor_x] == 35) {
+			map[actor_y][actor_x] = 1;
+			backpackadd(35);
+		}
+		else if (map[actor_y][actor_x] == 36) {
+		map[actor_y][actor_x] = 1;
+		backpackadd(36);
+		}
+
 		///////////////////////////////////////////
 		/*物品編號:
 			12淺藍水 13深綠水 14深紅水
+			15劍1 16劍2 17劍3
+			18杖1 19杖2 20杖3
+			21紙1 22紙2 23紙3
+			24戒1 25戒2 26戒3
+			27服1 28服2 29服3
+			30食1 31食2
+			32鑰匙 33寶箱 34墳墓
+			35箭1 36箭2
 
 
 		*/
@@ -553,49 +805,6 @@ void Cpractice4::OnShow() {
 
 	CGameMap::~CGameMap() {
 		delete[] bballs;
-	}
-	Cmonster::Cmonster()
-		:X(200+monster::mon_x*45), Y(50 + monster::mon_y * 45), MW(45), MH(45)
-	{
-	}
-	void Cmonster::getmap(int map_num){
-
-	}
-	void Cmonster::LoadBitmap()
-	{
-		m1.LoadBitmap(boss,RGB(255,255,255));
-	}						//boss 黑鬼
-	void Cmonster::SetXY(int x, int y) {
-		X = x;
-		Y = y;
-	}
-	void Cmonster::OnShow()
-	{
-		m1.SetTopLeft(X, Y);
-		m1.ShowBitmap();
-	}
-	void Cmonster::OnKeyDown(UINT nChar) {
-		const int KEY_SPACE = 0x20;
-		const char KEY_LEFT = 0x25; // keyboard左箭頭
-		const char KEY_UP = 0x26; // keyboard上箭頭
-		const char KEY_RIGHT = 0x27; // keyboard右箭頭
-		const char KEY_DOWN = 0x28; // keyboard下箭頭
-		const int step = -0;
-		int next_step = -45;
-		if (nChar == KEY_LEFT) {
-			SetXY(X + step, Y);
-		}
-		if (nChar == KEY_RIGHT){
-			SetXY(X - step, Y);
-		}
-		if (nChar == KEY_UP){
-			SetXY(X, Y + step);
-		}
-		if (nChar == KEY_DOWN) {
-			SetXY(X, Y - step);
-		}
-		//printf("monster::mon_x=%d,%d\n", monster::mon_x, monster::mon_y);
-		//printf("monster_location=%d,%d\n",X, Y);
 	}
 ////////////////////////////////////////////////////////////////
 	void CBouncingBall::SetXY(int x, int y)
@@ -752,6 +961,8 @@ void CGameStateRun::OnBeginState()
 	eraser.LoadBitmap();
 	monster_cpp.SetCharacter(main_actor);
 	monster_cpp.LoadBitmap();
+	monster_bat_cpp.SetCharacter(main_actor);
+	monster_bat_cpp.LoadBitmap();
 	/*const int BALL_GAP = 90;
 	const int BALL_XY_OFFSET = 45;
 	const int BALL_PER_ROW = 7;
@@ -812,6 +1023,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	monster_cpp.OnMove();
 	eraser.OnMove();
+	monster_bat_cpp.OnMove();
 	//
 	// 判斷擦子是否碰到球
 	//
@@ -854,10 +1066,37 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	qitem4.LoadBitmap(ui_item1, RGB(0, 0, 0));
 	backpackUI.LoadBitmapA(backpack_ui, RGB(255, 255, 255));
 
+	///////////背包的物品///////////////////////////////////////////////////////////////////
 	lb_p.LoadBitmap(light_blue1, RGB(255, 255, 255));
 	dg_p.LoadBitmap(dark_green1, RGB(255, 255, 255));
 	dr_p.LoadBitmap(dark_red1, RGB(255, 255, 255));
 
+	pa1s_p.LoadBitmap(paper1b, RGB(255, 255, 255));
+	pa2s_p.LoadBitmap(paper2b, RGB(255, 255, 255));
+	pa3s_p.LoadBitmap(paper3b, RGB(255, 255, 255));
+	sw1s_p.LoadBitmap(sword1b, RGB(255, 255, 255));
+	sw2s_p.LoadBitmap(sword2b, RGB(255, 255, 255));
+	sw3s_p.LoadBitmap(sword3b, RGB(255, 255, 255));
+	st1s_p.LoadBitmap(stick1b, RGB(255, 255, 255));
+	st2s_p.LoadBitmap(stick2b, RGB(255, 255, 255));
+	st3s_p.LoadBitmap(stick3b, RGB(255, 255, 255));
+	cl1s_p.LoadBitmap(cloth1b, RGB(0,0, 0));
+	cl2s_p.LoadBitmap(cloth2b, RGB(255, 255, 255));
+	cl3s_p.LoadBitmap(cloth3b, RGB(255, 255, 255));
+	ri1s_p.LoadBitmap(ring1b, RGB(255, 255, 255));
+	ri2s_p.LoadBitmap(ring2b, RGB(255, 255, 255));
+	ri3s_p.LoadBitmap(ring3b, RGB(255, 255, 255));
+	fo1s_p.LoadBitmap(food1s, RGB(255, 255, 255));
+	fo2s_p.LoadBitmap(food2s, RGB(255, 255, 255));
+	ar1s_p.LoadBitmap(arrow1b, RGB(255, 255, 255));
+	ar2s_p.LoadBitmap(arrow2b, RGB(255, 255, 255));
+	ke1s_p.LoadBitmap(key1, RGB(255, 255, 255));
+
+	
+
+
+
+	/////////背包的物品/////////////////////////////////////////////////////////////////////
 
 	border.LoadBitmap("Bitmaps/practice2.bmp", RGB(255, 255, 255));
 	practice.LoadBitmap(IDB_BALL);
@@ -904,6 +1143,9 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
 	if (nChar == KEY_SPACE) {
+		gamemap.changemap(2);
+		monster_cpp.getmap(2, gamemap.map);
+		monster_bat_cpp.getmap(2, gamemap.map);
 		test = 7;
 		gamemap.changemap(test);
 		monster_cpp.getmap(test, gamemap.map);
@@ -912,23 +1154,27 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		eraser.SetMovingLeft(true);
 		gamemap.OnKeyDown(nChar);
 		monster_cpp.SetMovingLeft(true);
+		monster_bat_cpp.SetMovingLeft(true);
 	}
 	if (nChar == KEY_RIGHT) {
 		eraser.SetMovingRight(true);
 		gamemap.OnKeyDown(nChar);
 		monster_cpp.SetMovingRight(true);
+		monster_bat_cpp.SetMovingRight(true);
 	}
 	if (nChar == KEY_UP){
 		eraser.SetMovingUp(true);
 		gamemap.OnKeyDown(nChar);
 		monster_cpp.SetMovingUp(true);
+		monster_bat_cpp.SetMovingUp(true);
 	}
 	if (nChar == KEY_DOWN){
 		eraser.SetMovingDown(true);
 		gamemap.OnKeyDown(nChar);
 		monster_cpp.SetMovingDown(true);
+		monster_bat_cpp.SetMovingDown(true);
+		printf("keydown\n");
 	}
-	gamemonster.OnKeyDown(nChar);
 }
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -941,18 +1187,22 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == KEY_LEFT){
 		eraser.SetMovingLeft(false);
 		monster_cpp.SetMovingLeft(false);
+		monster_bat_cpp.SetMovingLeft(false);
 	}
 	if (nChar == KEY_RIGHT) {
 		eraser.SetMovingRight(false);
 		monster_cpp.SetMovingRight(false);
+		monster_bat_cpp.SetMovingRight(false);
 	}
 	if (nChar == KEY_UP) {
 		eraser.SetMovingUp(false);
 		monster_cpp.SetMovingUp(false);
+		monster_bat_cpp.SetMovingUp(false);
 	}
 	if (nChar == KEY_DOWN) {
 		eraser.SetMovingDown(false);
 		monster_cpp.SetMovingDown(false);
+		monster_bat_cpp.SetMovingDown(false);
 	}
 }
 
@@ -972,6 +1222,109 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	}
 	else if(point.x < backpackUI.Left() || (point.x > backpackUI.Left() + backpackUI.Width()) || point.y < backpackUI.Top() || (point.y > backpackUI.Top() + backpackUI.Height())) {
 	check_backpack = 0;
+	}
+	printf("GetXY:%d,%d\n", monster_cpp.GetX1(), monster_cpp.GetY1());
+	printf("GetXY:%d,%d\n", monster_cpp.GetX2(), monster_cpp.GetY2());
+	if (point.x > monster_cpp.GetX1() && point.x < monster_cpp.GetX2() && point.y > monster_cpp.GetY1() && point.y < monster_cpp.GetY2()) {
+		if (monster_cpp.attacked_judge(monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
+			monster_cpp.attacked(eraser.hero_ATK);
+			eraser.showdata();
+			monster_cpp.showdata();
+			monster_bat_cpp.SetMoving(true);
+			monster_bat_cpp.SetMoving(false);
+		}
+	}
+	if (point.x > monster_bat_cpp.GetX1() && point.x < monster_bat_cpp.GetX2() && point.y > monster_bat_cpp.GetY1() && point.y < monster_bat_cpp.GetY2()) {
+		if (monster_cpp.attacked_judge(monster_bat_cpp.mon_x, monster_bat_cpp.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
+			monster_bat_cpp.attacked(eraser.hero_ATK);
+			eraser.showdata();
+			monster_cpp.SetMoving(true);
+			monster_cpp.SetMoving(false);
+			monster_bat_cpp.showdata();
+		}
+	}
+
+	if (check_backpack == 1) {	/////////////////點擊背包
+		if (point.x > lb_p.Left() && point.x < lb_p.Left() + lb_p.Width() && point.y >  lb_p.Top() && point.y < lb_p.Top() + lb_p.Height()) {
+			backpackdel(12);   /////喝藍水效果
+		}
+		if (point.x > dg_p.Left() && point.x < dg_p.Left() + dg_p.Width() && point.y >  dg_p.Top() && point.y < dg_p.Top() + dg_p.Height()) {
+			backpackdel(13);	/////喝綠水效果
+		}
+		if (point.x > dr_p.Left() && point.x < dr_p.Left()+dr_p.Width() && point.y >  dr_p.Top() && point.y < dr_p.Top()+dr_p.Height()) {
+			backpackdel(14);	/////喝紅水效果
+		}
+		if (point.x > sw1s_p.Left() && point.x < sw1s_p.Left() + sw1s_p.Width() && point.y >  sw1s_p.Top() && point.y < sw1s_p.Top() + sw1s_p.Height()) {
+			eraser.equipweapon(15);
+			backpackdel(15);
+		}
+		if (point.x > sw2s_p.Left() && point.x < sw2s_p.Left() + sw2s_p.Width() && point.y >  sw2s_p.Top() && point.y < sw2s_p.Top() + sw2s_p.Height()) {
+			eraser.equipweapon(16);
+			backpackdel(16);
+		}
+		if (point.x > sw3s_p.Left() && point.x < sw3s_p.Left() + sw3s_p.Width() && point.y >  sw3s_p.Top() && point.y < sw3s_p.Top() + sw3s_p.Height()) {
+			eraser.equipweapon(17);
+			backpackdel(17);
+		}
+		if (point.x > st1s_p.Left() && point.x < st1s_p.Left() + st1s_p.Width() && point.y >  st1s_p.Top() && point.y < st1s_p.Top() + st1s_p.Height()) {
+			eraser.equipweapon(18);
+			backpackdel(18);
+		}
+		if (point.x > st2s_p.Left() && point.x < st2s_p.Left() + st2s_p.Width() && point.y >  st2s_p.Top() && point.y < st2s_p.Top() + st2s_p.Height()) {
+			eraser.equipweapon(19);
+			backpackdel(19);
+		}
+		if (point.x > st3s_p.Left() && point.x < st3s_p.Left() + st3s_p.Width() && point.y >  st3s_p.Top() && point.y < st3s_p.Top() + st3s_p.Height()) {
+			eraser.equipweapon(20);
+			backpackdel(20);
+		}
+		if (point.x > pa1s_p.Left() && point.x < pa1s_p.Left() + pa1s_p.Width() && point.y >  pa1s_p.Top() && point.y < pa1s_p.Top() + pa1s_p.Height()) {
+			backpackdel(21);
+		}
+		if (point.x > pa2s_p.Left() && point.x < pa2s_p.Left() + pa2s_p.Width() && point.y >  pa2s_p.Top() && point.y < pa2s_p.Top() + pa2s_p.Height()) {
+			backpackdel(22);
+		}
+		if (point.x > pa3s_p.Left() && point.x < pa3s_p.Left() + pa3s_p.Width() && point.y >  pa3s_p.Top() && point.y < pa3s_p.Top() + pa3s_p.Height()) {
+			backpackdel(23);
+		}
+		if (point.x > ri1s_p.Left() && point.x < ri1s_p.Left() + ri1s_p.Width() && point.y >  ri1s_p.Top() && point.y < ri1s_p.Top() + ri1s_p.Height()) {
+			eraser.equipring(24);
+			backpackdel(24);
+		}
+		if (point.x > ri2s_p.Left() && point.x < ri2s_p.Left() + ri2s_p.Width() && point.y >  ri2s_p.Top() && point.y < ri2s_p.Top() + ri2s_p.Height()) {
+			eraser.equipring(25);
+			backpackdel(25);
+		}
+		if (point.x > ri3s_p.Left() && point.x < ri3s_p.Left() + ri3s_p.Width() && point.y >  ri3s_p.Top() && point.y < ri3s_p.Top() + ri3s_p.Height()) {
+			eraser.equipring(26);
+			backpackdel(26);
+		}
+		if (point.x > cl1s_p.Left() && point.x < cl1s_p.Left() + cl1s_p.Width() && point.y >  cl1s_p.Top() && point.y < cl1s_p.Top() + cl1s_p.Height()) {
+			eraser.equiparmor(27);
+			backpackdel(27);
+		}
+		if (point.x > cl2s_p.Left() && point.x < cl2s_p.Left() + cl2s_p.Width() && point.y >  cl2s_p.Top() && point.y < cl2s_p.Top() + cl2s_p.Height()) {
+			eraser.equiparmor(28);
+			backpackdel(28);
+		}
+		if (point.x > cl3s_p.Left() && point.x < cl3s_p.Left() + cl3s_p.Width() && point.y >  cl3s_p.Top() && point.y < cl3s_p.Top() + cl3s_p.Height()) {
+			eraser.equiparmor(29);
+			backpackdel(29);
+		}
+		if (point.x > fo1s_p.Left() && point.x < fo1s_p.Left() + fo1s_p.Width() && point.y >  fo1s_p.Top() && point.y < fo1s_p.Top() + fo1s_p.Height()) {
+			backpackdel(30);  /////吃包子
+		}
+		if (point.x > fo2s_p.Left() && point.x < fo2s_p.Left() + fo2s_p.Width() && point.y >  fo2s_p.Top() && point.y < fo2s_p.Top() + fo2s_p.Height()) {
+			backpackdel(31);  /////吃肉餅
+		}
+		if (point.x > ar1s_p.Left() && point.x < ar1s_p.Left() + ar1s_p.Width() && point.y >  ar1s_p.Top() && point.y < ar1s_p.Top() + ar1s_p.Height()) {
+			backpackdel(35);
+		}
+		if (point.x > ar2s_p.Left() && point.x < ar2s_p.Left() + ar2s_p.Width() && point.y >  ar2s_p.Top() && point.y < ar2s_p.Top() + ar2s_p.Height()) {
+			backpackdel(36);
+		}
+
+
 	}
 
 	
@@ -1035,6 +1388,7 @@ void CGameStateRun::OnShow()
 	//bballs.OnShow();	// 貼上彈跳的球
 	eraser.OnShow();					// 貼上擦子
 	monster_cpp.OnShow();
+	monster_bat_cpp.OnShow();
 
 	backpack.ShowBitmap();
 	stop.ShowBitmap();
@@ -1048,31 +1402,204 @@ void CGameStateRun::OnShow()
 	if (check_backpack == 1) {
 		backpackUI.ShowBitmap();
 
+		if (eraser.checkweapon() == 15) {
+			packx = 760, packy = 110;
+			sw1s_p.SetTopLeft(packx, packy);
+			sw1s_p.ShowBitmap();
+		}
+		else if (eraser.checkweapon() == 16) {
+			packx = 760, packy = 110;
+			sw2s_p.SetTopLeft(packx, packy);
+			sw2s_p.ShowBitmap();
+		}
+		else if (eraser.checkweapon() == 17) {
+			packx = 760, packy = 110;
+			sw3s_p.SetTopLeft(packx, packy);
+			sw3s_p.ShowBitmap();
+		}
+		else if (eraser.checkweapon() == 18) {
+			packx = 760, packy = 110;
+			st1s_p.SetTopLeft(packx, packy);
+			st1s_p.ShowBitmap();
+		}
+		else if (eraser.checkweapon() == 19) {
+			packx = 760, packy = 110;
+			st2s_p.SetTopLeft(packx, packy);
+			st2s_p.ShowBitmap();
+		}
+		else if (eraser.checkweapon() == 20) {
+			packx = 760, packy = 110;
+			st3s_p.SetTopLeft(packx, packy);
+			st3s_p.ShowBitmap();
+		}
+
+		if (eraser.checkarmor() == 27) {
+			packx = 890, packy = 110;
+			cl1s_p.SetTopLeft(packx, packy);
+			cl1s_p.ShowBitmap();
+		}
+		else if (eraser.checkarmor() == 28) {
+			packx = 890, packy = 110;
+			cl2s_p.SetTopLeft(packx, packy);
+			cl2s_p.ShowBitmap();
+
+		}
+		else if (eraser.checkarmor() == 29) {
+			packx = 890, packy = 110;
+			cl3s_p.SetTopLeft(packx, packy);
+			cl3s_p.ShowBitmap();
+		}
+
+		if (eraser.checkring() ==24 ) {
+			packx = 1150, packy = 110;
+			ri1s_p.SetTopLeft(packx, packy);
+			ri1s_p.ShowBitmap();
+		}
+		else if (eraser.checkring() == 25) {
+			packx = 1150, packy = 110;
+			ri2s_p.SetTopLeft(packx, packy);
+			ri2s_p.ShowBitmap();
+
+		}
+		else if (eraser.checkring() == 26) {
+			packx = 1150, packy = 110;
+			ri3s_p.SetTopLeft(packx, packy);
+			ri3s_p.ShowBitmap();
+		}
 
 
-		for (int i = 1; i < 20; i++) {
-			if (i < 5) {
+
+		for (int i = 0; i < 20; i++) {
+			if (i <= 3) {
 				packx = 760, packy = 230;
+			}
+			if (i > 3 && i <= 7) {
+				packx = 760, packy = 360;
+			}
+			if (i > 7 && i <= 11) {
+				packx = 760, packy = 480;
+			}
+			if (i > 11 && i <= 15) {
+				packx = 760, packy = 620;
+			}
+			if (i > 15 && i <= 19) {
+				packx = 760, packy = 740;
 			}
 			switch (pack_space[i])
 			{
 			case 12:
-				lb_p.SetTopLeft(packx + (i % 5) * 130, packy);
+				lb_p.SetTopLeft(packx + (i % 4) * 130, packy);
 				lb_p.ShowBitmap();
 				break;
 			case 13:
-				dg_p.SetTopLeft(packx + (i % 5) * 130, packy);
+				dg_p.SetTopLeft(packx + (i % 4) * 130, packy);
 				dg_p.ShowBitmap();
 				break;
 			case 14:
-				dr_p.SetTopLeft(packx + (i%5) * 130, packy);
+				dr_p.SetTopLeft(packx + (i%4) * 130, packy);
 				dr_p.ShowBitmap();
 				break;
+			case 15:
+				sw1s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				sw1s_p.ShowBitmap();
+				break;
+			case 16:
+				sw2s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				sw2s_p.ShowBitmap();
+				break;
+			case 17:
+				sw3s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				sw3s_p.ShowBitmap();
+				break;
+			case 18:
+				st1s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				st1s_p.ShowBitmap();
+				break;
+			case 19:
+				st2s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				st2s_p.ShowBitmap();
+				break;
+			case 20:
+				st3s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				st3s_p.ShowBitmap();
+				break;
+			case 21:
+				pa1s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				pa1s_p.ShowBitmap();
+				break;
+			case 22:
+				pa2s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				pa2s_p.ShowBitmap();
+				break;
+			case 23:
+				pa3s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				pa3s_p.ShowBitmap();
+				break;
+			case 24:
+				ri1s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				ri1s_p.ShowBitmap();
+				break;
+			case 25:
+				ri2s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				ri2s_p.ShowBitmap();
+				break;
+			case 26:
+				ri3s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				ri3s_p.ShowBitmap();
+				break;
+			case 27:
+				cl1s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				cl1s_p.ShowBitmap();
+				break;
+			case 28:
+				cl2s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				cl2s_p.ShowBitmap();
+				break;
+			case 29:
+				cl3s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				cl3s_p.ShowBitmap();
+				break;
+			case 30:
+				fo1s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				fo1s_p.ShowBitmap();
+				break;
+			case 31:
+				fo2s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				fo2s_p.ShowBitmap();
+				break;
+			case 32:
+				ke1s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				ke1s_p.ShowBitmap();
+				break;
+			case 35:
+				ar1s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				ar1s_p.ShowBitmap();
+				break;
+			case 36:
+				ar2s_p.SetTopLeft(packx + (i % 4) * 130, packy);
+				ar2s_p.ShowBitmap();
+				break;
+
 			default:
 				break;
 			}
 		}
 	}
+	///////////////////////////////////////////
+		/*物品編號:
+			12淺藍水 13深綠水 14深紅水
+			15劍1 16劍2 17劍3
+			18杖1 19杖2 20杖3
+			21紙1 22紙2 23紙3
+			24戒1 25戒2 26戒3
+			27服1 28服2 29服3
+			30食1 31食2
+			32鑰匙 33寶箱 34墳墓
+			35箭1 36箭2
+
+
+		*/
+		////////////////////////////////////////
 	///////////////////////////////////開啟背包/////////////////////////
 
 
