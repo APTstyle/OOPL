@@ -190,14 +190,17 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 		{3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
 		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
-    for (int i = 0; i < 24; i++)
-        for (int j = 0; j < 26; j++)
-            map[i][j] = map1_init[i][j];
+		for (int i = 0; i < 24; i++) {
+			for (int j = 0; j < 26; j++) {
+				map[i][j] = map1_init[i][j];
+			}
+		}
 		//srand((unsigned)time(NULL));
 		//random_map = (rand()%2)+1; 讓地圖隨機出現
-		
-		changemap(random_map);
-		
+	changemap(random_map);
+
+	monster_cpp.getmap(random_map, map);
+	monster_bat_cpp.getmap(random_map, map);
 	random_num = 0;
 	bballs = NULL;
     }
@@ -796,6 +799,9 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 
 	herohp.LoadBitmap(hp1, RGB(255, 255, 255));
 
+	finishbackground.LoadBitmap(finish, RGB(255, 255, 120));
+	finishbackground2.LoadBitmap(blackbackground, RGB(2, 1, 2));
+	gameoverBG.LoadBitmap(gameover, RGB(255, 255, 255));
 	//border.LoadBitmap("Bitmaps/practice2.bmp", RGB(255, 255, 255));
 	//practice.LoadBitmap(IDB_BALL);
 	//practice3.LoadBitmap("Bitmaps/hi.bmp");
@@ -839,6 +845,11 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_UP    = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
+	const char KEY_Z  = 0x5a; // keyboard左箭頭
+	if (nChar == KEY_Z ) {
+		bool_finish = 1;
+		printf("finsih%d\n", bool_finish);
+	}
 	if (nChar == KEY_SPACE) {
 		test = 2;
 		gamemap.changemap(test);
@@ -972,7 +983,6 @@ void CGameStateRun::OnShow()
 	}
 
 	
-	
 	stop.SetTopLeft(uix, uiy);
 	backpack.SetTopLeft(stop.Left()+550, uiy);
 	detect.SetTopLeft(stop.Left()+90, uiy);
@@ -1054,6 +1064,19 @@ void CGameStateRun::OnShow()
 	//practice.ShowBitmap();
 	//border.ShowBitmap();
 	//c_practice4.OnShow();
-	
+	if (eraser.hero_HP <= 0) {
+		finishbackground2.SetTopLeft(0, 0);
+		finishbackground2.ShowBitmap();
+		gameoverBG.SetTopLeft(eraser.GetX1() -230, eraser.GetY1()-110);
+		gameoverBG.ShowBitmap();
+
+	}
+	if (bool_finish == 1) {
+		finishbackground.SetTopLeft(700, 0);
+		finishbackground2.SetTopLeft(0, 0);
+		finishbackground2.ShowBitmap();
+		finishbackground.ShowBitmap();
+	}
 }
+
 }

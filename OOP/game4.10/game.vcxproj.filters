@@ -175,6 +175,11 @@
     <Image Include="res\person2\person55.bmp" />
     <Image Include="res\person3\person55.bmp" />
     <Image Include="res\person4\person55.bmp" />
+    <Image Include="..\allassets\items.png" />
+    <Image Include="..\allassets\banners.png" />
+    <Image Include="..\allassets\finish.png" />
+    <Image Include="RES\finish\finish.bmp" />
+    <Image Include="RES\banners\banners1.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\ball.bmp" />

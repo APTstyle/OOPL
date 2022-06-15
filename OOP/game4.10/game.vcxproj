@@ -348,6 +348,9 @@
     <Image Include="..\..\..\work\asset\bmp\person2\person55.bmp" />
     <Image Include="..\..\..\work\asset\bmp\person3\person55.bmp" />
     <Image Include="..\..\..\work\asset\bmp\person4\person55.bmp" />
+    <Image Include="..\allassets\banners.png" />
+    <Image Include="..\allassets\finish.png" />
+    <Image Include="..\allassets\items.png" />
     <Image Include="..\assest\bg.bmp" />
     <Image Include="..\assest\bg.png" />
     <Image Include="..\assest\bmp\door1.bmp" />
@@ -365,6 +368,7 @@
     <Image Include="RES\arrow1.bmp" />
     <Image Include="RES\arrow2.bmp" />
     <Image Include="RES\backpack1.bmp" />
+    <Image Include="RES\banners\banners1.bmp" />
     <Image Include="RES\batsheet\batsheet1.bmp" />
     <Image Include="RES\batsheet\batsheet2.bmp" />
     <Image Include="RES\batsheet\batsheet3.bmp" />
@@ -399,6 +403,7 @@
     <Image Include="res\dark_gre.bmp" />
     <Image Include="res\dark_red.bmp" />
     <Image Include="res\door1.bmp" />
+    <Image Include="RES\finish\finish.bmp" />
     <Image Include="res\floor1.bmp" />
     <Image Include="RES\food1.bmp" />
     <Image Include="res\food1b1.bmp" />

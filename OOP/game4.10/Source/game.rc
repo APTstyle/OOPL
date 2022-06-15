@@ -298,6 +298,12 @@ charactor_warrior_hp    BITMAP                  "..\\res\\person4\\person55.bmp"
 
 herohp1                 BITMAP                  "..\\res\\herohp\\bitmap30.bmp"
 
+finish                  BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\finish\\finish.bmp"
+
+blackbackground         BITMAP                  "..\\res\\bitmap28.bmp"
+
+gameover                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\banners\\banners1.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

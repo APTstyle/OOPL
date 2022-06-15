@@ -20,8 +20,8 @@ namespace game_framework {
 	int monster::mon_bat_y = 0;
 	//int monster::mon_x = 23;
 	//int monster::mon_y = 21;
-	int monster::mon_x = 5;
-	int monster::mon_y = 5;
+	int monster::mon_x = 3;
+	int monster::mon_y = 3;
 	monster::monster()
 	{
 		main_x = 0;
@@ -29,6 +29,11 @@ namespace game_framework {
 		Initialize();
 		SetXY(CEraser::map_x + 45 * monster::mon_x, CEraser::map_y + 45 * monster::mon_y);
 		showdata();
+		/*for (int i = 0; i < 27; i++) {
+			for (int j = 0; j < 27; j++) {
+					map_monster[i][j] = 0;
+			}
+		}*/
 	}
 	int monster::automove(int automove_map[][27], int main_x, int main_y, int end_x, int end_y) {
 		int map_calculate[25][27];//計算用的地圖
@@ -298,7 +303,7 @@ namespace game_framework {
 				next_way_y += 1;
 				return next_way_x * 100 + next_way_y;
 			}
-			else if (map_monster[next_way_y][next_way_x - 1] != 3 && map_monster[next_way_y][next_way_x - 1] != 5 && main_y > mon_way_y - 1) {
+			else if (map_monster[next_way_y][next_way_x - 1] != 3 && map_monster[next_way_y][next_way_x - 1] != 5 && main_y < mon_way_y - 1) {
 				next_way_x -= 1;
 				return next_way_x * 100 + next_way_y;
 			}
@@ -309,7 +314,7 @@ namespace game_framework {
 			}
 		}
 		if (next_way_x == mon_way_x - 1 && next_way_y == mon_way_y + 1) {//往左下
-			if (map_monster[next_way_y - 1][next_way_x] != 3 && map_monster[next_way_y - 1][next_way_x] != 5 && main_x > mon_way_x - 1) {
+			if (map_monster[next_way_y - 1][next_way_x] != 3 && map_monster[next_way_y - 1][next_way_x] != 5 && main_x < mon_way_x - 1) {
 				next_way_y -= 1;
 				return next_way_x * 100 + next_way_y;
 			}
@@ -339,11 +344,11 @@ namespace game_framework {
 			}
 		}
 		if (next_way_x == mon_way_x - 1 && next_way_y == mon_way_y - 1) {//往左上
-			if (map_monster[next_way_y][next_way_x + 1] != 3 && map_monster[next_way_y][next_way_x + 1] != 5 && main_y > mon_way_y - 1) {
+			if (map_monster[next_way_y][next_way_x + 1] != 3 && map_monster[next_way_y][next_way_x + 1] != 5 && main_y < mon_way_y - 1) {//往上
 				next_way_x += 1;
 				return next_way_x * 100 + next_way_y;
 			}
-			else if (map_monster[next_way_y + 1][next_way_x] != 3 && map_monster[next_way_y + 1][next_way_x] != 5 && main_x > mon_way_x - 1) {
+			else if (map_monster[next_way_y + 1][next_way_x] != 3 && map_monster[next_way_y + 1][next_way_x] != 5 && main_x < mon_way_x - 1) {//往左
 				next_way_y += 1;
 				return next_way_x * 100 + next_way_y;
 			}
@@ -385,14 +390,15 @@ namespace game_framework {
 		SetXY(CEraser::map_x + 45 * next_x, CEraser::map_y + 45 * next_y);
 		monster::mon_x = next_x;
 		monster::mon_y = next_y;
+		LoadBitmap();
 		showdata();
 	}
 
 	void monster::showdata() {
 		printf("\nmonster1:\n");
 		printf("HP:%d\n", mon_HP);
-		//printf("ATK:%d\n", mon_ATK);
-		printf("Location:%d,%d\n", mon_x,mon_y);
+		printf("ATK:%d\n", mon_ATK);
+		printf("Location:%d,%d\n", monster::mon_x, monster::mon_y);
 		printf("X,Y:%d,%d\n", x, y);
 		//printf("test:%d\n", test);
 		//printf("show:%d,%d\n", monster::mon_bat_x, monster::mon_bat_y);
@@ -406,6 +412,15 @@ namespace game_framework {
 		for (int i = 0; i < 25; i++)
 			for (int j = 0; j < 27; j++)
 				map_monster[i][j] = map[i][j];
+		if (map_num == 1) {//24*24
+			mon_x = 3;//24-actor_x
+			mon_y = 3;//2-actor_y
+			mon_HP = 20;
+			mon_ATK = 1;
+			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
+			showdata();
+			return random_map;
+		}
 		if (map_num == 2) {
 			monster::mon_x = 18;
 			monster::mon_y = 17;
@@ -620,6 +635,7 @@ namespace game_framework {
 		}
 		return mon_HP - ATK;
 	}
+
 	void monster::death() {
 		deathshow = 1;
 		monster::mon_x = CEraser::actor_x;

@@ -102,7 +102,7 @@ namespace game_framework {
 				next_way_y += 1;
 				return next_way_x * 100 + next_way_y;
 			}
-			else if (map_monster[next_way_y][next_way_x - 1] != 3 && map_monster[next_way_y][next_way_x - 1] != 5 && main_y > mon_way_y - 1) {
+			else if (map_monster[next_way_y][next_way_x - 1] != 3 && map_monster[next_way_y][next_way_x - 1] != 5 && main_y < mon_way_y - 1) {
 				next_way_x -= 1;
 				return next_way_x * 100 + next_way_y;
 			}
@@ -113,7 +113,7 @@ namespace game_framework {
 			}
 		}
 		if (next_way_x == mon_way_x - 1 && next_way_y == mon_way_y + 1) {//往左下
-			if (map_monster[next_way_y - 1][next_way_x] != 3 && map_monster[next_way_y - 1][next_way_x] != 5 && main_x > mon_way_x - 1) {
+			if (map_monster[next_way_y - 1][next_way_x] != 3 && map_monster[next_way_y - 1][next_way_x] != 5 && main_x < mon_way_x - 1) {
 				next_way_y -= 1;
 				return next_way_x * 100 + next_way_y;
 			}
@@ -143,11 +143,11 @@ namespace game_framework {
 			}
 		}
 		if (next_way_x == mon_way_x - 1 && next_way_y == mon_way_y - 1) {//往左上
-			if (map_monster[next_way_y][next_way_x + 1] != 3 && map_monster[next_way_y][next_way_x + 1] != 5 && main_y > mon_way_y - 1) {
+			if (map_monster[next_way_y][next_way_x + 1] != 3 && map_monster[next_way_y][next_way_x + 1] != 5 && main_y < mon_way_y - 1) {//往上
 				next_way_x += 1;
 				return next_way_x * 100 + next_way_y;
 			}
-			else if (map_monster[next_way_y + 1][next_way_x] != 3 && map_monster[next_way_y + 1][next_way_x] != 5 && main_x > mon_way_x - 1) {
+			else if (map_monster[next_way_y + 1][next_way_x] != 3 && map_monster[next_way_y + 1][next_way_x] != 5 && main_x < mon_way_x - 1) {//往左
 				next_way_y += 1;
 				return next_way_x * 100 + next_way_y;
 			}
@@ -162,6 +162,13 @@ namespace game_framework {
 		}
 	}
 
+	void monster_bat::attack_judge(int x1, int y1, int x2, int y2) {
+		printf("judge:%d,%d,%d,%d\n", x1, y1, x2, y2);
+		if (x1 == x2 && y1 == y2) {
+			eraser.attacked(mon_ATK);
+		}
+	}
+
 	void monster_bat::showdetail() {
 		if (mon_loc_judge(next_x, next_y) == 1) {
 			next_step = whichway(mon_x, mon_y, next_x, next_y, CEraser::actor_x, CEraser::actor_y);
@@ -172,13 +179,14 @@ namespace game_framework {
 		mon_x = next_x;
 		mon_y = next_y;
 		monster_cpp.get_bat(1,mon_x, mon_y);
+		LoadBitmap();
 		showdata();
 	}
 
 	void monster_bat::showdata() {
 		printf("\nmonster2:\n");
 		printf("HP:%d\n", mon_HP);
-		//printf("ATK:%d\n", mon_ATK);
+		printf("ATK:%d\n", mon_ATK);
 		printf("Location:%d,%d\n", mon_x, mon_y);
 		printf("X,Y:%d,%d\n", x, y);
 		printf("map:%d,%d\n", CEraser::map_x, CEraser::map_y);
@@ -196,9 +204,19 @@ namespace game_framework {
 	int monster_bat::getmap(int random_map, int map[][27])
 	{
 		map_num = random_map; 
-		for (int i = 0; i < 25; i++)
+		for (int i = 0; i < 27; i++)
 			for (int j = 0; j < 27; j++)
 				map_monster[i][j] = map[i][j];
+		if (map_num == 1) {//24*24
+			mon_x = 20;//24-actor_x
+			mon_y = 1;//2-actor_y
+			mon_HP = 20;
+			mon_ATK = 1;
+			monster_cpp.get_bat(1, mon_x, mon_y);
+			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
+			showdata();
+			return random_map;
+		}
 		if (map_num == 2) {//24*24
 			mon_x = 22;//24-actor_x
 			mon_y = 1;//2-actor_y
@@ -303,6 +321,7 @@ namespace game_framework {
 			deathshow = 0;
 		}
 	}
+
 	void monster_bat::OnMove()
 	{
 
@@ -316,6 +335,7 @@ namespace game_framework {
 		if (isMovingDown) {
 		}
 	}
+
 	void monster_bat::SetCharacter(int actor)
 	{
 		character = actor;
@@ -326,7 +346,7 @@ namespace game_framework {
 		isMovingDown = flag;
 		if (flag && stopeverything==0) {
 			findroad();
-			monster_cpp.attack_judge(mon_x, mon_y, next_x, next_y);
+			attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();
 		}
 	}
@@ -336,7 +356,7 @@ namespace game_framework {
 		isMovingLeft = flag;
 		if (flag&& stopeverything == 0) {
 			findroad();
-			monster_cpp.attack_judge(mon_x, mon_y, next_x, next_y);
+			attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();
 		}
 	}
@@ -346,7 +366,7 @@ namespace game_framework {
 		isMovingRight = flag;
 		if (flag&& stopeverything == 0) {
 			findroad();
-			monster_cpp.attack_judge(mon_x, mon_y, next_x, next_y);
+			attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();
 		}
 	}
@@ -356,7 +376,7 @@ namespace game_framework {
 		isMovingUp = flag;
 		if (flag&& stopeverything == 0) {
 			findroad();
-			monster_cpp.attack_judge(mon_x, mon_y, next_x, next_y);
+			attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();
 		}
 	}
@@ -366,7 +386,7 @@ namespace game_framework {
 		isMoving = flag;
 		if (flag) {
 			findroad();
-			monster_cpp.attack_judge(mon_x, mon_y, next_x, next_y);
+			attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();
 		}
 	}
@@ -394,7 +414,7 @@ namespace game_framework {
 		printf("bat is attacked\n");
 		LoadBitmap();
 		if (mon_HP < 1) {
-			death();
+			monster_bat::death();
 		}
 		return mon_HP - ATK;
 	}
@@ -406,6 +426,7 @@ namespace game_framework {
 		mon_ATK = 0;
 		LoadBitmap();
 	}
+
 	void monster_bat::superdeath() {
 		animation.cleanBitmap();
 		animation.AddBitmap(death_mon, RGB(255, 255, 255));

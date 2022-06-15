@@ -112,7 +112,7 @@ namespace game_framework {
 	}
 	int CEraser::actor_x = 1;
 	int CEraser::actor_y = 1;
-	int CEraser::hero_HP = 20;
+	int CEraser::hero_HP = 2;
 	int show = 1;
 	void CEraser::OnMove()
 	{

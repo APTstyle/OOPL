@@ -372,12 +372,19 @@ namespace game_framework {
 		
 		CMovingBitmap	herohp;
 
+		CMovingBitmap	finishbackground2;
+		CMovingBitmap	finishbackground;
+
+		CMovingBitmap	gameoverBG;
+
 		CInteger		hits_left;	// 剩下的撞擊數
 		CBouncingBall   bballs;		// 反覆彈跳的球
 		CMovingBitmap   practice;
 		CMovingBitmap   border; //practice2
 		CMovingBitmap	practice3;
 		int picX, picY;
+		int bool_finish =0;
+		int bool_gameover = 0;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
