@@ -70,11 +70,12 @@ namespace game_framework {
 	int load_c = 0;
 	
 	const int MAX_RAND_NUM = 3;
+	const int max_layer = 4;
 	
-	int random_map = 4; //測試用
+	int random_map = 0; //測試用
 	int test = 1;
 	int layer = 1;
-	int layercheck[4] = { 0 };
+	int layercheck[max_layer] = { 0 };
 
 	int check_backpack = 0;
 	int pack_space[19] = { 0 };
@@ -131,6 +132,15 @@ namespace game_framework {
 			}
 		}
 	}
+	/*int check_boss_layer() {
+		int ans=1;
+		for (int i = 0; i < max_layer; i++) {
+			if (layercheck[i] == 0) {
+				ans=0;
+			}
+		}
+		return ans;
+	}*/
 
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的遊戲開頭畫面物件
@@ -175,6 +185,9 @@ CGameMainMenu::CGameMainMenu(CGame *g)
 }
 void CGameMainMenu::OnBeginState()
 {
+	for (int i = 0; i < max_layer; i++) {
+		layercheck[i] = 0;
+	}
 	
 }
 void CGameMainMenu::OnInit()
@@ -188,7 +201,7 @@ void CGameMainMenu::OnInit()
 void CGameStateInit::OnBeginState()
 {
 
-	CEraser::hero_HP = 20;
+	CEraser::hero_HP = 50;
 	if (load_music == 0) {
 		CAudio::Instance()->Load(START_MUSIC, "sounds\\theme.mp3");
 		load_music = 1;
@@ -883,7 +896,7 @@ void CGameStateOver::OnMove()
 
 void CGameStateOver::OnBeginState()
 {
-	//gamemap.changemap(1);
+
 }
 
 void CGameStateOver::OnLButtonDown(UINT nFlags, CPoint point)
@@ -954,11 +967,14 @@ void CGameStateRun::OnBeginState()
 	srand((unsigned)time(NULL));
 	random_map = (rand()%6)+1; //讓地圖隨機出現
 	gamemap.changemap(random_map);
+	layercheck[random_map] = 1;
 
-	//monster_cpp.getmap(random_map, map);
-	//monster_bat_cpp.getmap(random_map, map);
-	//monster_bat_cpp2.getmap(random_map, map);
-	//monster_bat_cpp3.getmap(random_map, map);
+	monster_cpp.getmap(random_map, gamemap.map);
+	/*monster_bat_cpp.getmap(random_map, gamemap.map);
+	monster_bat_cpp2.getmap(random_map, gamemap.map);
+	monster_bat_cpp3.getmap(random_map, gamemap.map);*/
+
+	monsetmap(random_map);
 
 	
 	
@@ -975,16 +991,16 @@ void CGameStateRun::OnBeginState()
 	monster_cpp.setdata(test, 5, 5);
 	monster_cpp.SetXY(CEraser::map_x + 45 * monster_cpp.mon_x, CEraser::map_y + 45 * monster_cpp.mon_y);
 	
-	bat_setup(5, 7);
-	bat_setup2(3,17);
-	bat_setup3(23,21);
+	//bat_setup(5, 7);
+	//bat_setup2(3,17);
+	//bat_setup3(23,21);
 
-	for (int i = 0; i < 27; i++) {
+	/*for (int i = 0; i < 27; i++) {
 		for (int j = 0; j < 27; j++) {
 			printf("%d ", save[i][j]);
 		}
 		printf("\n");
-	}
+	}*/
 	/*const int BALL_GAP = 90;
 	const int BALL_XY_OFFSET = 45;
 	const int BALL_PER_ROW = 7;
@@ -1157,26 +1173,27 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_Z = 0x5a; // keyboard左箭頭
 	const int step = 45;
 	if (nChar == KEY_Z) {
-		bool_finish = 1;
+		eraser.hero_HP = 50;
+		//bool_finish = 1;
 		printf("finsih%d\n", bool_finish);
 	}
 	if (nChar == KEY_SPACE) {
-		test = 3;
+		/*test = 3;
 		gamemap.changemap(test);
 		monster_cpp.getmap(test, gamemap.map);
 		monster_bat_cpp.getmap(test, gamemap.map);
 		monster_bat_cpp2.getmap(test, gamemap.map);
-		monster_bat_cpp3.getmap(test, gamemap.map);
+		monster_bat_cpp3.getmap(test, gamemap.map);*/
 	}
 	if (nChar == KEY_LEFT) {
 		if (gamemap.map[CEraser::actor_y][CEraser::actor_x - 1] != 3 && gamemap.map[CEraser::actor_y][CEraser::actor_x - 1] != 5) {
 			gamemap.SetXY(gamemap.X + step, gamemap.Y);
 			CGameMap::ismoving = 1;
 			eraser.SetMovingLeft(true);
-			printf("\nmapXY::%d,%d!!!!!!!!!!!\n", CEraser::map_x, CEraser::map_y);
+			//printf("\nmapXY::%d,%d!!!!!!!!!!!\n", CEraser::map_x, CEraser::map_y);
 		}
 		else {
-			printf("wall:%d,%d\n", CEraser::actor_y, CEraser::actor_x - 1);
+			//printf("wall:%d,%d\n", CEraser::actor_y, CEraser::actor_x - 1);
 			CGameMap::ismoving = 0;
 		}
 		gamemap.OnKeyDown(nChar);
@@ -1337,21 +1354,38 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 
 	if (gamemap.map[CEraser::actor_y][CEraser::actor_x] == 10) {
+		printf("\nfuckinglayer:%d map:%d\n", layer, random_map);
+		if (layer==max_layer) {
+
+			random_map = 7;
+			layer++;
+			gamemap.changemap(random_map);
+			monsetmap(random_map);
+
+		}
+		else{
 		srand((unsigned)time(NULL));
 		random_map = (rand() % 6) + 1; //讓地圖隨機出現
+		while (layercheck[random_map] == 1) {
+			srand((unsigned)time(NULL));
+			random_map = (rand() % 6) + 1; 
+		}
+		layercheck[random_map] = 1;
+		layer++;
 		gamemap.changemap(random_map);
-		monster_bat_cpp.getmap(random_map, gamemap.map);
-		monster_bat_cpp2.getmap(random_map, gamemap.map);
-		monster_bat_cpp3.getmap(random_map, gamemap.map);
+		
+		monsetmap(random_map);
+		
+		}
 	}
-	printf("keydown\n");
-	printf("\n");
-	for (int i = 0; i < 27; i++) {
+	//printf("keydown\n");
+	//printf("\n");
+	/*for (int i = 0; i < 27; i++) {
 		for (int j = 0; j < 27; j++) {
 			printf("%d ", save[i][j]);
 		}
 		printf("\n");
-	}
+	}*/
 }
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -1518,6 +1552,47 @@ void CGameStateRun::dealbackpack(int number) {
 		pack_space[number] = 0;
 	}
 }
+void CGameStateRun::monsetmap(int m) {
+	monster_bat_cpp.getmap(m, gamemap.map);
+	monster_bat_cpp2.getmap(m, gamemap.map);
+	monster_bat_cpp3.getmap(m, gamemap.map);
+	if (m == 1) {
+		bat_setup(5, 7);
+		bat_setup2(3, 17);
+		bat_setup3(23, 21);
+	}
+	else if (m == 2) {
+		bat_setup(5, 7);
+		bat_setup2(3, 17);
+		bat_setup3(23, 21);
+	}
+	else if (m == 3) {
+		bat_setup(5, 7);
+		bat_setup2(3, 17);
+		bat_setup3(23, 21);
+	}
+	else if (m == 4) {
+		bat_setup(5, 7);
+		bat_setup2(3, 17);
+		bat_setup3(23, 21);
+	}
+	else if (m == 5) {
+		bat_setup(5, 7);
+		bat_setup2(3, 17);
+		bat_setup3(23, 21);
+	}
+	else if (m == 6) {
+		bat_setup(5, 7);
+		bat_setup2(3, 17);
+		bat_setup3(23, 21);
+	}
+	else if (m == 7) {
+		bat_setup(5, 7);
+		bat_setup2(3, 17);
+		bat_setup3(23, 21);
+	}
+}
+
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {

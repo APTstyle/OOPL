@@ -354,6 +354,7 @@ namespace game_framework {
 		void bat_setup2(int x, int y);
 		void bat_setup3(int x, int y);
 		void OnBeginState();							// 設定每次重玩所需的變數
+		void monsetmap(int m);
 		void OnInit();  								// 遊戲的初值及圖形設定
 		void OnKeyDown(UINT, UINT, UINT);
 		void OnKeyUp(UINT, UINT, UINT);
