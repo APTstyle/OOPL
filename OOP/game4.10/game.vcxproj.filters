@@ -208,6 +208,7 @@
     <Image Include="RES\font1x\font1x25.bmp" />
     <Image Include="RES\font1x\font1x26.bmp" />
     <Image Include="..\allassets\startbutton1.bmp" />
+    <Image Include="RES\icon32.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\ball.bmp" />

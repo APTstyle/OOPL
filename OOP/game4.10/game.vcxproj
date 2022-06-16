@@ -454,6 +454,7 @@
     <Image Include="RES\hp\hp7.bmp" />
     <Image Include="RES\hp\hp8.bmp" />
     <Image Include="RES\hp\hp9.bmp" />
+    <Image Include="RES\icon32.bmp" />
     <Image Include="RES\key1.bmp" />
     <Image Include="RES\level1.bmp" />
     <Image Include="RES\level2.bmp" />
