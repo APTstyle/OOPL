@@ -161,7 +161,7 @@ namespace game_framework {
 	{
 		isMovingUp = flag;
 		if (flag) {
-			CEraser::actor_x -= 1;
+			CEraser::actor_y -= 1;
 		}
 	}
 

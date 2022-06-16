@@ -328,7 +328,7 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 	void CGameMap::changemap(int m) { //換地圖
 		if (m == 1) {
 
-			CEraser::CEraser::actor_x = 1;
+			CEraser::actor_x = 1;
 			CEraser::actor_y = 1;
 
 			for (int i = 0; i < 25; i++)
@@ -337,7 +337,7 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 			SetXY(920,540);
 		}
 		else if (m == 2) {
-			CEraser::CEraser::actor_x = 6;
+			CEraser::actor_x = 6;
 			CEraser::actor_y = 5;
 
 			for (int i = 0; i < 25; i++)
@@ -346,7 +346,7 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 			SetXY(695, 360);
 		}
 		else if (m == 3) {
-			CEraser::CEraser::actor_x = 16;
+			CEraser::actor_x = 16;
 			CEraser::actor_y = 5;
 
 			for (int i = 0; i < 25; i++)
@@ -355,7 +355,7 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 			SetXY(245, 360);
 		}
 		else if (m == 4) {
-			CEraser::CEraser::actor_x = 3;
+			CEraser::actor_x = 3;
 			CEraser::actor_y = 13;
 
 			for (int i = 0; i < 25; i++)
@@ -364,7 +364,7 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 			SetXY(825, 0);
 		}
 		else if (m == 5) {
-			CEraser::CEraser::actor_x = 16;
+			CEraser::actor_x = 16;
 			CEraser::actor_y = 21;
 
 			for (int i = 0; i < 25; i++)
@@ -373,7 +373,7 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 			SetXY(245, -350);
 		}
 		else if (m == 6) {
-			CEraser::CEraser::actor_x = 11;
+			CEraser::actor_x = 11;
 			CEraser::actor_y = 2;
 
 			for (int i = 0; i < 25; i++)
@@ -382,7 +382,7 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 			SetXY(475, 490);
 		}
 		else if (m == 7) {
-			CEraser::CEraser::actor_x = 3;
+			CEraser::actor_x = 3;
 			CEraser::actor_y = 2;
 
 			for (int i = 0; i < 25; i++)
@@ -398,11 +398,11 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 		//test = (rand()%2)+1;
 		//printf("test:%d", test);
 		/*for (int i = CEraser::actor_x - 5; i < CEraser::actor_x + 5; i++)	//寬度27
-			for (int j = actor_y - 5; j < actor_y + 5; j++) //高度25*/
+			for (int j = CEraser::actor_y - 5; j < CEraser::actor_y + 5; j++) //高度25*/
        //for(int i=0;i<27;i++)	//寬度27
         //    for (int j = 0; j < 27; j++) //高度25
-		for (int i = actor_x - 5; i < actor_x + 5; i++)	//寬度27
-			for (int j = actor_y - 5; j < actor_y + 5; j++) //高度25
+		for (int i = CEraser::actor_x - 5; i < CEraser::actor_x + 5; i++)	//寬度27
+			for (int j = CEraser::actor_y - 5; j < CEraser::actor_y + 5; j++) //高度25
             {
 				if(random_map==1){
 					if (j < 0) j = 0;
@@ -625,113 +625,113 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
                     ASSERT(0);
                 }
             }
-		if (map[actor_y][CEraser::actor_x] == 4) {
-			map[actor_y][CEraser::actor_x] = 11;
+		if (map[CEraser::actor_y][CEraser::actor_x] == 4) {
+			map[CEraser::actor_y][CEraser::actor_x] = 11;
 		}
-		else if (map[actor_y][CEraser::actor_x] == 8) {
-			map[actor_y][CEraser::actor_x] = 7;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 8) {
+			map[CEraser::actor_y][CEraser::actor_x] = 7;
 		}
-		else if (map[actor_y][actor_x] == 10) {
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 10) {
 			srand((unsigned)time(NULL));
 			random_map = (rand()%7)+1; //讓地圖隨機出現
 			changemap(random_map);
 		}
-		else if (map[actor_y][actor_x] == 14) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 14) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(14);
 		}
-		else if (map[actor_y][actor_x] == 13) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 13) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(13);
 		}
-		else if (map[actor_y][actor_x] == 12) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 12) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(12);
 		}
-		else if (map[actor_y][actor_x] == 15) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 15) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(15);
 		}
-		else if (map[actor_y][actor_x] == 16) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 16) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(16);
 		}
-		else if (map[actor_y][actor_x] == 17) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 17) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(17);
 		}
-		else if (map[actor_y][actor_x] == 18) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 18) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(18);
 		}
-		else if (map[actor_y][actor_x] == 19) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 19) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(19);
 		}
-		else if (map[actor_y][actor_x] == 20) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 20) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(20);
 		}
-		else if (map[actor_y][actor_x] == 21) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 21) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(21);
 		}
-		else if (map[actor_y][actor_x] == 22) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 22) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(22);
 		}
-		else if (map[actor_y][actor_x] == 23) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 23) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(23);
 		}
-		else if (map[actor_y][actor_x] == 24) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 24) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(24);
 		}
-		else if (map[actor_y][actor_x] == 25) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 25) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(25);
 		}
-		else if (map[actor_y][actor_x] == 26) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 26) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(26);
 		}
-		else if (map[actor_y][actor_x] == 27) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 27) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(27);
 		}
-		else if (map[actor_y][actor_x] == 28) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 28) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(28);
 		}
-		else if (map[actor_y][actor_x] == 29) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 29) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(29);
 		}
-		else if (map[actor_y][actor_x] == 30) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 30) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(30);
 		}
-		else if (map[actor_y][actor_x] == 31) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 31) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(31);
 		}
-		else if (map[actor_y][actor_x] == 32) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 32) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(32);
 		}
-		else if (map[actor_y][actor_x] == 33) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 33) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 		}
-		else if (map[actor_y][actor_x] == 34) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 34) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 		}
-		else if (map[actor_y][actor_x] == 35) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 35) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(35);
 		}
-		else if (map[actor_y][actor_x] == 36) {
-		map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 36) {
+		map[CEraser::actor_y][CEraser::actor_x] = 1;
 		backpackadd(36);
 		}
 
@@ -774,10 +774,10 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 		}
 		if (nChar == KEY_DOWN) {
 		}
-		//printf("CEraser::actor_x_y=%d,%d\n", CEraser::actor_x, actor_y);
+		//printf("CEraser::actor_x_y=%d,%d\n", CEraser::actor_x, CEraser::actor_y);
 		//printf("actor_location=%d,%d\n", X,Y);
-		//CEraser::CEraser::actor_x = CEraser::actor_x;
-		//CEraser::actor_y = actor_y;
+		//CEraser::actor_x = CEraser::actor_x;
+		//CEraser::actor_y = CEraser::actor_y;
 	}
 
 	void CGameMap::OnMove() {
@@ -978,7 +978,7 @@ void CGameStateRun::OnBeginState()
 {
 	gamemap.SetXY(920, 540);
 	eraser.SetCharacter(main_actor);
-	CEraser::CEraser::actor_x = 1;
+	CEraser::actor_x = 1;
 	CEraser::actor_y = 1;
 	CEraser::map_x = 920;
 	CEraser::map_y = 540;
@@ -1201,7 +1201,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster_bat_cpp.SetMovingLeft(true);
 		test2[0] = monster_bat_cpp.getroad(save);
 		if (test1[0] == test2[0]) {
-			monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+			monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::actor_x, CEraser::actor_y);
 		}
 		save[test1[0] % 100][test1[0] / 100] = 0;
 		save[test2[0] % 100][test2[0] / 100] = 1;
@@ -1210,7 +1210,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster_bat_cpp2.SetMovingLeft(true);
 		test2[1] = monster_bat_cpp2.getroad(save);
 		if (test1[1] == test2[1]) {
-			monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+			monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::actor_x, CEraser::actor_y);
 		}
 		save[test1[1] % 100][test1[1] / 100] = 0;
 		save[test2[1] % 100][test2[1] / 100] = 1;
@@ -1219,7 +1219,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster_bat_cpp3.SetMovingLeft(true);
 		test2[2] = monster_bat_cpp3.getroad(save);
 		if (test1[2] == test2[2]) {
-			monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+			monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::actor_x, CEraser::actor_y);
 		}
 		save[test1[2] % 100][test1[2] / 100] = 0;
 		save[test2[2] % 100][test2[2] / 100] = 1;
@@ -1242,7 +1242,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster_bat_cpp.SetMovingRight(true);
 		test2[0] = monster_bat_cpp.getroad(save);
 		if (test1[0] == test2[0]) {
-			monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+			monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::actor_x, CEraser::actor_y);
 		}
 		save[test1[0] % 100][test1[0] / 100] = 0;
 		save[test2[0] % 100][test2[0] / 100] = 1;
@@ -1251,7 +1251,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster_bat_cpp2.SetMovingRight(true);
 		test2[1] = monster_bat_cpp2.getroad(save);
 		if (test1[1] == test2[1]) {
-			monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+			monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::actor_x, CEraser::actor_y);
 		}
 		save[test1[1] % 100][test1[1] / 100] = 0;
 		save[test2[1] % 100][test2[1] / 100] = 1;
@@ -1260,7 +1260,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster_bat_cpp3.SetMovingRight(true);
 		test2[2] = monster_bat_cpp3.getroad(save);
 		if (test1[2] == test2[2]) {
-			monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+			monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::actor_x, CEraser::actor_y);
 		}
 		save[test1[2] % 100][test1[2] / 100] = 0;
 		save[test2[2] % 100][test2[2] / 100] = 1;
@@ -1283,7 +1283,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster_bat_cpp.SetMovingUp(true);
 		test2[0] = monster_bat_cpp.getroad(save);
 		if (test1[0] == test2[0]) {
-			monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+			monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::actor_x, CEraser::actor_y);
 		}
 		save[test1[0] % 100][test1[0] / 100] = 0;
 		save[test2[0] % 100][test2[0] / 100] = 1;
@@ -1292,7 +1292,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster_bat_cpp2.SetMovingUp(true);
 		test2[1] = monster_bat_cpp2.getroad(save);
 		if (test1[1] == test2[1]) {
-			monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+			monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::actor_x, CEraser::actor_y);
 		}
 		save[test1[1] % 100][test1[1] / 100] = 0;
 		save[test2[1] % 100][test2[1] / 100] = 1;
@@ -1301,7 +1301,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster_bat_cpp3.SetMovingUp(true);
 		test2[2] = monster_bat_cpp3.getroad(save);
 		if (test1[2] == test2[2]) {
-			monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+			monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::actor_x, CEraser::actor_y);
 		}
 		save[test1[2] % 100][test1[2] / 100] = 0;
 		save[test2[2] % 100][test2[2] / 100] = 1;
@@ -1325,7 +1325,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster_bat_cpp.SetMovingDown(true);
 		test2[0] = monster_bat_cpp.getroad(save);
 		if (test1[0] == test2[0]) {
-			monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+			monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::actor_x, CEraser::actor_y);
 		}
 		save[test1[0] % 100][test1[0] / 100] = 0;
 		save[test2[0] % 100][test2[0] / 100] = 1;
@@ -1334,7 +1334,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster_bat_cpp2.SetMovingDown(true);
 		test2[1] = monster_bat_cpp2.getroad(save);
 		if (test1[1] == test2[1]) {
-			monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+			monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::actor_x, CEraser::actor_y);
 		}
 		save[test1[1] % 100][test1[1] / 100] = 0;
 		save[test2[1] % 100][test2[1] / 100] = 1;
@@ -1343,7 +1343,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		monster_bat_cpp3.SetMovingDown(true);
 		test2[2] = monster_bat_cpp3.getroad(save);
 		if (test1[2] == test2[2]) {
-			monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+			monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::actor_x, CEraser::actor_y);
 		}
 		save[test1[2] % 100][test1[2] / 100] = 0;
 		save[test2[2] % 100][test2[2] / 100] = 1;
@@ -1417,14 +1417,14 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	check_backpack = 0;
 	}
 	if (point.x > monster_bat_cpp.GetX1() && point.x < monster_bat_cpp.GetX2() && point.y > monster_bat_cpp.GetY1() && point.y < monster_bat_cpp.GetY2()) {
-		if (monster_cpp.attacked_judge(monster_bat_cpp.mon_x, monster_bat_cpp.mon_y, CEraser::CEraser::actor_x, CEraser::actor_y) == 1) {
+		if (monster_cpp.attacked_judge(monster_bat_cpp.mon_x, monster_bat_cpp.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
 			monster_bat_cpp.attacked(eraser.hero_ATK);
 
 			monster_bat_cpp2.SetMoving(true);
 			monster_bat_cpp2.SetMoving(false);
 			test2[1] = monster_bat_cpp2.getroad(save);
 			if (test1[1] == test2[1]) {
-				monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+				monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::actor_x, CEraser::actor_y);
 			}
 			save[test1[1] % 100][test1[1] / 100] = 0;
 			save[test2[1] % 100][test2[1] / 100] = 1;
@@ -1434,7 +1434,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 			monster_bat_cpp3.SetMoving(false);
 			test2[2] = monster_bat_cpp3.getroad(save);
 			if (test1[2] == test2[2]) {
-				monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+				monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::actor_x, CEraser::actor_y);
 			}
 			save[test1[2] % 100][test1[2] / 100] = 0;
 			save[test2[2] % 100][test2[2] / 100] = 1;
@@ -1442,14 +1442,14 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 		}
 	}
 	if (point.x > monster_bat_cpp2.GetX1() && point.x < monster_bat_cpp2.GetX2() && point.y > monster_bat_cpp2.GetY1() && point.y < monster_bat_cpp2.GetY2()) {
-		if (monster_cpp.attacked_judge(monster_bat_cpp2.mon_x, monster_bat_cpp2.mon_y, CEraser::CEraser::actor_x, CEraser::actor_y) == 1) {
+		if (monster_cpp.attacked_judge(monster_bat_cpp2.mon_x, monster_bat_cpp2.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
 			monster_bat_cpp2.attacked(eraser.hero_ATK);
 
 			monster_bat_cpp.SetMoving(true);
 			monster_bat_cpp.SetMoving(false);
 			test2[0] = monster_bat_cpp.getroad(save);
 			if (test1[0] == test2[0]) {
-				monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+				monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::actor_x, CEraser::actor_y);
 			}
 			save[test1[0] % 100][test1[0] / 100] = 0;
 			save[test2[0] % 100][test2[0] / 100] = 1;
@@ -1459,7 +1459,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 			monster_bat_cpp3.SetMoving(false);
 			test2[2] = monster_bat_cpp3.getroad(save);
 			if (test1[2] == test2[2]) {
-				monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+				monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::actor_x, CEraser::actor_y);
 			}
 			save[test1[2] % 100][test1[2] / 100] = 0;
 			save[test2[2] % 100][test2[2] / 100] = 1;
@@ -1467,14 +1467,14 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 		}
 	}
 	if (point.x > monster_bat_cpp3.GetX1() && point.x < monster_bat_cpp3.GetX2() && point.y > monster_bat_cpp3.GetY1() && point.y < monster_bat_cpp3.GetY2()) {
-		if (monster_cpp.attacked_judge(monster_bat_cpp3.mon_x, monster_bat_cpp3.mon_y, CEraser::CEraser::actor_x, CEraser::actor_y) == 1) {
+		if (monster_cpp.attacked_judge(monster_bat_cpp3.mon_x, monster_bat_cpp3.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
 			monster_bat_cpp3.attacked(eraser.hero_ATK);
 
 			monster_bat_cpp.SetMoving(true);
 			monster_bat_cpp.SetMoving(false);
 			test2[0] = monster_bat_cpp.getroad(save);
 			if (test1[0] == test2[0]) {
-				monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+				monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::actor_x, CEraser::actor_y);
 			}
 			save[test1[0] % 100][test1[0] / 100] = 0;
 			save[test2[0] % 100][test2[0] / 100] = 1;
@@ -1484,7 +1484,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 			monster_bat_cpp2.SetMoving(false);
 			test2[1] = monster_bat_cpp2.getroad(save);
 			if (test1[1] == test2[1]) {
-				monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::CEraser::actor_x, CEraser::actor_y);
+				monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::actor_x, CEraser::actor_y);
 			}
 			save[test1[1] % 100][test1[1] / 100] = 0;
 			save[test2[1] % 100][test2[1] / 100] = 1;
