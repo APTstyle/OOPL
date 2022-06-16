@@ -143,6 +143,7 @@
     <Image Include="RES\Wraithsheet\Wraithsheet2.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet3.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet4.bmp" />
+<<<<<<< HEAD
     <Image Include="RES\batsheet\batsheet5.bmp" />
     <Image Include="RES\batsheet\batsheet6.bmp" />
     <Image Include="RES\batsheet\batsheet7.bmp" />
@@ -209,6 +210,34 @@
     <Image Include="RES\font1x\font1x26.bmp" />
     <Image Include="..\allassets\startbutton1.bmp" />
     <Image Include="RES\icon32.bmp" />
+=======
+    <Image Include="res\papaer1b.bmp" />
+    <Image Include="res\paper2b1.bmp" />
+    <Image Include="res\paper3b1.bmp" />
+    <Image Include="res\ring1b1.bmp" />
+    <Image Include="res\ring2b1.bmp" />
+    <Image Include="res\ring3b1.bmp" />
+    <Image Include="RES\cloth1.PNG" />
+    <Image Include="RES\cloth2.PNG" />
+    <Image Include="RES\cloth3.PNG" />
+    <Image Include="RES\cloth1.bmp" />
+    <Image Include="RES\cloth2.bmp" />
+    <Image Include="RES\cloth3.bmp" />
+    <Image Include="res\cloth1b1.bmp" />
+    <Image Include="res\cloth2b1.bmp" />
+    <Image Include="res\cloth3b1.bmp" />
+    <Image Include="res\sword1b1.bmp" />
+    <Image Include="res\sword2b1.bmp" />
+    <Image Include="res\sword3b1.bmp" />
+    <Image Include="res\stick1b1.bmp" />
+    <Image Include="res\stick2b1.bmp" />
+    <Image Include="res\stick3b1.bmp" />
+    <Image Include="res\arrow1b1.bmp" />
+    <Image Include="res\arrow2b1.bmp" />
+    <Image Include="RES\items3.bmp" />
+    <Image Include="..\..\ic_launcher.bmp" />
+    <Image Include="..\..\pixel-dungeon-master\res\drawable-mdpi\ic_launcher.png" />
+>>>>>>> chun
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\ball.bmp" />

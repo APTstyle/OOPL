@@ -105,6 +105,33 @@ namespace game_framework {
 		character = actor;
 	}
 
+	void CEraser::equiparmor(int item) {
+		
+			hero_armor = item;
+		
+		
+	}
+	void CEraser::equipweapon(int item) {
+		
+			hero_weapon = item;
+		
+	}
+	void CEraser::equipring(int item) {
+		
+		
+			hero_ring = item;
+		
+	}
+	int CEraser::checkarmor() {
+		return hero_armor;
+	}
+	int CEraser::checkweapon() {
+		return hero_weapon;
+	}
+	int CEraser::checkring() {
+		return hero_ring;
+	}
+
 
 	void CEraser::SetMovingDown(bool flag)
 	{
@@ -165,6 +192,7 @@ namespace game_framework {
 
 	void CEraser::showdetail() {
 		printf("\nHero:\n");
+<<<<<<< HEAD
 		printf("HP:%d\n", CEraser::hero_HP);
 		//printf("ATK:%d\n", hero_ATK);
 		printf("Location:%d,%d\n", actor_x, actor_y);
@@ -219,4 +247,20 @@ namespace game_framework {
 		}
 		showdata();
 	}
+=======
+		printf("HP:%d\n", hero_HP);
+		//printf("ATK:%d\n", hero_ATK);
+		//printf("Location:%d,%d\n", actor_x, actor_y);
+		//printf("X,Y:%d,%d\n", x, y);
+	}
+
+	void CEraser::showdata() {
+		printf("\nHero:\n");
+		printf("HP:%d\n", hero_HP);
+		//printf("ATK:%d\n", hero_ATK);
+		//printf("Location:%d,%d\n", actor_x, actor_y);
+		//printf("X,Y:%d,%d\n", x, y);
+	}
+
+>>>>>>> chun
 }
