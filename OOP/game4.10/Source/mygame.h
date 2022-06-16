@@ -103,16 +103,6 @@ namespace game_framework {
 	// 這個class為遊戲的遊戲執行物件，主要的遊戲程式都在這裡
 	// 每個Member function的Implementation都要弄懂
 	/////////////////////////////////////////////////////////////////////////////
-	class Cpractice4 {
-	public:
-		Cpractice4();
-		void LoadBitmap();
-		void OnMove();
-		void OnShow();
-	private:
-		CMovingBitmap pic;
-		int x, y;
-	};
 	////////////////////////////////////////////////////////////
 	class CBouncingBall{
 	public:
@@ -201,11 +191,7 @@ namespace game_framework {
 			{3,1,1,3,1,1,1,1,1,3,3,1,3,3,6,6,6,6,6,3,1,1,1,3},
 			{3,1,29,3,1,26,1,1,1,3,3,1,3,3,6,6,6,6,6,3,1,1,13,3},
 			{3,1,1,3,2,2,2,2,2,4,1,1,1,1,6,6,6,6,6,3,1,1,1,3},
-<<<<<<< HEAD
-			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3} };
-=======
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
->>>>>>> chun
 		int map3_init[25][27] = {//24*24
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3},
 			{3,1,1,13,1,1,3,3,1,1,1,1,1,1,1,1,3,1,1,1,1,30,1,3},
@@ -341,8 +327,6 @@ namespace game_framework {
 		int actor_x=1, actor_y=1;
 		int monster_x = 2, monster_y = 2;
 		CMovingBitmap lb_p, dr_p, dg_p;
-<<<<<<< HEAD
-=======
 
 		CMovingBitmap pa1s, pa2s, pa3s;
 		CMovingBitmap sw1s, sw2s, sw3s;
@@ -351,8 +335,6 @@ namespace game_framework {
 		CMovingBitmap ri1s, ri2s, ri3s;
 		CMovingBitmap fo1s, fo2s;
 		CMovingBitmap tr1s,ke1s,ar1s,ar2s,gr1s;
-		int X, Y;
->>>>>>> chun
 		int MW, MH;
 		CBouncingBall*bballs;
 		int random_num;
@@ -364,11 +346,8 @@ namespace game_framework {
 		CEraser			eraser;	
 		monster			monster_cpp;
 		monster_bat		monster_bat_cpp;
-<<<<<<< HEAD
 		monster_bat		monster_bat_cpp2;
 		monster_bat		monster_bat_cpp3;
-=======
->>>>>>> chun
 		CGameStateRun(CGame *g);
 		~CGameStateRun();
 		void bat_setup(int x, int y);
@@ -383,15 +362,12 @@ namespace game_framework {
 		void OnMouseMove(UINT nFlags, CPoint point);	// 處理滑鼠的動作 
 		void OnRButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 		void OnRButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
+		void dealbackpack(int number);
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		CGameMap		gamemap;
-<<<<<<< HEAD
-=======
-		Cpractice4		c_practice4;
->>>>>>> chun
 		const int		NUMBALLS;	// 球的總數
 		CMovingBitmap	background;	// 背景圖
 		CMovingBitmap	help;		// 說明圖
@@ -473,5 +449,4 @@ namespace game_framework {
 	private:
 		int counter;	// 倒數之計數器
 	};
-
 }

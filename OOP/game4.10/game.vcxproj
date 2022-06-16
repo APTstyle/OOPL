@@ -290,10 +290,7 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='UnitTest|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="Source\monsterBat.cpp" />
-<<<<<<< HEAD
     <ClCompile Include="Source\showHp.cpp" />
-=======
->>>>>>> chun
     <ClCompile Include="Source\StdAfx.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -346,7 +343,6 @@
     <Image Include="..\..\..\feature.png" />
     <Image Include="..\..\..\OOP_GAME\OOPL\asset\bmp\room\room2.bmp" />
     <Image Include="..\..\..\try.PNG" />
-<<<<<<< HEAD
     <Image Include="..\..\..\work\asset\bmp\person1\person1.bmp" />
     <Image Include="..\..\..\work\asset\bmp\person1\person55.bmp" />
     <Image Include="..\..\..\work\asset\bmp\person2\person55.bmp" />
@@ -357,10 +353,8 @@
     <Image Include="..\allassets\font1x.png" />
     <Image Include="..\allassets\items.png" />
     <Image Include="..\allassets\startbutton1.bmp" />
-=======
     <Image Include="..\..\ic_launcher.bmp" />
     <Image Include="..\..\pixel-dungeon-master\res\drawable-mdpi\ic_launcher.png" />
->>>>>>> chun
     <Image Include="..\assest\bg.bmp" />
     <Image Include="..\assest\bg.png" />
     <Image Include="..\assest\bmp\door1.bmp" />
@@ -380,20 +374,14 @@
     <Image Include="RES\arrow2.bmp" />
     <Image Include="res\arrow2b1.bmp" />
     <Image Include="RES\backpack1.bmp" />
-<<<<<<< HEAD
     <Image Include="RES\banners\banners1.bmp" />
-=======
->>>>>>> chun
     <Image Include="RES\batsheet\batsheet1.bmp" />
     <Image Include="RES\batsheet\batsheet2.bmp" />
     <Image Include="RES\batsheet\batsheet3.bmp" />
     <Image Include="RES\batsheet\batsheet4.bmp" />
-<<<<<<< HEAD
     <Image Include="RES\batsheet\batsheet5.bmp" />
     <Image Include="RES\batsheet\batsheet6.bmp" />
     <Image Include="RES\batsheet\batsheet7.bmp" />
-=======
->>>>>>> chun
     <Image Include="res\bitmap10.bmp" />
     <Image Include="res\bitmap11.bmp" />
     <Image Include="res\bitmap12.bmp" />
@@ -466,7 +454,6 @@
     <Image Include="RES\golblin.bmp" />
     <Image Include="RES\grave1.bmp" />
     <Image Include="RES\hero.bmp" />
-<<<<<<< HEAD
     <Image Include="res\herohp\bitmap28.bmp" />
     <Image Include="RES\herohp\bitmap30.bmp" />
     <Image Include="res\hp10.bmp" />
@@ -481,9 +468,7 @@
     <Image Include="RES\hp\hp8.bmp" />
     <Image Include="RES\hp\hp9.bmp" />
     <Image Include="RES\icon32.bmp" />
-=======
     <Image Include="RES\items3.bmp" />
->>>>>>> chun
     <Image Include="RES\key1.bmp" />
     <Image Include="RES\level1.bmp" />
     <Image Include="RES\level2.bmp" />
@@ -546,13 +531,10 @@
     <Image Include="RES\Wraithsheet\Wraithsheet2.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet3.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet4.bmp" />
-<<<<<<< HEAD
     <Image Include="RES\Wraithsheet\Wraithsheet5.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet6.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet7.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet8.bmp" />
-=======
->>>>>>> chun
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

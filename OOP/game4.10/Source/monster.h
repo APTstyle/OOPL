@@ -7,7 +7,6 @@ namespace game_framework {
 	{
 	public:
 		monster();
-<<<<<<< HEAD
 		int map_monster[27][27] = {
 		{ 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3 },
 		{ 3,9,1,13,14,12,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3 },
@@ -33,7 +32,7 @@ namespace game_framework {
 		{ 3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3 },
 		{ 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3 },
 		{ 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3 }
-	};
+		};
 		int rummap_boss[27][27] = {
 		{ 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3 },
 		{ 3,9,1,13,14,12,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3 },
@@ -61,43 +60,11 @@ namespace game_framework {
 		{ 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3 }
 		};;
 		int mon_MAXHP = 20;
-=======
-		int map_monster[25][27] = {
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
-		{3,9,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
-		{3,1,1,10,1,1,3,1,1,3,1,1,1,1,1,3,1,7,7,1,1,7,8,8,1,3},
-		{3,1,2,7,7,1,3,1,1,3,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,3},
-		{3,1,2,2,2,7,3,3,4,3,3,3,4,3,3,3,3,3,3,3,3,3,1,3,3,3},
-		{3,1,7,2,2,2,4,1,1,3,3,3,1,1,1,1,3,3,3,3,3,3,1,3,3,3},
-		{3,1,1,1,7,7,3,1,1,1,1,1,1,1,3,1,1,1,1,3,3,3,1,3,3,3},
-		{3,1,1,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
-		{3,3,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,1,1,3,3,3,1,1,3,3},
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,1,8,8,3,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,3,3,1,1,3,1,1,1,1,1,1,1,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,1,1,4,1,1,8,8,8,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,3,1,1,8,8,1,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,4,3,3,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,1,1,1,1,3,1,1,1,7,1,1,1,1,1,1,3,3,3,1,3,3},
-		{3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
->>>>>>> chun
 		int mon_HP = 20;
 		int mon_ATK = 0;
 		int map_num = 1;
-<<<<<<< HEAD
 		int mon_x;
 		int mon_y;
-=======
-		static int mon_x;
-		static int mon_y;
->>>>>>> chun
 		int next_step, next_x, next_y;
 		int main_x, main_y;
 		int map_x, map_y;
@@ -107,16 +74,10 @@ namespace game_framework {
 		int mon2_x = 0;
 		int mon2_y = 0;
 		int test = 0;
-<<<<<<< HEAD
-		int deathshow=0;
+		int deathshow = 0;
 		int mon_loc_judge(int mon_x, int mon_y);
 		int whichway(int mon_way_x, int mon_way_y, int next_way_x, int next_way_y, int main_x, int main_y);
 		int getroad();
-=======
-		int mon_loc_judge(int mon_x, int mon_y);
-		int whichway(int mon_way_x, int mon_way_y, int next_way_x, int next_way_y, int main_x, int main_y);
-		void showdetail();
->>>>>>> chun
 		void showdata();
 		int attacked(int ATK);
 		void attack_judge(int x1, int y1, int x2, int y2);
@@ -128,12 +89,8 @@ namespace game_framework {
 		int  GetX2();					// 擦子右下角 x 座標
 		int  GetY2();					// 擦子右下角 y 座標
 		int  Character();				//取得職業的變數
-<<<<<<< HEAD
 		int automove(int automove_map[][27], int main_x, int main_y, int end_x, int end_y);
 		void setdata(int m, int set_x, int set_y);
-=======
-		int automove(int automove_map[][27], int main_x, int main_y, int end_x, int end_y, int mon1, int mon2);
->>>>>>> chun
 		void Initialize();				// 設定擦子為初始值
 		void LoadBitmap();				// 載入圖形
 		void OnMove();					// 移動擦子
@@ -145,12 +102,9 @@ namespace game_framework {
 		void SetMovingRight(bool flag); // 設定是否正在往右移動
 		void SetMovingUp(bool flag);	// 設定是否正在往上移動
 		void SetMoving(bool flag);	// 設定是否正在移動
-<<<<<<< HEAD
-		void superdeath(); 
+		void superdeath();
 		void death();
 		int stopeverything = 0;
-=======
->>>>>>> chun
 	protected:
 		CEraser eraser;
 		CAnimation animation;		// 擦子的動畫

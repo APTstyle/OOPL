@@ -50,6 +50,30 @@ namespace game_framework {
 		y = Y_POS;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 	}
+	void CEraser::changeskin(int c) {
+		animation.cleanBitmap();
+		animation_icon.cleanBitmap();
+		if (character == 1) {
+			animation.AddBitmap(warrior, RGB(255, 255, 255));
+			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_warrior_hp, RGB(255, 255, 255));
+		}
+		else if (character == 2) {
+			animation.AddBitmap(mage, RGB(255, 255, 255));
+			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_mage_hp, RGB(255, 255, 255));
+		}
+		else if (character == 3) {
+			animation.AddBitmap(assassin, RGB(255, 255, 255));
+			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_assassin_hp, RGB(255, 255, 255));
+		}
+		else if (character == 4) {
+			animation.AddBitmap(hunter, RGB(255, 255, 255));
+			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_hunter_hp, RGB(255, 255, 255));
+		}
+	}
 
 	void CEraser::LoadBitmap()
 	{
@@ -75,11 +99,11 @@ namespace game_framework {
 			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_hunter_hp, RGB(255, 255, 255));
 		}
-		else {
+		/*else {
 			animation.AddBitmap(mage, RGB(255, 255, 255));
 			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_mage_hp, RGB(255, 255, 255));
-		}
+		}*/
 	}
 	int CEraser::actor_x = 1;
 	int CEraser::actor_y = 1;
@@ -161,7 +185,7 @@ namespace game_framework {
 	{
 		isMovingUp = flag;
 		if (flag) {
-			CEraser::actor_x -= 1;
+			CEraser::actor_y -= 1;
 		}
 	}
 
@@ -192,7 +216,6 @@ namespace game_framework {
 
 	void CEraser::showdetail() {
 		printf("\nHero:\n");
-<<<<<<< HEAD
 		printf("HP:%d\n", CEraser::hero_HP);
 		//printf("ATK:%d\n", hero_ATK);
 		printf("Location:%d,%d\n", actor_x, actor_y);
@@ -247,20 +270,4 @@ namespace game_framework {
 		}
 		showdata();
 	}
-=======
-		printf("HP:%d\n", hero_HP);
-		//printf("ATK:%d\n", hero_ATK);
-		//printf("Location:%d,%d\n", actor_x, actor_y);
-		//printf("X,Y:%d,%d\n", x, y);
-	}
-
-	void CEraser::showdata() {
-		printf("\nHero:\n");
-		printf("HP:%d\n", hero_HP);
-		//printf("ATK:%d\n", hero_ATK);
-		//printf("Location:%d,%d\n", actor_x, actor_y);
-		//printf("X,Y:%d,%d\n", x, y);
-	}
-
->>>>>>> chun
 }
