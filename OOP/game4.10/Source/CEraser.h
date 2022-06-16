@@ -15,6 +15,7 @@ namespace game_framework {
 		void showdata();
 		int attacked(int ATK);
 		static int map_x, map_y;
+		void reset(int m);
 		int  GetX1();					// 擦子左上角 x 座標
 		int  GetY1();					// 擦子左上角 y 座標
 		int  GetX2();					// 擦子右下角 x 座標

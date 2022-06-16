@@ -18,16 +18,12 @@ namespace game_framework {
 
 	int monster::mon_bat_x = 0;
 	int monster::mon_bat_y = 0;
-	//int monster::mon_x = 23;
-	//int monster::mon_y = 21;
-	int monster::mon_x = 3;
-	int monster::mon_y = 3;
 	monster::monster()
 	{
 		main_x = 0;
 		main_y = 0;
 		Initialize();
-		SetXY(CEraser::map_x + 45 * monster::mon_x, CEraser::map_y + 45 * monster::mon_y);
+		SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
 		showdata();
 		/*for (int i = 0; i < 27; i++) {
 			for (int j = 0; j < 27; j++) {
@@ -211,13 +207,20 @@ namespace game_framework {
 	}
 
 	void monster::findroad() {
-		next_x = monster::mon_x;
-		next_y = monster::mon_y;
-		next_step = automove(map_monster, monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y);
+		next_x = mon_x;
+		next_y = mon_y;
+		next_step = automove(map_monster, mon_x, mon_y, CEraser::actor_x, CEraser::actor_y);
 		next_x = next_step / 100;
 		next_y = next_step % 100;
 	}
 
+	int monster::mon_loc_judge(int x, int y) {
+		if (monster::mon_bat_x == x && monster::mon_bat_y == y) {
+			return 1;
+		}
+		return 0;
+	};
+	
 	void monster::attack_judge(int x1, int y1, int x2, int y2) {
 		printf("judge:%d,%d,%d,%d\n", x1, y1, x2, y2);
 		if (x1 == x2 && y1 == y2) {
@@ -233,13 +236,6 @@ namespace game_framework {
 			return 0;
 		}
 	}
-
-	int monster::mon_loc_judge(int x, int y) {
-		if (monster::mon_bat_x == x && monster::mon_bat_y == y) {
-			return 1;
-		}
-		return 0;
-	};
 
 	int monster::whichway(int mon_way_x, int mon_way_y, int next_way_x, int next_way_y, int main_x, int main_y) {//在與其他物件重疊時 應該走到哪一格代替
 		if (next_way_x == mon_way_x + 1 && next_way_y == mon_way_y) {//往右
@@ -363,10 +359,6 @@ namespace game_framework {
 		}
 	}
 
-	int monster::Character() {
-		return character;
-	}
-
 	void monster::get_bat(int n, int x121, int y121) {//n是怪物的種類 xy是座標
 		//printf("show1:%d,%d\n", mon_bat_x, mon_bat_y);
 		if (n == 1) {
@@ -380,30 +372,31 @@ namespace game_framework {
 		//printf("show2:%d,%d\n", mon_bat_x, mon_bat_y);
 	}
 
-	void monster::showdetail() {
+	int monster::getroad() {
 		eraser.showdetail();
 		if (mon_loc_judge(next_x, next_y) == 1) {
-			next_step = whichway(monster::mon_x, monster::mon_y, next_x, next_y, CEraser::actor_x, CEraser::actor_y);
+			next_step = whichway(mon_x, mon_y, next_x, next_y, CEraser::actor_x, CEraser::actor_y);
 		}
 		next_x = next_step / 100;
 		next_y = next_step % 100; 
 		SetXY(CEraser::map_x + 45 * next_x, CEraser::map_y + 45 * next_y);
-		monster::mon_x = next_x;
-		monster::mon_y = next_y;
+		mon_x = next_x;
+		mon_y = next_y;
 		LoadBitmap();
 		showdata();
+		return 0;
 	}
 
 	void monster::showdata() {
 		printf("\nmonster1:\n");
 		printf("HP:%d\n", mon_HP);
 		printf("ATK:%d\n", mon_ATK);
-		printf("Location:%d,%d\n", monster::mon_x, monster::mon_y);
+		printf("Location:%d,%d\n", mon_x, mon_y);
 		printf("X,Y:%d,%d\n", x, y);
 		//printf("test:%d\n", test);
 		//printf("show:%d,%d\n", monster::mon_bat_x, monster::mon_bat_y);
 		printf("map:%d,%d\n", CEraser::map_x, CEraser::map_y);
-		printf("mon1:%d,%d\n", monster::mon_x, monster::mon_y);
+		printf("mon1:%d,%d\n", mon_x, mon_y);
 	}
 
 	int monster::getmap(int random_map, int map[][27])
@@ -415,57 +408,46 @@ namespace game_framework {
 		if (map_num == 1) {//24*24
 			mon_x = 3;//24-actor_x
 			mon_y = 3;//2-actor_y
-			mon_HP = 20;
-			mon_ATK = 1;
 			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			showdata();
 			return random_map;
 		}
 		if (map_num == 2) {
-			monster::mon_x = 18;
-			monster::mon_y = 17;
-			map_x = 740;
-			map_y = 405;
-			CEraser::actor_x = 6;
-			CEraser::actor_y = 5;
-			SetXY(695 + 45 * monster::mon_x, 360 + 45 * monster::mon_y);
+			mon_x = 18;
+			mon_y = 17;
+			SetXY(695 + 45 * mon_x, 360 + 45 * mon_y);
 		}
 		if (map_num == 3) {
-			monster::mon_x = 8;
-			monster::mon_y = 17;
-			CEraser::actor_x = 16;
-			CEraser::actor_y = 5;
-			SetXY(245 + 45 * monster::mon_x, 360 + 45 * monster::mon_y);
+			mon_x = 8;
+			mon_y = 17;
+			SetXY(245 + 45 * mon_x, 360 + 45 * mon_y);
 		}
 		if (map_num == 4) {//24*24
 			mon_x = 21;
 			mon_y = 11;
-			CEraser::actor_x = 3;
-			CEraser::actor_y = 13;
-			SetXY(825 + 45 * monster::mon_x, 0 + 45 * monster::mon_y);
+			SetXY(825 + 45 * mon_x, 0 + 45 * mon_y);
 		}
 		if (map_num == 5) {//24*24
 			mon_x = 8;
 			mon_y = 3;
-			CEraser::actor_x = 16;
-			CEraser::actor_y = 21;
-			SetXY(245 + 45 * monster::mon_x, -350 + 45 * monster::mon_y);
+			SetXY(245 + 45 * mon_x, -350 + 45 * mon_y);
 		}
 		if (map_num == 6) {//24*24
 			mon_x = 13;
 			mon_y = 22;
-			CEraser::actor_x = 11;
-			CEraser::actor_y = 2;
-			SetXY(475 + 45 * monster::mon_x, 490 + 45 * monster::mon_y);
+			SetXY(475 + 45 * mon_x, 490 + 45 * mon_y);
 		}
 		if (map_num == 7) {//24*24
+			mon_HP = 20;
+			mon_ATK = 1;
 			superdeath();
 		}
-		mon_HP = 20;
-		mon_ATK = 1;
 		LoadBitmap();
 		//printf("monster_map:%d\n", map_num);
 		return random_map;
+	}
+
+	int monster::Character() {
+		return character;
 	}
 
 	int monster::GetX1()
@@ -554,8 +536,8 @@ namespace game_framework {
 				y += STEP_SIZE;
 			}
 			findroad();
-			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
-			showdetail();
+			attack_judge(mon_x, mon_y, next_x, next_y);
+			getroad();
 		}
 	}
 
@@ -567,8 +549,8 @@ namespace game_framework {
 				x -= STEP_SIZE;
 			}
 			findroad();
-			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
-			showdetail();
+			attack_judge(mon_x, mon_y, next_x, next_y);
+			getroad();
 		}
 	}
 
@@ -580,8 +562,8 @@ namespace game_framework {
 				x += STEP_SIZE;
 			}
 			findroad();
-			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
-			showdetail();
+			attack_judge(mon_x, mon_y, next_x, next_y);
+			getroad();
 		}
 	}
 
@@ -593,8 +575,8 @@ namespace game_framework {
 				y -= STEP_SIZE;
 			}
 			findroad();
-			attack_judge(monster::mon_x, monster::mon_y, next_x, next_y);
-			showdetail();
+			attack_judge(mon_x, mon_y, next_x, next_y);
+			getroad();
 		}
 	}
 
@@ -604,7 +586,7 @@ namespace game_framework {
 		if (flag) {
 			findroad();
 			attack_judge(mon_x, mon_y, next_x, next_y);
-			showdetail();
+			getroad();
 		}
 	}
 
@@ -638,8 +620,8 @@ namespace game_framework {
 
 	void monster::death() {
 		deathshow = 1;
-		monster::mon_x = CEraser::actor_x;
-		monster::mon_y = CEraser::actor_y;
+		mon_x = CEraser::actor_x;
+		mon_y = CEraser::actor_y;
 		mon_ATK = 0;
 		LoadBitmap();
 	}
@@ -647,12 +629,43 @@ namespace game_framework {
 	void monster::superdeath() {
 		animation.cleanBitmap();
 		animation.AddBitmap(death_mon, RGB(255, 255, 255));
-		monster::mon_x = CEraser::actor_x;
-		monster::mon_y = CEraser::actor_y;
+		mon_x = CEraser::actor_x;
+		mon_y = CEraser::actor_y;
 		mon_ATK = 0;
 		mon_HP = 0;
 		x = eraser.GetX1() + 45;
 		y = eraser.GetY1() + 45;
 		stopeverything = 1;
 	}
+
+	void monster::setdata(int m, int set_x, int set_y){
+		mon_HP = 20;
+		mon_ATK = 0;
+		mon_x = set_x;
+		mon_y = set_y;
+		switch (m)
+		{
+		case 1:
+			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
+			break;
+		case 2:
+			SetXY(695 + 45 * mon_x, 360 + 45 * mon_y);
+			break;
+		case 3:
+			SetXY(245 + 45 * mon_x, 360 + 45 * mon_y);
+			break;
+		case 4:
+			SetXY(825 + 45 * mon_x, 0 + 45 * mon_y);
+			break;
+		case 5:
+			SetXY(245 + 45 * mon_x, -350 + 45 * mon_y);
+			break;
+		case 6:
+			SetXY(475 + 45 * mon_x, 490 + 45 * mon_y);
+			break;
+		default:
+			break;
+		}
+
+	};
 }

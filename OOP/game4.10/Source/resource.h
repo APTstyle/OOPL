@@ -153,8 +153,34 @@
 #define herohp1                         338
 #define finish                          343
 #define blackbackground                 344
-#define IDB_BITMAP28                    345
 #define gameover                        345
+#define letter_a                        347
+#define letter_b                        348
+#define letter_c                        349
+#define letter_d                        350
+#define letter_e                        351
+#define letter_f                        352
+#define letter_g                        353
+#define letter_i                        355
+#define letter_j                        356
+#define letter_h                        357
+#define letter_l                        358
+#define letter_m                        359
+#define letter_n                        360
+#define letter_o                        361
+#define letter_p                        362
+#define letter_q                        363
+#define letter_r                        364
+#define letter_s                        365
+#define letter_t                        366
+#define letter_u                        367
+#define letter_v                        368
+#define letter_w                        369
+#define letter_x                        370
+#define letter_y                        371
+#define letter_z                        372
+#define IDB_BITMAP28                    373
+#define gameoverBN                      373
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -167,7 +193,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        346
+#define _APS_NEXT_RESOURCE_VALUE        374
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

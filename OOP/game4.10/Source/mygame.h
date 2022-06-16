@@ -67,6 +67,11 @@ namespace game_framework {
 		void OnBeginState();							// 設定每次重玩所需的變數
 		void OnKeyUp(UINT, UINT, UINT); 				// 處理鍵盤Up的動作
 		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
+		CEraser			eraser;
+		monster			monster_cpp;
+		monster_bat		monster_bat_cpp;
+		monster_bat		monster_bat_cpp2;
+		monster_bat		monster_bat_cpp3;
 	protected:
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
@@ -131,6 +136,8 @@ namespace game_framework {
 		CGameMap();
 		monster			monster_cpp;
 		monster_bat		monster_bat_cpp;
+		monster_bat		monster_bat_cpp2;
+		monster_bat		monster_bat_cpp3;
 		void LoadBitmap();
 		void OnShow();
 		void OnMove();
@@ -139,6 +146,7 @@ namespace game_framework {
 		void SetXY(int, int);
 		void InititalizeBouncingBall(int, int, int);
 		static int ismoving;
+		int X, Y;
 		void changemap(int);
 		int map[25][27];
 		int map1_init[25][27] = {//24*26
@@ -326,7 +334,6 @@ namespace game_framework {
 		int actor_x=1, actor_y=1;
 		int monster_x = 2, monster_y = 2;
 		CMovingBitmap lb_p, dr_p, dg_p;
-		int X, Y;
 		int MW, MH;
 		CBouncingBall*bballs;
 		int random_num;
@@ -338,8 +345,13 @@ namespace game_framework {
 		CEraser			eraser;	
 		monster			monster_cpp;
 		monster_bat		monster_bat_cpp;
+		monster_bat		monster_bat_cpp2;
+		monster_bat		monster_bat_cpp3;
 		CGameStateRun(CGame *g);
 		~CGameStateRun();
+		void bat_setup(int x, int y);
+		void bat_setup2(int x, int y);
+		void bat_setup3(int x, int y);
 		void OnBeginState();							// 設定每次重玩所需的變數
 		void OnInit();  								// 遊戲的初值及圖形設定
 		void OnKeyDown(UINT, UINT, UINT);
@@ -372,19 +384,12 @@ namespace game_framework {
 		
 		CMovingBitmap	herohp;
 
-		CMovingBitmap	finishbackground2;
-		CMovingBitmap	finishbackground;
-
-		CMovingBitmap	gameoverBG;
-
 		CInteger		hits_left;	// 剩下的撞擊數
 		CBouncingBall   bballs;		// 反覆彈跳的球
 		CMovingBitmap   practice;
 		CMovingBitmap   border; //practice2
 		CMovingBitmap	practice3;
 		int picX, picY;
-		int bool_finish =0;
-		int bool_gameover = 0;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -397,6 +402,18 @@ namespace game_framework {
 		CGameStateOver(CGame *g);
 		void OnBeginState();							// 設定每次重玩所需的變數
 		void OnInit();
+		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
+		CMovingBitmap	finishbackground2;
+		CMovingBitmap	finishbackground;
+
+		CMovingBitmap	gameoverBG;
+		CMovingBitmap	gameoverbutton;
+		CEraser			eraser;
+		monster			monster_cpp;
+		monster_bat		monster_bat_cpp;
+		monster_bat		monster_bat_cpp2;
+		monster_bat		monster_bat_cpp3;
+		CGameMap		gamemap;
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面

@@ -304,6 +304,58 @@ blackbackground         BITMAP                  "..\\res\\bitmap28.bmp"
 
 gameover                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\banners\\banners1.bmp"
 
+letter_a                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x1.bmp"
+
+letter_b                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x2.bmp"
+
+letter_c                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x3.bmp"
+
+letter_d                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x4.bmp"
+
+letter_e                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x5.bmp"
+
+letter_f                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x6.bmp"
+
+letter_g                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x7.bmp"
+
+letter_i                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x9.bmp"
+
+letter_j                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x10.bmp"
+
+letter_h                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x11.bmp"
+
+letter_l                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x12.bmp"
+
+letter_m                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x13.bmp"
+
+letter_n                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x14.bmp"
+
+letter_o                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x15.bmp"
+
+letter_p                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x16.bmp"
+
+letter_q                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x17.bmp"
+
+letter_r                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x18.bmp"
+
+letter_s                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x19.bmp"
+
+letter_t                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x20.bmp"
+
+letter_u                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x21.bmp"
+
+letter_v                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x22.bmp"
+
+letter_w                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x23.bmp"
+
+letter_x                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x24.bmp"
+
+letter_y                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x25.bmp"
+
+letter_z                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\font1x\\font1x26.bmp"
+
+gameoverBN              BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\allassets\\startbutton1.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

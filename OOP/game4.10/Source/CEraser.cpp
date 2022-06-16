@@ -7,35 +7,6 @@
 #include "CEraser.h"
 
 namespace game_framework {
-	int map1_init[25][27] = {
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,5,5,3,3,3,3,3,3},
-		{3,9,1,1,1,1,3,1,1,3,1,1,1,1,1,3,1,2,2,2,1,1,8,8,1,3},
-		{3,1,1,10,1,1,3,1,1,3,1,1,1,1,1,3,1,7,7,1,1,7,8,8,1,3},
-		{3,1,2,7,7,1,3,1,1,3,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,3},
-		{3,1,2,2,2,7,3,3,4,3,3,3,4,3,3,3,3,3,3,3,3,3,1,3,3,3},
-		{3,1,7,2,2,2,4,1,1,3,3,3,1,1,1,1,3,3,3,3,3,3,1,3,3,3},
-		{3,1,1,1,7,7,3,1,1,1,1,1,1,1,3,1,1,1,1,3,3,3,1,3,3,3},
-		{3,1,1,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
-		{3,3,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,3,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,1,1,3,3,3,1,1,3,3},
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,7,7,8,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,1,8,8,3,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,1,1,1,1,1,1,3,6,6,6,6,6,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,3,3,3,1,3,3},
-		{3,3,3,1,1,3,1,1,1,1,1,1,1,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,1,1,4,1,1,8,8,8,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,3,1,1,8,8,1,8,8,1,3,1,1,1,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,3,3,3,3,3,4,3,3,3,3,4,3,3,3,3,3,3,3,1,3,3},
-		{3,3,3,3,3,1,1,1,1,3,1,1,1,7,1,1,1,1,1,1,3,3,3,1,3,3},
-		{3,3,3,3,3,1,1,1,1,4,1,1,7,2,7,1,1,1,1,1,4,1,1,1,3,3},
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
-		{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
-	/////////////////////////////////////////////////////////////////////////////
-	// CEraser: Eraser class
-	/////////////////////////////////////////////////////////////////////////////
-
 	int CEraser::map_x = 920;
 	int CEraser::map_y = 540;
 
@@ -112,7 +83,7 @@ namespace game_framework {
 	}
 	int CEraser::actor_x = 1;
 	int CEraser::actor_y = 1;
-	int CEraser::hero_HP = 2;
+	int CEraser::hero_HP = 0;
 	int show = 1;
 	void CEraser::OnMove()
 	{
@@ -138,21 +109,33 @@ namespace game_framework {
 	void CEraser::SetMovingDown(bool flag)
 	{
 		isMovingDown = flag;
+		if (flag) {
+			CEraser::actor_y += 1;
+		}
 	}
 
 	void CEraser::SetMovingLeft(bool flag)
 	{
 		isMovingLeft = flag;
+		if (flag) {
+			CEraser::actor_x -= 1;
+		}
 	}
 
 	void CEraser::SetMovingRight(bool flag)
 	{
 		isMovingRight = flag;
+		if (flag) {
+			CEraser::actor_x += 1;
+		}
 	}
 
 	void CEraser::SetMovingUp(bool flag)
 	{
 		isMovingUp = flag;
+		if (flag) {
+			CEraser::actor_x -= 1;
+		}
 	}
 
 	void CEraser::SetXY(int nx, int ny)
@@ -192,7 +175,48 @@ namespace game_framework {
 		printf("\nHero:\n");
 		printf("HP:%d\n", CEraser::hero_HP);
 		//printf("ATK:%d\n", hero_ATK);
-		printf("Location:%d,%d\n", actor_x, actor_y);
+		printf("Location:%d,%d\n", CEraser::actor_x, CEraser::actor_y);
 		printf("X,Y:%d,%d\n", x, y);
+	}
+
+	void CEraser::reset(int m) {
+		hero_HP = 5;
+		hero_ATK = 4;
+		if (m == 1) {
+			CEraser::actor_x = 1;
+			CEraser::actor_y = 1;
+			SetXY(920,540);
+		}
+		else if (m == 2) {
+			CEraser::actor_x = 6;
+			CEraser::actor_y = 5;
+			SetXY(695, 360);
+		}
+		else if (m == 3) {
+			CEraser::actor_x = 16;
+			CEraser::actor_y = 5;
+			SetXY(245, 360);
+		}
+		else if (m == 4) {
+			CEraser::actor_x = 3;
+			CEraser::actor_y = 13;
+			SetXY(825, 0);
+		}
+		else if (m == 5) {
+			CEraser::actor_x = 16;
+			CEraser::actor_y = 21;
+			SetXY(245, -350);
+		}
+		else if (m == 6) {
+			CEraser::actor_x = 11;
+			CEraser::actor_y = 2;
+			SetXY(475, 490);
+		}
+		else if (m == 7) {
+			CEraser::actor_x = 3;
+			CEraser::actor_y = 2;
+			SetXY(835, 485);
+		}
+		showdata();
 	}
 }
