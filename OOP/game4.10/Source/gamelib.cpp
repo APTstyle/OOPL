@@ -158,6 +158,10 @@ void CAnimation::AddBitmap(char *filename, COLORREF colorkey)
 	Reset();
 }
 
+void  CAnimation::cleanBitmap() {	// 清除圖片 from ting
+	bmp.erase(bmp.begin(),bmp.end());
+}
+
 int CAnimation::GetCurrentBitmapNumber()
 {
 	return bmp_counter;

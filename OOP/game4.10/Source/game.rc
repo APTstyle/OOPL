@@ -248,9 +248,198 @@ IDB_BITMAP26            BITMAP                  "..\\res\\sword3.bmp"
 
 IDB_BITMAP27            BITMAP                  "..\\res\\treasure1.bmp"
 
+arrow1b                 BITMAP                  "..\\res\\arrow1.bmp"
+
+arrow2b                 BITMAP                  "..\\res\\arrow2.bmp"
+
+food1ss                 BITMAP                  "..\\res\\food1.bmp"
+
+food2ss                 BITMAP                  "..\\res\\food2.bmp"
+
+grave                   BITMAP                  "..\\res\\grave1.bmp"
+
+key                     BITMAP                  "..\\res\\key1.bmp"
+
+paper1s                 BITMAP                  "..\\res\\paper1.bmp"
+
+paper2s                 BITMAP                  "..\\res\\paper2.bmp"
+
+paper3s                 BITMAP                  "..\\res\\paper3.bmp"
+
+ring1b                  BITMAP                  "..\\res\\ring1.bmp"
+
+ring2b                  BITMAP                  "..\\res\\ring2.bmp"
+
+ring3b                  BITMAP                  "..\\res\\ring3.bmp"
+
+stick1b                 BITMAP                  "..\\res\\stick1.bmp"
+
+stick2b                 BITMAP                  "..\\res\\stick2.bmp"
+
+stick3b                 BITMAP                  "..\\res\\stick3.bmp"
+
+sword1b                 BITMAP                  "..\\res\\sword1.bmp"
+
+sword2b                 BITMAP                  "..\\res\\sword2.bmp"
+
+sword3b                 BITMAP                  "..\\res\\sword3.bmp"
+
+treasure                BITMAP                  "..\\res\\treasure1.bmp"
+
 food1s                  BITMAP                  "..\\res\\food1b1.bmp"
 
 food2s                  BITMAP                  "..\\res\\food2b1.bmp"
+
+bat5                    BITMAP                  "..\\res\\batsheet\\batsheet5.bmp"
+
+bat6                    BITMAP                  "..\\res\\batsheet\\batsheet6.bmp"
+
+bat7                    BITMAP                  "..\\res\\batsheet\\batsheet7.bmp"
+
+death_mon               BITMAP                  "..\\res\\bitmap11.bmp"
+
+boss5                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet5.bmp"
+
+boss6                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet6.bmp"
+
+boss7                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet7.bmp"
+
+boss8                   BITMAP                  "..\\res\\Wraithsheet\\Wraithsheet8.bmp"
+
+hp10                    BITMAP                  "..\\res\\hp\\hp10.bmp"
+
+hp1                     BITMAP                  "..\\res\\hp\\hp1.bmp"
+
+hp2                     BITMAP                  "..\\res\\hp\\hp2.bmp"
+
+hp3                     BITMAP                  "..\\res\\hp\\hp3.bmp"
+
+hp4                     BITMAP                  "..\\res\\hp\\hp4.bmp"
+
+hp5                     BITMAP                  "..\\res\\hp\\hp5.bmp"
+
+hp6                     BITMAP                  "..\\res\\hp\\hp6.bmp"
+
+hp7                     BITMAP                  "..\\res\\hp\\hp7.bmp"
+
+hp8                     BITMAP                  "..\\res\\hp\\hp8.bmp"
+
+hp9                     BITMAP                  "..\\res\\hp\\hp9.bmp"
+
+charactor_hunter_hp     BITMAP                  "..\\res\\person1\\person55.bmp"
+
+charactor_mage_hp       BITMAP                  "..\\res\\person2\\person55.bmp"
+
+charactor_assassin_hp   BITMAP                  "..\\res\\person3\\person55.bmp"
+
+charactor_warrior_hp    BITMAP                  "..\\res\\person4\\person55.bmp"
+
+herohp1                 BITMAP                  "..\\res\\herohp\\bitmap30.bmp"
+
+finish                  BITMAP                  "..\\res\\finish\\finish.bmp"
+
+blackbackground         BITMAP                  "..\\res\\bitmap28.bmp"
+
+gameover                BITMAP                  "..\\res\\banners\\banners1.bmp"
+
+letter_a                BITMAP                  "..\\res\\font1x\\font1x1.bmp"
+
+letter_b                BITMAP                  "..\\res\\font1x\\font1x2.bmp"
+
+letter_c                BITMAP                  "..\\res\\font1x\\font1x3.bmp"
+
+letter_d                BITMAP                  "..\\res\\font1x\\font1x4.bmp"
+
+letter_e                BITMAP                  "..\\res\\font1x\\font1x5.bmp"
+
+letter_f                BITMAP                  "..\\res\\font1x\\font1x6.bmp"
+
+letter_g                BITMAP                  "..\\res\\font1x\\font1x7.bmp"
+
+letter_i                BITMAP                  "..\\res\\font1x\\font1x9.bmp"
+
+letter_j                BITMAP                  "..\\res\\font1x\\font1x10.bmp"
+
+letter_h                BITMAP                  "..\\res\\font1x\\font1x11.bmp"
+
+letter_l                BITMAP                  "..\\res\\font1x\\font1x12.bmp"
+
+letter_m                BITMAP                  "..\\res\\font1x\\font1x13.bmp"
+
+letter_n                BITMAP                  "..\\res\\font1x\\font1x14.bmp"
+
+letter_o                BITMAP                  "..\\res\\font1x\\font1x15.bmp"
+
+letter_p                BITMAP                  "..\\res\\font1x\\font1x16.bmp"
+
+letter_q                BITMAP                  "..\\res\\font1x\\font1x17.bmp"
+
+letter_r                BITMAP                  "..\\res\\font1x\\font1x18.bmp"
+
+letter_s                BITMAP                  "..\\res\\font1x\\font1x19.bmp"
+
+letter_t                BITMAP                  "..\\res\\font1x\\font1x20.bmp"
+
+letter_u                BITMAP                  "..\\res\\font1x\\font1x21.bmp"
+
+letter_v                BITMAP                  "..\\res\\font1x\\font1x22.bmp"
+
+letter_w                BITMAP                  "..\\res\\font1x\\font1x23.bmp"
+
+letter_x                BITMAP                  "..\\res\\font1x\\font1x24.bmp"
+
+letter_y                BITMAP                  "..\\res\\font1x\\font1x25.bmp"
+
+letter_z                BITMAP                  "..\\res\\font1x\\font1x26.bmp"
+
+gameoverBN              BITMAP                  "..\\res\\startbutton2.bmp"
+
+paper1b                 BITMAP                  "..\\res\\papaer1b.bmp"
+
+paper2b                 BITMAP                  "..\\res\\paper2b1.bmp"
+
+paper3b                 BITMAP                  "..\\res\\paper3b1.bmp"
+
+ring1s                  BITMAP                  "..\\res\\ring1b1.bmp"
+
+ring2s                  BITMAP                  "..\\res\\ring2b1.bmp"
+
+ring3s                  BITMAP                  "..\\res\\ring3b1.bmp"
+
+cloth1b                 BITMAP                  "..\\res\\cloth1.bmp"
+
+cloth2b                 BITMAP                  "..\\res\\cloth2.bmp"
+
+cloth3b                 BITMAP                  "..\\res\\cloth3.bmp"
+
+cloth1s                 BITMAP                  "..\\res\\cloth1b1.bmp"
+
+cloth2s                 BITMAP                  "..\\res\\cloth2b1.bmp"
+
+cloth3s                 BITMAP                  "..\\res\\cloth3b1.bmp"
+
+sword1s                 BITMAP                  "..\\res\\sword1b1.bmp"
+
+sword2s                 BITMAP                  "..\\res\\sword2b1.bmp"
+
+sword3s                 BITMAP                  "..\\res\\sword3b1.bmp"
+
+stick1s                 BITMAP                  "..\\res\\stick1b1.bmp"
+
+stick2s                 BITMAP                  "..\\res\\stick2b1.bmp"
+
+stick3s                 BITMAP                  "..\\res\\stick3b1.bmp"
+
+arrow1s                 BITMAP                  "..\\res\\arrow1b1.bmp"
+
+arrow2s                 BITMAP                  "..\\res\\arrow2b1.bmp"
+
+key1                    BITMAP                  "..\\res\\key1.bmp"
+
+IDB_BITMAP28            BITMAP                  "..\\res\\items3.bmp"
+
+//IDB_BITMAP29            BITMAP                  "C:\\Users\\user\\Desktop\\ic_launcher.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
