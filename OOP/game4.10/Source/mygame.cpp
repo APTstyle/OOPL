@@ -86,7 +86,7 @@ namespace game_framework {
 		}
 	}
 	void backpackdel (int item) { //刪除背包物品
-		for (int i = 0; i < 19; i++) {
+		for (int i = 18; i >= 0; i--) {
 			if (pack_space[i] == item) {
 				pack_space[i] = 0;
 				break;
@@ -102,7 +102,7 @@ namespace game_framework {
 CGameStateInit::CGameStateInit(CGame *g)
 : CGameState(g)
 {
-
+	
 }
 
 
@@ -121,12 +121,14 @@ void CGameStateInit::OnInit()
 
 	logo.LoadBitmap(mainpage);
 	startb.LoadBitmap(startbutton);
+	
 	startb.SetTopLeft(600, 850);
 	
 	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	//
 	// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
 	//
+	//CAudio::Instance()->Play(START_MUSIC, true); //開頭音樂
 }
 CGameMainMenu::CGameMainMenu(CGame *g)
 	: CGameState(g)
@@ -146,7 +148,8 @@ void CGameMainMenu::OnInit()
 
 void CGameStateInit::OnBeginState()
 {
-
+	CAudio::Instance()->Load(START_MUSIC, "sounds\\theme.mp3");
+	CAudio::Instance()->Play(START_MUSIC, true); //開頭音樂
 }
 
 
@@ -275,7 +278,7 @@ void Cpractice4::OnShow() {
 		Y = y;
 	}
 
-	void CGameMap::changemap(int m) {
+	void CGameMap::changemap(int m) { //換地圖
 		if (m == 1) {
 
 			actor_x = 1;
@@ -291,7 +294,7 @@ void Cpractice4::OnShow() {
 			actor_x = 6;
 			actor_y = 5;
 
-			for (int i = 0; i < 27; i++)
+			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map2_init[i][j];
 			X = 695;
@@ -301,7 +304,7 @@ void Cpractice4::OnShow() {
 			actor_x = 16;
 			actor_y = 5;
 
-			for (int i = 0; i < 27; i++)
+			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map3_init[i][j];
 			X = 245;
@@ -311,7 +314,7 @@ void Cpractice4::OnShow() {
 			actor_x = 3;
 			actor_y = 13;
 
-			for (int i = 0; i < 27; i++)
+			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map4_init[i][j];
 			X =	825;
@@ -321,7 +324,7 @@ void Cpractice4::OnShow() {
 			actor_x = 16;
 			actor_y = 21;
 
-			for (int i = 0; i < 27; i++)
+			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map5_init[i][j];
 			X = 245;
@@ -331,7 +334,7 @@ void Cpractice4::OnShow() {
 			actor_x = 11;
 			actor_y = 2;
 
-			for (int i = 0; i < 27; i++)
+			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map6_init[i][j];
 			X = 475;
@@ -341,7 +344,7 @@ void Cpractice4::OnShow() {
 			actor_x = 3;
 			actor_y = 2;
 
-			for (int i = 0; i < 27; i++)
+			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map7_init[i][j];
 			X = 835;
@@ -986,6 +989,7 @@ void CGameStateRun::OnBeginState()
 	//CAudio::Instance()->Play(AUDIO_LAKE, true);			// 撥放 WAVE
 	//CAudio::Instance()->Play(AUDIO_DING, false);		// 撥放 WAVE
 	//CAudio::Instance()->Play(AUDIO_NTUT, true);			// 撥放 MIDI*/
+	CAudio::Instance()->Play(GAMING_MUSIC, true);
 }
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
@@ -1129,6 +1133,8 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	CAudio::Instance()->Load(AUDIO_DING,  "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
 	CAudio::Instance()->Load(AUDIO_LAKE,  "sounds\\lake.mp3");	// 載入編號1的聲音lake.mp3
 	CAudio::Instance()->Load(AUDIO_NTUT,  "sounds\\ntut.mid");	// 載入編號2的聲音ntut.mid
+	
+	CAudio::Instance()->Load(GAMING_MUSIC, "sounds\\game.mp3");
 	//
 	// 此OnInit動作會接到CGameStaterOver::OnInit()，所以進度還沒到100%
 	//
@@ -1215,6 +1221,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
+	printf("pointX:%d ,pointY:%d \n", point.x, point.y);
 	//eraser.SetMovingLeft(false);
 	//if ((point.x < backpack.Left() + backpack.Width()) && point.x > backpack.Left() && point.y > backpack.Top() && (point.y > backpack.Top() + backpack.Height())) {
 	if(point.x>backpack.Left()&&(point.x<backpack.Left()+backpack.Width())&& point.y > backpack.Top() && (point.y < backpack.Top() + backpack.Height())){
@@ -1245,6 +1252,27 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	}
 
 	if (check_backpack == 1) {	/////////////////點擊背包
+		//脫下武器
+		if (point.x > 760 && point.y < 250 && point.x<880) {
+			backpackadd(eraser.checkweapon());
+			printf("脫下");
+			eraser.equipweapon(0);
+		}
+		//脫下裝備
+		if (point.x > 890 && point.y < 250 && point.x < 1010) {
+			backpackadd(eraser.checkarmor());
+			printf("脫下");
+			eraser.equiparmor(0);
+		}
+		//脫下戒指
+		if (point.x > 1150 && point.y < 250 && point.x < 1270) {//脫下
+			backpackadd(eraser.checkring());
+			printf("脫下");
+			eraser.equipring(0);
+		}
+
+
+
 		if (point.x > lb_p.Left() && point.x < lb_p.Left() + lb_p.Width() && point.y >  lb_p.Top() && point.y < lb_p.Top() + lb_p.Height()) {
 			backpackdel(12);   /////喝藍水效果
 		}
@@ -1255,28 +1283,50 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 			backpackdel(14);	/////喝紅水效果
 		}
 		if (point.x > sw1s_p.Left() && point.x < sw1s_p.Left() + sw1s_p.Width() && point.y >  sw1s_p.Top() && point.y < sw1s_p.Top() + sw1s_p.Height()) {
-			eraser.equipweapon(15);
-			backpackdel(15);
+			
+				printf("穿上");
+				backpackadd(eraser.checkweapon());
+				eraser.equipweapon(15);  //穿上
+				backpackdel(15);
+
 		}
 		if (point.x > sw2s_p.Left() && point.x < sw2s_p.Left() + sw2s_p.Width() && point.y >  sw2s_p.Top() && point.y < sw2s_p.Top() + sw2s_p.Height()) {
-			eraser.equipweapon(16);
-			backpackdel(16);
+			
+				backpackadd(eraser.checkweapon());
+				eraser.equipweapon(16);  //脫下
+				backpackdel(16);
+			
 		}
 		if (point.x > sw3s_p.Left() && point.x < sw3s_p.Left() + sw3s_p.Width() && point.y >  sw3s_p.Top() && point.y < sw3s_p.Top() + sw3s_p.Height()) {
-			eraser.equipweapon(17);
-			backpackdel(17);
+			
+			backpackadd(eraser.checkweapon());
+				eraser.equipweapon(17);
+				
+				backpackdel(17);
+			
 		}
 		if (point.x > st1s_p.Left() && point.x < st1s_p.Left() + st1s_p.Width() && point.y >  st1s_p.Top() && point.y < st1s_p.Top() + st1s_p.Height()) {
-			eraser.equipweapon(18);
-			backpackdel(18);
+			backpackadd(eraser.checkweapon());
+				eraser.equipweapon(18);
+				
+				backpackdel(18);
+			
 		}
 		if (point.x > st2s_p.Left() && point.x < st2s_p.Left() + st2s_p.Width() && point.y >  st2s_p.Top() && point.y < st2s_p.Top() + st2s_p.Height()) {
-			eraser.equipweapon(19);
-			backpackdel(19);
+			
+			backpackadd(eraser.checkweapon());
+				eraser.equipweapon(19);
+				
+				backpackdel(19);
+			
 		}
 		if (point.x > st3s_p.Left() && point.x < st3s_p.Left() + st3s_p.Width() && point.y >  st3s_p.Top() && point.y < st3s_p.Top() + st3s_p.Height()) {
-			eraser.equipweapon(20);
-			backpackdel(20);
+			
+			backpackadd(eraser.checkweapon());
+				eraser.equipweapon(20);
+				
+				backpackdel(20);
+			
 		}
 		if (point.x > pa1s_p.Left() && point.x < pa1s_p.Left() + pa1s_p.Width() && point.y >  pa1s_p.Top() && point.y < pa1s_p.Top() + pa1s_p.Height()) {
 			backpackdel(21);
@@ -1288,28 +1338,48 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 			backpackdel(23);
 		}
 		if (point.x > ri1s_p.Left() && point.x < ri1s_p.Left() + ri1s_p.Width() && point.y >  ri1s_p.Top() && point.y < ri1s_p.Top() + ri1s_p.Height()) {
-			eraser.equipring(24);
-			backpackdel(24);
+			
+			backpackadd(eraser.checkring());
+				eraser.equipring(24);
+				
+				backpackdel(24);
+			
 		}
 		if (point.x > ri2s_p.Left() && point.x < ri2s_p.Left() + ri2s_p.Width() && point.y >  ri2s_p.Top() && point.y < ri2s_p.Top() + ri2s_p.Height()) {
-			eraser.equipring(25);
-			backpackdel(25);
+			
+			backpackadd(eraser.checkring());
+				eraser.equipring(25);
+				backpackdel(25);
+			
 		}
 		if (point.x > ri3s_p.Left() && point.x < ri3s_p.Left() + ri3s_p.Width() && point.y >  ri3s_p.Top() && point.y < ri3s_p.Top() + ri3s_p.Height()) {
-			eraser.equipring(26);
-			backpackdel(26);
+			
+			backpackadd(eraser.checkring());
+				eraser.equipring(26);
+				backpackdel(26);
+			
 		}
 		if (point.x > cl1s_p.Left() && point.x < cl1s_p.Left() + cl1s_p.Width() && point.y >  cl1s_p.Top() && point.y < cl1s_p.Top() + cl1s_p.Height()) {
-			eraser.equiparmor(27);
-			backpackdel(27);
+			
+			backpackadd(eraser.checkarmor());
+				eraser.equiparmor(27);
+				backpackdel(27);
+			
+			
 		}
 		if (point.x > cl2s_p.Left() && point.x < cl2s_p.Left() + cl2s_p.Width() && point.y >  cl2s_p.Top() && point.y < cl2s_p.Top() + cl2s_p.Height()) {
-			eraser.equiparmor(28);
-			backpackdel(28);
+			
+			backpackadd(eraser.checkarmor());
+				eraser.equiparmor(28);
+				backpackdel(28);
+			
 		}
 		if (point.x > cl3s_p.Left() && point.x < cl3s_p.Left() + cl3s_p.Width() && point.y >  cl3s_p.Top() && point.y < cl3s_p.Top() + cl3s_p.Height()) {
-			eraser.equiparmor(29);
-			backpackdel(29);
+			
+			backpackadd(eraser.checkarmor());
+				eraser.equiparmor(29);
+				backpackdel(29);
+			
 		}
 		if (point.x > fo1s_p.Left() && point.x < fo1s_p.Left() + fo1s_p.Width() && point.y >  fo1s_p.Top() && point.y < fo1s_p.Top() + fo1s_p.Height()) {
 			backpackdel(30);  /////吃包子
@@ -1402,7 +1472,7 @@ void CGameStateRun::OnShow()
 	if (check_backpack == 1) {
 		backpackUI.ShowBitmap();
 
-		if (eraser.checkweapon() == 15) {
+		if (eraser.checkweapon() == 15) { ///裝備欄
 			packx = 760, packy = 110;
 			sw1s_p.SetTopLeft(packx, packy);
 			sw1s_p.ShowBitmap();

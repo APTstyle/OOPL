@@ -296,6 +296,10 @@ IDB_BITMAP11            BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.
 
 key1                    BITMAP                  "..\\res\\bmp00004.bmp"
 
+IDB_BITMAP28            BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.10лс\\game4.10\\RES\\items3.bmp"
+
+IDB_BITMAP29            BITMAP                  "C:\\Users\\user\\Desktop\\ic_launcher.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

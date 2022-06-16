@@ -164,6 +164,9 @@
     <Image Include="res\stick3b1.bmp" />
     <Image Include="res\arrow1b1.bmp" />
     <Image Include="res\arrow2b1.bmp" />
+    <Image Include="RES\items3.bmp" />
+    <Image Include="..\..\ic_launcher.bmp" />
+    <Image Include="..\..\pixel-dungeon-master\res\drawable-mdpi\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\ball.bmp" />

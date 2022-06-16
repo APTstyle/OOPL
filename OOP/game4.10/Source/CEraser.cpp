@@ -118,29 +118,21 @@ namespace game_framework {
 	}
 
 	void CEraser::equiparmor(int item) {
-		if (item == 0) {
-			hero_armor = 0;
-		}
-		else {
+		
 			hero_armor = item;
-		}
+		
 		
 	}
 	void CEraser::equipweapon(int item) {
-		if (item == 0) {
-			hero_weapon = 0;
-		}
-		else {
+		
 			hero_weapon = item;
-		}
+		
 	}
 	void CEraser::equipring(int item) {
-		if (item == 0) {
-			hero_ring = 0;
-		}
-		else {
+		
+		
 			hero_ring = item;
-		}
+		
 	}
 	int CEraser::checkarmor() {
 		return hero_armor;
