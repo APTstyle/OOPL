@@ -9,11 +9,14 @@ namespace game_framework {
 	{
 	public:
 		CEraser();
-		int hero_HP=20;
+		static int hero_HP;
 		int hero_ATK=4;
 		void showdetail();
 		void showdata();
 		int attacked(int ATK);
+		static int map_x, map_y;
+		void reset(int m);
+		void changeskin(int c);
 		int  GetX1();					// 擦子左上角 x 座標
 		int  GetY1();					// 擦子左上角 y 座標
 		int  GetX2();					// 擦子右下角 x 座標
@@ -38,6 +41,9 @@ namespace game_framework {
 		static int actor_x, actor_y;	// 擦子左上角座標
 	protected:
 		CAnimation animation;		// 擦子的動畫
+		CAnimation animation_hp_background;		// 擦子的動畫
+		CAnimation animation_icon;		// 擦子的動畫
+		CMovingBitmap animation_test;
 		int x, y;					// 擦子左上角座標
 		int character;				//職業的變數
 		int hero_armor, hero_weapon,hero_ring; //裝備

@@ -70,6 +70,11 @@ namespace game_framework {
 		void OnBeginState();							// 設定每次重玩所需的變數
 		void OnKeyUp(UINT, UINT, UINT); 				// 處理鍵盤Up的動作
 		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
+		CEraser			eraser;
+		monster			monster_cpp;
+		monster_bat		monster_bat_cpp;
+		monster_bat		monster_bat_cpp2;
+		monster_bat		monster_bat_cpp3;
 	protected:
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
@@ -98,16 +103,6 @@ namespace game_framework {
 	// 這個class為遊戲的遊戲執行物件，主要的遊戲程式都在這裡
 	// 每個Member function的Implementation都要弄懂
 	/////////////////////////////////////////////////////////////////////////////
-	class Cpractice4 {
-	public:
-		Cpractice4();
-		void LoadBitmap();
-		void OnMove();
-		void OnShow();
-	private:
-		CMovingBitmap pic;
-		int x, y;
-	};
 	////////////////////////////////////////////////////////////
 	class CBouncingBall{
 	public:
@@ -132,6 +127,10 @@ namespace game_framework {
 	{
 	public:
 		CGameMap();
+		monster			monster_cpp;
+		monster_bat		monster_bat_cpp;
+		monster_bat		monster_bat_cpp2;
+		monster_bat		monster_bat_cpp3;
 		void LoadBitmap();
 		void OnShow();
 		void OnMove();
@@ -140,6 +139,7 @@ namespace game_framework {
 		void SetXY(int, int);
 		void InititalizeBouncingBall(int, int, int);
 		static int ismoving;
+		int X, Y;
 		void changemap(int);
 		int map[25][27];
 		int map1_init[25][27] = {//24*26
@@ -335,7 +335,6 @@ namespace game_framework {
 		CMovingBitmap ri1s, ri2s, ri3s;
 		CMovingBitmap fo1s, fo2s;
 		CMovingBitmap tr1s,ke1s,ar1s,ar2s,gr1s;
-		int X, Y;
 		int MW, MH;
 		CBouncingBall*bballs;
 		int random_num;
@@ -347,8 +346,13 @@ namespace game_framework {
 		CEraser			eraser;	
 		monster			monster_cpp;
 		monster_bat		monster_bat_cpp;
+		monster_bat		monster_bat_cpp2;
+		monster_bat		monster_bat_cpp3;
 		CGameStateRun(CGame *g);
 		~CGameStateRun();
+		void bat_setup(int x, int y);
+		void bat_setup2(int x, int y);
+		void bat_setup3(int x, int y);
 		void OnBeginState();							// 設定每次重玩所需的變數
 		void OnInit();  								// 遊戲的初值及圖形設定
 		void OnKeyDown(UINT, UINT, UINT);
@@ -358,12 +362,12 @@ namespace game_framework {
 		void OnMouseMove(UINT nFlags, CPoint point);	// 處理滑鼠的動作 
 		void OnRButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 		void OnRButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
+		void dealbackpack(int number);
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		CGameMap		gamemap;
-		Cpractice4		c_practice4;
 		const int		NUMBALLS;	// 球的總數
 		CMovingBitmap	background;	// 背景圖
 		CMovingBitmap	help;		// 說明圖
@@ -407,6 +411,8 @@ namespace game_framework {
 
 		//////////////////////////////////////////////////////
 		
+		CMovingBitmap	herohp;
+
 		CInteger		hits_left;	// 剩下的撞擊數
 		CBouncingBall   bballs;		// 反覆彈跳的球
 		CMovingBitmap   practice;
@@ -425,11 +431,22 @@ namespace game_framework {
 		CGameStateOver(CGame *g);
 		void OnBeginState();							// 設定每次重玩所需的變數
 		void OnInit();
+		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
+		CMovingBitmap	finishbackground2;
+		CMovingBitmap	finishbackground;
+
+		CMovingBitmap	gameoverBG;
+		CMovingBitmap	gameoverbutton;
+		CEraser			eraser;
+		monster			monster_cpp;
+		monster_bat		monster_bat_cpp;
+		monster_bat		monster_bat_cpp2;
+		monster_bat		monster_bat_cpp3;
+		CGameMap		gamemap;
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		int counter;	// 倒數之計數器
 	};
-
 }

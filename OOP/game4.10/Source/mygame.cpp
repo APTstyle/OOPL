@@ -65,18 +65,54 @@
 
 
 namespace game_framework {
-	int main_actor = 0;
-
+	int main_actor = 1;
+	int load_music = 0;
+	int load_c = 0;
+	
 	const int MAX_RAND_NUM = 3;
 	
 	int random_map = 1; //測試用
-	int test = 0;
+	int test = 1;
 
 	int check_backpack = 0;
 	int pack_space[19] = { 0 };
 	
 	int pack_now = 1;
 	int attack = 0;
+	int bool_finish = 0;
+	int bool_gameover = 0;
+	int save[27][27] = {
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+	};
+
+	int test1[3] = { 0,0,0 }; // 偵測之前的怪物座標
+	int	test2[3] = { 0,0,0 }; // 偵測之後的怪物座標
 	void backpackadd(int item) { //增加背包物品
 		for (int i = 0; i < 19; i++) {
 			if (pack_space[i] == 0) {
@@ -122,6 +158,7 @@ void CGameStateInit::OnInit()
 	logo.LoadBitmap(mainpage);
 	startb.LoadBitmap(startbutton);
 	
+	
 	startb.SetTopLeft(600, 850);
 	
 	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
@@ -148,7 +185,13 @@ void CGameMainMenu::OnInit()
 
 void CGameStateInit::OnBeginState()
 {
-	CAudio::Instance()->Load(START_MUSIC, "sounds\\theme.mp3");
+
+	CEraser::hero_HP = 20;
+	if (load_music == 0) {
+		CAudio::Instance()->Load(START_MUSIC, "sounds\\theme.mp3");
+		load_music = 1;
+	}
+	
 	CAudio::Instance()->Play(START_MUSIC, true); //開頭音樂
 }
 
@@ -182,30 +225,6 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 		GotoGameState(GAME_STATE_RUN);
 	}
 }
-
-Cpractice4::Cpractice4() {
-	x = y = 0;
-}
-void Cpractice4::OnMove() {
-	if (y <= SIZE_Y) {
-		x += 3;
-		y += 3;
-	}
-	else {
-		x = y = 0;
-	}
-}
-void Cpractice4::LoadBitmap() {
-	//pic.LoadBitmap(IDB_hi);
-}
-
-
-void Cpractice4::OnShow() {
-	pic.SetTopLeft(x, y);
-	//pic.ShowBitmap();
-}
-
-/////////////////////////////////////////////////
 	CGameMap::CGameMap()
         :X(920), Y(540), MW(45), MH(45)
     {
@@ -215,10 +234,13 @@ void Cpractice4::OnShow() {
         for (int j = 0; j < 26; j++)
             map[i][j] = map1_init[i][j];*/
 		//srand((unsigned)time(NULL));
-		//random_map = (rand()%2)+1; 讓地圖隨機出現
-		
+		//random_map = (rand()%6)+1; //讓地圖隨機出現
 		changemap(random_map);
-		
+
+	monster_cpp.getmap(random_map, map);
+	monster_bat_cpp.getmap(random_map, map);
+	monster_bat_cpp2.getmap(random_map, map);
+	monster_bat_cpp3.getmap(random_map, map);
 	random_num = 0;
 	bballs = NULL;
     }
@@ -276,79 +298,73 @@ void Cpractice4::OnShow() {
 	void CGameMap::SetXY(int x, int y) {
 		X = x;
 		Y = y;
+		CEraser::map_x = x;
+		CEraser::map_y = y;
 	}
 
 	void CGameMap::changemap(int m) { //換地圖
 		if (m == 1) {
-
-			actor_x = 1;
-			actor_y = 1;
+			CEraser::actor_x = 1;
+			CEraser::actor_y = 1;
 
 			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map1_init[i][j];
-			X = 920;
-			Y = 540;
+			SetXY(920, 540);
 		}
 		else if (m == 2) {
-			actor_x = 6;
-			actor_y = 5;
+			CEraser::actor_x = 6;
+			CEraser::actor_y = 5;
 
 			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map2_init[i][j];
-			X = 695;
-			Y = 360;
+			SetXY(695, 360);
 		}
 		else if (m == 3) {
-			actor_x = 16;
-			actor_y = 5;
+			CEraser::actor_x = 16;
+			CEraser::actor_y = 5;
 
 			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map3_init[i][j];
-			X = 245;
-			Y = 360;
+			SetXY(245, 360);
 		}
 		else if (m == 4) {
-			actor_x = 3;
-			actor_y = 13;
+			CEraser::actor_x = 3;
+			CEraser::actor_y = 13;
 
 			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map4_init[i][j];
-			X =	825;
-			Y = 0;
+			SetXY(825, 0);
 		}
 		else if (m == 5) {
-			actor_x = 16;
-			actor_y = 21;
+			CEraser::actor_x = 16;
+			CEraser::actor_y = 21;
 
 			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map5_init[i][j];
-			X = 245;
-			Y = -350;
+			SetXY(245, -350);
 		}
 		else if (m == 6) {
-			actor_x = 11;
-			actor_y = 2;
+			CEraser::actor_x = 11;
+			CEraser::actor_y = 2;
 
 			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map6_init[i][j];
-			X = 475;
-			Y = 490;
+			SetXY(475, 490);
 		}
 		else if (m == 7) {
-			actor_x = 3;
-			actor_y = 2;
+			CEraser::actor_x = 3;
+			CEraser::actor_y = 2;
 
 			for (int i = 0; i < 25; i++)
 				for (int j = 0; j < 27; j++)
 					map[i][j] = map7_init[i][j];
-			X = 835;
-			Y = 485;
+			SetXY(835, 485);
 		}
 	}
 
@@ -357,17 +373,19 @@ void Cpractice4::OnShow() {
 
 		//test = (rand()%2)+1;
 		//printf("test:%d", test);
+		/*for (int i = CEraser::actor_x - 5; i < CEraser::actor_x + 5; i++)	//寬度27
+			for (int j = CEraser::actor_y - 5; j < CEraser::actor_y + 5; j++) //高度25*/
        //for(int i=0;i<27;i++)	//寬度27
         //    for (int j = 0; j < 27; j++) //高度25
-		for (int i = actor_x - 5; i < actor_x + 5; i++)	//寬度27
-			for (int j = actor_y - 5; j < actor_y + 5; j++) //高度25
+		for (int i = CEraser::actor_x - 5; i < CEraser::actor_x + 5; i++)	//寬度27
+			for (int j = CEraser::actor_y - 5; j < CEraser::actor_y + 5; j++) //高度25
             {
-				if(random_map==1){
-					if (j < 0) j = 0;
-					if (j > 23)break;
-					if (i < 0)i = 0;
-					if (i > 25)break;
-				}
+				
+				if (j < 0) j = 0;
+				if (j > 23)break;
+				if (i < 0)i = 0;
+				if (i > 25)break;
+				
 				/*if (random_map == 2) {
 					if (j < 0) j = 0;
 					if (j > 24)break;
@@ -583,113 +601,113 @@ void Cpractice4::OnShow() {
                     ASSERT(0);
                 }
             }
-		if (map[actor_y][actor_x] == 4) {
-			map[actor_y][actor_x] = 11;
+		if (map[CEraser::actor_y][CEraser::actor_x] == 4) {
+			map[CEraser::actor_y][CEraser::actor_x] = 11;
 		}
-		else if (map[actor_y][actor_x] == 8) {
-			map[actor_y][actor_x] = 7;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 8) {
+			map[CEraser::actor_y][CEraser::actor_x] = 7;
 		}
-		else if (map[actor_y][actor_x] == 10) {
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 10) {
 			srand((unsigned)time(NULL));
-			random_map = (rand()%7)+1; //讓地圖隨機出現
+			random_map = (rand()%6)+1; //讓地圖隨機出現
 			changemap(random_map);
 		}
-		else if (map[actor_y][actor_x] == 14) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 14) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(14);
 		}
-		else if (map[actor_y][actor_x] == 13) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 13) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(13);
 		}
-		else if (map[actor_y][actor_x] == 12) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 12) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(12);
 		}
-		else if (map[actor_y][actor_x] == 15) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 15) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(15);
 		}
-		else if (map[actor_y][actor_x] == 16) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 16) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(16);
 		}
-		else if (map[actor_y][actor_x] == 17) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 17) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(17);
 		}
-		else if (map[actor_y][actor_x] == 18) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 18) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(18);
 		}
-		else if (map[actor_y][actor_x] == 19) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 19) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(19);
 		}
-		else if (map[actor_y][actor_x] == 20) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 20) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(20);
 		}
-		else if (map[actor_y][actor_x] == 21) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 21) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(21);
 		}
-		else if (map[actor_y][actor_x] == 22) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 22) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(22);
 		}
-		else if (map[actor_y][actor_x] == 23) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 23) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(23);
 		}
-		else if (map[actor_y][actor_x] == 24) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 24) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(24);
 		}
-		else if (map[actor_y][actor_x] == 25) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 25) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(25);
 		}
-		else if (map[actor_y][actor_x] == 26) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 26) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(26);
 		}
-		else if (map[actor_y][actor_x] == 27) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 27) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(27);
 		}
-		else if (map[actor_y][actor_x] == 28) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 28) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(28);
 		}
-		else if (map[actor_y][actor_x] == 29) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 29) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(29);
 		}
-		else if (map[actor_y][actor_x] == 30) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 30) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(30);
 		}
-		else if (map[actor_y][actor_x] == 31) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 31) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(31);
 		}
-		else if (map[actor_y][actor_x] == 32) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 32) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(32);
 		}
-		else if (map[actor_y][actor_x] == 33) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 33) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 		}
-		else if (map[actor_y][actor_x] == 34) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 34) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 		}
-		else if (map[actor_y][actor_x] == 35) {
-			map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 35) {
+			map[CEraser::actor_y][CEraser::actor_x] = 1;
 			backpackadd(35);
 		}
-		else if (map[actor_y][actor_x] == 36) {
-		map[actor_y][actor_x] = 1;
+		else if (map[CEraser::actor_y][CEraser::actor_x] == 36) {
+		map[CEraser::actor_y][CEraser::actor_x] = 1;
 		backpackadd(36);
 		}
 
@@ -714,6 +732,7 @@ void Cpractice4::OnShow() {
 			bballs[i].OnShow();
 		}*/
     }
+
 	void CGameMap::OnKeyDown(UINT nChar) {
 		const int KEY_SPACE = 0x20;
 		const char KEY_LEFT = 0x25; // keyboard左箭頭
@@ -723,60 +742,27 @@ void Cpractice4::OnShow() {
 		const int step = 45;
 		int next_step = 0;
 		if (nChar == KEY_LEFT) {
-			if (map[actor_y][actor_x - 1] != 3 && map[actor_y][actor_x - 1] != 5) {
-				SetXY(X + step, Y);
-				actor_x -= 1;
-				CGameMap::ismoving = 1;
-			}
-			else {
-				printf("wall:%d,%d\n", actor_y, actor_x - 1);
-				CGameMap::ismoving = 0;
-			}
 		}
 		if (nChar == KEY_RIGHT) {
-			if (map[actor_y][actor_x + 1] != 3 && map[actor_y][actor_x + 1] != 5) {
-				SetXY(X - step, Y);
-				actor_x += 1;
-				CGameMap::ismoving = 1;
-			}
-			else {
-				printf("wall:%d,%d\n", actor_y, actor_x + 1);
-				CGameMap::ismoving = 0;
-			}
+			
 		}
 		if (nChar == KEY_UP) {
-			if (map[actor_y - 1][actor_x] != 3 && map[actor_y - 1][actor_x] != 5) {
-				SetXY(X, Y + step);
-				actor_y -= 1;
-				CGameMap::ismoving = 1;
-			}
-			else {
-				printf("wall:%d,%d\n", actor_y - 1, actor_x);
-				CGameMap::ismoving = 0;
-			}
 		}
 		if (nChar == KEY_DOWN) {
-			if (map[actor_y + 1][actor_x] != 3 && map[actor_y + 1][actor_x] != 5) {
-				SetXY(X, Y - step);
-				actor_y += 1;
-				CGameMap::ismoving = 1;
-			}
-			else {
-				printf("wall:%d,%d\n", actor_y + 1, actor_x);
-				CGameMap::ismoving = 0;
-			}
 		}
-		//printf("actor_x_y=%d,%d\n", actor_x, actor_y);
+		//printf("CEraser::actor_x_y=%d,%d\n", CEraser::actor_x, CEraser::actor_y);
 		//printf("actor_location=%d,%d\n", X,Y);
-		CEraser::actor_x = actor_x;
-		CEraser::actor_y = actor_y;
+		//CEraser::actor_x = CEraser::actor_x;
+		//CEraser::actor_y = CEraser::actor_y;
 	}
+
 	void CGameMap::OnMove() {
 		for (int i = 0; i < random_num; i++) {
 			bballs[i].OnMove();
 		}
 
 	}
+
 	void CGameMap::InititalizeBouncingBall(int ini_index, int row, int col)
 	{
 		const int VELOCITY = 10;
@@ -788,6 +774,7 @@ void Cpractice4::OnShow() {
 		bballs[ini_index].Setvelocity(VELOCITY + col);
 		bballs[ini_index].SetXY(X + col * MW + MW / 2, floor);
 	}
+
 	void CGameMap::RandomBouncingBall() {
 		//const int MAX_RAND_NUM = 10;
 		//random_num = (rand() % MAX_RAND_NUM) + 1;
@@ -815,18 +802,17 @@ void Cpractice4::OnShow() {
 		this->x = x;
 		this->y = y;
 	}
+
 	void CBouncingBall::SetFloor(int floor)
 	{
 		this->floor = floor;
 	}
+
 	void CBouncingBall::Setvelocity(int velocoty)
 	{
 		this->velocity = velocity;
 		this->initial_velocity = velocity;
 	}
-
-
-
 
 void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
@@ -898,14 +884,19 @@ CGameStateOver::CGameStateOver(CGame *g)
 
 void CGameStateOver::OnMove()
 {
-	counter--;
-	if (counter < 0)
-		GotoGameState(GAME_STATE_INIT);
 }
 
 void CGameStateOver::OnBeginState()
 {
-	counter = 30 * 5; // 5 seconds
+	//gamemap.changemap(1);
+}
+
+void CGameStateOver::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	if (point.x > gameoverbutton.Left() && point.y > gameoverbutton.Top() && (point.y < gameoverbutton.Top() + gameoverbutton.Height()) && (point.x < gameoverbutton.Left() + gameoverbutton.Width())) {
+		bool_gameover = 0;
+		GotoGameState(GAME_STATE_INIT);
+	}
 }
 
 void CGameStateOver::OnInit()
@@ -918,7 +909,10 @@ void CGameStateOver::OnInit()
 	//
 	// 開始載入資料
 	//
-	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
+	finishbackground.LoadBitmap(finish, RGB(255, 255, 120));
+	finishbackground2.LoadBitmap(blackbackground, RGB(2, 1, 2));
+	gameoverBG.LoadBitmap(gameover, RGB(255, 255, 255));
+	gameoverbutton.LoadBitmap(gameoverBN, RGB(0, 0, 0));
 	//
 	// 最終進度為100%
 	//
@@ -927,28 +921,26 @@ void CGameStateOver::OnInit()
 
 void CGameStateOver::OnShow()
 {
-	CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
-	CFont f,*fp;
-	f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
-	fp=pDC->SelectObject(&f);					// 選用 font f
-	pDC->SetBkColor(RGB(0,0,0));
-	pDC->SetTextColor(RGB(255,255,0));
-	char str[80];								// Demo 數字對字串的轉換
-	sprintf(str, "Game Over ! (%d)", counter / 30);
-	pDC->TextOut(240,210,str);
-	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
+	if (bool_gameover == 1) {
+		finishbackground2.SetTopLeft(0, 0);
+		finishbackground2.ShowBitmap();
+		gameoverBG.SetTopLeft(eraser.GetX1() - 230, eraser.GetY1() - 110);
+		gameoverBG.ShowBitmap();
+		gameoverbutton.SetTopLeft(eraser.GetX1() - 300, eraser.GetY1());
+		gameoverbutton.ShowBitmap();
+	}
+	if (bool_finish == 1) {
+		finishbackground.SetTopLeft(700, 0);
+		finishbackground2.SetTopLeft(0, 0);
+		finishbackground2.ShowBitmap();
+		finishbackground.ShowBitmap();
+	}			// 放掉 Back Plain 的 CDC
+	
 }
-
-/////////////////////////////////////////////////////////////////////////////
-// 這個class為遊戲的遊戲執行物件，主要的遊戲程式都在這裡
-/////////////////////////////////////////////////////////////////////////////
 
 CGameStateRun::CGameStateRun(CGame *g)
 : CGameState(g), NUMBALLS(28) 
 {
-	
-
 	ball = new CBall [NUMBALLS];
 	picX = picY = 0;
 }
@@ -960,12 +952,33 @@ CGameStateRun::~CGameStateRun()
 
 void CGameStateRun::OnBeginState()
 {
+	gamemap.SetXY(920, 540);
 	eraser.SetCharacter(main_actor);
-	eraser.LoadBitmap();
+	eraser.changeskin(main_actor);
+	
+	CEraser::actor_x = 1;
+	CEraser::actor_y = 1;
+	CEraser::map_x = 920;
+	CEraser::map_y = 540;
+	for (int i = 0; i < 27; i++) {
+		for (int j = 0; j < 27; j++) {
+			save[i][j] = 0;
+		}
+	}
 	monster_cpp.SetCharacter(main_actor);
-	monster_cpp.LoadBitmap();
-	monster_bat_cpp.SetCharacter(main_actor);
-	monster_bat_cpp.LoadBitmap();
+	monster_cpp.setdata(test, 5, 5);
+	monster_cpp.SetXY(CEraser::map_x + 45 * monster_cpp.mon_x, CEraser::map_y + 45 * monster_cpp.mon_y);
+	
+	bat_setup(5, 7);
+	bat_setup2(3,17);
+	bat_setup3(23,21);
+
+	for (int i = 0; i < 27; i++) {
+		for (int j = 0; j < 27; j++) {
+			printf("%d ", save[i][j]);
+		}
+		printf("\n");
+	}
 	/*const int BALL_GAP = 90;
 	const int BALL_XY_OFFSET = 45;
 	const int BALL_PER_ROW = 7;
@@ -992,6 +1005,29 @@ void CGameStateRun::OnBeginState()
 	CAudio::Instance()->Play(GAMING_MUSIC, true);
 }
 
+void CGameStateRun::bat_setup(int x,int y) {
+	monster_bat_cpp.SetCharacter(main_actor);
+	monster_bat_cpp.setdata(test, x, y); // mapnum x y
+	monster_bat_cpp.SetXY(CEraser::map_x + 45 * monster_bat_cpp.mon_x, CEraser::map_y + 45 * monster_bat_cpp.mon_y);
+	save[y][x] = 1;
+	test1[0] = 100 * x + y;
+}
+void CGameStateRun::bat_setup2(int x, int y) {
+	monster_bat_cpp2.SetCharacter(main_actor);
+	monster_bat_cpp2.setdata(test, x, y); // mapnum x y
+	monster_bat_cpp2.SetXY(CEraser::map_x + 45 * monster_bat_cpp2.mon_x, CEraser::map_y + 45 * monster_bat_cpp2.mon_y);
+	save[y][x] = 1;
+	test1[1] = 100 * x + y;
+}
+void CGameStateRun::bat_setup3(int x, int y) {
+	monster_bat_cpp3.SetCharacter(main_actor);
+	monster_bat_cpp3.setdata(test, x, y); // mapnum x y
+	monster_bat_cpp3.SetXY(CEraser::map_x + 45 * monster_bat_cpp3.mon_x, CEraser::map_y + 45 * monster_bat_cpp3.mon_y);
+	save[y][x] = 1;
+	test1[2] = 100 * x + y;
+}
+
+
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
 	//
@@ -1001,54 +1037,16 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	// 移動背景圖的座標
 	gamemap.OnMove();
-	c_practice4.OnMove();
 	//
 	if (background.Top() > SIZE_Y)
 		background.SetTopLeft(80 ,-background.Height());
 	background.SetTopLeft(background.Left(),background.Top()+1);
-	//
-	// 移動球
-	practice.SetTopLeft(10, 10);
-	if (picX <= SIZE_Y) {
-		picX += 5;
-		picY += 5;
-	}
-	else {
-		picX = picY = 0;
-	}
-	practice3.SetTopLeft(picX, picY);
 
-	//
-	int i;
-	for (i=0; i < NUMBALLS; i++)
-		ball[i].OnMove();
-	//
-	// 移動擦子
-	//
 	monster_cpp.OnMove();
 	eraser.OnMove();
 	monster_bat_cpp.OnMove();
-	//
-	// 判斷擦子是否碰到球
-	//
-	for (i=0; i < NUMBALLS; i++)
-		if (ball[i].IsAlive() && ball[i].HitEraser(&eraser)) {
-			ball[i].SetIsAlive(false);
-			CAudio::Instance()->Play(AUDIO_DING);
-			hits_left.Add(-10);
-			//
-			// 若剩餘碰撞次數為0，則跳到Game Over狀態
-			//
-			if (hits_left.GetInteger() <= 0) {
-				CAudio::Instance()->Stop(AUDIO_LAKE);	// 停止 WAVE
-				CAudio::Instance()->Stop(AUDIO_NTUT);	// 停止 MIDI
-				GotoGameState(GAME_STATE_OVER);
-			}
-		}
-	//
-	// 移動彈跳的球
-	//
-	bballs.OnMove();
+	monster_bat_cpp2.OnMove();
+	monster_bat_cpp3.OnMove();
 }
 
 void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
@@ -1061,6 +1059,11 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	ShowInitProgress(33);	// 接個前一個狀態的進度，此處進度視為33%
 	//
 	// 開始載入資料
+	eraser.LoadBitmap();
+	monster_cpp.LoadBitmap();
+	monster_bat_cpp.LoadBitmap();
+	monster_bat_cpp2.LoadBitmap();
+	monster_bat_cpp3.LoadBitmap();
 	backpack.LoadBitmap(ui_backpack,RGB(0,0,0));
 	stop.LoadBitmap(ui_stop, RGB(0, 0, 0));
 	detect.LoadBitmap(ui_detect, RGB(0, 0, 0));
@@ -1074,6 +1077,10 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	lb_p.LoadBitmap(light_blue1, RGB(255, 255, 255));
 	dg_p.LoadBitmap(dark_green1, RGB(255, 255, 255));
 	dr_p.LoadBitmap(dark_red1, RGB(255, 255, 255));
+	herohp.LoadBitmap(hp1, RGB(255, 255, 255));
+	//border.LoadBitmap("Bitmaps/practice2.bmp", RGB(255, 255, 255));
+	//practice.LoadBitmap(IDB_BALL);
+	//practice3.LoadBitmap("Bitmaps/hi.bmp");
 
 	pa1s_p.LoadBitmap(paper1b, RGB(255, 255, 255));
 	pa2s_p.LoadBitmap(paper2b, RGB(255, 255, 255));
@@ -1103,10 +1110,8 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	/////////背包的物品/////////////////////////////////////////////////////////////////////
 
 	border.LoadBitmap("Bitmaps/practice2.bmp", RGB(255, 255, 255));
-	practice.LoadBitmap(IDB_BALL);
-	practice3.LoadBitmap("Bitmaps/hi.bmp");
-	c_practice4.LoadBitmap();
 	gamemap.LoadBitmap();
+
 	
 	//
 	int i;
@@ -1120,13 +1125,9 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	// 完成部分Loading動作，提高進度
 	//
 	ShowInitProgress(50);
-	Sleep(300); // 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
-	//
-	// 繼續載入其他資料
-	//
 	
-	help.LoadBitmap(IDB_HELP,RGB(255,255,255));				// 載入說明的圖形
-	corner.LoadBitmap(IDB_CORNER);							// 載入角落圖形
+	//help.LoadBitmap(IDB_HELP,RGB(255,255,255));				// 載入說明的圖形
+	//corner.LoadBitmap(IDB_CORNER);							// 載入角落圖形
 	//corner.ShowBitmap(background);							// 將corner貼到background
 	bballs.LoadBitmap();										// 載入圖形
 	hits_left.LoadBitmap();									
@@ -1142,73 +1143,236 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	int test = 1;
 	const int KEY_SPACE = 0x20;
-	const char KEY_LEFT  = 0x25; // keyboard左箭頭
-	const char KEY_UP    = 0x26; // keyboard上箭頭
+	const char KEY_LEFT = 0x25; // keyboard左箭頭
+	const char KEY_UP = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
-	const char KEY_DOWN  = 0x28; // keyboard下箭頭
+	const char KEY_DOWN = 0x28; // keyboard下箭頭
+	const char KEY_Z = 0x5a; // keyboard左箭頭
+	const int step = 45;
+	if (nChar == KEY_Z) {
+		bool_finish = 1;
+		printf("finsih%d\n", bool_finish);
+	}
 	if (nChar == KEY_SPACE) {
-		gamemap.changemap(2);
-		monster_cpp.getmap(2, gamemap.map);
-		monster_bat_cpp.getmap(2, gamemap.map);
-		test = 7;
+		test = 3;
 		gamemap.changemap(test);
 		monster_cpp.getmap(test, gamemap.map);
+		monster_bat_cpp.getmap(test, gamemap.map);
+		monster_bat_cpp2.getmap(test, gamemap.map);
+		monster_bat_cpp3.getmap(test, gamemap.map);
 	}
 	if (nChar == KEY_LEFT) {
-		eraser.SetMovingLeft(true);
+		if (gamemap.map[CEraser::actor_y][CEraser::actor_x - 1] != 3 && gamemap.map[CEraser::actor_y][CEraser::actor_x - 1] != 5) {
+			gamemap.SetXY(gamemap.X + step, gamemap.Y);
+			CGameMap::ismoving = 1;
+			eraser.SetMovingLeft(true);
+			printf("\nmapXY::%d,%d!!!!!!!!!!!\n", CEraser::map_x, CEraser::map_y);
+		}
+		else {
+			printf("wall:%d,%d\n", CEraser::actor_y, CEraser::actor_x - 1);
+			CGameMap::ismoving = 0;
+		}
 		gamemap.OnKeyDown(nChar);
 		monster_cpp.SetMovingLeft(true);
+
 		monster_bat_cpp.SetMovingLeft(true);
+		test2[0] = monster_bat_cpp.getroad(save);
+		if (test1[0] == test2[0]) {
+			monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::actor_x, CEraser::actor_y);
+		}
+		save[test1[0] % 100][test1[0] / 100] = 0;
+		save[test2[0] % 100][test2[0] / 100] = 1;
+		test1[0] = test2[0];
+
+		monster_bat_cpp2.SetMovingLeft(true);
+		test2[1] = monster_bat_cpp2.getroad(save);
+		if (test1[1] == test2[1]) {
+			monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::actor_x, CEraser::actor_y);
+		}
+		save[test1[1] % 100][test1[1] / 100] = 0;
+		save[test2[1] % 100][test2[1] / 100] = 1;
+		test1[1] = test2[1];
+
+		monster_bat_cpp3.SetMovingLeft(true);
+		test2[2] = monster_bat_cpp3.getroad(save);
+		if (test1[2] == test2[2]) {
+			monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::actor_x, CEraser::actor_y);
+		}
+		save[test1[2] % 100][test1[2] / 100] = 0;
+		save[test2[2] % 100][test2[2] / 100] = 1;
+		test1[2] = test2[2];
 	}
 	if (nChar == KEY_RIGHT) {
-		eraser.SetMovingRight(true);
+		if (gamemap.map[CEraser::actor_y][CEraser::actor_x + 1] != 3 && gamemap.map[CEraser::actor_y][CEraser::actor_x + 1] != 5) {
+			gamemap.SetXY(gamemap.X - step, gamemap.Y);
+			CGameMap::ismoving = 1;
+			printf("\nmapXY::%d,%d!!!!!!!!!!!\n", CEraser::map_x, CEraser::map_y);
+			eraser.SetMovingRight(true);
+		}
+		else {
+			printf("wall:%d,%d\n", CEraser::actor_y, CEraser::actor_x + 1);
+			CGameMap::ismoving = 0;
+		}
 		gamemap.OnKeyDown(nChar);
 		monster_cpp.SetMovingRight(true);
+
 		monster_bat_cpp.SetMovingRight(true);
+		test2[0] = monster_bat_cpp.getroad(save);
+		if (test1[0] == test2[0]) {
+			monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::actor_x, CEraser::actor_y);
+		}
+		save[test1[0] % 100][test1[0] / 100] = 0;
+		save[test2[0] % 100][test2[0] / 100] = 1;
+		test1[0] = test2[0];
+
+		monster_bat_cpp2.SetMovingRight(true);
+		test2[1] = monster_bat_cpp2.getroad(save);
+		if (test1[1] == test2[1]) {
+			monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::actor_x, CEraser::actor_y);
+		}
+		save[test1[1] % 100][test1[1] / 100] = 0;
+		save[test2[1] % 100][test2[1] / 100] = 1;
+		test1[1] = test2[1];
+
+		monster_bat_cpp3.SetMovingRight(true);
+		test2[2] = monster_bat_cpp3.getroad(save);
+		if (test1[2] == test2[2]) {
+			monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::actor_x, CEraser::actor_y);
+		}
+		save[test1[2] % 100][test1[2] / 100] = 0;
+		save[test2[2] % 100][test2[2] / 100] = 1;
+		test1[2] = test2[2];
 	}
-	if (nChar == KEY_UP){
-		eraser.SetMovingUp(true);
+	if (nChar == KEY_UP) {
+		if (gamemap.map[CEraser::actor_y - 1][CEraser::actor_x] != 3 && gamemap.map[CEraser::actor_y - 1][CEraser::actor_x] != 5) {
+			gamemap.SetXY(gamemap.X, gamemap.Y + step);
+			CGameMap::ismoving = 1;
+			eraser.SetMovingUp(true);
+			printf("\nmapXY::%d,%d!!!!!!!!!!!\n", CEraser::map_x, CEraser::map_y);
+		}
+		else {
+			printf("wall:%d,%d\n", CEraser::actor_y - 1, CEraser::actor_x);
+			CGameMap::ismoving = 0;
+		}
 		gamemap.OnKeyDown(nChar);
 		monster_cpp.SetMovingUp(true);
+
 		monster_bat_cpp.SetMovingUp(true);
+		test2[0] = monster_bat_cpp.getroad(save);
+		if (test1[0] == test2[0]) {
+			monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::actor_x, CEraser::actor_y);
+		}
+		save[test1[0] % 100][test1[0] / 100] = 0;
+		save[test2[0] % 100][test2[0] / 100] = 1;
+		test1[0] = test2[0];
+
+		monster_bat_cpp2.SetMovingUp(true);
+		test2[1] = monster_bat_cpp2.getroad(save);
+		if (test1[1] == test2[1]) {
+			monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::actor_x, CEraser::actor_y);
+		}
+		save[test1[1] % 100][test1[1] / 100] = 0;
+		save[test2[1] % 100][test2[1] / 100] = 1;
+		test1[1] = test2[1];
+
+		monster_bat_cpp3.SetMovingUp(true);
+		test2[2] = monster_bat_cpp3.getroad(save);
+		if (test1[2] == test2[2]) {
+			monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::actor_x, CEraser::actor_y);
+		}
+		save[test1[2] % 100][test1[2] / 100] = 0;
+		save[test2[2] % 100][test2[2] / 100] = 1;
+		test1[2] = test2[2];
 	}
-	if (nChar == KEY_DOWN){
-		eraser.SetMovingDown(true);
+	if (nChar == KEY_DOWN) {
+		if (gamemap.map[CEraser::actor_y + 1][CEraser::actor_x] != 3 && gamemap.map[CEraser::actor_y + 1][CEraser::actor_x] != 5) {
+			gamemap.SetXY(gamemap.X, gamemap.Y - step);
+			CGameMap::ismoving = 1;
+			eraser.SetMovingDown(true);
+			printf("\nmapXY::%d,%d!!!!!!!!!!!\n", CEraser::map_x, CEraser::map_y);
+		}
+		else {
+			printf("wall:%d,%d\n", CEraser::actor_y + 1, CEraser::actor_x);
+			CGameMap::ismoving = 0;
+		}
 		gamemap.OnKeyDown(nChar);
+
 		monster_cpp.SetMovingDown(true);
+
 		monster_bat_cpp.SetMovingDown(true);
-		printf("keydown\n");
+		test2[0] = monster_bat_cpp.getroad(save);
+		if (test1[0] == test2[0]) {
+			monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::actor_x, CEraser::actor_y);
+		}
+		save[test1[0] % 100][test1[0] / 100] = 0;
+		save[test2[0] % 100][test2[0] / 100] = 1;
+		test1[0] = test2[0];
+
+		monster_bat_cpp2.SetMovingDown(true);
+		test2[1] = monster_bat_cpp2.getroad(save);
+		if (test1[1] == test2[1]) {
+			monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::actor_x, CEraser::actor_y);
+		}
+		save[test1[1] % 100][test1[1] / 100] = 0;
+		save[test2[1] % 100][test2[1] / 100] = 1;
+		test1[1] = test2[1];
+
+		monster_bat_cpp3.SetMovingDown(true);
+		test2[2] = monster_bat_cpp3.getroad(save);
+		if (test1[2] == test2[2]) {
+			monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::actor_x, CEraser::actor_y);
+		}
+		save[test1[2] % 100][test1[2] / 100] = 0;
+		save[test2[2] % 100][test2[2] / 100] = 1;
+		test1[2] = test2[2];
+
+	}
+
+	printf("keydown\n");
+	printf("\n");
+	for (int i = 0; i < 27; i++) {
+		for (int j = 0; j < 27; j++) {
+			printf("%d ", save[i][j]);
+		}
+		printf("\n");
 	}
 }
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	const char KEY_LEFT  = 0x25; // keyboard左箭頭
-	const char KEY_UP    = 0x26; // keyboard上箭頭
+	const char KEY_LEFT = 0x25; // keyboard左箭頭
+	const char KEY_UP = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
-	const char KEY_DOWN  = 0x28; // keyboard下箭頭
+	const char KEY_DOWN = 0x28; // keyboard下箭頭
 
-	if (nChar == KEY_LEFT){
+	if (nChar == KEY_LEFT) {
 		eraser.SetMovingLeft(false);
 		monster_cpp.SetMovingLeft(false);
 		monster_bat_cpp.SetMovingLeft(false);
+		monster_bat_cpp2.SetMovingLeft(false);
+		monster_bat_cpp3.SetMovingLeft(false);
 	}
 	if (nChar == KEY_RIGHT) {
 		eraser.SetMovingRight(false);
 		monster_cpp.SetMovingRight(false);
 		monster_bat_cpp.SetMovingRight(false);
+		monster_bat_cpp2.SetMovingRight(false);
+		monster_bat_cpp3.SetMovingRight(false);
 	}
 	if (nChar == KEY_UP) {
 		eraser.SetMovingUp(false);
 		monster_cpp.SetMovingUp(false);
 		monster_bat_cpp.SetMovingUp(false);
+		monster_bat_cpp2.SetMovingUp(false);
+		monster_bat_cpp3.SetMovingUp(false);
 	}
 	if (nChar == KEY_DOWN) {
 		eraser.SetMovingDown(false);
 		monster_cpp.SetMovingDown(false);
 		monster_bat_cpp.SetMovingDown(false);
+		monster_bat_cpp2.SetMovingDown(false);
+		monster_bat_cpp3.SetMovingDown(false);
 	}
 }
 
@@ -1217,6 +1381,127 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 	//eraser.SetMovingLeft(true);
 	
 
+}
+void CGameStateRun::dealbackpack(int number) {
+	if (pack_space[number]==12) {
+		pack_space[number] = 0;   /////喝藍水效果
+	}
+	if (pack_space[number] == 13) {
+		pack_space[number] = 0;	/////喝綠水效果
+	}
+	if (pack_space[number] == 14) {
+		pack_space[number] = 0;	/////喝紅水效果
+	}
+	if (pack_space[number] == 15) {
+
+		printf("穿上");
+		backpackadd(eraser.checkweapon());
+		eraser.equipweapon(15);  //穿上
+		pack_space[number] = 0;
+
+	}
+	if (pack_space[number] == 16) {
+
+		backpackadd(eraser.checkweapon());
+		eraser.equipweapon(16);  //脫下
+		pack_space[number] = 0;
+
+	}
+	if (pack_space[number] == 17) {
+
+		backpackadd(eraser.checkweapon());
+		eraser.equipweapon(17);
+
+		pack_space[number] = 0;
+
+	}
+	if (pack_space[number] == 18) {
+		backpackadd(eraser.checkweapon());
+		eraser.equipweapon(18);
+
+		pack_space[number] = 0;
+
+	}
+	if (pack_space[number] == 19) {
+
+		backpackadd(eraser.checkweapon());
+		eraser.equipweapon(19);
+		pack_space[number] = 0;
+
+	}
+	if (pack_space[number] == 20) {
+
+		backpackadd(eraser.checkweapon());
+		eraser.equipweapon(20);
+
+		pack_space[number] = 0;
+
+	}
+	if (pack_space[number] == 21) {
+		pack_space[number] = 0;
+	}
+	if (pack_space[number] == 22) {
+		pack_space[number] = 0;
+	}
+	if (pack_space[number] == 23) {
+		pack_space[number] = 0;
+	}
+	if (pack_space[number] == 24) {
+
+		backpackadd(eraser.checkring());
+		eraser.equipring(24);
+
+		pack_space[number] = 0;
+
+	}
+	if (pack_space[number] == 25) {
+
+		backpackadd(eraser.checkring());
+		eraser.equipring(25);
+		pack_space[number] = 0;
+
+	}
+	if (pack_space[number] == 26) {
+
+		backpackadd(eraser.checkring());
+		eraser.equipring(26);
+		pack_space[number] = 0;
+
+	}
+	if (pack_space[number] == 27) {
+
+		backpackadd(eraser.checkarmor());
+		eraser.equiparmor(27);
+		pack_space[number] = 0;
+
+
+	}
+	if (pack_space[number] == 28) {
+
+		backpackadd(eraser.checkarmor());
+		eraser.equiparmor(28);
+		pack_space[number] = 0;
+
+	}
+	if (pack_space[number] == 29) {
+
+		backpackadd(eraser.checkarmor());
+		eraser.equiparmor(29);
+		pack_space[number] = 0;
+
+	}
+	if (pack_space[number] == 30) {
+		pack_space[number] = 0;  /////吃包子
+	}
+	if (pack_space[number] == 31) {
+		pack_space[number] = 0;  /////吃肉餅
+	}
+	if (pack_space[number] == 35) {
+		pack_space[number] = 0;
+	}
+	if (pack_space[number] == 36) {
+		pack_space[number] = 0;
+	}
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -1230,24 +1515,79 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	else if(point.x < backpackUI.Left() || (point.x > backpackUI.Left() + backpackUI.Width()) || point.y < backpackUI.Top() || (point.y > backpackUI.Top() + backpackUI.Height())) {
 	check_backpack = 0;
 	}
-	printf("GetXY:%d,%d\n", monster_cpp.GetX1(), monster_cpp.GetY1());
-	printf("GetXY:%d,%d\n", monster_cpp.GetX2(), monster_cpp.GetY2());
-	if (point.x > monster_cpp.GetX1() && point.x < monster_cpp.GetX2() && point.y > monster_cpp.GetY1() && point.y < monster_cpp.GetY2()) {
-		if (monster_cpp.attacked_judge(monster::mon_x, monster::mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
-			monster_cpp.attacked(eraser.hero_ATK);
-			eraser.showdata();
-			monster_cpp.showdata();
-			monster_bat_cpp.SetMoving(true);
-			monster_bat_cpp.SetMoving(false);
-		}
-	}
 	if (point.x > monster_bat_cpp.GetX1() && point.x < monster_bat_cpp.GetX2() && point.y > monster_bat_cpp.GetY1() && point.y < monster_bat_cpp.GetY2()) {
 		if (monster_cpp.attacked_judge(monster_bat_cpp.mon_x, monster_bat_cpp.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
 			monster_bat_cpp.attacked(eraser.hero_ATK);
-			eraser.showdata();
-			monster_cpp.SetMoving(true);
-			monster_cpp.SetMoving(false);
-			monster_bat_cpp.showdata();
+
+			monster_bat_cpp2.SetMoving(true);
+			monster_bat_cpp2.SetMoving(false);
+			test2[1] = monster_bat_cpp2.getroad(save);
+			if (test1[1] == test2[1]) {
+				monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::actor_x, CEraser::actor_y);
+			}
+			save[test1[1] % 100][test1[1] / 100] = 0;
+			save[test2[1] % 100][test2[1] / 100] = 1;
+			test1[1] = test2[1];
+
+			monster_bat_cpp3.SetMoving(true);
+			monster_bat_cpp3.SetMoving(false);
+			test2[2] = monster_bat_cpp3.getroad(save);
+			if (test1[2] == test2[2]) {
+				monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::actor_x, CEraser::actor_y);
+			}
+			save[test1[2] % 100][test1[2] / 100] = 0;
+			save[test2[2] % 100][test2[2] / 100] = 1;
+			test1[2] = test2[2];
+		}
+	}
+	if (point.x > monster_bat_cpp2.GetX1() && point.x < monster_bat_cpp2.GetX2() && point.y > monster_bat_cpp2.GetY1() && point.y < monster_bat_cpp2.GetY2()) {
+		if (monster_cpp.attacked_judge(monster_bat_cpp2.mon_x, monster_bat_cpp2.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
+			monster_bat_cpp2.attacked(eraser.hero_ATK);
+
+			monster_bat_cpp.SetMoving(true);
+			monster_bat_cpp.SetMoving(false);
+			test2[0] = monster_bat_cpp.getroad(save);
+			if (test1[0] == test2[0]) {
+				monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::actor_x, CEraser::actor_y);
+			}
+			save[test1[0] % 100][test1[0] / 100] = 0;
+			save[test2[0] % 100][test2[0] / 100] = 1;
+			test1[0] = test2[0];
+
+			monster_bat_cpp3.SetMoving(true);
+			monster_bat_cpp3.SetMoving(false);
+			test2[2] = monster_bat_cpp3.getroad(save);
+			if (test1[2] == test2[2]) {
+				monster_bat_cpp3.attack_judge(test1[2] / 100, test1[2] % 100, CEraser::actor_x, CEraser::actor_y);
+			}
+			save[test1[2] % 100][test1[2] / 100] = 0;
+			save[test2[2] % 100][test2[2] / 100] = 1;
+			test1[2] = test2[2];
+		}
+	}
+	if (point.x > monster_bat_cpp3.GetX1() && point.x < monster_bat_cpp3.GetX2() && point.y > monster_bat_cpp3.GetY1() && point.y < monster_bat_cpp3.GetY2()) {
+		if (monster_cpp.attacked_judge(monster_bat_cpp3.mon_x, monster_bat_cpp3.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
+			monster_bat_cpp3.attacked(eraser.hero_ATK);
+
+			monster_bat_cpp.SetMoving(true);
+			monster_bat_cpp.SetMoving(false);
+			test2[0] = monster_bat_cpp.getroad(save);
+			if (test1[0] == test2[0]) {
+				monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::actor_x, CEraser::actor_y);
+			}
+			save[test1[0] % 100][test1[0] / 100] = 0;
+			save[test2[0] % 100][test2[0] / 100] = 1;
+			test1[0] = test2[0];
+
+			monster_bat_cpp2.SetMoving(true);
+			monster_bat_cpp2.SetMoving(false);
+			test2[1] = monster_bat_cpp2.getroad(save);
+			if (test1[1] == test2[1]) {
+				monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::actor_x, CEraser::actor_y);
+			}
+			save[test1[1] % 100][test1[1] / 100] = 0;
+			save[test2[1] % 100][test2[1] / 100] = 1;
+			test1[1] = test2[1];
 		}
 	}
 
@@ -1270,134 +1610,71 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 			printf("脫下");
 			eraser.equipring(0);
 		}
+		
+		if (point.x > 730 && point.y > 200 && point.x < 850 && point.y<325) { //背包格子
+			dealbackpack(0);
+		}
+		else if (point.x > 860 && point.y > 200 && point.x < 980 && point.y < 325) { 
+			dealbackpack(1);
+		}
+		else if (point.x > 960 && point.y > 200 && point.x < 1120 && point.y < 325) {
+			dealbackpack(2);
+		}
+		else if (point.x > 1090 && point.y > 200 && point.x < 1250 && point.y < 325) {
+			dealbackpack(3);
+		}
+		else if (point.x > 730 && point.y > 330 && point.x < 850 && point.y < 450) { //背包格子
+			dealbackpack(4);
+		}
+		else if (point.x > 860 && point.y > 330 && point.x < 980 && point.y < 450) {
+			dealbackpack(5);
+		}
+		else if (point.x > 960 && point.y > 330 && point.x < 1120 && point.y < 450) {
+			dealbackpack(6);
+		}
+		else if (point.x > 1090 && point.y > 330 && point.x < 1250 && point.y < 450) {
+			dealbackpack(7);
+		}
+		else if (point.x > 730 && point.y > 460 && point.x < 850 && point.y < 585) { //背包格子
+			dealbackpack(8);
+		}
+		else if (point.x > 860 && point.y > 460 && point.x < 980 && point.y < 585) {
+			dealbackpack(9);
+		}
+		else if (point.x > 960 && point.y > 460 && point.x < 1120 && point.y < 585) {
+			dealbackpack(10);
+		}
+		else if (point.x > 1090 && point.y > 460 && point.x < 1250 && point.y < 585) {
+			dealbackpack(11);
+		}
+		else if (point.x > 730 && point.y > 595 && point.x < 850 && point.y < 715) { //背包格子
+			dealbackpack(12);
+		}
+		else if (point.x > 860 && point.y > 595 && point.x < 980 && point.y < 715) {
+			dealbackpack(13);
+		}
+		else if (point.x > 960 && point.y > 595 && point.x < 1120 && point.y < 715) {
+			dealbackpack(14);
+		}
+		else if (point.x > 1090 && point.y > 595 && point.x < 1250 && point.y < 715) {
+			dealbackpack(15);
+		}
+		else if (point.x > 730 && point.y > 720 && point.x < 850 && point.y < 840) { //背包格子
+			dealbackpack(16);
+		}
+		else if (point.x > 860 && point.y > 720 && point.x < 980 && point.y < 840) {
+			dealbackpack(17);
+		}
+		else if (point.x > 960 && point.y > 720 && point.x < 1120 && point.y < 840) {
+			dealbackpack(18);
+		}
 
 
 
-		if (point.x > lb_p.Left() && point.x < lb_p.Left() + lb_p.Width() && point.y >  lb_p.Top() && point.y < lb_p.Top() + lb_p.Height()) {
-			backpackdel(12);   /////喝藍水效果
-		}
-		if (point.x > dg_p.Left() && point.x < dg_p.Left() + dg_p.Width() && point.y >  dg_p.Top() && point.y < dg_p.Top() + dg_p.Height()) {
-			backpackdel(13);	/////喝綠水效果
-		}
-		if (point.x > dr_p.Left() && point.x < dr_p.Left()+dr_p.Width() && point.y >  dr_p.Top() && point.y < dr_p.Top()+dr_p.Height()) {
-			backpackdel(14);	/////喝紅水效果
-		}
-		if (point.x > sw1s_p.Left() && point.x < sw1s_p.Left() + sw1s_p.Width() && point.y >  sw1s_p.Top() && point.y < sw1s_p.Top() + sw1s_p.Height()) {
-			
-				printf("穿上");
-				backpackadd(eraser.checkweapon());
-				eraser.equipweapon(15);  //穿上
-				backpackdel(15);
-
-		}
-		if (point.x > sw2s_p.Left() && point.x < sw2s_p.Left() + sw2s_p.Width() && point.y >  sw2s_p.Top() && point.y < sw2s_p.Top() + sw2s_p.Height()) {
-			
-				backpackadd(eraser.checkweapon());
-				eraser.equipweapon(16);  //脫下
-				backpackdel(16);
-			
-		}
-		if (point.x > sw3s_p.Left() && point.x < sw3s_p.Left() + sw3s_p.Width() && point.y >  sw3s_p.Top() && point.y < sw3s_p.Top() + sw3s_p.Height()) {
-			
-			backpackadd(eraser.checkweapon());
-				eraser.equipweapon(17);
-				
-				backpackdel(17);
-			
-		}
-		if (point.x > st1s_p.Left() && point.x < st1s_p.Left() + st1s_p.Width() && point.y >  st1s_p.Top() && point.y < st1s_p.Top() + st1s_p.Height()) {
-			backpackadd(eraser.checkweapon());
-				eraser.equipweapon(18);
-				
-				backpackdel(18);
-			
-		}
-		if (point.x > st2s_p.Left() && point.x < st2s_p.Left() + st2s_p.Width() && point.y >  st2s_p.Top() && point.y < st2s_p.Top() + st2s_p.Height()) {
-			
-			backpackadd(eraser.checkweapon());
-				eraser.equipweapon(19);
-				
-				backpackdel(19);
-			
-		}
-		if (point.x > st3s_p.Left() && point.x < st3s_p.Left() + st3s_p.Width() && point.y >  st3s_p.Top() && point.y < st3s_p.Top() + st3s_p.Height()) {
-			
-			backpackadd(eraser.checkweapon());
-				eraser.equipweapon(20);
-				
-				backpackdel(20);
-			
-		}
-		if (point.x > pa1s_p.Left() && point.x < pa1s_p.Left() + pa1s_p.Width() && point.y >  pa1s_p.Top() && point.y < pa1s_p.Top() + pa1s_p.Height()) {
-			backpackdel(21);
-		}
-		if (point.x > pa2s_p.Left() && point.x < pa2s_p.Left() + pa2s_p.Width() && point.y >  pa2s_p.Top() && point.y < pa2s_p.Top() + pa2s_p.Height()) {
-			backpackdel(22);
-		}
-		if (point.x > pa3s_p.Left() && point.x < pa3s_p.Left() + pa3s_p.Width() && point.y >  pa3s_p.Top() && point.y < pa3s_p.Top() + pa3s_p.Height()) {
-			backpackdel(23);
-		}
-		if (point.x > ri1s_p.Left() && point.x < ri1s_p.Left() + ri1s_p.Width() && point.y >  ri1s_p.Top() && point.y < ri1s_p.Top() + ri1s_p.Height()) {
-			
-			backpackadd(eraser.checkring());
-				eraser.equipring(24);
-				
-				backpackdel(24);
-			
-		}
-		if (point.x > ri2s_p.Left() && point.x < ri2s_p.Left() + ri2s_p.Width() && point.y >  ri2s_p.Top() && point.y < ri2s_p.Top() + ri2s_p.Height()) {
-			
-			backpackadd(eraser.checkring());
-				eraser.equipring(25);
-				backpackdel(25);
-			
-		}
-		if (point.x > ri3s_p.Left() && point.x < ri3s_p.Left() + ri3s_p.Width() && point.y >  ri3s_p.Top() && point.y < ri3s_p.Top() + ri3s_p.Height()) {
-			
-			backpackadd(eraser.checkring());
-				eraser.equipring(26);
-				backpackdel(26);
-			
-		}
-		if (point.x > cl1s_p.Left() && point.x < cl1s_p.Left() + cl1s_p.Width() && point.y >  cl1s_p.Top() && point.y < cl1s_p.Top() + cl1s_p.Height()) {
-			
-			backpackadd(eraser.checkarmor());
-				eraser.equiparmor(27);
-				backpackdel(27);
-			
-			
-		}
-		if (point.x > cl2s_p.Left() && point.x < cl2s_p.Left() + cl2s_p.Width() && point.y >  cl2s_p.Top() && point.y < cl2s_p.Top() + cl2s_p.Height()) {
-			
-			backpackadd(eraser.checkarmor());
-				eraser.equiparmor(28);
-				backpackdel(28);
-			
-		}
-		if (point.x > cl3s_p.Left() && point.x < cl3s_p.Left() + cl3s_p.Width() && point.y >  cl3s_p.Top() && point.y < cl3s_p.Top() + cl3s_p.Height()) {
-			
-			backpackadd(eraser.checkarmor());
-				eraser.equiparmor(29);
-				backpackdel(29);
-			
-		}
-		if (point.x > fo1s_p.Left() && point.x < fo1s_p.Left() + fo1s_p.Width() && point.y >  fo1s_p.Top() && point.y < fo1s_p.Top() + fo1s_p.Height()) {
-			backpackdel(30);  /////吃包子
-		}
-		if (point.x > fo2s_p.Left() && point.x < fo2s_p.Left() + fo2s_p.Width() && point.y >  fo2s_p.Top() && point.y < fo2s_p.Top() + fo2s_p.Height()) {
-			backpackdel(31);  /////吃肉餅
-		}
-		if (point.x > ar1s_p.Left() && point.x < ar1s_p.Left() + ar1s_p.Width() && point.y >  ar1s_p.Top() && point.y < ar1s_p.Top() + ar1s_p.Height()) {
-			backpackdel(35);
-		}
-		if (point.x > ar2s_p.Left() && point.x < ar2s_p.Left() + ar2s_p.Width() && point.y >  ar2s_p.Top() && point.y < ar2s_p.Top() + ar2s_p.Height()) {
-			backpackdel(36);
-		}
+		
 
 
 	}
-
-	
 
 }
 
@@ -1420,17 +1697,8 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 void CGameStateRun::OnShow()
 {
 	int uix = 700, uiy = 990;
-	if (random_map == 1) {
-		eraser.SetXY(920 + 45, 540 + 45);//角色初始位置
-	}
-	if (random_map == 2) {
-		eraser.SetXY(920 + 45, 540 + 45);//角色初始位置
-	}
-	if (random_map == 3) {
-		eraser.SetXY(920 + 45, 540 + 45);//角色初始位置
-	}
+	eraser.SetXY(920 + 45, 540 + 45);//角色初始位置
 
-	
 	
 	stop.SetTopLeft(uix, uiy);
 	backpack.SetTopLeft(stop.Left()+550, uiy);
@@ -1451,14 +1719,16 @@ void CGameStateRun::OnShow()
 	//
 	//background.ShowBitmap();			// 貼上背景圖
 	gamemap.OnShow();
-	help.ShowBitmap();					// 貼上說明圖
+	//help.ShowBitmap();					// 貼上說明圖
 	hits_left.ShowBitmap();
 	//for (int i=0; i < NUMBALLS; i++)
 	//	ball[i].OnShow();				// 貼上第i號球
 	//bballs.OnShow();	// 貼上彈跳的球
-	eraser.OnShow();					// 貼上擦子
-	monster_cpp.OnShow();
+	eraser.OnShow();		
+	//monster_cpp.OnShow();
 	monster_bat_cpp.OnShow();
+	monster_bat_cpp2.OnShow();
+	monster_bat_cpp3.OnShow();
 
 	backpack.ShowBitmap();
 	stop.ShowBitmap();
@@ -1678,14 +1948,21 @@ void CGameStateRun::OnShow()
 	//  貼上左上及右下角落的圖
 	//
 	
-	corner.SetTopLeft(0,0);
-	corner.ShowBitmap();
-	corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
-	corner.ShowBitmap();
+	//corner.SetTopLeft(0,0);
+	//corner.ShowBitmap();
+	//corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
+	//corner.ShowBitmap();
 	//practice3.ShowBitmap();
 	//practice.ShowBitmap();
-	border.ShowBitmap();
+	//border.ShowBitmap();
 	//c_practice4.OnShow();
-	
+	if (eraser.hero_HP <= 0) {
+		bool_gameover = 1;
+		GotoGameState(GAME_STATE_OVER);
+	}
+	if (bool_finish == 1) {
+		GotoGameState(GAME_STATE_OVER);
+	}
 }
+
 }
