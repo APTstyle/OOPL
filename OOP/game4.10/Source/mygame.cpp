@@ -71,8 +71,10 @@ namespace game_framework {
 	
 	const int MAX_RAND_NUM = 3;
 	
-	int random_map = 1; //測試用
+	int random_map = 4; //測試用
 	int test = 1;
+	int layer = 1;
+	int layercheck[4] = { 0 };
 
 	int check_backpack = 0;
 	int pack_space[19] = { 0 };
@@ -233,14 +235,7 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
     /*for (int i = 0; i < 24; i++)
         for (int j = 0; j < 26; j++)
             map[i][j] = map1_init[i][j];*/
-		//srand((unsigned)time(NULL));
-		//random_map = (rand()%6)+1; //讓地圖隨機出現
-		changemap(random_map);
-
-	monster_cpp.getmap(random_map, map);
-	monster_bat_cpp.getmap(random_map, map);
-	monster_bat_cpp2.getmap(random_map, map);
-	monster_bat_cpp3.getmap(random_map, map);
+		
 	random_num = 0;
 	bballs = NULL;
     }
@@ -608,9 +603,9 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 			map[CEraser::actor_y][CEraser::actor_x] = 7;
 		}
 		else if (map[CEraser::actor_y][CEraser::actor_x] == 10) {
-			srand((unsigned)time(NULL));
+			/*srand((unsigned)time(NULL));
 			random_map = (rand()%6)+1; //讓地圖隨機出現
-			changemap(random_map);
+			changemap(random_map);*/
 		}
 		else if (map[CEraser::actor_y][CEraser::actor_x] == 14) {
 			map[CEraser::actor_y][CEraser::actor_x] = 1;
@@ -952,14 +947,25 @@ CGameStateRun::~CGameStateRun()
 
 void CGameStateRun::OnBeginState()
 {
-	gamemap.SetXY(920, 540);
+	//gamemap.SetXY(920, 540);
 	eraser.SetCharacter(main_actor);
 	eraser.changeskin(main_actor);
+
+	srand((unsigned)time(NULL));
+	random_map = (rand()%6)+1; //讓地圖隨機出現
+	gamemap.changemap(random_map);
+
+	//monster_cpp.getmap(random_map, map);
+	//monster_bat_cpp.getmap(random_map, map);
+	//monster_bat_cpp2.getmap(random_map, map);
+	//monster_bat_cpp3.getmap(random_map, map);
+
 	
-	CEraser::actor_x = 1;
-	CEraser::actor_y = 1;
-	CEraser::map_x = 920;
-	CEraser::map_y = 540;
+	
+	//CEraser::actor_x = 1;
+	//CEraser::actor_y = 1;
+	//CEraser::map_x = 920;
+	//CEraser::map_y = 540;
 	for (int i = 0; i < 27; i++) {
 		for (int j = 0; j < 27; j++) {
 			save[i][j] = 0;
@@ -1329,6 +1335,15 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	}
 
+
+	if (gamemap.map[CEraser::actor_y][CEraser::actor_x] == 10) {
+		srand((unsigned)time(NULL));
+		random_map = (rand() % 6) + 1; //讓地圖隨機出現
+		gamemap.changemap(random_map);
+		monster_bat_cpp.getmap(random_map, gamemap.map);
+		monster_bat_cpp2.getmap(random_map, gamemap.map);
+		monster_bat_cpp3.getmap(random_map, gamemap.map);
+	}
 	printf("keydown\n");
 	printf("\n");
 	for (int i = 0; i < 27; i++) {
@@ -1518,7 +1533,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	if (point.x > monster_bat_cpp.GetX1() && point.x < monster_bat_cpp.GetX2() && point.y > monster_bat_cpp.GetY1() && point.y < monster_bat_cpp.GetY2()) {
 		if (monster_cpp.attacked_judge(monster_bat_cpp.mon_x, monster_bat_cpp.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
 			monster_bat_cpp.attacked(eraser.hero_ATK);
-
+			eraser.attacked(monster_bat_cpp.mon_ATK);
 			monster_bat_cpp2.SetMoving(true);
 			monster_bat_cpp2.SetMoving(false);
 			test2[1] = monster_bat_cpp2.getroad(save);
@@ -1543,6 +1558,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	if (point.x > monster_bat_cpp2.GetX1() && point.x < monster_bat_cpp2.GetX2() && point.y > monster_bat_cpp2.GetY1() && point.y < monster_bat_cpp2.GetY2()) {
 		if (monster_cpp.attacked_judge(monster_bat_cpp2.mon_x, monster_bat_cpp2.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
 			monster_bat_cpp2.attacked(eraser.hero_ATK);
+			eraser.attacked(monster_bat_cpp2.mon_ATK);
 
 			monster_bat_cpp.SetMoving(true);
 			monster_bat_cpp.SetMoving(false);
@@ -1568,6 +1584,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	if (point.x > monster_bat_cpp3.GetX1() && point.x < monster_bat_cpp3.GetX2() && point.y > monster_bat_cpp3.GetY1() && point.y < monster_bat_cpp3.GetY2()) {
 		if (monster_cpp.attacked_judge(monster_bat_cpp3.mon_x, monster_bat_cpp3.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
 			monster_bat_cpp3.attacked(eraser.hero_ATK);
+			eraser.attacked(monster_bat_cpp3.mon_ATK);
 
 			monster_bat_cpp.SetMoving(true);
 			monster_bat_cpp.SetMoving(false);

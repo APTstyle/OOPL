@@ -197,50 +197,38 @@ namespace game_framework {
 
 	int monster_bat::getmap(int random_map, int map[][27])
 	{
+		deathshow = 0;
 		map_num = random_map;
 		for (int i = 0; i < 27; i++)
 			for (int j = 0; j < 27; j++)
 				map_monster[i][j] = map[i][j];
 		if (map_num == 1) {//24*24
-			mon_x = 20;//24-actor_x
-			mon_y = 1;//2-actor_y
 			mon_HP = 20;
-			mon_ATK = 1;
 			monster_cpp.get_bat(1, mon_x, mon_y);
 			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
 			return random_map;
 		}
 		if (map_num == 2) {//24*24
-			mon_x = 22;//24-actor_x
-			mon_y = 1;//2-actor_y
 			mon_HP = 20;
 			monster_cpp.get_bat(1, mon_x, mon_y);
 			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
 		}
 		if (map_num == 3) {//24*24
-			mon_x = 22;
-			mon_y = 1;
 			mon_HP = 20;
 			monster_cpp.get_bat(1, mon_x, mon_y);
 			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
 		}
 		if (map_num == 4) {//24*24
-			mon_x = 22;
-			mon_y = 1;
 			mon_HP = 20;
 			monster_cpp.get_bat(1, mon_x, mon_y);
 			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
 		}
 		if (map_num == 5) {//24*24
-			mon_x = 22;
-			mon_y = 1;
 			mon_HP = 20;
 			monster_cpp.get_bat(1, mon_x, mon_y);
 			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
 		}
 		if (map_num == 6) {//24*24
-			mon_x = 22;
-			mon_y = 1;
 			mon_HP = 20;
 			monster_cpp.get_bat(1, mon_x, mon_y);
 			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
