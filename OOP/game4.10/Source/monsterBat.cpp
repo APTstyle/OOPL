@@ -387,6 +387,7 @@ namespace game_framework {
 	int monster_bat::attacked(int ATK) {//攻擊者的攻擊力 回傳被攻擊後的血量
 		mon_HP -= ATK;
 		printf("bat is attacked\n");
+
 		LoadBitmap();
 		if (mon_HP < 1) {
 			monster_bat::death();

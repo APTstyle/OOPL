@@ -55,7 +55,18 @@ namespace game_framework {
 		AUDIO_LAKE,				// 1
 		AUDIO_NTUT,				// 2
 		START_MUSIC,			// 3
-		GAMING_MUSIC			//4
+		GAMING_MUSIC,			//4
+		SND_item,
+		SND_death,
+		SND_door,
+		SND_drink,
+		SND_eat,
+		SND_ghost,
+		SND_hit,
+		SND_miss,
+		SND_trap,
+		SND_unlock
+
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

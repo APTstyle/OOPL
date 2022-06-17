@@ -5,6 +5,7 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "CEraser.h"
+#include "mygame.h"
 
 namespace game_framework {
 	int CEraser::map_x = 920;
@@ -14,6 +15,7 @@ namespace game_framework {
 	{
 		Initialize();
 		showdata();
+		//CAudio::Instance()->Load(SND_hit, "sounds\\snd_hit.mp3");
 
 	}
 
@@ -209,6 +211,7 @@ namespace game_framework {
 	}
 
 	int CEraser::attacked(int ATK) {//攻擊者的攻擊力 回傳被攻擊後的血量
+		//CAudio::Instance()->Play(SND_hit);
 		CEraser::hero_HP -= ATK;
 		printf("Hero is attacked\n");
 		return CEraser::hero_HP - ATK;

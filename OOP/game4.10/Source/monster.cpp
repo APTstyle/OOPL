@@ -20,6 +20,7 @@ namespace game_framework {
 	int monster::mon_bat_y = 0;
 	monster::monster()
 	{
+		CAudio::Instance()->Load(SND_ghost, "sounds\\snd_ghost.mp3");
 		main_x = 0;
 		main_y = 0;
 		Initialize();
@@ -209,7 +210,8 @@ namespace game_framework {
 	void monster::findroad() {
 		next_x = mon_x;
 		next_y = mon_y;
-		next_step = automove(map_monster, mon_x, mon_y, CEraser::actor_x, CEraser::actor_y);
+		//next_step = automove(map_monster, mon_x, mon_y, CEraser::actor_x, CEraser::actor_y);
+		next_step = next_x * 100 + next_y;
 		next_x = next_step / 100;
 		next_y = next_step % 100;
 	}
@@ -611,8 +613,10 @@ namespace game_framework {
 	int monster::attacked(int ATK) {//攻擊者的攻擊力 回傳被攻擊後的血量
 		mon_HP -= ATK;
 		printf("boss is attacked\n");
+
 		LoadBitmap();
 		if (mon_HP < 1) {
+			CAudio::Instance()->Play(SND_ghost,false);
 			death();
 		}
 		return mon_HP - ATK;
