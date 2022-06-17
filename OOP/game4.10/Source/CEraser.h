@@ -9,13 +9,16 @@ namespace game_framework {
 	{
 	public:
 		CEraser();
+		int hero_def=0;
 		static int hero_HP;
+		int hero_max_hp;
 		int hero_ATK=4;
 		void showdetail();
 		void showdata();
 		int attacked(int ATK);
 		static int map_x, map_y;
 		void reset(int m);
+		void changeskin(int c);
 		int  GetX1();					// 擦子左上角 x 座標
 		int  GetY1();					// 擦子左上角 y 座標
 		int  GetX2();					// 擦子右下角 x 座標
@@ -50,6 +53,7 @@ namespace game_framework {
 		bool isMovingLeft;			// 是否正在往左移動
 		bool isMovingRight;			// 是否正在往右移動
 		bool isMovingUp;			// 是否正在往上移動
+
 	};
 }
 #endif

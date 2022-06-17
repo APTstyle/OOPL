@@ -5,6 +5,7 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "CEraser.h"
+#include "mygame.h"
 
 namespace game_framework {
 	int CEraser::map_x = 920;
@@ -14,6 +15,7 @@ namespace game_framework {
 	{
 		Initialize();
 		showdata();
+		//CAudio::Instance()->Load(SND_hit, "sounds\\snd_hit.mp3");
 
 	}
 
@@ -44,42 +46,63 @@ namespace game_framework {
 	void CEraser::Initialize()
 	{
 		const int X_POS = 920;
-		const int Y_POS = 540;
+		const int Y_POS = 540; 
 		character = 0;
 		x = X_POS;
 		y = Y_POS;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
-	}
 
-	void CEraser::LoadBitmap()
-	{
-		animation_test.LoadBitmap(herohp1, RGB(255, 255, 255));
-		//animation.AddBitmap(warrior, RGB(255, 255, 255));
+		hero_def = 10;
+	}
+	void CEraser::changeskin(int c) {
+		animation.cleanBitmap();
+		animation_icon.cleanBitmap();
+		animation_hp_background.AddBitmap(hero_status, RGB(255, 255, 255));
 		if (character == 1) {
 			animation.AddBitmap(warrior, RGB(255, 255, 255));
-			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_warrior_hp, RGB(255, 255, 255));
 		}
 		else if (character == 2) {
 			animation.AddBitmap(mage, RGB(255, 255, 255));
-			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_mage_hp, RGB(255, 255, 255));
 		}
 		else if (character == 3) {
 			animation.AddBitmap(assassin, RGB(255, 255, 255));
-			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_assassin_hp, RGB(255, 255, 255));
 		}
 		else if (character == 4) {
 			animation.AddBitmap(hunter, RGB(255, 255, 255));
-			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_hunter_hp, RGB(255, 255, 255));
 		}
-		else {
+	}
+
+	void CEraser::LoadBitmap()
+	{
+		animation.cleanBitmap();
+		animation_test.LoadBitmap(herohp1, RGB(255, 255, 255));
+		animation_hp_background.AddBitmap(hero_status, RGB(255, 255, 255));
+		//animation.AddBitmap(warrior, RGB(255, 255, 255));
+		if (character == 1) {
+			animation.AddBitmap(warrior, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_warrior_hp, RGB(255, 255, 255));
+		}
+		else if (character == 2) {
+			animation.AddBitmap(mage, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_mage_hp, RGB(255, 255, 255));
+		}
+		else if (character == 3) {
+			animation.AddBitmap(assassin, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_assassin_hp, RGB(255, 255, 255));
+		}
+		else if (character == 4) {
+			animation.AddBitmap(hunter, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_hunter_hp, RGB(255, 255, 255));
+		}
+		/*else {
 			animation.AddBitmap(mage, RGB(255, 255, 255));
 			animation_hp_background.AddBitmap(ui_item1, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_mage_hp, RGB(255, 255, 255));
-		}
+		}*/
 	}
 	int CEraser::actor_x = 1;
 	int CEraser::actor_y = 1;
@@ -176,18 +199,22 @@ namespace game_framework {
 		animation.OnShow();
 		animation_hp_background.SetTopLeft(0, 0);
 		animation_hp_background.OnShow();
-		animation_icon.SetTopLeft(18, 12);
+		animation_icon.SetTopLeft(30, 30);
 		animation_icon.OnShow();
-		for (int i = 0; i < CEraser::hero_HP*4; i++) {
-			animation_test.SetTopLeft(87+i*2, 0);
+		for (int i = 0; i < CEraser::hero_HP*5; i++) {
+			animation_test.SetTopLeft(132+i*2, 7);
 			animation_test.ShowBitmap();
 		}
 	}
 
 	int CEraser::attacked(int ATK) {//攻擊者的攻擊力 回傳被攻擊後的血量
-		CEraser::hero_HP -= ATK;
+		if (ATK == 0) {
+			return CEraser::hero_HP;
+		}
+		CEraser::hero_HP -=ATK*3;
+		CEraser::hero_HP += hero_def * 2;
 		printf("Hero is attacked\n");
-		return CEraser::hero_HP - ATK;
+		return CEraser::hero_HP;
 	}
 
 	void CEraser::showdetail() {

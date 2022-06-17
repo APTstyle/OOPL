@@ -55,7 +55,18 @@ namespace game_framework {
 		AUDIO_LAKE,				// 1
 		AUDIO_NTUT,				// 2
 		START_MUSIC,			// 3
-		GAMING_MUSIC			//4
+		GAMING_MUSIC,			//4
+		SND_item,
+		SND_death,
+		SND_door,
+		SND_drink,
+		SND_eat,
+		SND_ghost,
+		SND_hit,
+		SND_miss,
+		SND_trap,
+		SND_unlock
+
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -354,6 +365,7 @@ namespace game_framework {
 		void bat_setup2(int x, int y);
 		void bat_setup3(int x, int y);
 		void OnBeginState();							// 設定每次重玩所需的變數
+		void monsetmap(int m);
 		void OnInit();  								// 遊戲的初值及圖形設定
 		void OnKeyDown(UINT, UINT, UINT);
 		void OnKeyUp(UINT, UINT, UINT);
@@ -362,6 +374,8 @@ namespace game_framework {
 		void OnMouseMove(UINT nFlags, CPoint point);	// 處理滑鼠的動作 
 		void OnRButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 		void OnRButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
+		void dealbackpack(int number);
+		int open_infor;
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
@@ -381,6 +395,14 @@ namespace game_framework {
 		CMovingBitmap	qitem3;
 		CMovingBitmap	qitem4;
 		CMovingBitmap	backpackUI;
+		// infor ui
+		CMovingBitmap	infor;
+		CMovingBitmap	hero_infor;
+		CMovingBitmap	a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;
+		CMovingBitmap	hp, atk, def, hero_word;
+		CInteger		hp_n;
+		CInteger		atk_n;
+		CInteger		def_n;
 		///////////////////背包物品//////////////////////////
 		CMovingBitmap	lb_p, dr_p, dg_p;
 
@@ -412,7 +434,7 @@ namespace game_framework {
 		
 		CMovingBitmap	herohp;
 
-		CInteger		hits_left;	// 剩下的撞擊數
+		//CInteger		hits_left;	// 剩下的撞擊數
 		CBouncingBall   bballs;		// 反覆彈跳的球
 		CMovingBitmap   practice;
 		CMovingBitmap   border; //practice2
