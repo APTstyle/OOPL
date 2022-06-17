@@ -360,6 +360,11 @@ letter_i                BITMAP                  "..\\res\\font1x\\font1x9.bmp"
 
 letter_j                BITMAP                  "..\\res\\font1x\\font1x10.bmp"
 
+<<<<<<< HEAD
+=======
+letter_h                BITMAP                  "..\\res\\font1x\\font1x11.bmp"
+
+>>>>>>> chun
 letter_l                BITMAP                  "..\\res\\font1x\\font1x12.bmp"
 
 letter_m                BITMAP                  "..\\res\\font1x\\font1x13.bmp"
@@ -433,6 +438,7 @@ arrow1s                 BITMAP                  "..\\res\\arrow1b1.bmp"
 arrow2s                 BITMAP                  "..\\res\\arrow2b1.bmp"
 
 key1                    BITMAP                  "..\\res\\key1.bmp"
+<<<<<<< HEAD
 
 IDB_BITMAP28            BITMAP                  "..\\res\\items3.bmp"
 
@@ -459,6 +465,12 @@ word_hunter             BITMAP                  "..\\res\\word\\Hunter-(¥Õ©³¶Â¦r
 word_mage               BITMAP                  "..\\res\\word\\Mage-(¥Õ©³¶Â¦r).bmp"
 
 word_warrior            BITMAP                  "..\\res\\word\\Warrior-(¥Õ©³¶Â¦r).bmp"
+=======
+
+IDB_BITMAP28            BITMAP                  "..\\res\\items3.bmp"
+
+//IDB_BITMAP29            BITMAP                  "C:\\Users\\user\\Desktop\\ic_launcher.bmp"
+>>>>>>> chun
 
 
 /////////////////////////////////////////////////////////////////////////////

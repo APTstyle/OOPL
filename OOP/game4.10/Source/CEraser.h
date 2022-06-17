@@ -9,9 +9,13 @@ namespace game_framework {
 	{
 	public:
 		CEraser();
+<<<<<<< HEAD
 		int hero_def=0;
 		static int hero_HP;
 		int hero_max_hp;
+=======
+		static int hero_HP;
+>>>>>>> chun
 		int hero_ATK=4;
 		void showdetail();
 		void showdata();

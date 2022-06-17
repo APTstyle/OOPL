@@ -68,19 +68,28 @@ namespace game_framework {
 	int main_actor = 1;
 	int load_music = 0;
 	int load_c = 0;
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> chun
 	const int MAX_RAND_NUM = 3;
 	const int max_layer = 4;
 	
 	int random_map = 0; //測試用
 	int test = 1;
+<<<<<<< HEAD
 	int layer = 1;
 	int layercheck[max_layer] = { 0 };
+=======
+	int dungeon_count = 1;
+	int layercheck[6] = { 0 };
+>>>>>>> chun
 
 	int check_backpack = 0;
 	int pack_space[19] = { 0 };
 	
-	int pack_now = 1;
+	//int pack_now = 1;
 	int attack = 0;
 	int bool_finish = 0;
 	int bool_gameover = 0;
@@ -117,6 +126,7 @@ namespace game_framework {
 	int test1[3] = { 0,0,0 }; // 偵測之前的怪物座標
 	int	test2[3] = { 0,0,0 }; // 偵測之後的怪物座標
 	void backpackadd(int item) { //增加背包物品
+		CAudio::Instance()->Play(SND_item,false);
 		for (int i = 0; i < 19; i++) {
 			if (pack_space[i] == 0) {
 				pack_space[i] = item;
@@ -185,7 +195,11 @@ CGameMainMenu::CGameMainMenu(CGame *g)
 }
 void CGameMainMenu::OnBeginState()
 {
+<<<<<<< HEAD
 	for (int i = 0; i < max_layer; i++) {
+=======
+	for (int i = 0; i < 6; i++) {
+>>>>>>> chun
 		layercheck[i] = 0;
 	}
 	
@@ -200,8 +214,13 @@ void CGameMainMenu::OnInit()
 
 void CGameStateInit::OnBeginState()
 {
+<<<<<<< HEAD
 
 	CEraser::hero_HP = 20;
+=======
+	dungeon_count = 1;
+	CEraser::hero_HP = 50;
+>>>>>>> chun
 	if (load_music == 0) {
 		CAudio::Instance()->Load(START_MUSIC, "sounds\\theme.mp3");
 		load_music = 1;
@@ -383,10 +402,17 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
 		//printf("test:%d", test);
 		/*for (int i = CEraser::actor_x - 5; i < CEraser::actor_x + 5; i++)	//寬度27
 			for (int j = CEraser::actor_y - 5; j < CEraser::actor_y + 5; j++) //高度25*/
+<<<<<<< HEAD
        //for(int i=0;i<27;i++)	//寬度27
         //    for (int j = 0; j < 27; j++) //高度25
 		for (int i = CEraser::actor_x - 5; i < CEraser::actor_x + 5; i++)	//寬度27
 			for (int j = CEraser::actor_y - 5; j < CEraser::actor_y + 5; j++) //高度25
+=======
+       for(int i=0;i<27;i++)	//寬度27
+           for (int j = 0; j < 27; j++) //高度25
+		//for (int i = CEraser::actor_x - 5; i < CEraser::actor_x + 5; i++)	//寬度27
+			//for (int j = CEraser::actor_y - 5; j < CEraser::actor_y + 5; j++) //高度25
+>>>>>>> chun
             {
 				
 				if (j < 0) j = 0;
@@ -610,6 +636,10 @@ void CGameMainMenu::OnLButtonDown(UINT nFlags, CPoint point)
                 }
             }
 		if (map[CEraser::actor_y][CEraser::actor_x] == 4) {
+<<<<<<< HEAD
+=======
+			CAudio::Instance()->Play(SND_door, false);
+>>>>>>> chun
 			map[CEraser::actor_y][CEraser::actor_x] = 11;
 		}
 		else if (map[CEraser::actor_y][CEraser::actor_x] == 8) {
@@ -951,6 +981,7 @@ CGameStateRun::CGameStateRun(CGame *g)
 {
 	ball = new CBall [NUMBALLS];
 	picX = picY = 0;
+	
 }
 
 CGameStateRun::~CGameStateRun()
@@ -961,22 +992,46 @@ CGameStateRun::~CGameStateRun()
 void CGameStateRun::OnBeginState()
 {
 	//gamemap.SetXY(920, 540);
+<<<<<<< HEAD
 	eraser.SetCharacter(main_actor);
 	eraser.changeskin(main_actor);
+=======
+	
+	check_backpack = 0;
+	eraser.SetCharacter(main_actor);
+	eraser.changeskin(main_actor);
+
+>>>>>>> chun
 	srand((unsigned)time(NULL));
 	random_map = (rand()%6)+1; //讓地圖隨機出現
 	gamemap.changemap(random_map);
 	layercheck[random_map] = 1;
+<<<<<<< HEAD
+=======
+	
+>>>>>>> chun
 
 	monster_cpp.getmap(random_map, gamemap.map);
 	/*monster_bat_cpp.getmap(random_map, gamemap.map);
 	monster_bat_cpp2.getmap(random_map, gamemap.map);
 	monster_bat_cpp3.getmap(random_map, gamemap.map);*/
+<<<<<<< HEAD
 	check_backpack = 0;
 	monsetmap(random_map);
 
 	open_infor = 0;
 	//hero information ui
+=======
+
+	monsetmap(random_map);
+
+	
+	
+	//CEraser::actor_x = 1;
+	//CEraser::actor_y = 1;
+	//CEraser::map_x = 920;
+	//CEraser::map_y = 540;
+>>>>>>> chun
 	for (int i = 0; i < 27; i++) {
 		for (int j = 0; j < 27; j++) {
 			save[i][j] = 0;
@@ -1019,6 +1074,7 @@ void CGameStateRun::OnBeginState()
 	//CAudio::Instance()->Play(AUDIO_LAKE, true);			// 撥放 WAVE
 	//CAudio::Instance()->Play(AUDIO_DING, false);		// 撥放 WAVE
 	//CAudio::Instance()->Play(AUDIO_NTUT, true);			// 撥放 MIDI*/
+<<<<<<< HEAD
 	//hp_n.CInteger
 	hp_n.SetInteger(0);
 	hp_n.SetTopLeft(1000, 320);
@@ -1037,6 +1093,12 @@ void CGameStateRun::OnBeginState()
 	}
 
 	CAudio::Instance()->Play(GAMING_MUSIC, true);
+=======
+
+	CAudio::Instance()->Stop(START_MUSIC);
+
+	//CAudio::Instance()->Play(GAMING_MUSIC, true);	//探索中音樂
+>>>>>>> chun
 }
 
 void CGameStateRun::bat_setup(int x,int y) {
@@ -1226,6 +1288,19 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	CAudio::Instance()->Load(AUDIO_DING,  "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
 	CAudio::Instance()->Load(AUDIO_LAKE,  "sounds\\lake.mp3");	// 載入編號1的聲音lake.mp3
 	CAudio::Instance()->Load(AUDIO_NTUT,  "sounds\\ntut.mid");	// 載入編號2的聲音ntut.mid
+
+	
+	CAudio::Instance()->Load(SND_death, "sounds\\snd_death.mp3");
+	CAudio::Instance()->Load(SND_door, "sounds\\snd_door_open.mp3");
+	CAudio::Instance()->Load(SND_drink, "sounds\\snd_drink.mp3");
+	CAudio::Instance()->Load(SND_eat, "sounds\\snd_eat.mp3");
+	
+	
+	CAudio::Instance()->Load(SND_miss, "sounds\\snd_miss.mp3");
+	CAudio::Instance()->Load(SND_trap, "sounds\\snd_trap.mp3");
+	CAudio::Instance()->Load(SND_unlock, "sounds\\snd_unlock.mp3");
+	CAudio::Instance()->Load(SND_item, "sounds\\snd_item.mp3");
+
 	
 	CAudio::Instance()->Load(GAMING_MUSIC, "sounds\\game.mp3");
 	//
@@ -1243,11 +1318,17 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_Z = 0x5a; // keyboard左箭頭
 	const int step = 45;
 	if (nChar == KEY_Z) {
+<<<<<<< HEAD
 		eraser.hero_HP = 500;
 		eraser.hero_ATK = 1000;
 		gamemap.changemap(7);
 		monsetmap(7);
 		monster_cpp.getmap(7,gamemap.map);
+=======
+		eraser.hero_HP = 50;
+		//gamemap.changemap(7);
+		//monsetmap(random_map); //開了這兩行 按z可以直接到王關
+>>>>>>> chun
 		//bool_finish = 1;
 		printf("finsih%d\n", bool_finish);
 	}
@@ -1427,6 +1508,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	}
 
+<<<<<<< HEAD
 	if (monster_cpp.next_step == monster_cpp.mon_x * 100 + monster_cpp.mon_y) {
 		monster_cpp.attack_judge(monster_cpp.mon_x, monster_cpp.mon_y, CEraser::actor_x, CEraser::actor_y);
 	}
@@ -1439,6 +1521,15 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 			layer++;
 			gamemap.changemap(random_map);
 			monster_cpp.getmap(random_map, gamemap.map);
+=======
+
+	if (gamemap.map[CEraser::actor_y][CEraser::actor_x] == 10) {
+		if (dungeon_count ==max_layer) {
+
+			random_map = 7;
+			dungeon_count++;
+			gamemap.changemap(random_map);
+>>>>>>> chun
 			monsetmap(random_map);
 
 		}
@@ -1450,7 +1541,16 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 			random_map = (rand() % 6) + 1; 
 		}
 		layercheck[random_map] = 1;
+<<<<<<< HEAD
 		layer++;
+=======
+		dungeon_count+=1;
+		printf("\nfuckinglayer:%d map:%d\n", dungeon_count, random_map);
+		for (int i = 1; i < 7; i++) {
+			printf("%d", layercheck[i]);
+		}
+		printf("\n");
+>>>>>>> chun
 		gamemap.changemap(random_map);
 		
 		monsetmap(random_map);
@@ -1465,6 +1565,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		}
 		printf("\n");
 	}*/
+<<<<<<< HEAD
 
 	hp_n.SetInteger(0);
 	hp_n.SetTopLeft(1000, 320);
@@ -1484,6 +1585,8 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 
 
+=======
+>>>>>>> chun
 }
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -1529,6 +1632,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 	
 
 }
+<<<<<<< HEAD
 void CGameStateRun::dealbackpack(int number) {
 	if (pack_space[number]==12) {
 		pack_space[number] = 0;   /////喝藍水效果
@@ -1537,6 +1641,19 @@ void CGameStateRun::dealbackpack(int number) {
 		pack_space[number] = 0;	/////喝綠水效果
 	}
 	if (pack_space[number] == 14) {
+=======
+void CGameStateRun::dealbackpack(int number) { //使用道具
+	if (pack_space[number]==12) {
+		CAudio::Instance()->Play(SND_drink, false);
+		pack_space[number] = 0;   /////喝藍水效果
+	}
+	if (pack_space[number] == 13) {
+		CAudio::Instance()->Play(SND_drink, false);
+		pack_space[number] = 0;	/////喝綠水效果
+	}
+	if (pack_space[number] == 14) {
+		CAudio::Instance()->Play(SND_drink, false);
+>>>>>>> chun
 		pack_space[number] = 0;	/////喝紅水效果
 	}
 	if (pack_space[number] == 15) {
@@ -1638,9 +1755,17 @@ void CGameStateRun::dealbackpack(int number) {
 
 	}
 	if (pack_space[number] == 30) {
+<<<<<<< HEAD
 		pack_space[number] = 0;  /////吃包子
 	}
 	if (pack_space[number] == 31) {
+=======
+		CAudio::Instance()->Play(SND_eat, false);
+		pack_space[number] = 0;  /////吃包子
+	}
+	if (pack_space[number] == 31) {
+		CAudio::Instance()->Play(SND_eat, false);
+>>>>>>> chun
 		pack_space[number] = 0;  /////吃肉餅
 	}
 	if (pack_space[number] == 35) {
@@ -1660,7 +1785,11 @@ void CGameStateRun::monsetmap(int m) {
 		bat_setup3(23, 21);
 	}
 	else if (m == 2) {
+<<<<<<< HEAD
 		bat_setup(8, 4);
+=======
+		bat_setup(9, 4);
+>>>>>>> chun
 		bat_setup2(11, 22);
 		bat_setup3(22, 22);
 	}
@@ -1707,16 +1836,21 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 		open_infor = 0;
 	}
 	if(point.x>backpack.Left()&&(point.x<backpack.Left()+backpack.Width())&& point.y > backpack.Top() && (point.y < backpack.Top() + backpack.Height())){
-	check_backpack = 1;
+		check_backpack = 1;
 	}
 	else if(point.x < backpackUI.Left() || (point.x > backpackUI.Left() + backpackUI.Width()) || point.y < backpackUI.Top() || (point.y > backpackUI.Top() + backpackUI.Height())) {
-	check_backpack = 0;
+		check_backpack = 0;
 	}
 	if (point.x > monster_bat_cpp.GetX1() && point.x < monster_bat_cpp.GetX2() && point.y > monster_bat_cpp.GetY1() && point.y < monster_bat_cpp.GetY2()) {
 		if (monster_cpp.attacked_judge(monster_bat_cpp.mon_x, monster_bat_cpp.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
 			monster_bat_cpp.attacked(eraser.hero_ATK);
+<<<<<<< HEAD
 			eraser.attacked(monster_bat_cpp.mon_ATK);
 
+=======
+
+			eraser.attacked(monster_bat_cpp.mon_ATK);
+>>>>>>> chun
 			monster_bat_cpp2.SetMoving(true);
 			monster_bat_cpp2.SetMoving(false);
 			test2[1] = monster_bat_cpp2.getroad(save);
@@ -1762,6 +1896,35 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 			save[test1[2] % 100][test1[2] / 100] = 0;
 			save[test2[2] % 100][test2[2] / 100] = 1;
 			test1[2] = test2[2];
+<<<<<<< HEAD
+=======
+		}
+	}
+	if (point.x > monster_bat_cpp3.GetX1() && point.x < monster_bat_cpp3.GetX2() && point.y > monster_bat_cpp3.GetY1() && point.y < monster_bat_cpp3.GetY2()) {
+		if (monster_cpp.attacked_judge(monster_bat_cpp3.mon_x, monster_bat_cpp3.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
+			monster_bat_cpp3.attacked(eraser.hero_ATK);
+			eraser.attacked(monster_bat_cpp3.mon_ATK);
+
+			monster_bat_cpp.SetMoving(true);
+			monster_bat_cpp.SetMoving(false);
+			test2[0] = monster_bat_cpp.getroad(save);
+			if (test1[0] == test2[0]) {
+				monster_bat_cpp.attack_judge(test1[0] / 100, test1[0] % 100, CEraser::actor_x, CEraser::actor_y);
+			}
+			save[test1[0] % 100][test1[0] / 100] = 0;
+			save[test2[0] % 100][test2[0] / 100] = 1;
+			test1[0] = test2[0];
+
+			monster_bat_cpp2.SetMoving(true);
+			monster_bat_cpp2.SetMoving(false);
+			test2[1] = monster_bat_cpp2.getroad(save);
+			if (test1[1] == test2[1]) {
+				monster_bat_cpp2.attack_judge(test1[1] / 100, test1[1] % 100, CEraser::actor_x, CEraser::actor_y);
+			}
+			save[test1[1] % 100][test1[1] / 100] = 0;
+			save[test2[1] % 100][test2[1] / 100] = 1;
+			test1[1] = test2[1];
+>>>>>>> chun
 		}
 	}
 	if (point.x > monster_bat_cpp3.GetX1() && point.x < monster_bat_cpp3.GetX2() && point.y > monster_bat_cpp3.GetY1() && point.y < monster_bat_cpp3.GetY2()) {
@@ -1818,6 +1981,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 		
 		if (point.x > 730 && point.y > 200 && point.x < 850 && point.y<325) { //背包格子
 			dealbackpack(0);
+<<<<<<< HEAD
 		}
 		else if (point.x > 860 && point.y > 200 && point.x < 980 && point.y < 325) { 
 			dealbackpack(1);
@@ -1855,6 +2019,45 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 		else if (point.x > 730 && point.y > 595 && point.x < 850 && point.y < 715) { //背包格子
 			dealbackpack(12);
 		}
+=======
+		}
+		else if (point.x > 860 && point.y > 200 && point.x < 980 && point.y < 325) { 
+			dealbackpack(1);
+		}
+		else if (point.x > 960 && point.y > 200 && point.x < 1120 && point.y < 325) {
+			dealbackpack(2);
+		}
+		else if (point.x > 1090 && point.y > 200 && point.x < 1250 && point.y < 325) {
+			dealbackpack(3);
+		}
+		else if (point.x > 730 && point.y > 330 && point.x < 850 && point.y < 450) { //背包格子
+			dealbackpack(4);
+		}
+		else if (point.x > 860 && point.y > 330 && point.x < 980 && point.y < 450) {
+			dealbackpack(5);
+		}
+		else if (point.x > 960 && point.y > 330 && point.x < 1120 && point.y < 450) {
+			dealbackpack(6);
+		}
+		else if (point.x > 1090 && point.y > 330 && point.x < 1250 && point.y < 450) {
+			dealbackpack(7);
+		}
+		else if (point.x > 730 && point.y > 460 && point.x < 850 && point.y < 585) { //背包格子
+			dealbackpack(8);
+		}
+		else if (point.x > 860 && point.y > 460 && point.x < 980 && point.y < 585) {
+			dealbackpack(9);
+		}
+		else if (point.x > 960 && point.y > 460 && point.x < 1120 && point.y < 585) {
+			dealbackpack(10);
+		}
+		else if (point.x > 1090 && point.y > 460 && point.x < 1250 && point.y < 585) {
+			dealbackpack(11);
+		}
+		else if (point.x > 730 && point.y > 595 && point.x < 850 && point.y < 715) { //背包格子
+			dealbackpack(12);
+		}
+>>>>>>> chun
 		else if (point.x > 860 && point.y > 595 && point.x < 980 && point.y < 715) {
 			dealbackpack(13);
 		}
@@ -1925,6 +2128,7 @@ void CGameStateRun::OnShow()
 	//background.ShowBitmap();			// 貼上背景圖
 	gamemap.OnShow();
 	//help.ShowBitmap();					// 貼上說明圖
+<<<<<<< HEAD
 	//hits_left.ShowBitmap();
 	//for (int i=0; i < NUMBALLS; i++)
 	//	ball[i].OnShow();				// 貼上第i號球
@@ -1933,6 +2137,14 @@ void CGameStateRun::OnShow()
 	if (monster_cpp.stopeverything == 0) {
 		monster_cpp.OnShow();
 	}
+=======
+	hits_left.ShowBitmap();
+	//for (int i=0; i < NUMBALLS; i++)
+	//	ball[i].OnShow();				// 貼上第i號球
+	//bballs.OnShow();	// 貼上彈跳的球
+	eraser.OnShow();		
+	//monster_cpp.OnShow();
+>>>>>>> chun
 	monster_bat_cpp.OnShow();
 	monster_bat_cpp2.OnShow();
 	monster_bat_cpp3.OnShow();
@@ -2180,6 +2392,10 @@ void CGameStateRun::OnShow()
 	//border.ShowBitmap();
 	//c_practice4.OnShow();
 	if (eraser.hero_HP <= 0) {
+<<<<<<< HEAD
+=======
+		CAudio::Instance()->Play(SND_death, false);
+>>>>>>> chun
 		bool_gameover = 1;
 		GotoGameState(GAME_STATE_OVER);
 	}

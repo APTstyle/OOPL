@@ -55,7 +55,18 @@ namespace game_framework {
 		AUDIO_LAKE,				// 1
 		AUDIO_NTUT,				// 2
 		START_MUSIC,			// 3
-		GAMING_MUSIC			//4
+		GAMING_MUSIC,			//4
+		SND_item,
+		SND_death,
+		SND_door,
+		SND_drink,
+		SND_eat,
+		SND_ghost,
+		SND_hit,
+		SND_miss,
+		SND_trap,
+		SND_unlock
+
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -364,7 +375,10 @@ namespace game_framework {
 		void OnRButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 		void OnRButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
 		void dealbackpack(int number);
+<<<<<<< HEAD
 		int open_infor;
+=======
+>>>>>>> chun
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
@@ -423,7 +437,11 @@ namespace game_framework {
 		
 		CMovingBitmap	herohp;
 
+<<<<<<< HEAD
 		//CInteger		hits_left;	// 剩下的撞擊數
+=======
+		CInteger		hits_left;	// 剩下的撞擊數
+>>>>>>> chun
 		CBouncingBall   bballs;		// 反覆彈跳的球
 		CMovingBitmap   practice;
 		CMovingBitmap   border; //practice2

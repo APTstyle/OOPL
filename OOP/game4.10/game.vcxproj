@@ -468,7 +468,10 @@
     <Image Include="RES\hp\hp8.bmp" />
     <Image Include="RES\hp\hp9.bmp" />
     <Image Include="RES\icon32.bmp" />
+<<<<<<< HEAD
     <Image Include="RES\information.bmp" />
+=======
+>>>>>>> chun
     <Image Include="RES\items3.bmp" />
     <Image Include="RES\key1.bmp" />
     <Image Include="RES\level1.bmp" />
@@ -506,8 +509,6 @@
     <Image Include="RES\stair_down1.bmp" />
     <Image Include="RES\stair_up1.bmp" />
     <Image Include="RES\startbutton1.bmp" />
-    <Image Include="res\startbutton2.bmp" />
-    <Image Include="RES\status_pane.bmp" />
     <Image Include="RES\stick1.bmp" />
     <Image Include="res\stick1b1.bmp" />
     <Image Include="RES\stick2.bmp" />
@@ -530,14 +531,6 @@
     <Image Include="RES\warrior1.bmp" />
     <Image Include="RES\wolf1.bmp" />
     <Image Include="RES\wood_floor1.bmp" />
-    <Image Include="RES\word\Assassin-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\ATK-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\DEF-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\HP-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\HUNGRY-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\Hunter-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\Mage-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\Warrior-(黑色字體透明背景).bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet1.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet2.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet3.bmp" />
