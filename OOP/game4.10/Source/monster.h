@@ -104,7 +104,7 @@ namespace game_framework {
 		void SetMoving(bool flag);	// 設定是否正在移動
 		void superdeath();
 		void death();
-		int stopeverything = 0;
+		int stopeverything = 1;
 	protected:
 		CEraser eraser;
 		CAnimation animation;		// 擦子的動畫

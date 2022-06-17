@@ -170,6 +170,13 @@ namespace game_framework {
 	}
 
 	int monster_bat::getroad(int map[][27]) {
+		if (deathshow == 1) {
+			mon_x = 0;
+			mon_y = 0;
+			next_step = 0;
+			SetXY(-100, -100);
+			return 0;
+		}
 		for (int i = 0; i < 27; i++)
 			for (int j = 0; j < 27; j++)
 				rummap_bat[i][j] = map[i][j];
@@ -190,7 +197,11 @@ namespace game_framework {
 		//next_x = mon_x;
 		//next_y = mon_y;
 		//printf("monster_cpp.mon:%d,%d\n", monster_cpp.mon_x, monster_cpp.mon_y);
+		if (stopeverything == 1) {
+			return;
+		}
 		next_step = monster_cpp.automove(map_monster, mon_x, mon_y, CEraser::actor_x, CEraser::actor_y);
+		//next_step = 100 * next_x + next_y;
 		next_x = next_step / 100;
 		next_y = next_step % 100;
 	}
@@ -237,7 +248,6 @@ namespace game_framework {
 			superdeath();
 		}
 		mon_HP = 20;
-		mon_ATK = 1;
 		LoadBitmap();
 		//printf("monster_map:%d\n", map_num);
 		return random_map;
@@ -284,14 +294,22 @@ namespace game_framework {
 		if (mon_HP < 1 && deathshow == 1) {
 			printf("bat dead");
 			animation.cleanBitmap();
-			animation.SetDelayCount(5);
+			animation.SetDelayCount(3);
 			animation.AddBitmap(bat5, RGB(255, 255, 255));
 			animation.AddBitmap(bat6, RGB(255, 255, 255));
 			animation.AddBitmap(bat7, RGB(255, 255, 255));
 			animation.AddBitmap(death_mon, RGB(255, 255, 255));
 			Shp.LoadBitmap(0);
 			Shp.SetXY(GetX1(), GetY2());
-			deathshow = 0;
+		}
+		if (mon_x < CEraser::actor_x - 5 || mon_x > CEraser::actor_x + 5 || mon_y < CEraser::actor_y - 5 || mon_y > CEraser::actor_y + 4) {
+			if (deathshow == 0) {
+				animation.cleanBitmap();
+				animation.AddBitmap(death_mon, RGB(255, 255, 255));
+				Shp.LoadBitmap(20);
+				Shp.SetXY(GetX1(), GetY2());
+				return;
+			}
 		}
 	}
 
@@ -333,6 +351,11 @@ namespace game_framework {
 			findroad();
 			/*attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();*/
+		}
+		if (stopeverything == 1) {
+			mon_x = 0;
+			mon_y = 0;
+			return;
 		}
 	}
 
@@ -381,41 +404,49 @@ namespace game_framework {
 			animation.AddBitmap(death_mon, RGB(255, 255, 255));
 			x = eraser.GetX1() + 45;
 			y = eraser.GetY1() + 45;
+			stopeverything = 1;
+			next_x = 0;
+			next_y = 0;
+			getroad(rummap_bat);
+			deathshow = 0;
 		}
 	}
 
 	int monster_bat::attacked(int ATK) {//攻擊者的攻擊力 回傳被攻擊後的血量
 		mon_HP -= ATK;
 		printf("bat is attacked\n");
-		LoadBitmap();
 		if (mon_HP < 1) {
-			monster_bat::death();
+			death();
 		}
+		LoadBitmap();
 		return mon_HP - ATK;
 	}
 
 	void monster_bat::death() {
 		deathshow = 1;
-		mon_x = CEraser::actor_x;
-		mon_y = CEraser::actor_y;
+		mon_x = 0;
+		mon_y = 0;
 		mon_ATK = 0;
-		LoadBitmap();
 	}
 
 	void monster_bat::superdeath() {
 		animation.cleanBitmap();
 		animation.AddBitmap(death_mon, RGB(255, 255, 255));
-		mon_x = CEraser::actor_x;
-		mon_y = CEraser::actor_y;
+		deathshow = 1;
+		mon_x = 0;
+		mon_y = 0;
 		mon_ATK = 0;
 		mon_HP = 0;
-		SetXY(920, 450);
 		stopeverything = 1;
+		next_x = 0;
+		next_y = 0;
+		getroad(rummap_bat);
+		deathshow = 0;
 	}
 
 	void monster_bat::setdata(int m, int set_x, int set_y) {
 		mon_HP = 20;
-		mon_ATK = 1;
+		mon_ATK = 7;
 		mon_x = set_x;
 		mon_y = set_y;
 		/*

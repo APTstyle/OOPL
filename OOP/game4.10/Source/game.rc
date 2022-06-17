@@ -252,9 +252,9 @@ arrow1b                 BITMAP                  "..\\res\\arrow1.bmp"
 
 arrow2b                 BITMAP                  "..\\res\\arrow2.bmp"
 
-food1ss                 BITMAP                  "..\\res\\food1.bmp"
+FOOD1SS                 BITMAP                  "..\\res\\food1.bmp"
 
-food2ss                 BITMAP                  "..\\res\\food2.bmp"
+FOOD2SS                 BITMAP                  "..\\res\\food2.bmp"
 
 grave                   BITMAP                  "..\\res\\grave1.bmp"
 
@@ -360,8 +360,6 @@ letter_i                BITMAP                  "..\\res\\font1x\\font1x9.bmp"
 
 letter_j                BITMAP                  "..\\res\\font1x\\font1x10.bmp"
 
-letter_h                BITMAP                  "..\\res\\font1x\\font1x11.bmp"
-
 letter_l                BITMAP                  "..\\res\\font1x\\font1x12.bmp"
 
 letter_m                BITMAP                  "..\\res\\font1x\\font1x13.bmp"
@@ -438,7 +436,29 @@ key1                    BITMAP                  "..\\res\\key1.bmp"
 
 IDB_BITMAP28            BITMAP                  "..\\res\\items3.bmp"
 
-//IDB_BITMAP29            BITMAP                  "C:\\Users\\user\\Desktop\\ic_launcher.bmp"
+hero_status             BITMAP                  "..\\res\\status_pane.bmp"
+
+information             BITMAP                  "..\\res\\information.bmp"
+
+letter_k                BITMAP                  "..\\res\\font1x\\font1x11.bmp"
+
+letter_h                BITMAP                  "..\\res\\font1x\\font1x8.bmp"
+
+word_assassin           BITMAP                  "..\\res\\word\\Assassin-(¥Õ©³¶Â¦r).bmp"
+
+word_atk                BITMAP                  "..\\res\\word\\ATK-(¥Õ©³¶Â¦r).bmp"
+
+word_def                BITMAP                  "..\\res\\word\\DEF-(¥Õ©³¶Â¦r).bmp"
+
+word_hp                 BITMAP                  "..\\res\\word\\HP-(¥Õ©³¶Â¦r).bmp"
+
+word_hungry             BITMAP                  "..\\res\\word\\HUNGRY-(¥Õ©³¶Â¦r).bmp"
+
+word_hunter             BITMAP                  "..\\res\\word\\Hunter-(¥Õ©³¶Â¦r).bmp"
+
+word_mage               BITMAP                  "..\\res\\word\\Mage-(¥Õ©³¶Â¦r).bmp"
+
+word_warrior            BITMAP                  "..\\res\\word\\Warrior-(¥Õ©³¶Â¦r).bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

@@ -207,9 +207,13 @@ namespace game_framework {
 	}
 
 	void monster::findroad() {
-		next_x = mon_x;
-		next_y = mon_y;
+		if (stopeverything == 1) {
+			return;
+		}
+		//next_x = mon_x;
+		//next_y = mon_y;
 		next_step = automove(map_monster, mon_x, mon_y, CEraser::actor_x, CEraser::actor_y);
+		//next_step = 100 * next_x + next_y;
 		next_x = next_step / 100;
 		next_y = next_step % 100;
 	}
@@ -219,11 +223,11 @@ namespace game_framework {
 			return 1;
 		}
 		return 0;
-	};
+	}
 
 	void monster::attack_judge(int x1, int y1, int x2, int y2) {
-		printf("judge:%d,%d,%d,%d\n", x1, y1, x2, y2);
-		if (x1 == x2 && y1 == y2) {
+		if (abs(x1 - x2) <= 1 && abs(y1 - y2) <= 1) {
+			printf("boss atk");
 			eraser.attacked(mon_ATK);
 		}
 	}
@@ -374,9 +378,16 @@ namespace game_framework {
 
 	int monster::getroad() {
 		eraser.showdetail();
-		if (mon_loc_judge(next_x, next_y) == 1) {
-			next_step = whichway(mon_x, mon_y, next_x, next_y, CEraser::actor_x, CEraser::actor_y);
+		if (deathshow == 1) {
+			mon_x = 0;
+			mon_y = 0;
+			next_step = 0;
+			SetXY(-100, -100);
+			return 0;
 		}
+		/*if (mon_loc_judge(next_x, next_y) == 1) {
+			next_step = whichway(mon_x, mon_y, next_x, next_y, CEraser::actor_x, CEraser::actor_y);
+		}*/
 		next_x = next_step / 100;
 		next_y = next_step % 100;
 		SetXY(CEraser::map_x + 45 * next_x, CEraser::map_y + 45 * next_y);
@@ -388,7 +399,7 @@ namespace game_framework {
 	}
 
 	void monster::showdata() {
-		printf("\nmonster1:\n");
+		printf("\nboss:\n");
 		printf("HP:%d\n", mon_HP);
 		printf("ATK:%d\n", mon_ATK);
 		printf("Location:%d,%d\n", mon_x, mon_y);
@@ -405,41 +416,19 @@ namespace game_framework {
 		for (int i = 0; i < 25; i++)
 			for (int j = 0; j < 27; j++)
 				map_monster[i][j] = map[i][j];
-		if (map_num == 1) {//24*24
-			mon_x = 3;//24-actor_x
-			mon_y = 3;//2-actor_y
-			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			return random_map;
-		}
-		if (map_num == 2) {
-			mon_x = 18;
-			mon_y = 17;
-			SetXY(695 + 45 * mon_x, 360 + 45 * mon_y);
-		}
-		if (map_num == 3) {
-			mon_x = 8;
-			mon_y = 17;
-			SetXY(245 + 45 * mon_x, 360 + 45 * mon_y);
-		}
-		if (map_num == 4) {//24*24
-			mon_x = 21;
-			mon_y = 11;
-			SetXY(825 + 45 * mon_x, 0 + 45 * mon_y);
-		}
-		if (map_num == 5) {//24*24
-			mon_x = 8;
-			mon_y = 3;
-			SetXY(245 + 45 * mon_x, -350 + 45 * mon_y);
-		}
-		if (map_num == 6) {//24*24
-			mon_x = 13;
-			mon_y = 22;
-			SetXY(475 + 45 * mon_x, 490 + 45 * mon_y);
-		}
 		if (map_num == 7) {//24*24
-			mon_HP = 20;
+			mon_HP = 50;
 			mon_ATK = 1;
-			superdeath();
+			mon_x = 1;
+			mon_y = 9;
+			next_step = 109;
+			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
+			stopeverything = 0;
+		}
+		else {
+			mon_x = 0;
+			mon_y = 0;
+			SetXY(-100,-100);
 		}
 		LoadBitmap();
 		//printf("monster_map:%d\n", map_num);
@@ -479,14 +468,14 @@ namespace game_framework {
 
 	void monster::LoadBitmap()
 	{
-		if (mon_HP == 20) {
+		if (mon_HP == 50) {
 			animation.cleanBitmap();
 			animation.AddBitmap(boss, RGB(255, 255, 255));
 			animation.AddBitmap(boss2, RGB(255, 255, 255));
 			Shp.LoadBitmap(20);
 			Shp.SetXY(GetX1(), GetY2());
 		}
-		if (mon_HP != 20 && mon_HP > 0) {
+		if (mon_HP != 50 && mon_HP > 0) {
 			animation.cleanBitmap();
 			animation.AddBitmap(boss3, RGB(255, 255, 255));
 			animation.AddBitmap(boss4, RGB(255, 255, 255));
@@ -532,12 +521,7 @@ namespace game_framework {
 	{
 		isMovingDown = flag;
 		if (flag&& stopeverything == 0) {
-			if (CGameMap::ismoving == 1) {
-				y += STEP_SIZE;
-			}
 			findroad();
-			attack_judge(mon_x, mon_y, next_x, next_y);
-			getroad();
 		}
 	}
 
@@ -545,12 +529,7 @@ namespace game_framework {
 	{
 		isMovingLeft = flag;
 		if (flag&& stopeverything == 0) {
-			if (CGameMap::ismoving == 1) {
-				x -= STEP_SIZE;
-			}
 			findroad();
-			attack_judge(mon_x, mon_y, next_x, next_y);
-			getroad();
 		}
 	}
 
@@ -558,12 +537,7 @@ namespace game_framework {
 	{
 		isMovingRight = flag;
 		if (flag&& stopeverything == 0) {
-			if (CGameMap::ismoving == 1) {
-				x += STEP_SIZE;
-			}
 			findroad();
-			attack_judge(mon_x, mon_y, next_x, next_y);
-			getroad();
 		}
 	}
 
@@ -571,12 +545,7 @@ namespace game_framework {
 	{
 		isMovingUp = flag;
 		if (flag&& stopeverything == 0) {
-			if (CGameMap::ismoving == 1) {
-				y -= STEP_SIZE;
-			}
 			findroad();
-			attack_judge(mon_x, mon_y, next_x, next_y);
-			getroad();
 		}
 	}
 
