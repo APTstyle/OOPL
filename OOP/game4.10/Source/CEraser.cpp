@@ -51,8 +51,8 @@ namespace game_framework {
 		x = X_POS;
 		y = Y_POS;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
-
-		hero_def = 10;
+		CEraser::hero_max_hp = 20;
+		CEraser::hero_def = 10;
 	}
 	void CEraser::changeskin(int c) {
 		animation.cleanBitmap();
@@ -106,7 +106,10 @@ namespace game_framework {
 	}
 	int CEraser::actor_x = 1;
 	int CEraser::actor_y = 1;
-	int CEraser::hero_HP = 0;
+	int CEraser::hero_HP = 20;
+	int CEraser::hero_ATK = 4;
+	int CEraser::hero_def = 10;
+	int CEraser::hero_max_hp = 20;
 	int show = 1;
 	void CEraser::OnMove()
 	{
@@ -195,24 +198,30 @@ namespace game_framework {
 
 	void CEraser::OnShow()
 	{
+
 		animation.SetTopLeft(x, y);
 		animation.OnShow();
 		animation_hp_background.SetTopLeft(0, 0);
 		animation_hp_background.OnShow();
 		animation_icon.SetTopLeft(30, 30);
 		animation_icon.OnShow();
-		for (int i = 0; i < CEraser::hero_HP*5; i++) {
-			animation_test.SetTopLeft(132+i*2, 7);
+		for (int i = 0; i < CEraser::hero_HP*200 /CEraser::hero_max_hp; i++) {
+			animation_test.SetTopLeft(132+i, 7);
 			animation_test.ShowBitmap();
 		}
 	}
 
 	int CEraser::attacked(int ATK) {//攻擊者的攻擊力 回傳被攻擊後的血量
+
+		printf("atked CEraser::hero_def:%d\n", CEraser::hero_def);
 		if (ATK == 0) {
 			return CEraser::hero_HP;
 		}
+		if ((CEraser::hero_def * 2 - ATK * 3) > 0) {
+			return CEraser::hero_HP;
+		}
 		CEraser::hero_HP -=ATK*3;
-		CEraser::hero_HP += hero_def * 2;
+		CEraser::hero_HP += CEraser::hero_def * 2;
 		printf("Hero is attacked\n");
 		return CEraser::hero_HP;
 	}
@@ -220,7 +229,7 @@ namespace game_framework {
 	void CEraser::showdetail() {
 		printf("\nHero:\n");
 		printf("HP:%d\n", CEraser::hero_HP);
-		//printf("ATK:%d\n", hero_ATK);
+		//printf("ATK:%d\n", CEraser::hero_ATK);
 		printf("Location:%d,%d\n", actor_x, actor_y);
 		printf("X,Y:%d,%d\n", x, y);
 	}
@@ -228,14 +237,14 @@ namespace game_framework {
 	void CEraser::showdata() {
 		printf("\nHero:\n");
 		printf("HP:%d\n", CEraser::hero_HP);
-		//printf("ATK:%d\n", hero_ATK);
+		//printf("ATK:%d\n", CEraser::hero_ATK);
 		printf("Location:%d,%d\n", CEraser::actor_x, CEraser::actor_y);
 		printf("X,Y:%d,%d\n", x, y);
 	}
 
 	void CEraser::reset(int m) {
 		hero_HP = 5;
-		hero_ATK = 4;
+		CEraser::hero_ATK = 4;
 		if (m == 1) {
 			CEraser::actor_x = 1;
 			CEraser::actor_y = 1;
@@ -272,5 +281,21 @@ namespace game_framework {
 			SetXY(835, 485);
 		}
 		showdata();
+	}
+
+	int CEraser::changedef(int n) {
+		CEraser::hero_def += n;
+		return CEraser::hero_def;
+	}
+	int CEraser::changeatk(int n) {
+		CEraser::hero_ATK += n;
+		return CEraser::hero_ATK;
+	}
+	int CEraser::changemaxhp(int n) {
+		CEraser::hero_max_hp += n;
+		return CEraser::hero_max_hp;
+	}
+	void CEraser::heal() {
+		CEraser::hero_HP = CEraser::hero_max_hp;
 	}
 }

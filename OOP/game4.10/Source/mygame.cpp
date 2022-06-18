@@ -1489,12 +1489,12 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		
 		}
 	}
-	for (int i = 0; i < 27; i++) {
+	/*for (int i = 0; i < 27; i++) {
 		for (int j = 0; j < 27; j++) {
 			printf("%d ", save[i][j]);
 		}
 		printf("\n");
-	}
+	}*/
 
 	hp_n.SetInteger(0);
 	hp_n.SetTopLeft(1000, 320);
@@ -1557,17 +1557,20 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 
 }
 void CGameStateRun::dealbackpack(int number) { //使用道具
-	if (pack_space[number]==12) {
+	if (pack_space[number] == 12) {
 		CAudio::Instance()->Play(SND_drink, false);
 		pack_space[number] = 0;   /////喝藍水效果
+		eraser.changedef(1);
 	}
 	if (pack_space[number] == 13) {
 		CAudio::Instance()->Play(SND_drink, false);
 		pack_space[number] = 0;	/////喝綠水效果
+		eraser.heal();
 	}
 	if (pack_space[number] == 14) {
 		CAudio::Instance()->Play(SND_drink, false);
 		pack_space[number] = 0;	/////喝紅水效果
+		eraser.changeatk(1);
 	}
 	if (pack_space[number] == 15) {
 
@@ -1575,6 +1578,7 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 		backpackadd(eraser.checkweapon());
 		eraser.equipweapon(15);  //穿上
 		pack_space[number] = 0;
+		eraser.changeatk(1);
 
 	}
 	if (pack_space[number] == 16) {
@@ -1582,21 +1586,22 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 		backpackadd(eraser.checkweapon());
 		eraser.equipweapon(16);  //脫下
 		pack_space[number] = 0;
+		eraser.changeatk(2);
 
 	}
 	if (pack_space[number] == 17) {
 
 		backpackadd(eraser.checkweapon());
 		eraser.equipweapon(17);
-
 		pack_space[number] = 0;
+		eraser.changeatk(3);
 
 	}
 	if (pack_space[number] == 18) {
 		backpackadd(eraser.checkweapon());
 		eraser.equipweapon(18);
-
 		pack_space[number] = 0;
+		eraser.changeatk(1);
 
 	}
 	if (pack_space[number] == 19) {
@@ -1604,6 +1609,7 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 		backpackadd(eraser.checkweapon());
 		eraser.equipweapon(19);
 		pack_space[number] = 0;
+		eraser.changeatk(2);
 
 	}
 	if (pack_space[number] == 20) {
@@ -1612,6 +1618,7 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 		eraser.equipweapon(20);
 
 		pack_space[number] = 0;
+		eraser.changeatk(3);
 
 	}
 	if (pack_space[number] == 21) {
@@ -1629,6 +1636,7 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 		eraser.equipring(24);
 
 		pack_space[number] = 0;
+		eraser.changemaxhp(10);
 
 	}
 	if (pack_space[number] == 25) {
@@ -1636,6 +1644,7 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 		backpackadd(eraser.checkring());
 		eraser.equipring(25);
 		pack_space[number] = 0;
+		eraser.changemaxhp(20);
 
 	}
 	if (pack_space[number] == 26) {
@@ -1643,6 +1652,7 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 		backpackadd(eraser.checkring());
 		eraser.equipring(26);
 		pack_space[number] = 0;
+		eraser.changemaxhp(30);
 
 	}
 	if (pack_space[number] == 27) {
@@ -1650,14 +1660,14 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 		backpackadd(eraser.checkarmor());
 		eraser.equiparmor(27);
 		pack_space[number] = 0;
-
-
+		eraser.changedef(1);
 	}
 	if (pack_space[number] == 28) {
 
 		backpackadd(eraser.checkarmor());
 		eraser.equiparmor(28);
 		pack_space[number] = 0;
+		eraser.changedef(2);
 
 	}
 	if (pack_space[number] == 29) {
@@ -1665,6 +1675,7 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 		backpackadd(eraser.checkarmor());
 		eraser.equiparmor(29);
 		pack_space[number] = 0;
+		eraser.changedef(3);
 
 	}
 	if (pack_space[number] == 30) {
@@ -1920,6 +1931,23 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 
 
 	}
+
+	//更新角色數據	
+	hp_n.SetInteger(0);
+	hp_n.SetTopLeft(1000, 320);
+	atk_n.SetInteger(0);
+	atk_n.SetTopLeft(1000, 460);
+	def_n.SetInteger(0);
+	def_n.SetTopLeft(1000, 616);
+	for (int i = 0; i < CEraser::hero_HP; i++) {
+		hp_n.Add(1);
+	}
+	for (int i = 0; i < eraser.hero_ATK; i++) {
+		atk_n.Add(1);
+	}
+	for (int i = 0; i < eraser.hero_def; i++) {
+		def_n.Add(1);
+	}
 }
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -1943,7 +1971,7 @@ void CGameStateRun::OnShow()
 	int uix = 700, uiy = 990;
 	eraser.SetXY(920 + 45, 540 + 45);//角色初始位置
 
-	
+	//printf("eraser.hero_def:%d\n", eraser.hero_def);
 	stop.SetTopLeft(uix, uiy);
 	backpack.SetTopLeft(stop.Left()+550, uiy);
 	detect.SetTopLeft(stop.Left()+90, uiy);
