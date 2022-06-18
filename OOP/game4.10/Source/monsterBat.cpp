@@ -279,6 +279,7 @@ namespace game_framework {
 		//animation.AddBitmap(warrior, RGB(255, 255, 255));
 		if (mon_HP == 20) {
 			animation.cleanBitmap();
+			animation.SetDelayCount(2);
 			animation.AddBitmap(bat, RGB(255, 255, 255));
 			animation.AddBitmap(bat2, RGB(255, 255, 255));
 			Shp.LoadBitmap(20);
@@ -286,6 +287,7 @@ namespace game_framework {
 		}
 		if (mon_HP != 20 && mon_HP > 0) {
 			animation.cleanBitmap();
+			animation.SetDelayCount(2);
 			animation.AddBitmap(bat3, RGB(255, 255, 255));
 			animation.AddBitmap(bat4, RGB(255, 255, 255));
 			Shp.LoadBitmap((mon_HP * 10) / mon_MAXHP);

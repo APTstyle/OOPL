@@ -1495,6 +1495,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		}
 		printf("\n");
 	}*/
+	eraser.stave();
 
 	hp_n.SetInteger(0);
 	hp_n.SetTopLeft(1000, 320);
@@ -1681,10 +1682,15 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 	if (pack_space[number] == 30) {
 		CAudio::Instance()->Play(SND_eat, false);
 		pack_space[number] = 0;  /////吃包子
+		CEraser::hero_hungry = 40;
 	}
 	if (pack_space[number] == 31) {
 		CAudio::Instance()->Play(SND_eat, false);
 		pack_space[number] = 0;  /////吃肉餅
+		CEraser::hero_hungry += 20;
+		if (CEraser::hero_hungry > 40) {
+			CEraser::hero_hungry = 40;
+		}
 	}
 	if (pack_space[number] == 35) {
 		pack_space[number] = 0;
@@ -1781,6 +1787,8 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 			save[test1[2] % 100][test1[2] / 100] = 0;
 			save[test2[2] % 100][test2[2] / 100] = 1;
 			test1[2] = test2[2];
+
+			eraser.stave();
 		}
 	}
 	if (point.x > monster_bat_cpp2.GetX1() && point.x < monster_bat_cpp2.GetX2() && point.y > monster_bat_cpp2.GetY1() && point.y < monster_bat_cpp2.GetY2()) {
@@ -1810,6 +1818,8 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 			save[test1[2] % 100][test1[2] / 100] = 0;
 			save[test2[2] % 100][test2[2] / 100] = 1;
 			test1[2] = test2[2];
+
+			eraser.stave();
 		}
 	}//0617
 	if (point.x > monster_bat_cpp3.GetX1() && point.x < monster_bat_cpp3.GetX2() && point.y > monster_bat_cpp3.GetY1() && point.y < monster_bat_cpp3.GetY2()) {
@@ -1839,6 +1849,8 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 			save[test1[1] % 100][test1[1] / 100] = 0;
 			save[test2[1] % 100][test2[1] / 100] = 1;
 			test1[1] = test2[1];
+
+			eraser.stave();
 		}
 	}
 	if (point.x > monster_cpp.GetX1() && point.x < monster_cpp.GetX2() && point.y > monster_cpp.GetY1() && point.y < monster_cpp.GetY2()) {

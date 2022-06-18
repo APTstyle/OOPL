@@ -110,6 +110,7 @@ namespace game_framework {
 	int CEraser::hero_ATK = 4;
 	int CEraser::hero_def = 10;
 	int CEraser::hero_max_hp = 20;
+	int CEraser::hero_hungry = 40;
 	int show = 1;
 	void CEraser::OnMove()
 	{
@@ -297,5 +298,15 @@ namespace game_framework {
 	}
 	void CEraser::heal() {
 		CEraser::hero_HP = CEraser::hero_max_hp;
+	}
+
+	void CEraser::stave() {
+		if (CEraser::hero_hungry == 0) {
+			CEraser::hero_HP -= 1;
+		}
+		else {
+			CEraser::hero_hungry -= 1;
+		}
+		printf("CEraser::hero_hungry:%d", CEraser::hero_hungry);
 	}
 }

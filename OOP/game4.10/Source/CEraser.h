@@ -13,6 +13,7 @@ namespace game_framework {
 		static int hero_HP;
 		static int hero_max_hp;
 		static int hero_ATK;
+		static int hero_hungry;
 		void showdetail();
 		void showdata();
 		int attacked(int ATK);
@@ -45,6 +46,7 @@ namespace game_framework {
 		int changeatk(int n);
 		int changemaxhp(int n);
 		void heal();
+		void stave();
 	protected:
 		CAnimation animation;		// 擦子的動畫
 		CAnimation animation_hp_background;		// 擦子的動畫
