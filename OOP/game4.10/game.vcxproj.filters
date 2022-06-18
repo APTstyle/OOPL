@@ -15,7 +15,6 @@
     <ClCompile Include="Source\StdAfx.cpp" />
     <ClCompile Include="Source\gamelib.cpp" />
     <ClCompile Include="Source\mygame.cpp" />
-    <ClCompile Include="Source\showHp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\monster.h" />
@@ -33,7 +32,6 @@
     <ClInclude Include="Source\StdAfx.h" />
     <ClInclude Include="Source\gamelib.h" />
     <ClInclude Include="Source\mygame.h" />
-    <ClInclude Include="Source\showHp.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Source\game.rc" />
@@ -170,6 +168,7 @@
     <Image Include="RES\hp\hp8.bmp" />
     <Image Include="RES\hp\hp9.bmp" />
     <Image Include="RES\icon32.bmp" />
+    <Image Include="RES\information.bmp" />
     <Image Include="RES\items3.bmp" />
     <Image Include="RES\key1.bmp" />
     <Image Include="RES\level1.bmp" />
@@ -233,118 +232,20 @@
     <Image Include="RES\Wraithsheet\Wraithsheet2.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet3.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet4.bmp" />
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    <Image Include="RES\batsheet\batsheet5.bmp" />
-    <Image Include="RES\batsheet\batsheet6.bmp" />
-    <Image Include="RES\batsheet\batsheet7.bmp" />
->>>>>>> chun
     <Image Include="RES\Wraithsheet\Wraithsheet5.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet6.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet7.bmp" />
     <Image Include="RES\Wraithsheet\Wraithsheet8.bmp" />
-<<<<<<< HEAD
-    <Image Include="RES\status_pane.bmp" />
     <Image Include="res\startbutton2.bmp" />
-    <Image Include="RES\information.bmp" />
-    <Image Include="RES\word\Assassin-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\ATK-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\DEF-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\HP-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\HUNGRY-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\Hunter-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\Mage-(黑色字體透明背景).bmp" />
-    <Image Include="RES\word\Warrior-(黑色字體透明背景).bmp" />
-=======
-    <Image Include="res\bitmap28.bmp" />
-    <Image Include="res\hp10.bmp" />
-    <Image Include="RES\hp\hp10.bmp" />
-    <Image Include="RES\hp\hp1.bmp" />
-    <Image Include="RES\hp\hp2.bmp" />
-    <Image Include="RES\hp\hp3.bmp" />
-    <Image Include="RES\hp\hp4.bmp" />
-    <Image Include="RES\hp\hp5.bmp" />
-    <Image Include="RES\hp\hp6.bmp" />
-    <Image Include="RES\hp\hp7.bmp" />
-    <Image Include="RES\hp\hp8.bmp" />
-    <Image Include="RES\hp\hp9.bmp" />
-    <Image Include="..\..\..\work\asset\bmp\person1\person1.bmp" />
-    <Image Include="..\..\..\work\asset\bmp\person1\person55.bmp" />
-    <Image Include="..\..\..\work\asset\bmp\person2\person55.bmp" />
-    <Image Include="..\..\..\work\asset\bmp\person3\person55.bmp" />
-    <Image Include="..\..\..\work\asset\bmp\person4\person55.bmp" />
-    <Image Include="res\bitmap29.bmp" />
-    <Image Include="res\bitmap30.bmp" />
-    <Image Include="res\herohp\bitmap28.bmp" />
-    <Image Include="RES\herohp\bitmap30.bmp" />
-    <Image Include="res\person1\person55.bmp" />
-    <Image Include="res\person2\person55.bmp" />
-    <Image Include="res\person3\person55.bmp" />
-    <Image Include="res\person4\person55.bmp" />
-    <Image Include="..\allassets\items.png" />
-    <Image Include="..\allassets\banners.png" />
-    <Image Include="..\allassets\finish.png" />
-    <Image Include="RES\finish\finish.bmp" />
-    <Image Include="RES\banners\banners1.bmp" />
-    <Image Include="..\allassets\font1x.png" />
-    <Image Include="RES\font1x\font1x1.bmp" />
-    <Image Include="RES\font1x\font1x2.bmp" />
-    <Image Include="RES\font1x\font1x3.bmp" />
-    <Image Include="RES\font1x\font1x4.bmp" />
-    <Image Include="RES\font1x\font1x5.bmp" />
-    <Image Include="RES\font1x\font1x6.bmp" />
-    <Image Include="RES\font1x\font1x7.bmp" />
-    <Image Include="RES\font1x\font1x8.bmp" />
-    <Image Include="RES\font1x\font1x9.bmp" />
-    <Image Include="RES\font1x\font1x10.bmp" />
-    <Image Include="RES\font1x\font1x11.bmp" />
-    <Image Include="RES\font1x\font1x12.bmp" />
-    <Image Include="RES\font1x\font1x13.bmp" />
-    <Image Include="RES\font1x\font1x14.bmp" />
-    <Image Include="RES\font1x\font1x15.bmp" />
-    <Image Include="RES\font1x\font1x16.bmp" />
-    <Image Include="RES\font1x\font1x17.bmp" />
-    <Image Include="RES\font1x\font1x18.bmp" />
-    <Image Include="RES\font1x\font1x19.bmp" />
-    <Image Include="RES\font1x\font1x20.bmp" />
-    <Image Include="RES\font1x\font1x21.bmp" />
-    <Image Include="RES\font1x\font1x22.bmp" />
-    <Image Include="RES\font1x\font1x23.bmp" />
-    <Image Include="RES\font1x\font1x24.bmp" />
-    <Image Include="RES\font1x\font1x25.bmp" />
-    <Image Include="RES\font1x\font1x26.bmp" />
-    <Image Include="..\allassets\startbutton1.bmp" />
-    <Image Include="RES\icon32.bmp" />
-=======
-    <Image Include="res\papaer1b.bmp" />
-    <Image Include="res\paper2b1.bmp" />
-    <Image Include="res\paper3b1.bmp" />
-    <Image Include="res\ring1b1.bmp" />
-    <Image Include="res\ring2b1.bmp" />
-    <Image Include="res\ring3b1.bmp" />
-    <Image Include="RES\cloth1.PNG" />
-    <Image Include="RES\cloth2.PNG" />
-    <Image Include="RES\cloth3.PNG" />
-    <Image Include="RES\cloth1.bmp" />
-    <Image Include="RES\cloth2.bmp" />
-    <Image Include="RES\cloth3.bmp" />
-    <Image Include="res\cloth1b1.bmp" />
-    <Image Include="res\cloth2b1.bmp" />
-    <Image Include="res\cloth3b1.bmp" />
-    <Image Include="res\sword1b1.bmp" />
-    <Image Include="res\sword2b1.bmp" />
-    <Image Include="res\sword3b1.bmp" />
-    <Image Include="res\stick1b1.bmp" />
-    <Image Include="res\stick2b1.bmp" />
-    <Image Include="res\stick3b1.bmp" />
-    <Image Include="res\arrow1b1.bmp" />
-    <Image Include="res\arrow2b1.bmp" />
-    <Image Include="RES\items3.bmp" />
-    <Image Include="..\..\ic_launcher.bmp" />
-    <Image Include="..\..\pixel-dungeon-master\res\drawable-mdpi\ic_launcher.png" />
->>>>>>> chun
->>>>>>> chun
+    <Image Include="res\status_pane.bmp" />
+    <Image Include="res\word\Assassin-(白底黑字).bmp" />
+    <Image Include="res\word\ATK-(白底黑字).bmp" />
+    <Image Include="res\word\DEF-(白底黑字).bmp" />
+    <Image Include="res\word\HP-(白底黑字).bmp" />
+    <Image Include="res\word\HUNGRY-(白底黑字).bmp" />
+    <Image Include="res\word\Hunter-(白底黑字).bmp" />
+    <Image Include="res\word\Mage-(白底黑字).bmp" />
+    <Image Include="res\word\Warrior-(白底黑字).bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\ball.bmp" />

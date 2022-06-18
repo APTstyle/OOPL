@@ -160,12 +160,10 @@
 #define letter_e                        351
 #define letter_f                        352
 #define letter_g                        353
+
+#define letter_h                        408
 #define letter_i                        355
 #define letter_j                        356
-<<<<<<< HEAD
-=======
-#define letter_h                        357
->>>>>>> chun
 #define letter_l                        358
 #define letter_m                        359
 #define letter_n                        360
@@ -210,12 +208,10 @@
 #define key1                            400
 #define IDB_BITMAP28                    401
 #define IDB_BITMAP29                    402
-<<<<<<< HEAD
 #define IDB_BITMAP8                     403
 #define hero_status                     404
 #define information                     406
 #define letter_k                        407
-#define letter_h                        408
 #define word_assassin                   409
 #define word_atk                        410
 #define word_def                        411
@@ -224,8 +220,6 @@
 #define word_hunter                     414
 #define word_mage                       415
 #define word_warrior                    416
-=======
->>>>>>> chun
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -238,11 +232,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-<<<<<<< HEAD
 #define _APS_NEXT_RESOURCE_VALUE        417
-=======
-#define _APS_NEXT_RESOURCE_VALUE        403
->>>>>>> chun
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
