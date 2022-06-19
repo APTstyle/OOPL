@@ -247,13 +247,12 @@ namespace game_framework {
 			{3,1,1,7,7,1,3,3,1,2,2,2,2,2,2,2,2,3,3,3,4,3,3,3},
 			{3,1,1,7,7,1,3,3,1,3,3,1,3,3,3,3,3,3,3,3,1,1,1,3},
 			{3,3,3,1,1,1,1,1,1,3,3,1,3,3,3,3,3,3,3,3,1,1,1,3},
-			{3,3,3,1,3,3,3,1,3,3,3,1,3,3,3,3,3,3,3,3,1,1,1,3},
-			{3,3,3,1,3,3,3,4,3,3,3,1,3,3,3,3,3,3,3,3,1,1,1,3},
-			{3,3,3,1,1,1,4,1,1,1,3,1,3,3,3,3,3,3,3,3,3,4,3,3},
+			{3,3,3,1,3,3,3,1,3,3,3,1,3,3,3,1,1,12,3,3,1,1,1,3},
+			{3,3,3,1,3,3,3,4,3,3,3,1,3,3,3,1,1,1,3,3,1,1,1,3},
+			{3,3,3,1,1,1,4,1,1,1,3,1,3,3,3,4,3,3,3,3,3,4,3,3},
 			{3,3,3,3,3,3,3,1,1,1,4,1,1,1,1,1,1,1,1,1,1,1,3,3},
-			{3,3,3,3,3,3,3,1,8,1,3,3,3,3,3,3,4,3,3,3,3,3,3,3},
-			{3,3,3,3,3,3,3,8,8,30,3,3,3,3,3,3,1,1,12,3,3,3,3,3},
-			{3,3,3,3,3,3,3,1,1,1,3,3,3,3,3,3,1,1,1,3,3,3,3,3},
+			{3,3,3,3,3,3,3,1,8,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
+			{3,3,3,3,3,3,3,8,8,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
 			{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3} };
 		int map5_init[25][27] = {
 			{3,3,3,3,3,3,3,3,5,5,3,3,3,3,3,3,3,5,5,5,3,3,3,3},
@@ -375,6 +374,7 @@ namespace game_framework {
 		void OnRButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 		void OnRButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
 		void dealbackpack(int number);
+		int open_infor;
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
@@ -394,6 +394,14 @@ namespace game_framework {
 		CMovingBitmap	qitem3;
 		CMovingBitmap	qitem4;
 		CMovingBitmap	backpackUI;
+		// infor ui
+		CMovingBitmap	infor;
+		CMovingBitmap	hero_infor;
+		CMovingBitmap	a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;
+		CMovingBitmap	hp, atk, def, hero_word;
+		CInteger		hp_n;
+		CInteger		atk_n;
+		CInteger		def_n;
 		///////////////////背包物品//////////////////////////
 		CMovingBitmap	lb_p, dr_p, dg_p;
 
@@ -404,6 +412,7 @@ namespace game_framework {
 		CMovingBitmap ri1s_p, ri2s_p, ri3s_p;
 		CMovingBitmap fo1s_p, fo2s_p;
 		CMovingBitmap ke1s_p, ar1s_p, ar2s_p;
+		CMovingBitmap final_item;
 		///////////////////////////////////////////
 		/*物品編號:
 			12淺藍水 13深綠水 14深紅水
@@ -425,7 +434,7 @@ namespace game_framework {
 		
 		CMovingBitmap	herohp;
 
-		CInteger		hits_left;	// 剩下的撞擊數
+		//CInteger		hits_left;	// 剩下的撞擊數
 		CBouncingBall   bballs;		// 反覆彈跳的球
 		CMovingBitmap   practice;
 		CMovingBitmap   border; //practice2

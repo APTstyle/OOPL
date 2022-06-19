@@ -9,7 +9,9 @@ namespace game_framework {
 	{
 	public:
 		CEraser();
+		int hero_def=0;
 		static int hero_HP;
+		int hero_max_hp;
 		int hero_ATK=4;
 		void showdetail();
 		void showdata();
@@ -51,6 +53,7 @@ namespace game_framework {
 		bool isMovingLeft;			// 是否正在往左移動
 		bool isMovingRight;			// 是否正在往右移動
 		bool isMovingUp;			// 是否正在往上移動
+
 	};
 }
 #endif
