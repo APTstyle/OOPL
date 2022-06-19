@@ -418,6 +418,7 @@
     <Image Include="res\dark_gre.bmp" />
     <Image Include="res\dark_red.bmp" />
     <Image Include="res\door1.bmp" />
+    <Image Include="RES\finalitem1.bmp" />
     <Image Include="RES\finish\finish.bmp" />
     <Image Include="res\floor1.bmp" />
     <Image Include="RES\font1x\font1x1.bmp" />

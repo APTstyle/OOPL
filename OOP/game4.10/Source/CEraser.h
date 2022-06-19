@@ -9,10 +9,11 @@ namespace game_framework {
 	{
 	public:
 		CEraser();
-		int hero_def=0;
+		static int hero_def;
 		static int hero_HP;
-		int hero_max_hp;
-		int hero_ATK=4;
+		static int hero_max_hp;
+		static int hero_ATK;
+		static int hero_hungry;
 		void showdetail();
 		void showdata();
 		int attacked(int ATK);
@@ -41,6 +42,11 @@ namespace game_framework {
 		void SetMovingUp(bool flag);	// 設定是否正在往上移動
 		void SetXY(int nx, int ny);		// 設定擦子左上角座標
 		static int actor_x, actor_y;	// 擦子左上角座標
+		int changedef(int n);
+		int changeatk(int n);
+		int changemaxhp(int n);
+		void heal();
+		void stave();
 	protected:
 		CAnimation animation;		// 擦子的動畫
 		CAnimation animation_hp_background;		// 擦子的動畫

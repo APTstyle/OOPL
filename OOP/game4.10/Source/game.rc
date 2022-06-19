@@ -460,6 +460,8 @@ word_mage               BITMAP                  "..\\res\\word\\Mage-(¥Õ©³¶Â¦r).
 
 word_warrior            BITMAP                  "..\\res\\word\\Warrior-(¥Õ©³¶Â¦r).bmp"
 
+finalitem_b             BITMAP                  "..\\res\\finalitem1.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
