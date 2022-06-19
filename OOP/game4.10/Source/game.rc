@@ -459,6 +459,11 @@ word_hunter             BITMAP                  "..\\res\\word\\Hunter-(¥Õ©³¶Â¦r
 word_mage               BITMAP                  "..\\res\\word\\Mage-(¥Õ©³¶Â¦r).bmp"
 
 word_warrior            BITMAP                  "..\\res\\word\\Warrior-(¥Õ©³¶Â¦r).bmp"
+<<<<<<< HEAD
+=======
+
+finalitem_b             BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.17v4\\game4.10\\RES\\finalitem1.bmp"
+>>>>>>> chun
 
 
 /////////////////////////////////////////////////////////////////////////////

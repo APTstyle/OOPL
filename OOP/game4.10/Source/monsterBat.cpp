@@ -297,7 +297,11 @@ namespace game_framework {
 		if (mon_HP < 1 && deathshow == 1) {
 			printf("bat dead");
 			animation.cleanBitmap();
+<<<<<<< HEAD
 			animation.SetDelayCount(2);
+=======
+			animation.SetDelayCount(3);
+>>>>>>> chun
 			animation.AddBitmap(bat5, RGB(255, 255, 255));
 			animation.AddBitmap(bat6, RGB(255, 255, 255));
 			animation.AddBitmap(bat7, RGB(255, 255, 255));
@@ -313,7 +317,11 @@ namespace game_framework {
 				Shp.SetXY(GetX1(), GetY2());
 				return;
 			}
+<<<<<<< HEAD
 			//deathshow = 0;
+=======
+			deathshow = 0;
+>>>>>>> chun
 		}
 	}
 
