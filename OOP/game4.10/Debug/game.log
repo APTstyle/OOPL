@@ -16,7 +16,7 @@ cl : 命令列 warning D9035: 選項 'Gm' 已被取代，在未來的發行版�
   monster.cpp
   正在產生程式碼...
 monster.obj : warning LNK4075: 忽略 '/EDITANDCONTINUE'，由於 '/SAFESEH' 規格
-  game.vcxproj -> C:\Users\user\Desktop\OOP6.17v4\game4.10\.\Debug\game.exe
+  game.vcxproj -> C:\Users\user\Desktop\OOP6.20\game4.10\.\Debug\game.exe
   Microsoft (R) COFF/PE Editor Version 14.16.27045.0
   Copyright (C) Microsoft Corporation.  All rights reserved.
   

@@ -460,7 +460,7 @@ word_mage               BITMAP                  "..\\res\\word\\Mage-(¥Õ©³¶Â¦r).
 
 word_warrior            BITMAP                  "..\\res\\word\\Warrior-(¥Õ©³¶Â¦r).bmp"
 
-finalitem_b             BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.17v4\\game4.10\\RES\\finalitem1.bmp"
+finalitem_b             BITMAP                  "..\\res\\finalitem1.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

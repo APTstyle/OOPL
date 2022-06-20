@@ -246,7 +246,10 @@
     <Image Include="res\word\Hunter-(白底黑字).bmp" />
     <Image Include="res\word\Mage-(白底黑字).bmp" />
     <Image Include="res\word\Warrior-(白底黑字).bmp" />
+<<<<<<< HEAD
+=======
     <Image Include="RES\finalitem1.bmp" />
+>>>>>>> chun
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\ball.bmp" />

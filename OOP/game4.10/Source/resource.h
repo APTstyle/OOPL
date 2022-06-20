@@ -160,6 +160,8 @@
 #define letter_e                        351
 #define letter_f                        352
 #define letter_g                        353
+
+#define letter_h                        408
 #define letter_i                        355
 #define letter_j                        356
 #define letter_l                        358
@@ -210,7 +212,6 @@
 #define hero_status                     404
 #define information                     406
 #define letter_k                        407
-#define letter_h                        408
 #define word_assassin                   409
 #define word_atk                        410
 #define word_def                        411
@@ -219,7 +220,6 @@
 #define word_hunter                     414
 #define word_mage                       415
 #define word_warrior                    416
-#define IDB_BITMAP9                     417
 #define finalitem_b                     417
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
