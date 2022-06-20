@@ -2,11 +2,7 @@
   mygame.cpp
   LINK : 最後的累加連結找不到或未建置 .\Debug/game.exe，正在執行完整連結
 monster.obj : warning LNK4075: 忽略 '/EDITANDCONTINUE'，由於 '/SAFESEH' 規格
-<<<<<<< HEAD
-  game.vcxproj -> D:\APT\110-2\OOPL\merge\OOP\game4.10\.\Debug\game.exe
-=======
-  game.vcxproj -> C:\Users\user\Desktop\OOP6.20\game4.10\.\Debug\game.exe
->>>>>>> chun
+  game.vcxproj -> D:\APT\110-2\OOPL\merge0621\OOP\game4.10\.\Debug\game.exe
   Microsoft (R) COFF/PE Editor Version 14.16.27045.0
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
