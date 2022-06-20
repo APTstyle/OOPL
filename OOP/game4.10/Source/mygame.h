@@ -401,6 +401,8 @@ namespace game_framework {
 		CInteger		hp_n;
 		CInteger		atk_n;
 		CInteger		def_n;
+
+		CMovingBitmap		hungry1, hungry2;
 		///////////////////нIе]клл~//////////////////////////
 		CMovingBitmap	lb_p, dr_p, dg_p;
 

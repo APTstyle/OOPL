@@ -385,6 +385,7 @@
     <Image Include="res\bitmap10.bmp" />
     <Image Include="res\bitmap11.bmp" />
     <Image Include="res\bitmap12.bmp" />
+    <Image Include="res\bitmap14.bmp" />
     <Image Include="res\bitmap28.bmp" />
     <Image Include="res\bitmap29.bmp" />
     <Image Include="res\bitmap3.bmp" />
@@ -402,6 +403,7 @@
     <Image Include="res\bmp00005.bmp" />
     <Image Include="res\bmp00006.bmp" />
     <Image Include="res\bmp00007.bmp" />
+    <Image Include="RES\buffs.bmp" />
     <Image Include="RES\character_1.bmp" />
     <Image Include="RES\character_2.bmp" />
     <Image Include="RES\character_3.bmp" />

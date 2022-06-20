@@ -185,7 +185,7 @@ void CGameStateInit::OnBeginState()
 	CEraser::hero_HP = 30;
 	CEraser::hero_ATK = 7;
 	CEraser::hero_def = 1;
-	CEraser::hero_hungry = 40;
+	CEraser::hero_hungry = 150;
 	bool_gameover = 0;
 	dungeon_count = 1;
 	if (load_music == 0) {
@@ -1165,6 +1165,10 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	x.LoadBitmap(letter_x, RGB(0, 0, 0));
 	y.LoadBitmap(letter_y, RGB(0, 0, 0));
 	z.LoadBitmap(letter_z, RGB(0, 0, 0));
+
+	//buff
+	hungry1.LoadBitmapA(buff_hungry_little, RGB(255, 255, 255));
+	hungry2.LoadBitmapA(buff_hungry_very, RGB(255, 255, 255));
 	//hp_n1.isBmpLoaded = 0;
 	
 	hp_n.LoadBitmap();
@@ -1698,14 +1702,14 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 	if (pack_space[number] == 30) {
 		CAudio::Instance()->Play(SND_eat, false);
 		pack_space[number] = 0;  /////吃包子
-		CEraser::hero_hungry = 40;
+		CEraser::hero_hungry = 150;
 	}
 	if (pack_space[number] == 31) {
 		CAudio::Instance()->Play(SND_eat, false);
 		pack_space[number] = 0;  /////吃肉餅
-		CEraser::hero_hungry += 20;
-		if (CEraser::hero_hungry > 40) {
-			CEraser::hero_hungry = 40;
+		CEraser::hero_hungry += 75;
+		if (CEraser::hero_hungry > 150) {
+			CEraser::hero_hungry = 75;
 		}
 	}
 	if (pack_space[number] == 35) {
@@ -2306,6 +2310,15 @@ void CGameStateRun::OnShow()
 	}
 	if (bool_finish == 1) {
 		GotoGameState(GAME_STATE_OVER);
+	}
+	//buff
+	hungry1.SetTopLeft(140, 50);
+	hungry2.SetTopLeft(140, 50);
+	if (CEraser::hero_hungry < 76) {
+		hungry1.ShowBitmap();
+	}
+	else if(CEraser::hero_hungry < 1){
+		hungry2.ShowBitmap();
 	}
 }
 
