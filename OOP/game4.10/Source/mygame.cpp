@@ -133,13 +133,13 @@ namespace game_framework {
 			}
 		}
 	}
-	/*void checkfinish() {
+	void checkfinish() {
 		for (int i = 0; i < 19; i++) {
 			if (pack_space[i] == 37){
 				/////////////在這邊放通關程式碼
 }
 		}
-	}*/
+	}
 
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的遊戲開頭畫面物件
@@ -181,7 +181,12 @@ void CGameStateInit::OnInit()
 
 void CGameStateInit::OnBeginState()
 {
-	CEraser::hero_HP = 20;
+	eraser.hero_max_hp = 30;
+	CEraser::hero_HP = 30;
+	CEraser::hero_ATK = 7;
+	CEraser::hero_def = 1;
+	CEraser::hero_hungry = 40;
+	bool_gameover = 0;
 	dungeon_count = 1;
 	if (load_music == 0) {
 		CAudio::Instance()->Load(START_MUSIC, "sounds\\theme.mp3");
@@ -918,6 +923,10 @@ void CGameStateOver::OnLButtonDown(UINT nFlags, CPoint point)
 		bool_gameover = 0;
 		GotoGameState(GAME_STATE_INIT);
 	}
+	if (point.x > finishbackground.Left() && point.y > finishbackground.Top() && (point.y < finishbackground.Top() + finishbackground.Height()) && (point.x < finishbackground.Left() + finishbackground.Width())) {
+		bool_finish = 0;
+		GotoGameState(GAME_STATE_INIT);
+	}
 }
 
 void CGameStateOver::OnInit()
@@ -1276,8 +1285,10 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_Z = 0x5a; // keyboard左箭頭
 	const int step = 45;
 	if (nChar == KEY_Z) {
-		eraser.hero_HP = 500;
-		eraser.hero_ATK = 1000;
+		eraser.hero_HP = eraser.hero_max_hp;
+		eraser.hero_ATK = 99;
+		eraser.hero_def = 99;
+		eraser.hero_hungry = 99;
 		gamemap.changemap(7);
 		monsetmap(7);
 		monster_cpp.getmap(7,gamemap.map);
@@ -1703,6 +1714,11 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 	if (pack_space[number] == 36) {
 		pack_space[number] = 0;
 	}
+	if (pack_space[number] == 37) {
+		pack_space[number] = 0;
+		bool_finish = 1;
+		GotoGameState(GAME_STATE_OVER);
+	}
 }
 void CGameStateRun::monsetmap(int m) {
 	if (m == 1) {
@@ -1796,6 +1812,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 			eraser.stave();
 		}
 	}
+	int boss_hp;
 	if (point.x > monster_bat_cpp2.GetX1() && point.x < monster_bat_cpp2.GetX2() && point.y > monster_bat_cpp2.GetY1() && point.y < monster_bat_cpp2.GetY2()) {
 		if (monster_cpp.attacked_judge(monster_bat_cpp2.mon_x, monster_bat_cpp2.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
 			monster_bat_cpp2.attacked(eraser.hero_ATK);
@@ -1860,8 +1877,13 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	}
 	if (point.x > monster_cpp.GetX1() && point.x < monster_cpp.GetX2() && point.y > monster_cpp.GetY1() && point.y < monster_cpp.GetY2()) {
 		if (monster_cpp.attacked_judge(monster_cpp.mon_x, monster_cpp.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
-			monster_cpp.attacked(eraser.hero_ATK);
-			eraser.attacked(monster_cpp.mon_ATK);
+			boss_hp = monster_cpp.attacked(eraser.hero_ATK);
+			if (boss_hp < 1) {
+				backpackadd(37);
+			}
+			else {
+				eraser.attacked(monster_cpp.mon_ATK);
+			}
 		}
 	}
 	if (check_backpack == 1) {	/////////////////點擊背包
@@ -2015,11 +2037,21 @@ void CGameStateRun::OnShow()
 	//bballs.OnShow();	// 貼上彈跳的球
 	eraser.OnShow();	
 	if (monster_cpp.stopeverything == 0) {
-		monster_cpp.OnShow();
+		if (monster_cpp.mon_x > CEraser::actor_x - 4 && monster_cpp.mon_x < CEraser::actor_x + 5){
+			if (monster_cpp.mon_y > CEraser::actor_y - 4 && monster_cpp.mon_y < CEraser::actor_y + 5) {
+				monster_cpp.OnShow();
+			}
+		}
 	}
-	monster_bat_cpp.OnShow();
-	monster_bat_cpp2.OnShow();
-	monster_bat_cpp3.OnShow();
+	if (monster_bat_cpp.stopeverything == 0) {
+		monster_bat_cpp.OnShow();
+	}
+	if (monster_bat_cpp2.stopeverything == 0) {
+		monster_bat_cpp2.OnShow();
+	}
+	if (monster_bat_cpp3.stopeverything == 0) {
+		monster_bat_cpp3.OnShow();
+	}
 
 	backpack.ShowBitmap();
 	stop.ShowBitmap();
