@@ -249,6 +249,9 @@
     <Image Include="RES\Wraithsheet\Wraithsheet8.bmp" />
     <Image Include="RES\buffs.bmp" />
     <Image Include="res\bitmap14.bmp" />
+    <Image Include="RES\help_play.bmp" />
+    <Image Include="RES\help_information.bmp" />
+    <Image Include="RES\item_information.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\ball.bmp" />

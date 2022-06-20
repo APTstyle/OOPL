@@ -91,6 +91,7 @@ namespace game_framework {
 	private:
 		CMovingBitmap logo;								// csie的logo
 		CMovingBitmap startb;
+		CMovingBitmap helpb, help_infor;
 	};
 
 	class CGameMainMenu : public CGameState {
@@ -402,7 +403,7 @@ namespace game_framework {
 		CInteger		atk_n;
 		CInteger		def_n;
 
-		CMovingBitmap		hungry1, hungry2;
+		CMovingBitmap		hungry1, hungry2, item_infor;
 		///////////////////背包物品//////////////////////////
 		CMovingBitmap	lb_p, dr_p, dg_p;
 

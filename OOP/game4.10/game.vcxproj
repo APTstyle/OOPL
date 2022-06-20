@@ -456,6 +456,8 @@
     <Image Include="RES\golblin (2).bmp" />
     <Image Include="RES\golblin.bmp" />
     <Image Include="RES\grave1.bmp" />
+    <Image Include="RES\help_information.bmp" />
+    <Image Include="RES\help_play.bmp" />
     <Image Include="RES\hero.bmp" />
     <Image Include="res\herohp\bitmap28.bmp" />
     <Image Include="RES\herohp\bitmap30.bmp" />
@@ -473,6 +475,7 @@
     <Image Include="RES\icon32.bmp" />
     <Image Include="RES\information.bmp" />
     <Image Include="RES\items3.bmp" />
+    <Image Include="RES\item_information.bmp" />
     <Image Include="RES\key1.bmp" />
     <Image Include="RES\level1.bmp" />
     <Image Include="RES\level2.bmp" />

@@ -223,6 +223,9 @@
 #define allbuff                         419
 #define buff_hungry_little              420
 #define buff_hungry_very                421
+#define help_play                       424
+#define help_information                425
+#define item_information                426
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -235,7 +238,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        422
+#define _APS_NEXT_RESOURCE_VALUE        427
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

@@ -74,6 +74,9 @@ namespace game_framework {
 	int random_map = 0; //測試用
 	int test = 1;
 
+	bool open_help_infor = FALSE;
+	bool open_item_infor = FALSE;
+
 	int dungeon_count = 1;
 	int layercheck[6] = { 0 };
 
@@ -113,7 +116,7 @@ namespace game_framework {
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 	};
-
+	
 	int test1[3] = { 0,0,0 }; // 偵測之前的怪物座標
 	int	test2[3] = { 0,0,0 }; // 偵測之後的怪物座標
 	void backpackadd(int item) { //增加背包物品
@@ -168,9 +171,12 @@ void CGameStateInit::OnInit()
 
 	logo.LoadBitmap(mainpage);
 	startb.LoadBitmap(startbutton);
-	
+	helpb.LoadBitmap(help_play);
+	help_infor.LoadBitmap(help_information);
 	
 	startb.SetTopLeft(600, 850);
+	helpb.SetTopLeft(600, 980);
+	help_infor.SetTopLeft(500,200);
 	
 	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	//
@@ -207,8 +213,22 @@ void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	if (point.x > startb.Left() && point.y > startb.Top() && (point.y < startb.Top() + startb.Height()) && (point.x < startb.Left() + startb.Width()))
-		GotoGameState(GAME_MAIN_UI);		// 切換至GAME_STATE_RUN
+	
+	if (open_help_infor == FALSE) {
+		if (point.x > startb.Left() && point.y > startb.Top() && (point.y < startb.Top() + startb.Height()) && (point.x < startb.Left() + startb.Width())) {
+			GotoGameState(GAME_MAIN_UI);		// 切換至GAME_STATE_RUN
+		}
+	}
+	if (point.x > helpb.Left() && point.y > helpb.Top() && (point.y < helpb.Top() + helpb.Height()) && (point.x < helpb.Left() + helpb.Width())) {
+		if (open_help_infor == FALSE) {
+			open_help_infor = TRUE;
+			return;
+		}
+	}
+	if (open_help_infor == TRUE) {
+		open_help_infor = FALSE;
+	}
+				// 切換至GAME_STATE_RUN
 }
 //void CGameMainMenu::OnInit() {
 
@@ -222,6 +242,10 @@ void CGameStateInit::OnShow()
 	logo.SetTopLeft((SIZE_X - logo.Width()) / 2, SIZE_Y / 8);
 	logo.ShowBitmap();
 	startb.ShowBitmap();
+	helpb.ShowBitmap();
+	if (open_help_infor) {
+		help_infor.ShowBitmap();
+	}
 	//
 	// Demo螢幕字型的使用，不過開發時請盡量避免直接使用字型，改用CMovingBitmap比較好
 	//
@@ -1167,8 +1191,10 @@ void CGameStateRun::OnInit()  							// 遊戲的初值及圖形設定
 	z.LoadBitmap(letter_z, RGB(0, 0, 0));
 
 	//buff
-	hungry1.LoadBitmapA(buff_hungry_little, RGB(255, 255, 255));
-	hungry2.LoadBitmapA(buff_hungry_very, RGB(255, 255, 255));
+	hungry1.LoadBitmap(buff_hungry_little, RGB(255, 255, 255));
+	hungry2.LoadBitmap(buff_hungry_very, RGB(255, 255, 255));
+	item_infor.LoadBitmap(item_information, RGB(0,0,0));
+	item_infor.SetTopLeft(500, 200);
 	//hp_n1.isBmpLoaded = 0;
 	
 	hp_n.LoadBitmap();
@@ -1777,6 +1803,16 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	if (point.x > 0 && point.x < 120 && point.y > 0 && point.y < 120 ) {
 		open_infor = 1;
 	}
+
+	if (point.x > 0 && point.x < 555 && point.y > 0 && point.y < 100) {
+		if (open_item_infor == FALSE) {
+			open_item_infor = TRUE;
+			return;
+		}
+	}
+	if (open_item_infor == TRUE) {
+		open_item_infor = FALSE;
+	}
 	else if (point.x < infor.Left() || (point.x > infor.Left() + infor.Width()) || point.y < infor.Top() || (point.y > infor.Top() + infor.Height())) {
 		open_infor = 0;
 	}
@@ -2057,6 +2093,9 @@ void CGameStateRun::OnShow()
 		monster_bat_cpp3.OnShow();
 	}
 
+	if (open_item_infor == TRUE) {
+		item_infor.ShowBitmap();
+	}
 	backpack.ShowBitmap();
 	stop.ShowBitmap();
 	detect.ShowBitmap();
