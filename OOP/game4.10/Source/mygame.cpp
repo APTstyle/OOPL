@@ -181,6 +181,7 @@ void CGameStateInit::OnInit()
 
 void CGameStateInit::OnBeginState()
 {
+<<<<<<< HEAD
 	eraser.hero_max_hp = 30;
 	CEraser::hero_HP = 30;
 	CEraser::hero_ATK = 7;
@@ -189,6 +190,10 @@ void CGameStateInit::OnBeginState()
 	bool_gameover = 0;
 	dungeon_count = 1;
 
+=======
+	CEraser::hero_HP = 20;
+	dungeon_count = 1;
+>>>>>>> chun
 	if (load_music == 0) {
 		CAudio::Instance()->Load(START_MUSIC, "sounds\\theme.mp3");
 		load_music = 1;
