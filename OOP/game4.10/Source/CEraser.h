@@ -9,18 +9,11 @@ namespace game_framework {
 	{
 	public:
 		CEraser();
-<<<<<<< HEAD
 		static int hero_def;
 		static int hero_HP;
 		static int hero_max_hp;
 		static int hero_ATK;
 		static int hero_hungry;
-=======
-		int hero_def=0;
-		static int hero_HP;
-		int hero_max_hp;
-		int hero_ATK=4;
->>>>>>> chun
 		void showdetail();
 		void showdata();
 		int attacked(int ATK);

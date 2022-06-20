@@ -51,13 +51,8 @@ namespace game_framework {
 		x = X_POS;
 		y = Y_POS;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
-<<<<<<< HEAD
 		CEraser::hero_max_hp = 20;
 		CEraser::hero_def = 10;
-=======
-
-		hero_def = 10;
->>>>>>> chun
 	}
 	void CEraser::changeskin(int c) {
 		animation.cleanBitmap();
@@ -211,19 +206,13 @@ namespace game_framework {
 		animation_hp_background.OnShow();
 		animation_icon.SetTopLeft(30, 30);
 		animation_icon.OnShow();
-<<<<<<< HEAD
 		for (int i = 0; i < CEraser::hero_HP*200 /CEraser::hero_max_hp; i++) {
 			animation_test.SetTopLeft(132+i, 7);
-=======
-		for (int i = 0; i < CEraser::hero_HP*5; i++) {
-			animation_test.SetTopLeft(132+i*2, 7);
->>>>>>> chun
 			animation_test.ShowBitmap();
 		}
 	}
 
 	int CEraser::attacked(int ATK) {//攻擊者的攻擊力 回傳被攻擊後的血量
-<<<<<<< HEAD
 
 		printf("atked CEraser::hero_def:%d\n", CEraser::hero_def);
 		if (ATK == 0) {
@@ -234,13 +223,6 @@ namespace game_framework {
 		}
 		CEraser::hero_HP -=ATK*3;
 		CEraser::hero_HP += CEraser::hero_def * 2;
-=======
-		if (ATK == 0) {
-			return CEraser::hero_HP;
-		}
-		CEraser::hero_HP -=ATK*3;
-		CEraser::hero_HP += hero_def * 2;
->>>>>>> chun
 		printf("Hero is attacked\n");
 		return CEraser::hero_HP;
 	}

@@ -297,11 +297,7 @@ namespace game_framework {
 		if (mon_HP < 1 && deathshow == 1) {
 			printf("bat dead");
 			animation.cleanBitmap();
-<<<<<<< HEAD
 			animation.SetDelayCount(2);
-=======
-			animation.SetDelayCount(3);
->>>>>>> chun
 			animation.AddBitmap(bat5, RGB(255, 255, 255));
 			animation.AddBitmap(bat6, RGB(255, 255, 255));
 			animation.AddBitmap(bat7, RGB(255, 255, 255));
@@ -309,7 +305,7 @@ namespace game_framework {
 			Shp.LoadBitmap(0);
 			Shp.SetXY(GetX1(), GetY2());
 		}
-		if (mon_x < CEraser::actor_x - 5 || mon_x > CEraser::actor_x + 5 || mon_y < CEraser::actor_y - 5 || mon_y > CEraser::actor_y + 4) {
+		if (mon_x < CEraser::actor_x - 5 || mon_x > CEraser::actor_x + 4 || mon_y < CEraser::actor_y - 5 || mon_y > CEraser::actor_y + 4) {
 			if (deathshow == 0) {
 				animation.cleanBitmap();
 				animation.AddBitmap(death_mon, RGB(255, 255, 255));
@@ -317,11 +313,7 @@ namespace game_framework {
 				Shp.SetXY(GetX1(), GetY2());
 				return;
 			}
-<<<<<<< HEAD
 			//deathshow = 0;
-=======
-			deathshow = 0;
->>>>>>> chun
 		}
 	}
 
@@ -458,7 +450,7 @@ namespace game_framework {
 
 	void monster_bat::setdata(int m, int set_x, int set_y) {
 		mon_HP = 20;
-		mon_ATK = 7;
+		mon_ATK = 2;
 		mon_x = set_x;
 		mon_y = set_y;
 		/*
