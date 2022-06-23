@@ -462,6 +462,18 @@ word_warrior            BITMAP                  "..\\res\\word\\Warrior-(¥Õ©³¶Â¦
 
 finalitem_b             BITMAP                  "..\\res\\finalitem1.bmp"
 
+allbuff                 BITMAP                  "..\\RES\\buffs.bmp"
+
+buff_hungry_little      BITMAP                  "..\\res\\bitmap12.bmp"
+
+buff_hungry_very        BITMAP                  "..\\res\\bitmap14.bmp"
+
+help_play               BITMAP                  "..\\RES\\help_play.bmp"
+
+help_information        BITMAP                  "..\\RES\\help_information.bmp"
+
+item_information        BITMAP                  "..\\RES\\item_information.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

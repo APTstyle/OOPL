@@ -450,7 +450,7 @@ namespace game_framework {
 
 	void monster_bat::setdata(int m, int set_x, int set_y) {
 		mon_HP = 20;
-		mon_ATK = 7;
+		mon_ATK = 2;
 		mon_x = set_x;
 		mon_y = set_y;
 		/*

@@ -44,6 +44,9 @@ namespace game_framework {
 				}
 			}
 		}
+		if (main_x == 0 && main_y == 0) {
+			return 0;
+		}
 		map_calculate[main_y][main_x] = main_x * 100 + main_y;//起點為起點座標
 		map_calculate[end_y][end_x] = -2;//終點為-2
 		int check_step[100];
