@@ -63,7 +63,7 @@ namespace game_framework {
 		if (character == 1) {
 			animation.AddBitmap(warrior, RGB(255, 255, 255));
 			animation2.AddBitmap(warrior_l, RGB(255, 255, 255));
-			animation_icon.AddBitmap(charactor_warrior_hp, RGB(255, 255, 255));
+			animation_icon.AddBitmap(charactor_warrior_hp, RGB(255, 255, 255)); 
 		}
 		else if (character == 2) {
 			animation.AddBitmap(mage, RGB(255, 255, 255));
@@ -80,6 +80,7 @@ namespace game_framework {
 			animation2.AddBitmap(hunter_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_hunter_hp, RGB(255, 255, 255));
 		}
+		setdata(c);
 	}
 
 	void CEraser::LoadBitmap()
@@ -335,5 +336,29 @@ namespace game_framework {
 			CEraser::hero_hungry -= 1;
 		}
 		printf("CEraser::hero_hungry:%d", CEraser::hero_hungry);
+	}
+
+	void CEraser::setdata(int n) {
+		switch (n)
+		{
+		case 1:
+			changemaxhp(20);
+			heal();
+			break;
+		case 2:
+			changedef(2);
+			break;
+		case 3:
+			changeatk(2);
+			break;
+		case 4:
+			changedef(1);
+			changeatk(1);
+			changemaxhp(10);
+			heal();
+			break;
+		default:
+			break;
+		}
 	}
 }

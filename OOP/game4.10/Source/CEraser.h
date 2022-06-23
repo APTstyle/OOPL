@@ -49,6 +49,7 @@ namespace game_framework {
 		void addhp(int n);
 		void stave();
 		bool direction;
+		void setdata(int n);
 	protected:
 		CAnimation animation;		// 擦子的動畫
 		CAnimation animation2;		// 擦子的動畫
