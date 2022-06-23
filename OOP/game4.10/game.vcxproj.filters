@@ -252,6 +252,10 @@
     <Image Include="RES\help_play.bmp" />
     <Image Include="RES\help_information.bmp" />
     <Image Include="RES\item_information.bmp" />
+    <Image Include="RES\person1_l.bmp" />
+    <Image Include="RES\person2_l.bmp" />
+    <Image Include="RES\person3_l.bmp" />
+    <Image Include="RES\person4_l.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\ball.bmp" />

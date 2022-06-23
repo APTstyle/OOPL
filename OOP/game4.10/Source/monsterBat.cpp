@@ -178,7 +178,6 @@ namespace game_framework {
 			mon_x = 0;
 			mon_y = 0;
 			next_step = 0;
-			SetXY(-100, -100);
 			return 0;
 		}
 		for (int i = 0; i < 27; i++)
@@ -252,6 +251,7 @@ namespace game_framework {
 		}
 		if (map_num == 7) {//24*24
 			superdeath();
+			return random_map;
 		}
 		mon_HP = 20;
 		LoadBitmap();
@@ -290,7 +290,7 @@ namespace game_framework {
 				stopeverything = 1;
 				animation.cleanBitmap();
 				animation.AddBitmap(death_mon, RGB(255, 255, 255));
-				Shp.LoadBitmap(20);
+				Shp.LoadBitmap(0, mon_MAXHP);
 				Shp.SetXY(GetX1(), GetY2());
 				return;
 			}
@@ -301,7 +301,7 @@ namespace game_framework {
 			animation.SetDelayCount(2);
 			animation.AddBitmap(bat, RGB(255, 255, 255));
 			animation.AddBitmap(bat2, RGB(255, 255, 255));
-			Shp.LoadBitmap(20);
+			//Shp.LoadBitmap(mon_HP, mon_MAXHP);
 			Shp.SetXY(GetX1(), GetY2());
 		}
 		if (mon_HP != 20 && mon_HP > 0) {
@@ -309,7 +309,7 @@ namespace game_framework {
 			animation.SetDelayCount(2);
 			animation.AddBitmap(bat3, RGB(255, 255, 255));
 			animation.AddBitmap(bat4, RGB(255, 255, 255));
-			Shp.LoadBitmap((mon_HP * 10) / mon_MAXHP);
+			Shp.LoadBitmap(mon_HP,mon_MAXHP);
 			Shp.SetXY(GetX1(), GetY2());
 			printf("bitmap:%d", animation.GetCurrentBitmapNumber());
 		}
@@ -321,9 +321,8 @@ namespace game_framework {
 			animation.AddBitmap(bat6, RGB(255, 255, 255));
 			animation.AddBitmap(bat7, RGB(255, 255, 255));
 			animation.AddBitmap(death_mon, RGB(255, 255, 255));
-			Shp.LoadBitmap(0);
+			Shp.LoadBitmap(0, mon_MAXHP);
 			Shp.SetXY(GetX1(), GetY2());
-			deathshow = 2;
 		}
 	}
 
@@ -419,6 +418,7 @@ namespace game_framework {
 			mon_x = 0;
 			mon_y = 0;
 			getroad(rummap_bat);
+			deathshow = 2;
 		}
 	}
 
@@ -435,14 +435,14 @@ namespace game_framework {
 	void monster_bat::death() {
 		deathshow = 1;
 		mon_ATK = 0;
-		mon_x = 0;
-		mon_y = 0;
+		stopeverything = 1;
 	}
 
 	void monster_bat::superdeath() {
 		animation.cleanBitmap();
 		animation.AddBitmap(death_mon, RGB(255, 255, 255));
 		deathshow = 2;
+		next_step = 0;
 		mon_x = 0;
 		mon_y = 0;
 		mon_ATK = 0;
@@ -455,42 +455,9 @@ namespace game_framework {
 
 	void monster_bat::setdata(int m, int set_x, int set_y) {
 		mon_HP = 20;
-		mon_ATK = 2;
+		mon_ATK = 2*m;
 		mon_x = set_x;
 		mon_y = set_y;
-		/*
-		switch (m)
-		{
-		case 1:
-			monster_cpp.get_bat(1, mon_x, mon_y);
-			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			break;
-		case 2:
-			monster_cpp.get_bat(1, mon_x, mon_y);
-			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			break;
-		case 3:
-			monster_cpp.get_bat(1, mon_x, mon_y);
-			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			break;
-		case 4:
-			monster_cpp.get_bat(1, mon_x, mon_y);
-			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			break;
-		case 5:
-			monster_cpp.get_bat(1, mon_x, mon_y);
-			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			break;
-		case 6:
-			monster_cpp.get_bat(1, mon_x, mon_y);
-			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			break;
-		case 7:
-			superdeath();
-			break;
-		default:
-			break;
-		}*/
 	}
 
 	void monster_bat::showdata(int n) {

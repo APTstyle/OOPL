@@ -1099,21 +1099,21 @@ void CGameStateRun::OnBeginState()
 
 void CGameStateRun::bat_setup(int x,int y) {
 	monster_bat_cpp.SetCharacter(main_actor);
-	monster_bat_cpp.setdata(test, x, y); // mapnum x y
+	monster_bat_cpp.setdata(dungeon_count, x, y); // mapnum x y
 	monster_bat_cpp.SetXY(CEraser::map_x + 45 * monster_bat_cpp.mon_x, CEraser::map_y + 45 * monster_bat_cpp.mon_y);
 	save[y][x] = 1;
 	test1[0] = 100 * x + y;
 }
 void CGameStateRun::bat_setup2(int x, int y) {
 	monster_bat_cpp2.SetCharacter(main_actor);
-	monster_bat_cpp2.setdata(test, x, y); // mapnum x y
+	monster_bat_cpp2.setdata(dungeon_count, x, y); // mapnum x y
 	monster_bat_cpp2.SetXY(CEraser::map_x + 45 * monster_bat_cpp2.mon_x, CEraser::map_y + 45 * monster_bat_cpp2.mon_y);
 	save[y][x] = 1;
 	test1[1] = 100 * x + y;
 }
 void CGameStateRun::bat_setup3(int x, int y) {
 	monster_bat_cpp3.SetCharacter(main_actor);
-	monster_bat_cpp3.setdata(test, x, y); // mapnum x y
+	monster_bat_cpp3.setdata(dungeon_count, x, y); // mapnum x y
 	monster_bat_cpp3.SetXY(CEraser::map_x + 45 * monster_bat_cpp3.mon_x, CEraser::map_y + 45 * monster_bat_cpp3.mon_y);
 	save[y][x] = 1;
 	test1[2] = 100 * x + y;
@@ -1942,7 +1942,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 		if (monster_cpp.attacked_judge(monster_cpp.mon_x, monster_cpp.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
 			boss_hp = monster_cpp.attacked(eraser.hero_ATK);
 			if (boss_hp < 1) {
-				if (random_map == 7) {
+				if (pass_game == 0) {
 					backpackadd(37);
 					pass_game = 1;
 				}
@@ -1956,18 +1956,45 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 		//脫下武器
 		if (point.x > 760 && point.y < 250 && point.x<880) {
 			backpackadd(eraser.checkweapon());
+			if (eraser.checkweapon() == 15) {
+				eraser.changeatk(-1);
+			}
+			else if (eraser.checkweapon() == 16) {
+				eraser.changeatk(-2);
+			}
+			else if (eraser.checkweapon() == 17) {
+				eraser.changeatk(-3);
+			}
 			printf("脫下");
 			eraser.equipweapon(0);
 		}
 		//脫下裝備
 		if (point.x > 890 && point.y < 250 && point.x < 1010) {
 			backpackadd(eraser.checkarmor());
+			if (eraser.checkweapon() == 27) {
+				eraser.changedef(-1);
+			}
+			else if (eraser.checkweapon() == 28) {
+				eraser.changedef(-2);
+			}
+			else if (eraser.checkweapon() == 29) {
+				eraser.changedef(-3);
+			}
 			printf("脫下");
 			eraser.equiparmor(0);
 		}
 		//脫下戒指
 		if (point.x > 1150 && point.y < 250 && point.x < 1270) {//脫下
 			backpackadd(eraser.checkring());
+			if (eraser.checkweapon() == 24) {
+				eraser.changemaxhp(-10);
+			}
+			else if (eraser.checkweapon() == 25) {
+				eraser.changemaxhp(-20);
+			}
+			else if (eraser.checkweapon() == 26) {
+				eraser.changemaxhp(-30);
+			}
 			printf("脫下");
 			eraser.equipring(0);
 		}
@@ -2113,17 +2140,17 @@ void CGameStateRun::OnShow()
 			}
 		}
 	}
-	if (monster_bat_cpp.deathshow == 0 ) {
+	if (monster_bat_cpp.deathshow != 2 ) {
 		if (monster_bat_cpp.mon_x > CEraser::actor_x - 6 && monster_bat_cpp.mon_x < CEraser::actor_x + 5 && monster_bat_cpp.mon_y > CEraser::actor_y - 6 && monster_bat_cpp.mon_y < CEraser::actor_y + 5) {
 			monster_bat_cpp.OnShow();
 		}
 	}
-	if (monster_bat_cpp2.deathshow == 0) {
+	if (monster_bat_cpp2.deathshow != 2) {
 		if (monster_bat_cpp2.mon_x > CEraser::actor_x - 6 && monster_bat_cpp2.mon_x < CEraser::actor_x + 5 && monster_bat_cpp2.mon_y > CEraser::actor_y - 6 && monster_bat_cpp2.mon_y < CEraser::actor_y + 5) {
 			monster_bat_cpp2.OnShow();
 		}
 	}
-	if (monster_bat_cpp3.deathshow == 0) {
+	if (monster_bat_cpp3.deathshow != 2) {
 		if (monster_bat_cpp3.mon_x > CEraser::actor_x - 6 && monster_bat_cpp3.mon_x < CEraser::actor_x + 5 && monster_bat_cpp3.mon_y > CEraser::actor_y - 6 && monster_bat_cpp3.mon_y < CEraser::actor_y + 5) {
 			monster_bat_cpp3.OnShow();
 		}

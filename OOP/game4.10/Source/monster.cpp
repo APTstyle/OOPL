@@ -480,14 +480,14 @@ chun*/
 			animation.cleanBitmap();
 			animation.AddBitmap(boss, RGB(255, 255, 255));
 			animation.AddBitmap(boss2, RGB(255, 255, 255));
-			Shp.LoadBitmap(20);
+			//Shp.LoadBitmap(mon_HP,mon_MAXHP);
 			Shp.SetXY(GetX1(), GetY2());
 		}
 		if (mon_HP != 50 && mon_HP > 0) {
 			animation.cleanBitmap();
 			animation.AddBitmap(boss3, RGB(255, 255, 255));
 			animation.AddBitmap(boss4, RGB(255, 255, 255));
-			Shp.LoadBitmap((mon_HP * 10) / mon_MAXHP);
+			Shp.LoadBitmap(mon_HP, mon_MAXHP);
 			Shp.SetXY(GetX1(), GetY2());
 			printf("bitmap:%d", animation.GetCurrentBitmapNumber());
 		}
@@ -500,7 +500,7 @@ chun*/
 			animation.AddBitmap(boss7, RGB(255, 255, 255));
 			animation.AddBitmap(boss8, RGB(255, 255, 255));
 			animation.AddBitmap(death_mon, RGB(255, 255, 255));
-			Shp.LoadBitmap(0);
+			Shp.LoadBitmap(0, mon_MAXHP);
 			Shp.SetXY(GetX1(), GetY2());
 			deathshow = 0;
 		}

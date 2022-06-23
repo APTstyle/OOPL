@@ -493,12 +493,16 @@
     <Image Include="res\paper3b1.bmp" />
     <Image Include="RES\person1.bmp" />
     <Image Include="res\person1\person55.bmp" />
+    <Image Include="RES\person1_l.bmp" />
     <Image Include="RES\person2.bmp" />
     <Image Include="res\person2\person55.bmp" />
+    <Image Include="RES\person2_l.bmp" />
     <Image Include="RES\person3.bmp" />
     <Image Include="res\person3\person55.bmp" />
+    <Image Include="RES\person3_l.bmp" />
     <Image Include="RES\person4.bmp" />
     <Image Include="res\person4\person55.bmp" />
+    <Image Include="RES\person4_l.bmp" />
     <Image Include="RES\potion1.bmp" />
     <Image Include="RES\potion2.bmp" />
     <Image Include="RES\potion3.bmp" />

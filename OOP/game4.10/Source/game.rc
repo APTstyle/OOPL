@@ -474,6 +474,14 @@ help_information        BITMAP                  "..\\RES\\help_information.bmp"
 
 item_information        BITMAP                  "..\\RES\\item_information.bmp"
 
+warrior_l               BITMAP                  "D:\\APT\\110-2\\OOPL\\merge0623\\OOP\\game4.10\\RES\\person1_l.bmp"
+
+mage_l                  BITMAP                  "D:\\APT\\110-2\\OOPL\\merge0623\\OOP\\game4.10\\RES\\person2_l.bmp"
+
+hunter_l                BITMAP                  "D:\\APT\\110-2\\OOPL\\merge0623\\OOP\\game4.10\\RES\\person3_l.bmp"
+
+assassin_l              BITMAP                  "D:\\APT\\110-2\\OOPL\\merge0623\\OOP\\game4.10\\RES\\person4_l.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

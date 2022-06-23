@@ -16,13 +16,16 @@ namespace game_framework {
 		int  GetX2();					// 擦子右下角 x 座標
 		int  GetY2();					// 擦子右下角 y 座標
 		void Initialize();				// 設定擦子為初始值
-		void LoadBitmap(int n);				// 載入圖形
+		void LoadBitmap(int n,int m);				// 載入圖形
 		void OnShow();					// 將擦子圖形貼到畫面
 		void SetXY(int nx, int ny);		// 設定擦子左上角座標
 	protected:
 		CAnimation animation;		// 擦子的動畫
 		CMovingBitmap animation_test;
 		int x, y;					// 擦子左上角座標
+		int data;
+		int maxHP;
+		bool load;
 	};
 }
 #endif

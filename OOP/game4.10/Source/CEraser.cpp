@@ -53,25 +53,31 @@ namespace game_framework {
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 		CEraser::hero_max_hp = 20;
 		CEraser::hero_def = 10;
+		direction = true;
 	}
 	void CEraser::changeskin(int c) {
 		animation.cleanBitmap();
+		animation2.cleanBitmap();
 		animation_icon.cleanBitmap();
 		animation_hp_background.AddBitmap(hero_status, RGB(255, 255, 255));
 		if (character == 1) {
 			animation.AddBitmap(warrior, RGB(255, 255, 255));
+			animation2.AddBitmap(warrior_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_warrior_hp, RGB(255, 255, 255));
 		}
 		else if (character == 2) {
 			animation.AddBitmap(mage, RGB(255, 255, 255));
+			animation2.AddBitmap(mage_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_mage_hp, RGB(255, 255, 255));
 		}
 		else if (character == 3) {
 			animation.AddBitmap(assassin, RGB(255, 255, 255));
+			animation2.AddBitmap(assassin_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_assassin_hp, RGB(255, 255, 255));
 		}
 		else if (character == 4) {
 			animation.AddBitmap(hunter, RGB(255, 255, 255));
+			animation2.AddBitmap(hunter_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_hunter_hp, RGB(255, 255, 255));
 		}
 	}
@@ -79,23 +85,28 @@ namespace game_framework {
 	void CEraser::LoadBitmap()
 	{
 		animation.cleanBitmap();
+		animation2.cleanBitmap();
 		animation_test.LoadBitmap(herohp1, RGB(255, 255, 255));
 		animation_hp_background.AddBitmap(hero_status, RGB(255, 255, 255));
 		//animation.AddBitmap(warrior, RGB(255, 255, 255));
 		if (character == 1) {
 			animation.AddBitmap(warrior, RGB(255, 255, 255));
+			animation2.AddBitmap(warrior_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_warrior_hp, RGB(255, 255, 255));
 		}
 		else if (character == 2) {
 			animation.AddBitmap(mage, RGB(255, 255, 255));
+			animation2.AddBitmap(mage_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_mage_hp, RGB(255, 255, 255));
 		}
 		else if (character == 3) {
 			animation.AddBitmap(assassin, RGB(255, 255, 255));
+			animation2.AddBitmap(assassin_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_assassin_hp, RGB(255, 255, 255));
 		}
 		else if (character == 4) {
 			animation.AddBitmap(hunter, RGB(255, 255, 255));
+			animation2.AddBitmap(hunter_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_hunter_hp, RGB(255, 255, 255));
 		}
 		/*else {
@@ -173,6 +184,7 @@ namespace game_framework {
 		isMovingLeft = flag;
 		if (flag) {
 			CEraser::actor_x -= 1;
+			direction = false;
 		}
 	}
 
@@ -181,6 +193,7 @@ namespace game_framework {
 		isMovingRight = flag;
 		if (flag) {
 			CEraser::actor_x += 1;
+			direction = true;
 		}
 	}
 
@@ -199,9 +212,14 @@ namespace game_framework {
 
 	void CEraser::OnShow()
 	{
-
-		animation.SetTopLeft(x, y);
-		animation.OnShow();
+		if (direction == true) {
+			animation.SetTopLeft(x, y);
+			animation.OnShow();
+		}
+		if (direction == false) {
+			animation2.SetTopLeft(x, y);
+			animation2.OnShow();
+		}
 		animation_hp_background.SetTopLeft(0, 0);
 		animation_hp_background.OnShow();
 		animation_icon.SetTopLeft(30, 30);
