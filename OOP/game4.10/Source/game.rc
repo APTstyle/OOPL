@@ -462,17 +462,29 @@ word_warrior            BITMAP                  "..\\res\\word\\Warrior-(¥Õ©³¶Â¦
 
 finalitem_b             BITMAP                  "..\\res\\finalitem1.bmp"
 
+<<<<<<< HEAD
 allbuff                 BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\buffs.bmp"
+=======
+allbuff                 BITMAP                  "..\\RES\\buffs.bmp"
+>>>>>>> chun
 
 buff_hungry_little      BITMAP                  "..\\res\\bitmap12.bmp"
 
 buff_hungry_very        BITMAP                  "..\\res\\bitmap14.bmp"
 
+<<<<<<< HEAD
 help_play               BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\help_play.bmp"
 
 help_information        BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\help_information.bmp"
 
 item_information        BITMAP                  "D:\\APT\\110-2\\OOPL\\merge\\OOP\\game4.10\\RES\\item_information.bmp"
+=======
+help_play               BITMAP                  "..\\RES\\help_play.bmp"
+
+help_information        BITMAP                  "..\\RES\\help_information.bmp"
+
+item_information        BITMAP                  "..\\RES\\item_information.bmp"
+>>>>>>> chun
 
 
 /////////////////////////////////////////////////////////////////////////////
