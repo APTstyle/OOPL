@@ -110,11 +110,7 @@ namespace game_framework {
 	int CEraser::hero_ATK = 4;
 	int CEraser::hero_def = 10;
 	int CEraser::hero_max_hp = 20;
-<<<<<<< HEAD
-	int CEraser::hero_hungry = 60;
-=======
-	int CEraser::hero_hungry = 180;
->>>>>>> chun
+	int CEraser::hero_hungry = 200;
 	int show = 1;
 	void CEraser::OnMove()
 	{

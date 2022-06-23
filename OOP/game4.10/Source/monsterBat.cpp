@@ -170,7 +170,11 @@ namespace game_framework {
 	}
 
 	int monster_bat::getroad(int map[][27]) {
-		if (deathshow == 1) {
+		if (stopeverything == 1 && deathshow == 0) {
+			LoadBitmap();
+			return mon_x*100+ mon_y;
+		}
+		if (stopeverything == 1 && deathshow==1) {
 			mon_x = 0;
 			mon_y = 0;
 			next_step = 0;
@@ -204,12 +208,13 @@ namespace game_framework {
 		//next_step = 100 * next_x + next_y;
 		next_x = next_step / 100;
 		next_y = next_step % 100;
+		LoadBitmap();
 	}
 
 	int monster_bat::getmap(int random_map, int map[][27])
 	{
 		deathshow = 0;
-		stopeverything = 0;
+		stopeverything = 1;
 		map_num = random_map;
 		for (int i = 0; i < 27; i++)
 			for (int j = 0; j < 27; j++)
@@ -276,6 +281,20 @@ namespace game_framework {
 
 	void monster_bat::LoadBitmap()
 	{
+		if (deathshow == 0 && stopeverything == 1) {
+			if (mon_x > CEraser::actor_x - 6 && mon_x < CEraser::actor_x + 5 && mon_y > CEraser::actor_y - 6 && mon_y < CEraser::actor_y + 5) {
+				SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
+				stopeverything = 0;
+			}
+			else {
+				stopeverything = 1;
+				animation.cleanBitmap();
+				animation.AddBitmap(death_mon, RGB(255, 255, 255));
+				Shp.LoadBitmap(20);
+				Shp.SetXY(GetX1(), GetY2());
+				return;
+			}
+		}
 		//animation.AddBitmap(warrior, RGB(255, 255, 255));
 		if (mon_HP == 20) {
 			animation.cleanBitmap();
@@ -304,16 +323,7 @@ namespace game_framework {
 			animation.AddBitmap(death_mon, RGB(255, 255, 255));
 			Shp.LoadBitmap(0);
 			Shp.SetXY(GetX1(), GetY2());
-		}
-		if (mon_x < CEraser::actor_x - 5 || mon_x > CEraser::actor_x + 4 || mon_y < CEraser::actor_y - 5 || mon_y > CEraser::actor_y + 4) {
-			if (deathshow == 0) {
-				animation.cleanBitmap();
-				animation.AddBitmap(death_mon, RGB(255, 255, 255));
-				Shp.LoadBitmap(20);
-				Shp.SetXY(GetX1(), GetY2());
-				return;
-			}
-			//deathshow = 0;
+			deathshow = 2;
 		}
 	}
 
@@ -339,7 +349,7 @@ namespace game_framework {
 	int monster_bat::SetMovingDown(bool flag)
 	{
 		isMovingDown = flag;
-		if (flag && stopeverything == 0) {
+		if (flag) {
 			findroad();
 			/*attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();*/
@@ -351,22 +361,17 @@ namespace game_framework {
 	void monster_bat::SetMovingLeft(bool flag)
 	{
 		isMovingLeft = flag;
-		if (flag && stopeverything == 0) {
+		if (flag) {
 			findroad();
 			/*attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();*/
-		}
-		if (stopeverything == 1) {
-			mon_x = 0;
-			mon_y = 0;
-			return;
 		}
 	}
 
 	void monster_bat::SetMovingRight(bool flag)
 	{
 		isMovingRight = flag;
-		if (flag&& stopeverything == 0) {
+		if (flag) {
 			findroad();
 			/*attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();*/
@@ -376,7 +381,7 @@ namespace game_framework {
 	void monster_bat::SetMovingUp(bool flag)
 	{
 		isMovingUp = flag;
-		if (flag&& stopeverything == 0) {
+		if (flag) {
 			findroad();
 			/*attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();*/
@@ -411,8 +416,9 @@ namespace game_framework {
 			stopeverything = 1;
 			next_x = 0;
 			next_y = 0;
+			mon_x = 0;
+			mon_y = 0;
 			getroad(rummap_bat);
-			deathshow = 0;
 		}
 	}
 
@@ -428,15 +434,15 @@ namespace game_framework {
 
 	void monster_bat::death() {
 		deathshow = 1;
+		mon_ATK = 0;
 		mon_x = 0;
 		mon_y = 0;
-		mon_ATK = 0;
 	}
 
 	void monster_bat::superdeath() {
 		animation.cleanBitmap();
 		animation.AddBitmap(death_mon, RGB(255, 255, 255));
-		deathshow = 1;
+		deathshow = 2;
 		mon_x = 0;
 		mon_y = 0;
 		mon_ATK = 0;
@@ -445,7 +451,6 @@ namespace game_framework {
 		next_x = 0;
 		next_y = 0;
 		getroad(rummap_bat);
-		deathshow = 0;
 	}
 
 	void monster_bat::setdata(int m, int set_x, int set_y) {

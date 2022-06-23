@@ -141,16 +141,13 @@ namespace game_framework {
 		for (int i = 0; i < 19; i++) {
 			if (pack_space[i] == 37){
 				/////////////在這邊放通關程式碼
-		}
-<<<<<<< HEAD
-=======
+			}
 		}
 	}
 	void cleanpack() {
 		for(int i = 0; i < 19; i++) {
 			pack_space[i] = 0;
 		}
->>>>>>> chun
 	}
 
 /////////////////////////////////////////////////////////////////////////////
@@ -200,7 +197,7 @@ void CGameStateInit::OnBeginState()
 	CEraser::hero_HP = 30;
 	CEraser::hero_ATK = 7;
 	CEraser::hero_def = 1;
-	CEraser::hero_hungry = 150;
+	CEraser::hero_hungry = 200;
 	bool_gameover = 0;
 	dungeon_count = 1;
 	if (load_music == 0) {
@@ -1020,7 +1017,6 @@ void CGameStateRun::OnBeginState()
 	srand((unsigned)time(NULL));
 	random_map = (rand()%6)+1; //讓地圖隨機出現
 	cleanpack();
-	backpackadd(37);
 	//random_map = 4;
 	gamemap.changemap(random_map);
 	eraser.equiparmor(0);
@@ -1329,11 +1325,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		eraser.hero_HP = eraser.hero_max_hp;
 		eraser.hero_ATK = 99;
 		eraser.hero_def = 99;
-<<<<<<< HEAD
-		eraser.hero_hungry = 99;
-=======
-		eraser.hero_hungry = 150;
->>>>>>> chun
+		eraser.hero_hungry = 999;
 		gamemap.changemap(7);
 		monsetmap(7);
 		monster_cpp.getmap(7,gamemap.map);
@@ -1746,26 +1738,16 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 	if (pack_space[number] == 30) {
 		CAudio::Instance()->Play(SND_eat, false);
 		pack_space[number] = 0;  /////吃包子
-		CEraser::hero_hungry = 150;
-<<<<<<< HEAD
-=======
+		CEraser::hero_hungry = 200;
 		eraser.addhp(15);
-		
->>>>>>> chun
 	}
 	if (pack_space[number] == 31) {
 		CAudio::Instance()->Play(SND_eat, false);
 		pack_space[number] = 0;  /////吃肉餅
-<<<<<<< HEAD
-		CEraser::hero_hungry += 75;
-		if (CEraser::hero_hungry > 150) {
-			CEraser::hero_hungry = 150;
-=======
 		CEraser::hero_hungry += 100;
 		eraser.addhp(15);
 		if (CEraser::hero_hungry > 200) {
-			CEraser::hero_hungry = 75;
->>>>>>> chun
+			CEraser::hero_hungry = 200;
 		}
 	}
 	if (pack_space[number] == 35) {
@@ -1960,15 +1942,10 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 		if (monster_cpp.attacked_judge(monster_cpp.mon_x, monster_cpp.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
 			boss_hp = monster_cpp.attacked(eraser.hero_ATK);
 			if (boss_hp < 1) {
-<<<<<<< HEAD
-				backpackadd(37);
-=======
-				if (pass_game = 0) {
+				if (random_map == 7) {
 					backpackadd(37);
 					pass_game = 1;
 				}
-				
->>>>>>> chun
 			}
 			else {
 				eraser.attacked(monster_cpp.mon_ATK);
@@ -2136,16 +2113,24 @@ void CGameStateRun::OnShow()
 			}
 		}
 	}
-	if (monster_bat_cpp.stopeverything == 0) {
-		monster_bat_cpp.OnShow();
+	if (monster_bat_cpp.deathshow == 0 ) {
+		if (monster_bat_cpp.mon_x > CEraser::actor_x - 6 && monster_bat_cpp.mon_x < CEraser::actor_x + 5 && monster_bat_cpp.mon_y > CEraser::actor_y - 6 && monster_bat_cpp.mon_y < CEraser::actor_y + 5) {
+			monster_bat_cpp.OnShow();
+		}
 	}
-	if (monster_bat_cpp2.stopeverything == 0) {
-		monster_bat_cpp2.OnShow();
+	if (monster_bat_cpp2.deathshow == 0) {
+		if (monster_bat_cpp2.mon_x > CEraser::actor_x - 6 && monster_bat_cpp2.mon_x < CEraser::actor_x + 5 && monster_bat_cpp2.mon_y > CEraser::actor_y - 6 && monster_bat_cpp2.mon_y < CEraser::actor_y + 5) {
+			monster_bat_cpp2.OnShow();
+		}
 	}
-	if (monster_bat_cpp3.stopeverything == 0) {
-		monster_bat_cpp3.OnShow();
+	if (monster_bat_cpp3.deathshow == 0) {
+		if (monster_bat_cpp3.mon_x > CEraser::actor_x - 6 && monster_bat_cpp3.mon_x < CEraser::actor_x + 5 && monster_bat_cpp3.mon_y > CEraser::actor_y - 6 && monster_bat_cpp3.mon_y < CEraser::actor_y + 5) {
+			monster_bat_cpp3.OnShow();
+		}
 	}
-
+	monster_bat_cpp.showdata(1);
+	monster_bat_cpp2.showdata(2);
+	monster_bat_cpp3.showdata(3);
 	if (open_item_infor == TRUE) {
 		item_infor.ShowBitmap();
 	}
@@ -2407,15 +2392,6 @@ void CGameStateRun::OnShow()
 	//buff
 	hungry1.SetTopLeft(140, 50);
 	hungry2.SetTopLeft(140, 50);
-<<<<<<< HEAD
-	if (CEraser::hero_hungry < 76) {
-		hungry1.ShowBitmap();
-	}
-	else if(CEraser::hero_hungry < 1){
-		hungry2.ShowBitmap();
-	}
-}
-=======
 	if (CEraser::hero_hungry < 5) {
 		hungry2.ShowBitmap();
 	
@@ -2424,7 +2400,6 @@ void CGameStateRun::OnShow()
 		hungry1.ShowBitmap();
 	}
 	show_layer.ShowBitmap();
->>>>>>> chun
 
 }
 }

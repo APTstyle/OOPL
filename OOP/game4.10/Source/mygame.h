@@ -402,10 +402,7 @@ namespace game_framework {
 		CInteger		hp_n;
 		CInteger		atk_n;
 		CInteger		def_n;
-<<<<<<< HEAD
-=======
 		CInteger		show_layer;
->>>>>>> chun
 
 		CMovingBitmap		hungry1, hungry2, item_infor;
 		///////////////////нIе]клл~//////////////////////////
