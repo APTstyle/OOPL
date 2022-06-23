@@ -1735,7 +1735,7 @@ void CGameStateRun::dealbackpack(int number) { //使用道具
 		pack_space[number] = 0;  /////吃肉餅
 		CEraser::hero_hungry += 75;
 		if (CEraser::hero_hungry > 150) {
-			CEraser::hero_hungry = 75;
+			CEraser::hero_hungry = 150;
 		}
 	}
 	if (pack_space[number] == 35) {
