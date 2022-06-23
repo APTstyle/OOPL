@@ -117,7 +117,7 @@ namespace game_framework {
 		}
 		else if (character == 3) {
 			animation.AddBitmap(assassin, RGB(255, 255, 255));
-			animation2.AddBitmap(assassin_l, RGB(255, 255, 255));
+			animation2.AddBitmap(rogue_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_assassin_hp, RGB(255, 255, 255));
 			animation_walk.AddBitmap(rogue_walk1, RGB(255, 255, 255));
 			animation_walk.AddBitmap(rogue_walk2, RGB(255, 255, 255));
@@ -140,7 +140,7 @@ namespace game_framework {
 		}
 		else if (character == 4) {
 			animation.AddBitmap(hunter, RGB(255, 255, 255));
-			animation2.AddBitmap(hunter_l, RGB(255, 255, 255));
+			animation2.AddBitmap(ranger_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_hunter_hp, RGB(255, 255, 255));
 			animation_walk.AddBitmap(ranger_walk1, RGB(255, 255, 255));
 			animation_walk.AddBitmap(ranger_walk2, RGB(255, 255, 255));
@@ -205,12 +205,12 @@ namespace game_framework {
 		}
 		else if (character == 3) {
 			animation.AddBitmap(assassin, RGB(255, 255, 255));
-			animation2.AddBitmap(assassin_l, RGB(255, 255, 255));
+			animation2.AddBitmap(rogue_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_assassin_hp, RGB(255, 255, 255));
 		}
 		else if (character == 4) {
 			animation.AddBitmap(hunter, RGB(255, 255, 255));
-			animation2.AddBitmap(hunter_l, RGB(255, 255, 255));
+			animation2.AddBitmap(ranger_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_hunter_hp, RGB(255, 255, 255));
 		}
 		/*else {

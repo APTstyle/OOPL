@@ -442,14 +442,6 @@ help_information        BITMAP                  "..\\RES\\help_information.bmp"
 
 item_information        BITMAP                  "..\\RES\\item_information.bmp"
 
-warrior_l               BITMAP                  "..\\RES\\person1_l.bmp"
-
-mage_l                  BITMAP                  "..\\RES\\person2_l.bmp"
-
-hunter_l                BITMAP                  "..\\RES\\person3_l.bmp"
-
-assassin_l              BITMAP                  "..\\RES\\person4_l.bmp"
-
 warrior_attack1         BITMAP                  "..\\RES\\warrior\\warrior_attack1.bmp"
 
 warrior_attack2         BITMAP                  "..\\RES\\warrior\\warrior_attack2.bmp"
@@ -626,13 +618,13 @@ rogue_walk5_l           BITMAP                  "..\\RES\\rogue_l\\rogue_walk5.b
 
 rogue_walk6_l           BITMAP                  "..\\RES\\rogue_l\\rogue_walk6.bmp"
 
-warrior_l               BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\person1_l.bmp"
+warrior_l               BITMAP                  "..\\RES\\\person1_l.bmp"
 
-mage_l                  BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\person2_l.bmp"
+mage_l                  BITMAP                  "..\\RES\\\person2_l.bmp"
 
-ranger_l                BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\person3_l.bmp"
+ranger_l                BITMAP                  "..\\RES\\\person3_l.bmp"
 
-rogue_l                 BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\person4_l.bmp"
+rogue_l                 BITMAP                  "..\\RES\\\person4_l.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

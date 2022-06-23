@@ -226,10 +226,6 @@
 #define help_play                       424
 #define help_information                425
 #define item_information                426
-#define warrior_l                       427
-#define mage_l                          428
-#define hunter_l                        429
-#define assassin_l                      430
 #define warrior_attack1                 439
 #define warrior_attack2                 440
 #define warrior_attack3                 441
@@ -321,7 +317,6 @@
 #define warrior_l                       527
 #define mage_l                          528
 #define ranger_l                        529
-#define IDB_BITMAP15                    530
 #define rogue_l                         530
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771

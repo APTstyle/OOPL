@@ -182,7 +182,7 @@ void CGameStateInit::OnInit()
 	
 	startb.SetTopLeft(600, 850);
 	helpb.SetTopLeft(600, 980);
-	help_infor.SetTopLeft(500,200);
+	help_infor.SetTopLeft(500,25);
 	
 	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	//
