@@ -170,11 +170,14 @@ namespace game_framework {
 	}
 
 	int monster_bat::getroad(int map[][27]) {
-		if (deathshow == 1) {
+		if (stopeverything == 1 && deathshow == 0) {
+			LoadBitmap();
+			return mon_x*100+ mon_y;
+		}
+		if (stopeverything == 1 && deathshow==1) {
 			mon_x = 0;
 			mon_y = 0;
 			next_step = 0;
-			SetXY(-100, -100);
 			return 0;
 		}
 		for (int i = 0; i < 27; i++)
@@ -204,12 +207,13 @@ namespace game_framework {
 		//next_step = 100 * next_x + next_y;
 		next_x = next_step / 100;
 		next_y = next_step % 100;
+		LoadBitmap();
 	}
 
 	int monster_bat::getmap(int random_map, int map[][27])
 	{
 		deathshow = 0;
-		stopeverything = 0;
+		stopeverything = 1;
 		map_num = random_map;
 		for (int i = 0; i < 27; i++)
 			for (int j = 0; j < 27; j++)
@@ -247,6 +251,7 @@ namespace game_framework {
 		}
 		if (map_num == 7) {//24*24
 			superdeath();
+			return random_map;
 		}
 		mon_HP = 20;
 		LoadBitmap();
@@ -276,13 +281,27 @@ namespace game_framework {
 
 	void monster_bat::LoadBitmap()
 	{
+		if (deathshow == 0 && stopeverything == 1) {
+			if (mon_x > CEraser::actor_x - 6 && mon_x < CEraser::actor_x + 5 && mon_y > CEraser::actor_y - 6 && mon_y < CEraser::actor_y + 5) {
+				SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
+				stopeverything = 0;
+			}
+			else {
+				stopeverything = 1;
+				animation.cleanBitmap();
+				animation.AddBitmap(death_mon, RGB(255, 255, 255));
+				Shp.LoadBitmap(0, mon_MAXHP);
+				Shp.SetXY(GetX1(), GetY2());
+				return;
+			}
+		}
 		//animation.AddBitmap(warrior, RGB(255, 255, 255));
 		if (mon_HP == 20) {
 			animation.cleanBitmap();
 			animation.SetDelayCount(2);
 			animation.AddBitmap(bat, RGB(255, 255, 255));
 			animation.AddBitmap(bat2, RGB(255, 255, 255));
-			Shp.LoadBitmap(20);
+			//Shp.LoadBitmap(mon_HP, mon_MAXHP);
 			Shp.SetXY(GetX1(), GetY2());
 		}
 		if (mon_HP != 20 && mon_HP > 0) {
@@ -290,7 +309,7 @@ namespace game_framework {
 			animation.SetDelayCount(2);
 			animation.AddBitmap(bat3, RGB(255, 255, 255));
 			animation.AddBitmap(bat4, RGB(255, 255, 255));
-			Shp.LoadBitmap((mon_HP * 10) / mon_MAXHP);
+			Shp.LoadBitmap(mon_HP,mon_MAXHP);
 			Shp.SetXY(GetX1(), GetY2());
 			printf("bitmap:%d", animation.GetCurrentBitmapNumber());
 		}
@@ -302,18 +321,8 @@ namespace game_framework {
 			animation.AddBitmap(bat6, RGB(255, 255, 255));
 			animation.AddBitmap(bat7, RGB(255, 255, 255));
 			animation.AddBitmap(death_mon, RGB(255, 255, 255));
-			Shp.LoadBitmap(0);
+			Shp.LoadBitmap(0, mon_MAXHP);
 			Shp.SetXY(GetX1(), GetY2());
-		}
-		if (mon_x < CEraser::actor_x - 5 || mon_x > CEraser::actor_x + 4 || mon_y < CEraser::actor_y - 5 || mon_y > CEraser::actor_y + 4) {
-			if (deathshow == 0) {
-				animation.cleanBitmap();
-				animation.AddBitmap(death_mon, RGB(255, 255, 255));
-				Shp.LoadBitmap(20);
-				Shp.SetXY(GetX1(), GetY2());
-				return;
-			}
-			//deathshow = 0;
 		}
 	}
 
@@ -339,7 +348,7 @@ namespace game_framework {
 	int monster_bat::SetMovingDown(bool flag)
 	{
 		isMovingDown = flag;
-		if (flag && stopeverything == 0) {
+		if (flag) {
 			findroad();
 			/*attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();*/
@@ -351,22 +360,17 @@ namespace game_framework {
 	void monster_bat::SetMovingLeft(bool flag)
 	{
 		isMovingLeft = flag;
-		if (flag && stopeverything == 0) {
+		if (flag) {
 			findroad();
 			/*attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();*/
-		}
-		if (stopeverything == 1) {
-			mon_x = 0;
-			mon_y = 0;
-			return;
 		}
 	}
 
 	void monster_bat::SetMovingRight(bool flag)
 	{
 		isMovingRight = flag;
-		if (flag&& stopeverything == 0) {
+		if (flag) {
 			findroad();
 			/*attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();*/
@@ -376,7 +380,7 @@ namespace game_framework {
 	void monster_bat::SetMovingUp(bool flag)
 	{
 		isMovingUp = flag;
-		if (flag&& stopeverything == 0) {
+		if (flag) {
 			findroad();
 			/*attack_judge(mon_x, mon_y, next_x, next_y);
 			showdetail();*/
@@ -411,8 +415,10 @@ namespace game_framework {
 			stopeverything = 1;
 			next_x = 0;
 			next_y = 0;
+			mon_x = 0;
+			mon_y = 0;
 			getroad(rummap_bat);
-			deathshow = 0;
+			deathshow = 2;
 		}
 	}
 
@@ -428,15 +434,15 @@ namespace game_framework {
 
 	void monster_bat::death() {
 		deathshow = 1;
-		mon_x = 0;
-		mon_y = 0;
 		mon_ATK = 0;
+		stopeverything = 1;
 	}
 
 	void monster_bat::superdeath() {
 		animation.cleanBitmap();
 		animation.AddBitmap(death_mon, RGB(255, 255, 255));
-		deathshow = 1;
+		deathshow = 2;
+		next_step = 0;
 		mon_x = 0;
 		mon_y = 0;
 		mon_ATK = 0;
@@ -445,47 +451,13 @@ namespace game_framework {
 		next_x = 0;
 		next_y = 0;
 		getroad(rummap_bat);
-		deathshow = 0;
 	}
 
 	void monster_bat::setdata(int m, int set_x, int set_y) {
 		mon_HP = 20;
-		mon_ATK = 2;
+		mon_ATK = 2*m;
 		mon_x = set_x;
 		mon_y = set_y;
-		/*
-		switch (m)
-		{
-		case 1:
-			monster_cpp.get_bat(1, mon_x, mon_y);
-			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			break;
-		case 2:
-			monster_cpp.get_bat(1, mon_x, mon_y);
-			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			break;
-		case 3:
-			monster_cpp.get_bat(1, mon_x, mon_y);
-			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			break;
-		case 4:
-			monster_cpp.get_bat(1, mon_x, mon_y);
-			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			break;
-		case 5:
-			monster_cpp.get_bat(1, mon_x, mon_y);
-			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			break;
-		case 6:
-			monster_cpp.get_bat(1, mon_x, mon_y);
-			SetXY(CEraser::map_x + 45 * mon_x, CEraser::map_y + 45 * mon_y);
-			break;
-		case 7:
-			superdeath();
-			break;
-		default:
-			break;
-		}*/
 	}
 
 	void monster_bat::showdata(int n) {

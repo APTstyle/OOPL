@@ -14,6 +14,9 @@ namespace game_framework {
 		y = 0;
 		Initialize();
 		showdata();
+		data = 0;
+		maxHP = 1;
+		load = false;
 	}
 
 
@@ -41,65 +44,16 @@ namespace game_framework {
 		SetXY(0, 0);
 	}
 
-	void showHp::LoadBitmap(int n){
-		switch (n)
-		{
-		case 10:
-			animation.cleanBitmap();
-			animation.AddBitmap(hp10, RGB(255, 255, 255));
-			printf("SHOWHP:%d\n", n);
-			break;
-		case 9:
-			animation.cleanBitmap();
-			animation.AddBitmap(hp9, RGB(255, 255, 255));
-			printf("SHOWHP:%d\n", n);
-			break;
-		case 8:
-			animation.cleanBitmap();
-			animation.AddBitmap(hp8, RGB(255, 255, 255));
-			printf("SHOWHP:%d\n", n);
-			break;
-		case 7:
-			animation.cleanBitmap();
-			animation.AddBitmap(hp7, RGB(255, 255, 255));
-			printf("SHOWHP:%d\n", n);
-			break;
-		case 6:
-			animation.cleanBitmap();
-			animation.AddBitmap(hp6, RGB(255, 255, 255));
-			printf("SHOWHP:%d\n", n);
-			break;
-		case 5:
-			animation.cleanBitmap();
-			animation.AddBitmap(hp5, RGB(255, 255, 255));
-			printf("SHOWHP:%d\n", n);
-			break;
-		case 4:
-			animation.cleanBitmap();
-			animation.AddBitmap(hp4, RGB(255, 255, 255));
-			printf("SHOWHP:%d\n", n);
-			break;
-		case 3:
-			animation.cleanBitmap();
-			animation.AddBitmap(hp3, RGB(255, 255, 255));
-			printf("SHOWHP:%d\n", n);
-			break;
-		case 2:
-			animation.cleanBitmap();
-			animation.AddBitmap(hp2, RGB(255, 255, 255));
-			printf("SHOWHP:%d\n", n);
-			break;
-		case 1:
-			animation.cleanBitmap();
-			animation.AddBitmap(hp1, RGB(255, 255, 255));
-			printf("SHOWHP:%d\n", n);
-			break;
-		default:
-			animation.cleanBitmap();
-			animation.AddBitmap(death_mon, RGB(255, 255, 255));
-			printf("SHOWHP:%d\n", n);
-			break;
+	void showHp::LoadBitmap(int n,int m){
+		if (load == true) {
+			data = n;
+			maxHP = m;
+			return;
 		}
+		data = n;
+		maxHP = m;
+		animation_test.LoadBitmap(hp1, RGB(255, 255, 255));
+		load = true;
 	}
 
 
@@ -110,8 +64,12 @@ namespace game_framework {
 
 	void showHp::OnShow()
 	{
-		animation.SetTopLeft(x, y-20);
-		animation.OnShow();
+		/*animation.SetTopLeft(x, y-20);
+		animation.OnShow();*/
+		for (int i = 0; i <  data*30 / maxHP; i++) {
+			animation_test.SetTopLeft(x+i+7, y-20);
+			animation_test.ShowBitmap();
+		}
 	}
 
 	void showHp::showdata() {

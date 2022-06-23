@@ -46,9 +46,13 @@ namespace game_framework {
 		int changeatk(int n);
 		int changemaxhp(int n);
 		void heal();
+		void addhp(int n);
 		void stave();
+		bool direction;
+		void setdata(int n);
 	protected:
 		CAnimation animation;		// 擦子的動畫
+		CAnimation animation2;		// 擦子的動畫
 		CAnimation animation_hp_background;		// 擦子的動畫
 		CAnimation animation_icon;		// 擦子的動畫
 		CMovingBitmap animation_test;

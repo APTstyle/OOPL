@@ -96,7 +96,7 @@ namespace game_framework {
 		void death();
 		int deathshow = 0;
 		void superdeath();
-		int stopeverything = 0;
+		int stopeverything = 1;
 	protected:
 		CEraser eraser;
 		monster monster_cpp;

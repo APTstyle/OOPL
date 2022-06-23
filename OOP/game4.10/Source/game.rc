@@ -212,41 +212,9 @@ bat4                    BITMAP                  "..\\res\\batsheet\\batsheet4.bm
 
 IDB_BITMAP8             BITMAP                  "..\\res\\arrow1.bmp"
 
-IDB_BITMAP9             BITMAP                  "..\\res\\arrow2.bmp"
-
 food1b                  BITMAP                  "..\\res\\food1.bmp"
 
 food2b                  BITMAP                  "..\\res\\food2.bmp"
-
-IDB_BITMAP12            BITMAP                  "..\\res\\grave1.bmp"
-
-IDB_BITMAP14            BITMAP                  "..\\res\\key1.bmp"
-
-IDB_BITMAP15            BITMAP                  "..\\res\\paper1.bmp"
-
-IDB_BITMAP16            BITMAP                  "..\\res\\paper2.bmp"
-
-IDB_BITMAP17            BITMAP                  "..\\res\\paper3.bmp"
-
-IDB_BITMAP18            BITMAP                  "..\\res\\ring1.bmp"
-
-IDB_BITMAP19            BITMAP                  "..\\res\\ring2.bmp"
-
-IDB_BITMAP20            BITMAP                  "..\\res\\ring3.bmp"
-
-IDB_BITMAP21            BITMAP                  "..\\res\\stick1.bmp"
-
-IDB_BITMAP22            BITMAP                  "..\\res\\stick2.bmp"
-
-IDB_BITMAP23            BITMAP                  "..\\res\\stick3.bmp"
-
-IDB_BITMAP24            BITMAP                  "..\\res\\sword1.bmp"
-
-IDB_BITMAP25            BITMAP                  "..\\res\\sword2.bmp"
-
-IDB_BITMAP26            BITMAP                  "..\\res\\sword3.bmp"
-
-IDB_BITMAP27            BITMAP                  "..\\res\\treasure1.bmp"
 
 arrow1b                 BITMAP                  "..\\res\\arrow1.bmp"
 
@@ -462,6 +430,121 @@ word_warrior            BITMAP                  "..\\res\\word\\Warrior-(¥Õ©³¶Â¦
 
 finalitem_b             BITMAP                  "..\\res\\finalitem1.bmp"
 
+allbuff                 BITMAP                  "..\\RES\\buffs.bmp"
+
+buff_hungry_little      BITMAP                  "..\\res\\bitmap12.bmp"
+
+buff_hungry_very        BITMAP                  "..\\res\\bitmap14.bmp"
+
+help_play               BITMAP                  "..\\RES\\help_play.bmp"
+
+help_information        BITMAP                  "..\\RES\\help_information.bmp"
+
+item_information        BITMAP                  "..\\RES\\item_information.bmp"
+
+warrior_l               BITMAP                  "..\\RES\\person1_l.bmp"
+
+mage_l                  BITMAP                  "..\\RES\\person2_l.bmp"
+
+hunter_l                BITMAP                  "..\\RES\\person3_l.bmp"
+
+assassin_l              BITMAP                  "..\\RES\\person4_l.bmp"
+
+warrior_attack1         BITMAP                  "..\\RES\\warrior\\warrior_attack1.bmp"
+
+warrior_attack2         BITMAP                  "..\\RES\\warrior\\warrior_attack2.bmp"
+
+warrior_attack3         BITMAP                  "..\\RES\\warrior\\warrior_attack3.bmp"
+
+warrior_idle            BITMAP                  "..\\RES\\warrior\\warrior_idle.bmp"
+
+warrior_use1            BITMAP                  "..\\RES\\warrior\\warrior_use1.bmp"
+
+warrior_use2            BITMAP                  "..\\RES\\warrior\\warrior_use2.bmp"
+
+warrior_walk1           BITMAP                  "..\\RES\\warrior\\warrior_walk1.bmp"
+
+warrior_walk2           BITMAP                  "..\\RES\\warrior\\warrior_walk2.bmp"
+
+warrior_walk3           BITMAP                  "..\\RES\\warrior\\warrior_walk3.bmp"
+
+warrior_walk4           BITMAP                  "..\\RES\\warrior\\warrior_walk4.bmp"
+
+warrior_walk5           BITMAP                  "..\\RES\\warrior\\warrior_walk5.bmp"
+
+warrior_walk6           BITMAP                  "..\\RES\\warrior\\warrior_walk6.bmp"
+
+mage_attack1            BITMAP                  "..\\RES\\mage\\mage_attack1.bmp"
+
+mage_attack2            BITMAP                  "..\\RES\\mage\\mage_attack2.bmp"
+
+mage_attack3            BITMAP                  "..\\RES\\mage\\mage_attack3.bmp"
+
+mage_idle               BITMAP                  "..\\RES\\mage\\mage_idle.bmp"
+
+mage_use1               BITMAP                  "..\\RES\\mage\\mage_use1.bmp"
+
+mage_use2               BITMAP                  "..\\RES\\mage\\mage_use2.bmp"
+
+mage_walk1              BITMAP                  "..\\RES\\mage\\mage_walk1.bmp"
+
+mage_walk2              BITMAP                  "..\\RES\\mage\\mage_walk2.bmp"
+
+mage_walk3              BITMAP                  "..\\RES\\mage\\mage_walk3.bmp"
+
+mage_walk4              BITMAP                  "..\\RES\\mage\\mage_walk4.bmp"
+
+mage_walk5              BITMAP                  "..\\RES\\mage\\mage_walk5.bmp"
+
+mage_walk6              BITMAP                  "..\\RES\\mage\\mage_walk6.bmp"
+
+ranger_attack1          BITMAP                  "..\\RES\\ranger\\ranger_attack1.bmp"
+
+ranger_attack2          BITMAP                  "..\\RES\\ranger\\ranger_attack2.bmp"
+
+ranger_attack3          BITMAP                  "..\\RES\\ranger\\ranger_attack3.bmp"
+
+ranger_idle             BITMAP                  "..\\RES\\ranger\\ranger_idle.bmp"
+
+ranger_use1             BITMAP                  "..\\RES\\ranger\\ranger_use1.bmp"
+
+ranger_use2             BITMAP                  "..\\RES\\ranger\\ranger_use2.bmp"
+
+ranger_walk1            BITMAP                  "..\\RES\\ranger\\ranger_walk1.bmp"
+
+ranger_walk2            BITMAP                  "..\\RES\\ranger\\ranger_walk2.bmp"
+
+ranger_walk3            BITMAP                  "..\\RES\\ranger\\ranger_walk3.bmp"
+
+ranger_walk4            BITMAP                  "..\\RES\\ranger\\ranger_walk4.bmp"
+
+ranger_walk5            BITMAP                  "..\\RES\\ranger\\ranger_walk5.bmp"
+
+ranger_walk6            BITMAP                  "..\\RES\\ranger\\ranger_walk6.bmp"
+
+rogue_attack1           BITMAP                  "..\\RES\\rogue\\rogue_attack1.bmp"
+
+rogue_attack2           BITMAP                  "..\\RES\\rogue\\rogue_attack2.bmp"
+
+rogue_attack3           BITMAP                  "..\\RES\\rogue\\rogue_attack3.bmp"
+
+rogue_idle              BITMAP                  "..\\RES\\rogue\\rogue_idle.bmp"
+
+rogue_use1              BITMAP                  "..\\RES\\rogue\\rogue_use1.bmp"
+
+rogue_use2              BITMAP                  "..\\RES\\rogue\\rogue_use2.bmp"
+
+rogue_walk1             BITMAP                  "..\\RES\\rogue\\rogue_walk1.bmp"
+
+rogue_walk2             BITMAP                  "..\\RES\\rogue\\rogue_walk2.bmp"
+
+rogue_walk3             BITMAP                  "..\\RES\\rogue\\rogue_walk3.bmp"
+
+rogue_walk4             BITMAP                  "..\\RES\\rogue\\rogue_walk4.bmp"
+
+rogue_walk5             BITMAP                  "..\\RES\\rogue\\rogue_walk5.bmp"
+
+rogue_walk6             BITMAP                  "..\\RES\\rogue\\rogue_walk6.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //
