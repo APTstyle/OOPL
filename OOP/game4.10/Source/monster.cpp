@@ -407,7 +407,7 @@ chun*/
 	}
 
 	void monster::showdata() {
-		printf("\nboss:\n");
+		/*printf("\nboss:\n");
 		printf("HP:%d\n", mon_HP);
 		printf("ATK:%d\n", mon_ATK);
 		printf("Location:%d,%d\n", mon_x, mon_y);
@@ -415,7 +415,7 @@ chun*/
 		//printf("test:%d\n", test);
 		//printf("show:%d,%d\n", monster::mon_bat_x, monster::mon_bat_y);
 		printf("map:%d,%d\n", CEraser::map_x, CEraser::map_y);
-		printf("mon1:%d,%d\n", mon_x, mon_y);
+		printf("mon1:%d,%d\n", mon_x, mon_y);*/
 	}
 
 	int monster::getmap(int random_map, int map[][27])

@@ -9,6 +9,7 @@ namespace game_framework {
 	{
 	public:
 		CEraser();
+		int movingcount;
 		static int hero_def;
 		static int hero_HP;
 		static int hero_max_hp;
@@ -28,7 +29,7 @@ namespace game_framework {
 		void Initialize();				// 設定擦子為初始值
 		void LoadBitmap();				// 載入圖形
 		void OnMove();					// 移動擦子
-		void OnShow();					// 將擦子圖形貼到畫面
+		int OnShow();					// 將擦子圖形貼到畫面
 		void equiparmor(int item);		//穿上裝備
 		void equipweapon(int item);
 		void equipring(int item);
@@ -49,13 +50,23 @@ namespace game_framework {
 		void addhp(int n);
 		void stave();
 		bool direction;
+		bool moving;
+		bool attacking;
 		void setdata(int n);
+		void showwalk(int n);
+
 	protected:
 		CAnimation animation;		// 擦子的動畫
 		CAnimation animation2;		// 擦子的動畫
 		CAnimation animation_hp_background;		// 擦子的動畫
 		CAnimation animation_icon;		// 擦子的動畫
 		CMovingBitmap animation_test;
+		CAnimation animation_walk;		// 擦子的動畫
+		CAnimation animation_walk_l;		// 擦子的動畫
+		CAnimation animation_atk;		// 擦子的動畫
+		CAnimation animation_atk_l;		// 擦子的動畫
+		CAnimation animation_use;		// 擦子的動畫
+		CAnimation animation_use_l;		// 擦子的動畫
 		int x, y;					// 擦子左上角座標
 		int character;				//職業的變數
 		int hero_armor, hero_weapon,hero_ring; //裝備

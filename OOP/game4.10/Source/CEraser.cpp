@@ -54,31 +54,112 @@ namespace game_framework {
 		CEraser::hero_max_hp = 20;
 		CEraser::hero_def = 10;
 		direction = true;
+		moving = false;
+		movingcount = 0;
+		attacking = false;
 	}
 	void CEraser::changeskin(int c) {
+		animation_walk.SetDelayCount(2);
+		animation_walk_l.SetDelayCount(2);
 		animation.cleanBitmap();
 		animation2.cleanBitmap();
+		animation_walk.cleanBitmap();
+		animation_walk_l.cleanBitmap();
+		animation_atk.cleanBitmap();
+		animation_atk_l.cleanBitmap();
 		animation_icon.cleanBitmap();
 		animation_hp_background.AddBitmap(hero_status, RGB(255, 255, 255));
 		if (character == 1) {
 			animation.AddBitmap(warrior, RGB(255, 255, 255));
 			animation2.AddBitmap(warrior_l, RGB(255, 255, 255));
-			animation_icon.AddBitmap(charactor_warrior_hp, RGB(255, 255, 255)); 
+			animation_icon.AddBitmap(charactor_warrior_hp, RGB(255, 255, 255));
+			animation_walk.AddBitmap(warrior_walk1, RGB(255, 255, 255));
+			animation_walk.AddBitmap(warrior_walk2, RGB(255, 255, 255));
+			animation_walk.AddBitmap(warrior_walk3, RGB(255, 255, 255));
+			animation_walk.AddBitmap(warrior_walk4, RGB(255, 255, 255));
+			animation_walk.AddBitmap(warrior_walk5, RGB(255, 255, 255));
+			animation_walk.AddBitmap(warrior_walk6, RGB(255, 255, 255));
+			animation_atk.AddBitmap(warrior_attack1, RGB(255, 255, 255));
+			animation_atk.AddBitmap(warrior_attack2, RGB(255, 255, 255));
+			animation_atk.AddBitmap(warrior_attack3, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(warrior_walk1_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(warrior_walk2_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(warrior_walk3_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(warrior_walk4_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(warrior_walk5_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(warrior_walk6_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(warrior_attack1_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(warrior_attack2_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(warrior_attack3_l, RGB(255, 255, 255));
 		}
 		else if (character == 2) {
 			animation.AddBitmap(mage, RGB(255, 255, 255));
 			animation2.AddBitmap(mage_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_mage_hp, RGB(255, 255, 255));
+			animation_walk.AddBitmap(mage_walk1, RGB(255, 255, 255));
+			animation_walk.AddBitmap(mage_walk2, RGB(255, 255, 255));
+			animation_walk.AddBitmap(mage_walk3, RGB(255, 255, 255));
+			animation_walk.AddBitmap(mage_walk4, RGB(255, 255, 255));
+			animation_walk.AddBitmap(mage_walk5, RGB(255, 255, 255));
+			animation_walk.AddBitmap(mage_walk6, RGB(255, 255, 255));
+			animation_atk.AddBitmap(mage_attack1, RGB(255, 255, 255));
+			animation_atk.AddBitmap(mage_attack2, RGB(255, 255, 255));
+			animation_atk.AddBitmap(mage_attack3, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(mage_walk1_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(mage_walk2_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(mage_walk3_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(mage_walk4_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(mage_walk5_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(mage_walk6_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(mage_attack1_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(mage_attack2_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(mage_attack3_l, RGB(255, 255, 255));
 		}
 		else if (character == 3) {
 			animation.AddBitmap(assassin, RGB(255, 255, 255));
-			animation2.AddBitmap(assassin_l, RGB(255, 255, 255));
+			animation2.AddBitmap(rogue_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_assassin_hp, RGB(255, 255, 255));
+			animation_walk.AddBitmap(rogue_walk1, RGB(255, 255, 255));
+			animation_walk.AddBitmap(rogue_walk2, RGB(255, 255, 255));
+			animation_walk.AddBitmap(rogue_walk3, RGB(255, 255, 255));
+			animation_walk.AddBitmap(rogue_walk4, RGB(255, 255, 255));
+			animation_walk.AddBitmap(rogue_walk5, RGB(255, 255, 255));
+			animation_walk.AddBitmap(rogue_walk6, RGB(255, 255, 255));
+			animation_atk.AddBitmap(rogue_attack1, RGB(255, 255, 255));
+			animation_atk.AddBitmap(rogue_attack2, RGB(255, 255, 255));
+			animation_atk.AddBitmap(rogue_attack3, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(rogue_walk1_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(rogue_walk2_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(rogue_walk3_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(rogue_walk4_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(rogue_walk5_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(rogue_walk6_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(rogue_attack1_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(rogue_attack2_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(rogue_attack3_l, RGB(255, 255, 255));
 		}
 		else if (character == 4) {
 			animation.AddBitmap(hunter, RGB(255, 255, 255));
-			animation2.AddBitmap(hunter_l, RGB(255, 255, 255));
+			animation2.AddBitmap(ranger_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_hunter_hp, RGB(255, 255, 255));
+			animation_walk.AddBitmap(ranger_walk1, RGB(255, 255, 255));
+			animation_walk.AddBitmap(ranger_walk2, RGB(255, 255, 255));
+			animation_walk.AddBitmap(ranger_walk3, RGB(255, 255, 255));
+			animation_walk.AddBitmap(ranger_walk4, RGB(255, 255, 255));
+			animation_walk.AddBitmap(ranger_walk5, RGB(255, 255, 255));
+			animation_walk.AddBitmap(ranger_walk6, RGB(255, 255, 255));
+			animation_atk.AddBitmap(ranger_attack1, RGB(255, 255, 255));
+			animation_atk.AddBitmap(ranger_attack2, RGB(255, 255, 255));
+			animation_atk.AddBitmap(ranger_attack3, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(ranger_walk1_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(ranger_walk2_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(ranger_walk3_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(ranger_walk4_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(ranger_walk5_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(ranger_walk6_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(ranger_attack1_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(ranger_attack2_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(ranger_attack3_l, RGB(255, 255, 255));
 		}
 		setdata(c);
 	}
@@ -87,6 +168,10 @@ namespace game_framework {
 	{
 		animation.cleanBitmap();
 		animation2.cleanBitmap();
+		animation_walk.cleanBitmap();
+		animation_walk_l.cleanBitmap();
+		animation_atk.cleanBitmap();
+		animation_atk_l.cleanBitmap();
 		animation_test.LoadBitmap(herohp1, RGB(255, 255, 255));
 		animation_hp_background.AddBitmap(hero_status, RGB(255, 255, 255));
 		//animation.AddBitmap(warrior, RGB(255, 255, 255));
@@ -94,6 +179,24 @@ namespace game_framework {
 			animation.AddBitmap(warrior, RGB(255, 255, 255));
 			animation2.AddBitmap(warrior_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_warrior_hp, RGB(255, 255, 255));
+			animation_walk.AddBitmap(warrior_walk1, RGB(255, 255, 255));
+			animation_walk.AddBitmap(warrior_walk2, RGB(255, 255, 255));
+			animation_walk.AddBitmap(warrior_walk3, RGB(255, 255, 255));
+			animation_walk.AddBitmap(warrior_walk4, RGB(255, 255, 255));
+			animation_walk.AddBitmap(warrior_walk5, RGB(255, 255, 255));
+			animation_walk.AddBitmap(warrior_walk6, RGB(255, 255, 255));
+			animation_atk.AddBitmap(warrior_attack1, RGB(255, 255, 255));
+			animation_atk.AddBitmap(warrior_attack2, RGB(255, 255, 255));
+			animation_atk.AddBitmap(warrior_attack3, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(warrior_walk1_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(warrior_walk2_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(warrior_walk3_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(warrior_walk4_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(warrior_walk5_l, RGB(255, 255, 255));
+			animation_walk_l.AddBitmap(warrior_walk6_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(warrior_attack1_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(warrior_attack2_l, RGB(255, 255, 255));
+			animation_atk_l.AddBitmap(warrior_attack3_l, RGB(255, 255, 255));
 		}
 		else if (character == 2) {
 			animation.AddBitmap(mage, RGB(255, 255, 255));
@@ -102,12 +205,12 @@ namespace game_framework {
 		}
 		else if (character == 3) {
 			animation.AddBitmap(assassin, RGB(255, 255, 255));
-			animation2.AddBitmap(assassin_l, RGB(255, 255, 255));
+			animation2.AddBitmap(rogue_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_assassin_hp, RGB(255, 255, 255));
 		}
 		else if (character == 4) {
 			animation.AddBitmap(hunter, RGB(255, 255, 255));
-			animation2.AddBitmap(hunter_l, RGB(255, 255, 255));
+			animation2.AddBitmap(ranger_l, RGB(255, 255, 255));
 			animation_icon.AddBitmap(charactor_hunter_hp, RGB(255, 255, 255));
 		}
 		/*else {
@@ -129,6 +232,11 @@ namespace game_framework {
 
 		const int STEP_SIZE = 0;
 		animation.OnMove();
+		animation2.OnMove();
+		animation_walk.OnMove();
+		animation_walk_l.OnMove();
+		animation_atk.OnMove();
+		animation_atk_l.OnMove();
 		if (isMovingLeft) {
 		}
 		if (isMovingRight) {
@@ -170,13 +278,20 @@ namespace game_framework {
 	int CEraser::checkring() {
 		return hero_ring;
 	}
-
+	void CEraser::showwalk(int n) {
+		animation_walk_l.SetTopLeft(x, y);
+		animation_walk_l.OnShow(); 
+		if (animation_walk.GetCurrentBitmapNumber() >0) {
+			return;
+		}
+	}
 
 	void CEraser::SetMovingDown(bool flag)
 	{
 		isMovingDown = flag;
 		if (flag) {
 			CEraser::actor_y += 1;
+			moving = true;
 		}
 	}
 
@@ -186,6 +301,7 @@ namespace game_framework {
 		if (flag) {
 			CEraser::actor_x -= 1;
 			direction = false;
+			moving = true;
 		}
 	}
 
@@ -195,6 +311,7 @@ namespace game_framework {
 		if (flag) {
 			CEraser::actor_x += 1;
 			direction = true;
+			moving = true;
 		}
 	}
 
@@ -203,6 +320,7 @@ namespace game_framework {
 		isMovingUp = flag;
 		if (flag) {
 			CEraser::actor_y -= 1;
+			moving = true;
 		}
 	}
 
@@ -211,15 +329,47 @@ namespace game_framework {
 		x = nx; y = ny;
 	}
 
-	void CEraser::OnShow()
+	int CEraser::OnShow()
 	{
-		if (direction == true) {
-			animation.SetTopLeft(x, y);
-			animation.OnShow();
+		if (attacking == true) {
+			if (direction == true) {
+				animation_atk.SetTopLeft(x, y);
+				animation_atk.OnShow();
+			}
+			else {
+				animation_atk_l.SetTopLeft(x, y);
+				animation_atk_l.OnShow();
+			}
+			printf("\n%d\n", animation_walk.GetCurrentBitmapNumber());
+			if (animation_atk_l.GetCurrentBitmapNumber() == 2 || animation_atk.GetCurrentBitmapNumber() == 2) {
+				attacking = false;
+			}
 		}
-		if (direction == false) {
-			animation2.SetTopLeft(x, y);
-			animation2.OnShow();
+		else {
+			if (moving == false) {
+				if (direction == true) {
+					animation.SetTopLeft(x, y);
+					animation.OnShow();
+				}
+				if (direction == false) {
+					animation2.SetTopLeft(x, y);
+					animation2.OnShow();
+				}
+			}
+			else {
+				if (direction == true) {
+					animation_walk.SetTopLeft(x, y);
+					animation_walk.OnShow();
+				}
+				else if (direction == false) {
+					animation_walk_l.SetTopLeft(x, y);
+					animation_walk_l.OnShow();
+				}
+				printf("\n%d\n", animation_walk.GetCurrentBitmapNumber());
+				if (animation_walk.GetCurrentBitmapNumber() == 5 || animation_walk_l.GetCurrentBitmapNumber() == 5) {
+					moving = false;
+				}
+			}
 		}
 		animation_hp_background.SetTopLeft(0, 0);
 		animation_hp_background.OnShow();
@@ -229,6 +379,7 @@ namespace game_framework {
 			animation_test.SetTopLeft(132+i, 7);
 			animation_test.ShowBitmap();
 		}
+		return 0;
 	}
 
 	int CEraser::attacked(int ATK) {//攻擊者的攻擊力 回傳被攻擊後的血量
@@ -255,11 +406,11 @@ namespace game_framework {
 	}
 
 	void CEraser::showdata() {
-		printf("\nHero:\n");
+		/*printf("\nHero:\n");
 		printf("HP:%d\n", CEraser::hero_HP);
 		//printf("ATK:%d\n", CEraser::hero_ATK);
 		printf("Location:%d,%d\n", CEraser::actor_x, CEraser::actor_y);
-		printf("X,Y:%d,%d\n", x, y);
+		printf("X,Y:%d,%d\n", x, y);*/
 	}
 
 	void CEraser::reset(int m) {

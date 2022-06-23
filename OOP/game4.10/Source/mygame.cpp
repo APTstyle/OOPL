@@ -182,7 +182,7 @@ void CGameStateInit::OnInit()
 	
 	startb.SetTopLeft(600, 850);
 	helpb.SetTopLeft(600, 980);
-	help_infor.SetTopLeft(500,200);
+	help_infor.SetTopLeft(500,25);
 	
 	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	//
@@ -1349,9 +1349,11 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 	if (nChar == KEY_LEFT) {
 		if (gamemap.map[CEraser::actor_y][CEraser::actor_x - 1] != 3 && gamemap.map[CEraser::actor_y][CEraser::actor_x - 1] != 5) {
-			gamemap.SetXY(gamemap.X + step, gamemap.Y);
-			CGameMap::ismoving = 1;
 			eraser.SetMovingLeft(true);
+			for (int i = 0; i < 5; i++) {
+				gamemap.SetXY(gamemap.X + step / 5, gamemap.Y);
+			}
+			CGameMap::ismoving = 1;
 			//printf("\nmapXY::%d,%d!!!!!!!!!!!\n", CEraser::map_x, CEraser::map_y);
 		}
 		else {
@@ -1854,6 +1856,13 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	}
 	if (point.x > monster_bat_cpp.GetX1() && point.x < monster_bat_cpp.GetX2() && point.y > monster_bat_cpp.GetY1() && point.y < monster_bat_cpp.GetY2()) {
 		if (monster_cpp.attacked_judge(monster_bat_cpp.mon_x, monster_bat_cpp.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
+			eraser.attacking = true;
+			if (monster_bat_cpp.mon_x < CEraser::actor_x) {
+				eraser.direction = false;
+			}
+			else if (monster_bat_cpp.mon_x > CEraser::actor_x) {
+				eraser.direction = true;
+			}
 			monster_bat_cpp.attacked(eraser.hero_ATK);
 			if (monster_bat_cpp.mon_HP < 1) {
 				save[test1[0] % 100][test1[0] / 100] = 0;
@@ -1885,6 +1894,13 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	int boss_hp;
 	if (point.x > monster_bat_cpp2.GetX1() && point.x < monster_bat_cpp2.GetX2() && point.y > monster_bat_cpp2.GetY1() && point.y < monster_bat_cpp2.GetY2()) {
 		if (monster_cpp.attacked_judge(monster_bat_cpp2.mon_x, monster_bat_cpp2.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
+			eraser.attacking = true;
+			if (monster_bat_cpp2.mon_x < CEraser::actor_x) {
+				eraser.direction = false;
+			}
+			else if (monster_bat_cpp2.mon_x > CEraser::actor_x) {
+				eraser.direction = true;
+			}
 			monster_bat_cpp2.attacked(eraser.hero_ATK);
 			eraser.attacked(monster_bat_cpp2.mon_ATK);
 			if (monster_bat_cpp2.mon_HP < 1) {
@@ -1916,6 +1932,13 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	}//0617
 	if (point.x > monster_bat_cpp3.GetX1() && point.x < monster_bat_cpp3.GetX2() && point.y > monster_bat_cpp3.GetY1() && point.y < monster_bat_cpp3.GetY2()) {
 		if (monster_cpp.attacked_judge(monster_bat_cpp3.mon_x, monster_bat_cpp3.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
+			eraser.attacking = true;
+			if (monster_bat_cpp3.mon_x < CEraser::actor_x) {
+				eraser.direction = false;
+			}
+			else if (monster_bat_cpp3.mon_x > CEraser::actor_x) {
+				eraser.direction = true;
+			}
 			monster_bat_cpp3.attacked(eraser.hero_ATK);
 			eraser.attacked(monster_bat_cpp3.mon_ATK);
 			if (monster_bat_cpp3.mon_HP < 1) {
@@ -1947,6 +1970,13 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	}
 	if (point.x > monster_cpp.GetX1() && point.x < monster_cpp.GetX2() && point.y > monster_cpp.GetY1() && point.y < monster_cpp.GetY2()) {
 		if (monster_cpp.attacked_judge(monster_cpp.mon_x, monster_cpp.mon_y, CEraser::actor_x, CEraser::actor_y) == 1) {
+			eraser.attacking = true;
+			if (monster_cpp.mon_x < CEraser::actor_x) {
+				eraser.direction = false;
+			}
+			else if (monster_cpp.mon_x > CEraser::actor_x) {
+				eraser.direction = true;
+			}
 			boss_hp = monster_cpp.attacked(eraser.hero_ATK);
 			if (boss_hp < 1) {
 				if (pass_game == 0) {
