@@ -318,6 +318,11 @@
 #define rogue_walk4_l                   524
 #define rogue_walk5_l                   525
 #define rogue_walk6_l                   526
+#define warrior_l                       527
+#define mage_l                          528
+#define ranger_l                        529
+#define IDB_BITMAP15                    530
+#define rogue_l                         530
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -330,7 +335,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        527
+#define _APS_NEXT_RESOURCE_VALUE        531
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

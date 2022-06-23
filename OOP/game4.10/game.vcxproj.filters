@@ -349,6 +349,13 @@
     <Image Include="RES\rogue_l\rogue_walk4.bmp" />
     <Image Include="RES\rogue_l\rogue_walk5.bmp" />
     <Image Include="RES\rogue_l\rogue_walk6.bmp" />
+<<<<<<< HEAD
+>>>>>>> chun
+=======
+    <Image Include="RES\person1_l.bmp" />
+    <Image Include="RES\person2_l.bmp" />
+    <Image Include="RES\person3_l.bmp" />
+    <Image Include="RES\person4_l.bmp" />
 >>>>>>> chun
   </ItemGroup>
   <ItemGroup>
