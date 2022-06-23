@@ -461,12 +461,12 @@ namespace game_framework {
 	}
 
 	void monster_bat::showdata(int n) {
-		printf("\nmonster%d:\n", n);
+		/*printf("\nmonster%d:\n", n);
 		printf("HP:%d\n", mon_HP);
 		printf("ATK:%d\n", mon_ATK);
 		printf("Location:%d,%d\n", mon_x, mon_y);
 		printf("X,Y:%d,%d\n", x, y);
-		printf("map:%d,%d\n", CEraser::map_x, CEraser::map_y);
+		printf("map:%d,%d\n", CEraser::map_x, CEraser::map_y);*/
 	}
 
 };

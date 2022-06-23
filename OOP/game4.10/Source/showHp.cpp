@@ -73,7 +73,7 @@ namespace game_framework {
 	}
 
 	void showHp::showdata() {
-		printf("HP:\n");
-		printf("X,Y:%d,%d\n", x, y);
+		/*printf("HP:\n");
+		printf("X,Y:%d,%d\n", x, y);*/
 	}
 }
