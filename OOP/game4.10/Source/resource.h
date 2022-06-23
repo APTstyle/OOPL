@@ -226,13 +226,11 @@
 #define help_play                       424
 #define help_information                425
 #define item_information                426
-<<<<<<< HEAD
 #define warrior_l                       427
 #define mage_l                          428
 #define hunter_l                        429
 #define assassin_l                      430
-=======
-#define warrior_attack1                 427
+#define warrior_attack1                 439
 #define warrior_attack2                 440
 #define warrior_attack3                 441
 #define warrior_idle                    442
@@ -279,9 +277,7 @@
 #define rogue_walk3                     483
 #define rogue_walk4                     484
 #define rogue_walk5                     485
-#define IDB_BITMAP24                    486
 #define rogue_walk6                     486
->>>>>>> chun
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -294,11 +290,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-<<<<<<< HEAD
-#define _APS_NEXT_RESOURCE_VALUE        431
-=======
 #define _APS_NEXT_RESOURCE_VALUE        487
->>>>>>> chun
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
