@@ -317,7 +317,6 @@
 #define rogue_walk3_l                   523
 #define rogue_walk4_l                   524
 #define rogue_walk5_l                   525
-#define IDB_BITMAP21                    526
 #define rogue_walk6_l                   526
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771

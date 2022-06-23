@@ -538,7 +538,6 @@ rogue_walk1             BITMAP                  "..\\RES\\rogue\\rogue_walk1.bmp
 
 rogue_walk2             BITMAP                  "..\\RES\\rogue\\rogue_walk2.bmp"
 
-<<<<<<< HEAD
 rogue_walk3             BITMAP                  "..\\RES\\rogue\\rogue_walk3.bmp"
 
 rogue_walk4             BITMAP                  "..\\RES\\rogue\\rogue_walk4.bmp"
@@ -546,88 +545,87 @@ rogue_walk4             BITMAP                  "..\\RES\\rogue\\rogue_walk4.bmp
 rogue_walk5             BITMAP                  "..\\RES\\rogue\\rogue_walk5.bmp"
 
 rogue_walk6             BITMAP                  "..\\RES\\rogue\\rogue_walk6.bmp"
-=======
-warrior_attack1_l       BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\warrior_l\\warrior_attack1.bmp"
 
-warrior_attack2_l       BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\warrior_l\\warrior_attack2.bmp"
+warrior_attack1_l       BITMAP                  "..\\RES\\warrior_l\\warrior_attack1.bmp"
 
-warrior_attack3_l       BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\warrior_l\\warrior_attack3.bmp"
+warrior_attack2_l       BITMAP                  "..\\RES\\warrior_l\\warrior_attack2.bmp"
 
-warrior_idle_l          BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\warrior_l\\warrior_idle.bmp"
+warrior_attack3_l       BITMAP                  "..\\RES\\warrior_l\\warrior_attack3.bmp"
 
-warrior_walk1_l         BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\warrior_l\\warrior_walk1.bmp"
+warrior_idle_l          BITMAP                  "..\\RES\\warrior_l\\warrior_idle.bmp"
 
-warrior_walk2_l         BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\warrior_l\\warrior_walk2.bmp"
+warrior_walk1_l         BITMAP                  "..\\RES\\warrior_l\\warrior_walk1.bmp"
 
-warrior_walk3_l         BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\warrior_l\\warrior_walk3.bmp"
+warrior_walk2_l         BITMAP                  "..\\RES\\warrior_l\\warrior_walk2.bmp"
 
-warrior_walk4_l         BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\warrior_l\\warrior_walk4.bmp"
+warrior_walk3_l         BITMAP                  "..\\RES\\warrior_l\\warrior_walk3.bmp"
 
-warrior_walk5_l         BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\warrior_l\\warrior_walk5.bmp"
+warrior_walk4_l         BITMAP                  "..\\RES\\warrior_l\\warrior_walk4.bmp"
 
-warrior_walk6_l         BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\warrior_l\\warrior_walk6.bmp"
+warrior_walk5_l         BITMAP                  "..\\RES\\warrior_l\\warrior_walk5.bmp"
 
-mage_attack1_l          BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\mage_l\\mage_attack1.bmp"
+warrior_walk6_l         BITMAP                  "..\\RES\\warrior_l\\warrior_walk6.bmp"
 
-mage_attack2_l          BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\mage_l\\mage_attack2.bmp"
+mage_attack1_l          BITMAP                  "..\\RES\\mage_l\\mage_attack1.bmp"
 
-mage_attack3_l          BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\mage_l\\mage_attack3.bmp"
+mage_attack2_l          BITMAP                  "..\\RES\\mage_l\\mage_attack2.bmp"
 
-mage_idle_l             BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\mage_l\\mage_idle.bmp"
+mage_attack3_l          BITMAP                  "..\\RES\\mage_l\\mage_attack3.bmp"
 
-mage_walk1_l            BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\mage_l\\mage_walk1.bmp"
+mage_idle_l             BITMAP                  "..\\RES\\mage_l\\mage_idle.bmp"
 
-mage_walk2_l            BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\mage_l\\mage_walk2.bmp"
+mage_walk1_l            BITMAP                  "..\\RES\\mage_l\\mage_walk1.bmp"
 
-mage_walk3_l            BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\mage_l\\mage_walk3.bmp"
+mage_walk2_l            BITMAP                  "..\\RES\\mage_l\\mage_walk2.bmp"
 
-mage_walk4_l            BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\mage_l\\mage_walk4.bmp"
+mage_walk3_l            BITMAP                  "..\\RES\\mage_l\\mage_walk3.bmp"
 
-mage_walk5_l            BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\mage_l\\mage_walk5.bmp"
+mage_walk4_l            BITMAP                  "..\\RES\\mage_l\\mage_walk4.bmp"
 
-mage_walk6_l            BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\mage_l\\mage_walk6.bmp"
+mage_walk5_l            BITMAP                  "..\\RES\\mage_l\\mage_walk5.bmp"
 
-ranger_attack1_l        BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\ranger_l\\ranger_attack1.bmp"
+mage_walk6_l            BITMAP                  "..\\RES\\mage_l\\mage_walk6.bmp"
 
-ranger_attack2_l        BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\ranger_l\\ranger_attack2.bmp"
+ranger_attack1_l        BITMAP                  "..\\RES\\ranger_l\\ranger_attack1.bmp"
 
-ranger_attack3_l        BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\ranger_l\\ranger_attack3.bmp"
+ranger_attack2_l        BITMAP                  "..\\RES\\ranger_l\\ranger_attack2.bmp"
 
-ranger_idle_l           BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\ranger_l\\ranger_idle.bmp"
+ranger_attack3_l        BITMAP                  "..\\RES\\ranger_l\\ranger_attack3.bmp"
 
-ranger_walk1_l          BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\ranger_l\\ranger_walk1.bmp"
+ranger_idle_l           BITMAP                  "..\\RES\\ranger_l\\ranger_idle.bmp"
 
-ranger_walk2_l          BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\ranger_l\\ranger_walk2.bmp"
+ranger_walk1_l          BITMAP                  "..\\RES\\ranger_l\\ranger_walk1.bmp"
 
-ranger_walk3_l          BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\ranger_l\\ranger_walk3.bmp"
+ranger_walk2_l          BITMAP                  "..\\RES\\ranger_l\\ranger_walk2.bmp"
 
-ranger_walk4_l          BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\ranger_l\\ranger_walk4.bmp"
+ranger_walk3_l          BITMAP                  "..\\RES\\ranger_l\\ranger_walk3.bmp"
 
-ranger_walk5_l          BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\ranger_l\\ranger_walk5.bmp"
+ranger_walk4_l          BITMAP                  "..\\RES\\ranger_l\\ranger_walk4.bmp"
 
-ranger_walk6_l          BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\ranger_l\\ranger_walk6.bmp"
+ranger_walk5_l          BITMAP                  "..\\RES\\ranger_l\\ranger_walk5.bmp"
 
-rogue_attack1_l         BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\rogue_l\\rogue_attack1.bmp"
+ranger_walk6_l          BITMAP                  "..\\RES\\ranger_l\\ranger_walk6.bmp"
 
-rogue_attack2_l         BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\rogue_l\\rogue_attack2.bmp"
+rogue_attack1_l         BITMAP                  "..\\RES\\rogue_l\\rogue_attack1.bmp"
 
-rogue_attack3_l         BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\rogue_l\\rogue_attack3.bmp"
+rogue_attack2_l         BITMAP                  "..\\RES\\rogue_l\\rogue_attack2.bmp"
 
-rogue_idle_l            BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\rogue_l\\rogue_idle.bmp"
+rogue_attack3_l         BITMAP                  "..\\RES\\rogue_l\\rogue_attack3.bmp"
 
-rogue_walk1_l           BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\rogue_l\\rogue_walk1.bmp"
+rogue_idle_l            BITMAP                  "..\\RES\\rogue_l\\rogue_idle.bmp"
 
-rogue_walk2_l           BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\rogue_l\\rogue_walk2.bmp"
+rogue_walk1_l           BITMAP                  "..\\RES\\rogue_l\\rogue_walk1.bmp"
 
-rogue_walk3_l           BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\rogue_l\\rogue_walk3.bmp"
+rogue_walk2_l           BITMAP                  "..\\RES\\rogue_l\\rogue_walk2.bmp"
 
-rogue_walk4_l           BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\rogue_l\\rogue_walk4.bmp"
+rogue_walk3_l           BITMAP                  "..\\RES\\rogue_l\\rogue_walk3.bmp"
 
-rogue_walk5_l           BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\rogue_l\\rogue_walk5.bmp"
+rogue_walk4_l           BITMAP                  "..\\RES\\rogue_l\\rogue_walk4.bmp"
 
-rogue_walk6_l           BITMAP                  "C:\\Users\\user\\Desktop\\OOP6.23\\game4.10\\RES\\rogue_l\\rogue_walk6.bmp"
+rogue_walk5_l           BITMAP                  "..\\RES\\rogue_l\\rogue_walk5.bmp"
 
->>>>>>> chun
+rogue_walk6_l           BITMAP                  "..\\RES\\rogue_l\\rogue_walk6.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
