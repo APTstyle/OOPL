@@ -252,10 +252,61 @@
     <Image Include="RES\help_play.bmp" />
     <Image Include="RES\help_information.bmp" />
     <Image Include="RES\item_information.bmp" />
+<<<<<<< HEAD
     <Image Include="RES\person1_l.bmp" />
     <Image Include="RES\person2_l.bmp" />
     <Image Include="RES\person3_l.bmp" />
     <Image Include="RES\person4_l.bmp" />
+=======
+    <Image Include="RES\warrior\warrior_attack1.bmp" />
+    <Image Include="RES\warrior\warrior_attack2.bmp" />
+    <Image Include="RES\warrior\warrior_attack3.bmp" />
+    <Image Include="RES\warrior\warrior_idle.bmp" />
+    <Image Include="RES\warrior\warrior_use1.bmp" />
+    <Image Include="RES\warrior\warrior_use2.bmp" />
+    <Image Include="RES\warrior\warrior_walk1.bmp" />
+    <Image Include="RES\warrior\warrior_walk2.bmp" />
+    <Image Include="RES\warrior\warrior_walk3.bmp" />
+    <Image Include="RES\warrior\warrior_walk4.bmp" />
+    <Image Include="RES\warrior\warrior_walk5.bmp" />
+    <Image Include="RES\warrior\warrior_walk6.bmp" />
+    <Image Include="RES\mage\mage_attack1.bmp" />
+    <Image Include="RES\mage\mage_attack2.bmp" />
+    <Image Include="RES\mage\mage_attack3.bmp" />
+    <Image Include="RES\mage\mage_idle.bmp" />
+    <Image Include="RES\mage\mage_use1.bmp" />
+    <Image Include="RES\mage\mage_use2.bmp" />
+    <Image Include="RES\mage\mage_walk1.bmp" />
+    <Image Include="RES\mage\mage_walk2.bmp" />
+    <Image Include="RES\mage\mage_walk3.bmp" />
+    <Image Include="RES\mage\mage_walk4.bmp" />
+    <Image Include="RES\mage\mage_walk5.bmp" />
+    <Image Include="RES\mage\mage_walk6.bmp" />
+    <Image Include="RES\ranger\ranger_attack1.bmp" />
+    <Image Include="RES\ranger\ranger_attack2.bmp" />
+    <Image Include="RES\ranger\ranger_attack3.bmp" />
+    <Image Include="RES\ranger\ranger_idle.bmp" />
+    <Image Include="RES\ranger\ranger_use1.bmp" />
+    <Image Include="RES\ranger\ranger_use2.bmp" />
+    <Image Include="RES\ranger\ranger_walk1.bmp" />
+    <Image Include="RES\ranger\ranger_walk2.bmp" />
+    <Image Include="RES\ranger\ranger_walk3.bmp" />
+    <Image Include="RES\ranger\ranger_walk4.bmp" />
+    <Image Include="RES\ranger\ranger_walk5.bmp" />
+    <Image Include="RES\ranger\ranger_walk6.bmp" />
+    <Image Include="RES\rogue\rogue_attack1.bmp" />
+    <Image Include="RES\rogue\rogue_attack2.bmp" />
+    <Image Include="RES\rogue\rogue_attack3.bmp" />
+    <Image Include="RES\rogue\rogue_idle.bmp" />
+    <Image Include="RES\rogue\rogue_use1.bmp" />
+    <Image Include="RES\rogue\rogue_use2.bmp" />
+    <Image Include="RES\rogue\rogue_walk1.bmp" />
+    <Image Include="RES\rogue\rogue_walk2.bmp" />
+    <Image Include="RES\rogue\rogue_walk3.bmp" />
+    <Image Include="RES\rogue\rogue_walk4.bmp" />
+    <Image Include="RES\rogue\rogue_walk5.bmp" />
+    <Image Include="RES\rogue\rogue_walk6.bmp" />
+>>>>>>> chun
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\ball.bmp" />

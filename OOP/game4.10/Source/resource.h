@@ -226,10 +226,62 @@
 #define help_play                       424
 #define help_information                425
 #define item_information                426
+<<<<<<< HEAD
 #define warrior_l                       427
 #define mage_l                          428
 #define hunter_l                        429
 #define assassin_l                      430
+=======
+#define warrior_attack1                 427
+#define warrior_attack2                 440
+#define warrior_attack3                 441
+#define warrior_idle                    442
+#define warrior_use1                    443
+#define warrior_use2                    444
+#define warrior_walk1                   445
+#define warrior_walk2                   446
+#define warrior_walk3                   447
+#define warrior_walk4                   448
+#define warrior_walk5                   449
+#define warrior_walk6                   450
+#define mage_attack1                    451
+#define mage_attack2                    452
+#define mage_attack3                    453
+#define mage_idle                       454
+#define mage_use1                       455
+#define mage_use2                       456
+#define mage_walk1                      457
+#define mage_walk2                      458
+#define mage_walk3                      459
+#define mage_walk4                      460
+#define mage_walk5                      461
+#define mage_walk6                      462
+#define ranger_attack1                  463
+#define ranger_attack2                  464
+#define ranger_attack3                  465
+#define ranger_idle                     466
+#define ranger_use1                     467
+#define ranger_use2                     468
+#define ranger_walk1                    469
+#define ranger_walk2                    470
+#define ranger_walk3                    471
+#define ranger_walk4                    472
+#define ranger_walk5                    473
+#define ranger_walk6                    474
+#define rogue_attack1                   475
+#define rogue_attack2                   476
+#define rogue_attack3                   477
+#define rogue_idle                      478
+#define rogue_use1                      479
+#define rogue_use2                      480
+#define rogue_walk1                     481
+#define rogue_walk2                     482
+#define rogue_walk3                     483
+#define rogue_walk4                     484
+#define rogue_walk5                     485
+#define IDB_BITMAP24                    486
+#define rogue_walk6                     486
+>>>>>>> chun
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -242,7 +294,11 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
+<<<<<<< HEAD
 #define _APS_NEXT_RESOURCE_VALUE        431
+=======
+#define _APS_NEXT_RESOURCE_VALUE        487
+>>>>>>> chun
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
