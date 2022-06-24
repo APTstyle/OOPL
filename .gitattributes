@@ -1,2 +1,0 @@
-file.txt filter=lfs diff=lfs merge=lfs -text
-OOP filter=lfs diff=lfs merge=lfs -text
